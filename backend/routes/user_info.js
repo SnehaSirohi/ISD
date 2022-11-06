@@ -1,6 +1,7 @@
 const express = require('express')
 const User = require('../models/userdata')
 
+
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -34,6 +35,26 @@ router.post('/register', async(req, res) => {
     }
 
 })
+router.get('/attendance', async(req, res) => {
+   
+    return res.status(200).json({
+		success: true,
+		data: await User.find({}),
+	});
+
+})
+
+// router.post('/details',async(req,res)=>
+// {
+//      const {Name}=req.body
+
+//      try {
+//         const details = await Details.create({Name})
+//         res.status(200).json(details)
+//     } catch (error){
+//         res.status(400).json({error: error.message})
+//     }
+// })
 
 
 module.exports = router
