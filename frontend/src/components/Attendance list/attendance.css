@@ -1,0 +1,11 @@
+
+td{
+    text-align: center;
+}
+tr{
+    text-align: center;
+}
+.form-check-input
+{
+    transform: translateX(29rem);
+}
