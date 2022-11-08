@@ -2,7 +2,6 @@ const express = require('express')
 const User = require('../models/userdata')
 
 const {classScheduleMail, testScheduleMail}=require('../utils/mail')
-const {classScheduleSms}=require('../utils/sms')
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -66,6 +65,14 @@ router.post('/scheduletest',async (req,res)=>{
         testScheduleMail(subject, date, time,user.email);
         console.log(subject,date,time,user.email)
     })
+})
+
+router.post('/attendancereport',async(req,res)=>{
+   
+    for (const key in req.body)
+    {
+        console.log(key,req.body[key])
+    }
 })
 
 
