@@ -6,6 +6,10 @@ import data from './data';
 const Attendance = () => {
  
     const [students,setstudents]=useState(data)
+    const [present,setpresent]=useState("")
+    const [absent,setabsent]=useState("")
+
+    console.log(present,absent)
     // const fetchdata=async()=>{
     //     const response=await fetch("http://localhost:4000/attendance", {
     //             method: "GET",
@@ -31,11 +35,12 @@ const Attendance = () => {
     <thead>
       <tr>
         <th>Student</th>
-        <th>Attendance</th>
+        <th>Present</th>
+        <th>Absent</th>
       </tr>
     </thead>
     <tbody>
-<List students={students}/>
+<List students={students} present={present} setpresent={setpresent} absent={absent} setabsent={setabsent} />
     </tbody>
   </table>
     </div>

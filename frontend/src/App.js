@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './components/login/login';
 import Homepage from './components/homepage/homepage'
 import Attendance from './components/Attendance list/Attendance';
-import Schedule from './components/class schedule/Schedule';
+import ClassSchedule from './components/schedule/ClassSchedule';
+import Testschedule from './components/schedule/Testschedule';
 function App() {
   return (
     <div className="App">
@@ -12,7 +13,8 @@ function App() {
       <Route path='/' exact element = {<Homepage/>} />
       <Route path='/login' element = {<Login/>} />
       <Route path='/attendance' element = {<Attendance/>} />
-      <Route path='/schedule' element ={<Schedule/>}/>
+      <Route path='/classschedule' element ={<ClassSchedule/>}/>
+      <Route path="/testschedule" element={<Testschedule/>}/>
     </Routes>        
       </BrowserRouter>
     </div>

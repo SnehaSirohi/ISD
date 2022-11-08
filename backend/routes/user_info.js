@@ -1,7 +1,8 @@
 const express = require('express')
 const User = require('../models/userdata')
-// import {sendEmail} from '/backend/utils/mail'
-const {sendEmail}=require('../utils/mail')
+
+const {classScheduleMail, testScheduleMail}=require('../utils/mail')
+const {classScheduleSms}=require('../utils/sms')
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -44,29 +45,32 @@ router.get('/attendance', async(req, res) => {
 
 })
 
-router.post('/schedule',async (req,res)=>{
+router.post('/scheduleclass',async (req,res)=>{
     const subject=req.body.subject
     const date=req.body.date
     const time=req.body.time
-    res.json({status:'ok'})
     let data = await User.find({})
     data.forEach((user)=>{
-        sendEmail(subject, date, time,user.email);
+        // classScheduleMail(subject, date, time,user.email);
+        classScheduleSms(subject,date,time,user.contactNum);
+        console.log(subject,date,time,user.contactNum)
+    })
+})
+
+router.post('/scheduletest',async (req,res)=>{
+    const subject=req.body.subject
+    const date=req.body.date
+    const time=req.body.time
+    let data = await User.find({})
+    data.forEach((user)=>{
+        testScheduleMail(subject, date, time,user.email);
         console.log(subject,date,time,user.email)
     })
 })
 
-// router.post('/details',async(req,res)=>
-// {
-//      const {Name}=req.body
 
-//      try {
-//         const details = await Details.create({Name})
-//         res.status(200).json(details)
-//     } catch (error){
-//         res.status(400).json({error: error.message})
-//     }
-// })
+
+
 
 
 module.exports = router

@@ -1,7 +1,5 @@
-const nodemailer = require('nodemailer')
+const nodemailer = require("nodemailer")
 require("dotenv").config()
-
-dotenv.config();
 
 const transport = nodemailer.createTransport({
 	service: "Gmail",
@@ -11,16 +9,25 @@ const transport = nodemailer.createTransport({
 	},
 });
 
-const sendEmail = (subject, date, time, recieverEmail) => {
-	console.log(2, subject, date, time, recieverEmail);
+const classScheduleMail = (subject, date, time, recieverEmail) => {
 	transport
 		.sendMail({
 			from: process.env.EMAIL,
 			to: recieverEmail,
-			subject: `${subject} class`,
+			subject: `${subject}'s class`,
 			html: `${subject}'s class scheduled on ${date} at ${time}`,
 		})
 		.catch((err) => console.log(err));
 };
+const testScheduleMail = (subject, date, time, recieverEmail) => {
+	transport
+		.sendMail({
+			from: process.env.EMAIL,
+			to: recieverEmail,
+			subject: `${subject}'s Test`,
+			html: `${subject}'s test scheduled on ${date} at ${time}`,
+		})
+		.catch((err) => console.log(err));
+};
 
-module.exports= { sendEmail };
+module.exports= { classScheduleMail, testScheduleMail};

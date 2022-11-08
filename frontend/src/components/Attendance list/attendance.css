@@ -5,7 +5,12 @@ td{
 tr{
     text-align: center;
 }
-.form-check-input
+.form-check
 {
-    transform: translateX(29rem);
+      background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
+

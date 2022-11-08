@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-const Schedule = () => {
+const ClassSchedule = () => {
 
     const [subject,setsubject]=useState("")
     const [date,setdate]=useState("")
@@ -11,7 +11,7 @@ const Schedule = () => {
     async function schedule(e){
         e.preventDefault()
  
-         const response=await fetch('http://localhost:4000/schedule',{
+         const response=await fetch('http://localhost:4000/scheduleclass',{
              method:'POST',
              headers:{
                  'Content-Type':'application/json',
@@ -42,11 +42,11 @@ const Schedule = () => {
     <label htmlFor="time" className="form-label">time</label>
     <input type="time" className="form-control" id="time" value={time} onChange={(e)=>settime(e.target.value)}/>
   </div>
-  <button type="submit" className="btn btn-primary">Schedule</button>
+  <button type="submit" className="btn btn-primary">Schedule Class</button>
 </form>
 
     </>
   )
 }
 
-export default Schedule
+export default ClassSchedule
