@@ -1,7 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./attendance.css";
-const List = ({ students, setpresent,setabsent }) => {
+const List = ({ students, status,setstatus}) => {
+  // console.log("student:",students)
   return (
     <>
       {students.map((student) => {
@@ -16,7 +17,7 @@ const List = ({ students, setpresent,setabsent }) => {
                   type="checkbox"
                   id="flexCheckChecked1"
                   value="Present"
-                  onChange={(e) => setpresent(e.target.value)}
+                  onChange={(e) =>setstatus({...status,[`${name}`]:true})}
                 />
               </div>
             </td>
@@ -26,8 +27,7 @@ const List = ({ students, setpresent,setabsent }) => {
                   className="form-check-input"
                   type="checkbox"
                   id="flexCheckChecked2"
-                  value="absent"
-                  onChange={(e) => setabsent(e.target.value)}
+                  onChange={(e) => setstatus({...status,[`${name}`]:false})}
                 />
               </div>
             </td>

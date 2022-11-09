@@ -5,29 +5,45 @@ import List from './List';
 import data from './data';
 const Attendance = () => {
  
-    const [students,setstudents]=useState(data)
-    const [present,setpresent]=useState("")
-    const [absent,setabsent]=useState("")
+    const [students,setstudents]=useState([])
+    const[status,setstatus]=useState({})
 
-    console.log(present,absent)
-    // const fetchdata=async()=>{
-    //     const response=await fetch("http://localhost:4000/attendance", {
-    //             method: "GET",
-    //             headers: {
-    //                 Accept: "application/json",
-    //                 "Content-Type": "application/json",
-    //             }})
-    //     const json = await response.json()
-    //     console.log(json)
-    //     setstudents(json)
+    const fetchdata=async()=>{
+        const response=await fetch("http://localhost:4000/attendance", {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                }})
+        const json = await response.json()
+        console.log(json.data)
+        setstudents(json.data)
        
         
       
-    //   }
-    //   useEffect(()=>{
-    //     fetchdata()
-    //   },[])
+      }
+      useEffect(()=>{
 
+        fetchdata()
+      },[])
+
+     async function Submit(e)
+      {
+        e.preventDefault();
+        const response = await fetch("http://localhost:4000/attendancereport",{
+          method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+
+        },
+        body:JSON.stringify(
+          status
+        )
+      })
+
+
+      }
   return (
     <>
     <div className='main'>
@@ -40,10 +56,11 @@ const Attendance = () => {
       </tr>
     </thead>
     <tbody>
-<List students={students} present={present} setpresent={setpresent} absent={absent} setabsent={setabsent} />
+<List students={students}  status={status} setstatus={setstatus} />
     </tbody>
   </table>
     </div>
+    <button onClick={Submit}>Submit</button>
       
     </>
   )

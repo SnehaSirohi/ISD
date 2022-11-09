@@ -1,9 +1,9 @@
 const express = require('express')
 const User = require('../models/userdata')
+const attRep=require("../models/attendance_data")
 const Teacher = require('../models/teacherdata')
 
 const {classScheduleMail, testScheduleMail}=require('../utils/mail')
-
 const router = express.Router()
 
 router.get('/', (req, res) => {
@@ -96,6 +96,23 @@ router.post('/scheduletest',async (req,res)=>{
         testScheduleMail(subject, date, time,user.email);
         console.log(subject,date,time,user.email)
     })
+})
+
+router.post('/attendancereport',async(req,res)=>{
+   
+    for (const key in req.body)
+    {   const date=new Date()
+        const name=key
+        const attendanceStatus=req.body[key]
+        try {
+            const report = await attRep.create({date,name,attendanceStatus})
+            res.status(200).json(report)
+        } catch (error){
+            res.status(400).json({error: error.message})
+        }
+    
+        console.log(key,req.body[key])
+    }
 })
 
 
