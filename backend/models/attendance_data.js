@@ -14,7 +14,7 @@ const attendancereport = new Schema({
 
     },
    attendanceStatus:{
-        type:Boolean,
+        type:String,
         required:true
    }
 })
