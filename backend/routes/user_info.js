@@ -70,7 +70,8 @@ router.post('/scheduletest',async (req,res)=>{
 router.post('/attendancereport',async(req,res)=>{
      
     for (const key in req.body)
-    {   const date=new Date()
+    {   
+        const date=new Date()
         const name=key
         const attendanceStatus=req.body[key]
      
@@ -81,8 +82,8 @@ router.post('/attendancereport',async(req,res)=>{
             res.status(400).json({error: error.message})
         }
         
+    
         console.log(key,req.body[key])
-
     }
 
     
