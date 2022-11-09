@@ -6,10 +6,12 @@ const List = ({ students, status,setstatus}) => {
   return (
     <>
       {students.map((student) => {
-        const { name } = student;
+        const { name,rollNum } = student;
+        console.log(rollNum)
         return (
           <tr>
-            <td>{name}</td>
+            <td>{name} {rollNum}
+            </td>
             <td>
               <div className="form-check">
                 <input

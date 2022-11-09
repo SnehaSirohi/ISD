@@ -16,7 +16,6 @@ const Attendance = () => {
                     "Content-Type": "application/json",
                 }})
         const json = await response.json()
-        console.log(json.data)
         setstudents(json.data)
        
         
