@@ -99,21 +99,27 @@ router.post('/scheduletest',async (req,res)=>{
 })
 
 router.post('/attendancereport',async(req,res)=>{
-   
+     
     for (const key in req.body)
     {   const date=new Date()
         const name=key
         const attendanceStatus=req.body[key]
+     
         try {
-            const report = await attRep.create({date,name,attendanceStatus})
-            res.status(200).json(report)
+          await attRep.create({date,name,attendanceStatus})
+            
         } catch (error){
             res.status(400).json({error: error.message})
         }
-    
+        
         console.log(key,req.body[key])
+
     }
+
+    
+    
 })
+
 
 
 

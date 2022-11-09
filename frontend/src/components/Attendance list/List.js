@@ -16,8 +16,7 @@ const List = ({ students, status,setstatus}) => {
                   className="form-check-input"
                   type="checkbox"
                   id="flexCheckChecked1"
-                  value="Present"
-                  onChange={(e) =>setstatus({...status,[`${name}`]:true})}
+                  onChange={(e) =>setstatus({...status,[`${name}`]:"Present"})}
                 />
               </div>
             </td>
@@ -27,7 +26,7 @@ const List = ({ students, status,setstatus}) => {
                   className="form-check-input"
                   type="checkbox"
                   id="flexCheckChecked2"
-                  onChange={(e) => setstatus({...status,[`${name}`]:false})}
+                  onChange={(e) => setstatus({...status,[`${name}`]:"Absent"})}
                 />
               </div>
             </td>
