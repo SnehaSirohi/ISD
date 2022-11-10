@@ -104,17 +104,25 @@ router.post('/attendancereport',async(req,res)=>{
     {   
         const date=new Date()
         const name=key
-        const attendanceStatus=req.body[key]
-     
+        const temp=req.body[key]
+        var attendanceStatus
+         if(temp)
+         {
+            attendanceStatus="Present"
+         }
+         else{
+              attendanceStatus="Absent"
+            }
+            console.log(key,attendanceStatus)
         try {
           await attRep.create({date,name,attendanceStatus})
             
-        } catch (error){
-            res.status(400).json({error: error.message})
+        } 
+        catch (error){
+            console.log(error)
         }
         
     
-        console.log(key,req.body[key])
     }
 
     

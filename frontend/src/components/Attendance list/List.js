@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./attendance.css";
+
 const List = ({ students, status,setstatus}) => {
-  // console.log("student:",students)
+  
+  useEffect(()=>{
+    let obj = {}
+    {students.map((student) => {
+      const { name,rollNum } = student;
+      obj[name]=false;
+    })}
+    setstatus(obj)
+  },[students])
+
   return (
+    
     <>
+    
       {students.map((student) => {
         const { name,rollNum } = student;
-        console.log(rollNum)
         return (
           <tr>
             <td>{name} {rollNum}
@@ -18,17 +29,7 @@ const List = ({ students, status,setstatus}) => {
                   className="form-check-input"
                   type="checkbox"
                   id="flexCheckChecked1"
-                  onChange={(e) =>setstatus({...status,[`${name}`]:"Present"})}
-                />
-              </div>
-            </td>
-            <td>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="flexCheckChecked2"
-                  onChange={(e) => setstatus({...status,[`${name}`]:"Absent"})}
+                  onChange={(e) =>setstatus({...status,[`${name}`]:e.target.checked})}
                 />
               </div>
             </td>
