@@ -3,7 +3,7 @@ import "./loginteacher.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom"
 
-const Login = () => {
+const Loginteacher = () => {
 
   const navigate = useNavigate();
   
@@ -34,8 +34,8 @@ const Login = () => {
     }).then(async(response) => {
       let data = await response.json();
       console.log(data);
-      if (data.user) {
-        navigate("/login");
+      if (data.teacher) {
+        navigate("/");
         setLoginstatus(data.message);
       } else {
         setLoginstatus(data.message);
@@ -92,4 +92,4 @@ const Login = () => {
 };
 
 
-export default Login;
+export default Loginteacher;
