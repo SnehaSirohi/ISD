@@ -113,7 +113,7 @@ router.post('/attendancereport',async(req,res)=>{
          else{
               attendanceStatus="Absent"
             }
-            console.log(key,attendanceStatus)
+          
         try {
           await attRep.create({date,name,attendanceStatus})
             
