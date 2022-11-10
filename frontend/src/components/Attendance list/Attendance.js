@@ -7,7 +7,6 @@ const Attendance = () => {
  
     const [students,setstudents]=useState([])
     const[status,setstatus]=useState({})
-    console.log(status)
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/attendance", {
                 method: "GET",
