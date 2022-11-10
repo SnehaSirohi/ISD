@@ -7,7 +7,6 @@ const Attendance = () => {
  
     const [students,setstudents]=useState([])
     const[status,setstatus]=useState({})
-
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/attendance", {
                 method: "GET",
@@ -43,15 +42,16 @@ const Attendance = () => {
 
 
       }
-  return (
-    <>
+      
+      return (
+        <>
+        
     <div className='main'>
     <table className="table table-bordered">
     <thead>
       <tr>
         <th>Student</th>
         <th>Present</th>
-        <th>Absent</th>
       </tr>
     </thead>
     <tbody>
