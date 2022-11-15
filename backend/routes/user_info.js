@@ -42,7 +42,7 @@ router.get('/dashboard', async(req, res) =>{
         const enrollNum = decoded.enrollNum
         const user = await User.findOne({enrollNum: enrollNum})
 
-        return res.json({ status: 'ok', name: user.name })
+        return res.json({ status: 'ok', enrollNum: user.enrollNum, name: user.name, email: user.email, rollNum: user.rollNum, contactNum: user.contactNum})
     } catch(error) {
         console.log(error)
         res.json({ status: 'error', error: 'invalid token'})
@@ -58,9 +58,44 @@ router.post('/dashboard', async(req, res) =>{
         const enrollNum = decoded.enrollNum
         return res.status(200).json({
             success:true,
-            data: await User.UpdateOne({enrollNum: enrollNum}, {$set: {name: req.body.name}})
+            data: await User.UpdateOne({enrollNum: enrollNum}, {$set: {enrollNum: enrollNum}}, {$set: {name: req.body.name}}, {$set: {email: req.body.email}}, {$set: {rollNum: req.body.rollNum}}, {$set: {contactNum: req.body.contactNum}} )
         })
 
+        // return res.json({ status: 'ok' })
+    } catch(error) {
+        console.log(error)
+        res.json({ status: 'error', error: 'invalid token'})
+    }
+})
+
+router.get('/dashboard/profile', async(req, res) =>{
+
+    const token = req.headers['x-access-token']
+
+    try{
+        const decoded = jwt.verify(token, 'secret123') 
+        const enrollNum = decoded.enrollNum
+        const user = await User.findOne({enrollNum: enrollNum})
+
+        return res.json({ status: 'ok',enrollNum: user.enrollNum, name: user.name, email: user.email, rollNum: user.rollNum, contactNum: user.contactNum} )
+    } catch(error) {
+        console.log(error)
+        res.json({ status: 'error', error: 'invalid token'})
+    }
+})
+
+router.post('/dashboard/profile', async(req, res) =>{
+
+    const token = req.headers['x-access-token']
+
+    try{
+        const decoded = jwt.verify(token, 'secret123') 
+        const enrollNum = decoded.enrollNum
+        return res.status(200).json({
+            success:true,
+            data: await User.UpdateOne({enrollNum: enrollNum}, {$set: {enrollNum: enrollNum}} , {$set: {name: req.body.name}}, {$set: {email: req.body.email}}, {$set: {rollNum: req.body.rollNum}}, {$set: {contactNum: req.body.contactNum}} )
+        })
+ 
         // return res.json({ status: 'ok' })
     } catch(error) {
         console.log(error)

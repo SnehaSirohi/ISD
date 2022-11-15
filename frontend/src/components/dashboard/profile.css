@@ -1,0 +1,53 @@
+.avatar {
+    vertical-align: middle;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    border: 2px solid black;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-top: 3px;
+    background-size: contain;
+}
+
+.profilePic {
+    vertical-align: middle;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 2px solid black;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-top: 3px;
+    background-size: contain;
+}
+
+.profilebody {
+    border: 5px solid red;
+    /* background-image: url("iic.png"); */
+    background-size: 70rem;
+    background-position: center;
+    margin: 2rem;
+    height: 34rem;
+    margin-top: 6rem;
+}
+
+.profileenroll {
+    margin-inline: 2rem;
+    display: flex;
+    height: 10rem;
+    align-items: center;
+    font-weight: 20rem;
+}
+
+.personaldetails {
+    margin-inline: 2rem;
+    display: flex;
+    margin-top: 3rem;
+    border: 5px black;
+}
+
+.detailone {
+    margin-left: 2rem;
+    margin-right: 10rem;
+}
