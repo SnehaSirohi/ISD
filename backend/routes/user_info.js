@@ -2,6 +2,8 @@ const express = require('express')
 const User = require('../models/userdata')
 const attRep=require("../models/attendance_data")
 const Teacher = require('../models/teacherdata')
+const jwt = require('jsonwebtoken')
+
 
 const {classScheduleMail, testScheduleMail}=require('../utils/mail')
 const router = express.Router()
@@ -14,8 +16,13 @@ router.post('/login', (req, res) =>{
     const {enrollNum, password} = req.body
     User.findOne({enrollNum: enrollNum}, (err, user) => {
         if(user){
+
+            const token = jwt.sign({
+                enrollNum: user.enrollNum,
+            }, 'secret123')
+
             if(password === user.password){
-                res.send({message: "Login successful", user: user})
+                res.send({message: "Login successful", user: token})
             } else {
                 res.send({message: "password didn't match"})
             }
@@ -25,6 +32,42 @@ router.post('/login', (req, res) =>{
         }
     })
 })
+
+router.get('/dashboard', async(req, res) =>{
+
+    const token = req.headers['x-access-token']
+
+    try{
+        const decoded = jwt.verify(token, 'secret123') 
+        const enrollNum = decoded.enrollNum
+        const user = await User.findOne({enrollNum: enrollNum})
+
+        return res.json({ status: 'ok', name: user.name })
+    } catch(error) {
+        console.log(error)
+        res.json({ status: 'error', error: 'invalid token'})
+    }
+})
+
+router.post('/dashboard', async(req, res) =>{
+
+    const token = req.headers['x-access-token']
+
+    try{
+        const decoded = jwt.verify(token, 'secret123') 
+        const enrollNum = decoded.enrollNum
+        return res.status(200).json({
+            success:true,
+            data: await User.UpdateOne({enrollNum: enrollNum}, {$set: {name: req.body.name}})
+        })
+
+        // return res.json({ status: 'ok' })
+    } catch(error) {
+        console.log(error)
+        res.json({ status: 'error', error: 'invalid token'})
+    }
+})
+
 
 router.post('/loginteacher', (req, res) =>{
     const {Teacher_id, password} = req.body

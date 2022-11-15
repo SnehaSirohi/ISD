@@ -3,7 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const userRoutes = require('./routes/user_info')
 const cors = require('cors')
-
+const jwt = require('jsonwebtoken')
 
 //express app
 const app = express()
