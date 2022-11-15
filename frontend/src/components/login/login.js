@@ -35,9 +35,12 @@ const Login = () => {
       let data = await response.json();
       console.log(data);
       if (data.user) {
-        navigate("/");
+        localStorage.setItem('token', data.user)
+        alert("login successful")
+        navigate("/dashboard");
         setLoginstatus(data.message);
       } else {
+        alert("please check your username and password")
         setLoginstatus(data.message);
       }
   });
