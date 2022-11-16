@@ -8,6 +8,7 @@ import ClassSchedule from './components/schedule/ClassSchedule';
 import Testschedule from './components/schedule/Testschedule';
 import  Dashboard from './components/dashboard/dashboard';
 import Profile from './components/dashboard/profile'
+import Att_rep from './components/Attendance Report/Att_rep';
 
 function App() {
   useEffect(() => {
@@ -27,6 +28,7 @@ function App() {
       <Route path='/attendance' element = {<Attendance/>} />
       <Route path='/classschedule' element ={<ClassSchedule/>}/>
       <Route path="/testschedule" element={<Testschedule/>}/>
+      <Route path="/attreport" element={<Att_rep/>}/>
     </Routes>        
       </BrowserRouter>
     </div>
