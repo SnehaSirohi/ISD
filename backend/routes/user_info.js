@@ -180,7 +180,8 @@ router.post('/attendancereport',async(req,res)=>{
      
     for (const key in req.body)
     {   
-        const date=new Date()
+        var nowDate = new Date(); 
+        const date = nowDate.getFullYear()+'-'+(nowDate.getMonth()+1)+'-'+nowDate.getDate(); 
         const name=key
         const temp=req.body[key]
         var attendanceStatus
@@ -191,7 +192,7 @@ router.post('/attendancereport',async(req,res)=>{
          else{
               attendanceStatus="Absent"
             }
-          
+
         try {
           await attRep.create({date,name,attendanceStatus})
             
@@ -202,12 +203,14 @@ router.post('/attendancereport',async(req,res)=>{
         
     
     }
-
-    
-    
 })
 
-
+router.get('/attendancereport',async(req,res)=>{
+    return res.status(200).json({
+		success: true,
+		data: await attRep.find({}),
+	});
+})
 
 
 
