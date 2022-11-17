@@ -8,6 +8,7 @@ import ClassSchedule from './components/schedule/ClassSchedule';
 import Testschedule from './components/schedule/Testschedule';
 import  Dashboard from './components/dashboard/dashboard';
 import Profile from './components/dashboard/profile'
+import ChangePassword from './components/dashboard/changepassword';
 
 function App() {
   useEffect(() => {
@@ -24,6 +25,7 @@ function App() {
       <Route path='/loginteacher' element = {<LoginTeacher/>} />
       <Route path='/dashboard' element = {<Dashboard/>} />
       <Route path='/dashboard/profile' element = {<Profile/>} />
+      <Route path="/dashboard/changepassword" element={<ChangePassword/>}/>
       <Route path='/attendance' element = {<Attendance/>} />
       <Route path='/classschedule' element ={<ClassSchedule/>}/>
       <Route path="/testschedule" element={<Testschedule/>}/>

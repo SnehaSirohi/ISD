@@ -46,6 +46,7 @@ const Dashboard = () => {
         <>
         <h1>{name}'s Dashboard</h1>
          <Link to="/dashboard/profile"><div className="button">profile</div></Link>
+         <Link to="/dashboard/changepassword"><div className="button">change password</div></Link>
         <button onClick={()=>{
             localStorage.removeItem('token')
             navigate("/")
