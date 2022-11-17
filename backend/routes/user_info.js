@@ -3,7 +3,7 @@ const User = require('../models/userdata')
 const attRep=require("../models/attendance_data")
 const Teacher = require('../models/teacherdata')
 const jwt = require('jsonwebtoken')
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 const {classScheduleMail, testScheduleMail}=require('../utils/mail')
 const router = express.Router()
@@ -61,7 +61,6 @@ router.post('/dashboard', async(req, res) =>{
             data: await User.UpdateOne({enrollNum: enrollNum}, {$set: {enrollNum: enrollNum}}, {$set: {name: req.body.name}}, {$set: {email: req.body.email}}, {$set: {rollNum: req.body.rollNum}}, {$set: {contactNum: req.body.contactNum}} )
         })
 
-        // return res.json({ status: 'ok' })
     } catch(error) {
         console.log(error)
         res.json({ status: 'error', error: 'invalid token'})
@@ -96,7 +95,7 @@ router.post('/dashboard/profile', async(req, res) =>{
             data: await User.UpdateOne({enrollNum: enrollNum}, {$set: {enrollNum: enrollNum}} , {$set: {name: req.body.name}}, {$set: {email: req.body.email}}, {$set: {rollNum: req.body.rollNum}}, {$set: {contactNum: req.body.contactNum}} )
         })
  
-        // return res.json({ status: 'ok' })
+ 
     } catch(error) {
         console.log(error)
         res.json({ status: 'error', error: 'invalid token'})
@@ -121,10 +120,10 @@ router.post('/loginteacher', (req, res) =>{
 })
 
 router.post('/register', async(req, res) => {
-    const {name,email,rollNum,contactNum,enrollNum, password} = req.body
+    const {name,semester,email,rollNum,contactNum,enrollNum, password} = req.body
 
     try {
-        const user = await User.create({name,email,rollNum,contactNum,enrollNum, password})
+        const user = await User.create({name,semester,email,rollNum,contactNum,enrollNum, password})
         res.status(200).json(user)
     } catch (error){
         res.status(400).json({error: error.message})
@@ -155,13 +154,16 @@ router.get('/attendance', async(req, res) => {
 
 router.post('/scheduleclass',async (req,res)=>{
     const subject=req.body.subject
+    const sem = req.body.sem
     const date=req.body.date
     const time=req.body.time
+    console.log(req.body);
     let data = await User.find({})
     data.forEach((user)=>{
-        classScheduleMail(subject, date, time,user.email);
-        //classScheduleSms(subject,date,time,user.contactNum);
-        //console.log(subject,date,time,user.contactNum)
+        if(user.semester==sem)
+        {
+            classScheduleMail(subject, date, time,user.email);
+        }
     })
 })
 
@@ -169,10 +171,13 @@ router.post('/scheduletest',async (req,res)=>{
     const subject=req.body.subject
     const date=req.body.date
     const time=req.body.time
+    const sem=req.body.sem
     let data = await User.find({})
     data.forEach((user)=>{
-        testScheduleMail(subject, date, time,user.email);
-        console.log(subject,date,time,user.email)
+        if(user.semester==sem)
+        {
+            testScheduleMail(subject, date, time,user.email);
+        }
     })
 })
 
@@ -180,7 +185,8 @@ router.post('/attendancereport',async(req,res)=>{
      
     for (const key in req.body)
     {   
-        const date=new Date()
+        var nowDate = new Date(); 
+        const date = nowDate.getFullYear()+'-'+(nowDate.getMonth()+1)+'-'+nowDate.getDate(); 
         const name=key
         const temp=req.body[key]
         var attendanceStatus
@@ -191,7 +197,7 @@ router.post('/attendancereport',async(req,res)=>{
          else{
               attendanceStatus="Absent"
             }
-          
+
         try {
           await attRep.create({date,name,attendanceStatus})
             
@@ -202,15 +208,12 @@ router.post('/attendancereport',async(req,res)=>{
         
     
     }
-
-    
-    
 })
 
-
-
-
-
-
-
+router.get('/attendancereport',async(req,res)=>{
+    return res.status(200).json({
+		success: true,
+		data: await attRep.find({}),
+	});
+})
 module.exports = router

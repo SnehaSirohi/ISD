@@ -2,7 +2,6 @@ import React, { useState,useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './attendance.css'
 import List from './List';
-import data from './data';
 const Attendance = () => {
  
     const [students,setstudents]=useState([])

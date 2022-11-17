@@ -1,12 +1,13 @@
 import React from 'react'
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-const ClassSchedule = () => {
+const Sem_1 = () => {
 
     const [subject,setsubject]=useState("")
     const [date,setdate]=useState("")
     const [time,settime]=useState("")
-    
+    const sem="Sem-1"
+ 
     
     async function schedule(e){
         e.preventDefault()
@@ -18,6 +19,7 @@ const ClassSchedule = () => {
              },
              body:JSON.stringify({
                subject,
+               sem,
                date,
                time  
              })
@@ -30,17 +32,32 @@ const ClassSchedule = () => {
   return (
     <>
     <form onSubmit={schedule}>
-  <div className="mb-3">
-    <label htmlFor="text" className="form-label">subject</label>
-    <input type="text" className="form-control" id="text" aria-describedby="subject" value={subject} onChange={(e)=>setsubject(e.target.value)}/>
-  </div>
+    <div className=" mb-3">
+      <label className="form-label">Select Subject</label>
+                <select
+                  
+                  type="text"
+                  className="form-control"
+                  id="subject"
+                  name="subject"
+                  value={subject}
+                  onChange={(e) => setsubject(e.target.value)}
+                
+                >
+                  <option required >Select Subject</option>
+                  <option value="Software Design & Programming">Software Design & Programming</option>
+                  <option value="Algorithms And Data Structure">Algorithms and Data Structure</option>
+                  <option value="Computer System Architecture">Computer System Architecture</option>
+                  <option value="Mathematical Foundation Of Computing">Mathematical Foundation of Computing</option>
+                </select>
+              </div>
   <div className="mb-3">
     <label htmlFor="date" className="form-label">Date</label>
     <input type="date" className="form-control" id="date" aria-describedby="date" value={date} onChange={(e)=>setdate(e.target.value)} />
   </div>
   <div className="mb-3">
     <label htmlFor="time" className="form-label">time</label>
-    <input type="time" className="form-control" id="time" value={time} onChange={(e)=>settime(e.target.value)}/>
+    <input type="time" className="form-control" id="time" value={time} onChange={(e)=>settime(e.target.value)} />
   </div>
   <button type="submit" className="btn btn-primary">Schedule Class</button>
 </form>
@@ -49,4 +66,4 @@ const ClassSchedule = () => {
   )
 }
 
-export default ClassSchedule
+export default Sem_1;

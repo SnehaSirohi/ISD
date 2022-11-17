@@ -1,10 +1,11 @@
 import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { useState } from 'react'
-const Testschedule = () => {
+const Sem_2 = () => {
     const [subject,setsubject]=useState("")
     const [date,setdate]=useState("")
     const [time,settime]=useState("")
+    const sem="Sem-2"
     
     
     async function schedule(e){
@@ -17,6 +18,7 @@ const Testschedule = () => {
              },
              body:JSON.stringify({
                subject,
+               sem,
                date,
                time  
              })
@@ -29,10 +31,24 @@ const Testschedule = () => {
   return (
     <>
         <form onSubmit={schedule}>
-  <div className="mb-3">
-    <label htmlFor="text" className="form-label">subject</label>
-    <input type="text" className="form-control" id="text" aria-describedby="subject" value={subject} onChange={(e)=>setsubject(e.target.value)}/>
-  </div>
+        <div className=" mb-3">
+      <label className="form-label">Select Subject</label>
+                <select
+                  type="text"
+                  className="form-control"
+                  id="subject"
+                  name="subject"
+                  value={subject}
+                  onChange={(e) => setsubject(e.target.value)}
+                >
+                  <option>Select Subject</option>
+                  <option value="Computer Communication and Networks">Computer Communication and Networks</option>
+                  <option value="Database Systems">Database Systems</option>
+                  <option value="Operating Systems">Operating Systems</option>
+                  <option value="Applied Machine Learning">Applied Machine Learning</option>
+                  <option value="Open Elective-1">Open Elective-1</option>
+                </select>
+              </div>
   <div className="mb-3">
     <label htmlFor="date" className="form-label">Date</label>
     <input type="date" className="form-control" id="date" aria-describedby="date" value={date} onChange={(e)=>setdate(e.target.value)} />
@@ -49,4 +65,4 @@ const Testschedule = () => {
 
 
 
-export default Testschedule
+export default Sem_2
