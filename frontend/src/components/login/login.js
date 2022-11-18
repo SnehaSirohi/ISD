@@ -34,8 +34,8 @@ const Login = () => {
     }).then(async(response) => {
       let data = await response.json();
       console.log(data);
-      if (data.user) {
-        localStorage.setItem('token', data.user)
+      if (data.student) {
+        localStorage.setItem('token', data.student)
         alert("login successful")
         navigate("/dashboard");
         setLoginstatus(data.message);

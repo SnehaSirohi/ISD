@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './attendance.css'
 import List from './List';
-const Attendance = () => {
+const Sem_3 = () => {
  
     const [students,setstudents]=useState([])
     const[status,setstatus]=useState({})
@@ -14,7 +14,8 @@ const Attendance = () => {
                     "Content-Type": "application/json",
                 }})
         const json = await response.json()
-        setstudents(json.data)
+        let data1=json.data.filter((data)=>data.semester=="Sem-3")
+        setstudents(data1)
        
         
       
@@ -64,4 +65,4 @@ const Attendance = () => {
   )
 }
 
-export default Attendance
+export default Sem_3
