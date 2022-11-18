@@ -1,5 +1,5 @@
 const express = require('express')
-const User = require('../models/userdata')
+const Students = require('../models/studentdata')
 const attRep=require("../models/attendance_data")
 const Teacher = require('../models/teacherdata')
 const jwt = require('jsonwebtoken')
@@ -14,21 +14,21 @@ router.get('/', (req, res) => {
 
 router.post('/login', (req, res) =>{
     const {enrollNum, password} = req.body
-    User.findOne({enrollNum: enrollNum}, (err, user) => {
-        if(user){
+    Students.findOne({enrollNum: enrollNum}, (err, student) => {
+        if(student){
 
             const token = jwt.sign({
-                enrollNum: user.enrollNum,
+                enrollNum: student.enrollNum,
             }, 'secret123')
 
-            if(password === user.password){
-                res.send({message: "Login successful", user: token})
+            if(password === student.password){
+                res.send({message: "Login successful", student: token})
             } else {
                 res.send({message: "password didn't match"})
             }
                 
         } else {
-            res.send({message: "user not registered"})
+            res.send({message: "Students not registered"})
         }
     })
 })
@@ -40,9 +40,9 @@ router.get('/dashboard', async(req, res) =>{
     try{
         const decoded = jwt.verify(token, 'secret123') 
         const enrollNum = decoded.enrollNum
-        const user = await User.findOne({enrollNum: enrollNum})
+        const student = await Students.findOne({enrollNum: enrollNum})
 
-        return res.json({ status: 'ok', enrollNum: user.enrollNum, name: user.name, email: user.email, rollNum: user.rollNum, contactNum: user.contactNum})
+        return res.json({ status: 'ok', enrollNum: student.enrollNum, name: student.name, email: student.email, rollNum: student.rollNum, contactNum: student.contactNum})
     } catch(error) {
         console.log(error)
         res.json({ status: 'error', error: 'invalid token'})
@@ -58,7 +58,7 @@ router.post('/dashboard', async(req, res) =>{
         const enrollNum = decoded.enrollNum
         return res.status(200).json({
             success:true,
-            data: await User.UpdateOne({enrollNum: enrollNum}, {$set: {enrollNum: enrollNum}}, {$set: {name: req.body.name}}, {$set: {email: req.body.email}}, {$set: {rollNum: req.body.rollNum}}, {$set: {contactNum: req.body.contactNum}} )
+            data: await Students.UpdateOne({enrollNum: enrollNum}, {$set: {enrollNum: enrollNum}}, {$set: {name: req.body.name}}, {$set: {email: req.body.email}}, {$set: {rollNum: req.body.rollNum}}, {$set: {contactNum: req.body.contactNum}} )
         })
 
     } catch(error) {
@@ -74,9 +74,9 @@ router.get('/dashboard/profile', async(req, res) =>{
     try{
         const decoded = jwt.verify(token, 'secret123') 
         const enrollNum = decoded.enrollNum
-        const user = await User.findOne({enrollNum: enrollNum})
+        const student = await Students.findOne({enrollNum: enrollNum})
 
-        return res.json({ status: 'ok',enrollNum: user.enrollNum, name: user.name, email: user.email, rollNum: user.rollNum, contactNum: user.contactNum} )
+        return res.json({ status: 'ok',enrollNum: student.enrollNum, name: student.name, email: student.email, rollNum: student.rollNum, contactNum: student.contactNum} )
     } catch(error) {
         console.log(error)
         res.json({ status: 'error', error: 'invalid token'})
@@ -92,7 +92,7 @@ router.post('/dashboard/profile', async(req, res) =>{
         const enrollNum = decoded.enrollNum
         return res.status(200).json({
             success:true,
-            data: await User.UpdateOne({enrollNum: enrollNum}, {$set: {enrollNum: enrollNum}} , {$set: {name: req.body.name}}, {$set: {email: req.body.email}}, {$set: {rollNum: req.body.rollNum}}, {$set: {contactNum: req.body.contactNum}} )
+            data: await Students.UpdateOne({enrollNum: enrollNum}, {$set: {enrollNum: enrollNum}} , {$set: {name: req.body.name}}, {$set: {email: req.body.email}}, {$set: {rollNum: req.body.rollNum}}, {$set: {contactNum: req.body.contactNum}} )
         })
  
  
@@ -114,7 +114,7 @@ router.post('/loginteacher', (req, res) =>{
             }
                 
         } else {
-            res.send({message: "user not registered"})
+            res.send({message: "Teacher not registered"})
         }
     })
 })
@@ -123,8 +123,8 @@ router.post('/register', async(req, res) => {
     const {name,semester,email,rollNum,contactNum,enrollNum, password} = req.body
 
     try {
-        const user = await User.create({name,semester,email,rollNum,contactNum,enrollNum, password})
-        res.status(200).json(user)
+        const student = await Students.create({name,semester,email,rollNum,contactNum,enrollNum, password})
+        res.status(200).json(student)
     } catch (error){
         res.status(400).json({error: error.message})
     }
@@ -147,7 +147,7 @@ router.get('/attendance', async(req, res) => {
    
     return res.status(200).json({
 		success: true,
-		data: await User.find({}),
+		data: await Students.find({}),
 	});
 
 })
@@ -158,11 +158,11 @@ router.post('/scheduleclass',async (req,res)=>{
     const date=req.body.date
     const time=req.body.time
     console.log(req.body);
-    let data = await User.find({})
-    data.forEach((user)=>{
-        if(user.semester==sem)
+    let data = await Students.find({})
+    data.forEach((student)=>{
+        if(student.semester==sem)
         {
-            classScheduleMail(subject, date, time,user.email);
+            classScheduleMail(subject, date, time,student.email);
         }
     })
 })
@@ -172,11 +172,11 @@ router.post('/scheduletest',async (req,res)=>{
     const date=req.body.date
     const time=req.body.time
     const sem=req.body.sem
-    let data = await User.find({})
-    data.forEach((user)=>{
-        if(user.semester==sem)
+    let data = await Students.find({})
+    data.forEach((student)=>{
+        if(student.semester==sem)
         {
-            testScheduleMail(subject, date, time,user.email);
+            testScheduleMail(subject, date, time,student.email);
         }
     })
 })
