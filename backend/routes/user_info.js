@@ -143,6 +143,30 @@ router.post('/registerteacher', async(req, res) => {
 
 })
 
+router.patch('/dashboard/changepassword', async(req, res) => {
+    const {oldpassword, newpassword, enrollNum} = req.body
+
+    if(!oldpassword || !newpassword || !enrollNum)
+    {
+        return res.json({status : 400, msg: "Please enter all fields"})
+    }
+
+    if(oldpassword === newpassword)
+    {
+        return res.json({status : 400, msg: "old and new password cannot be same"})
+    }
+
+    User.findOneAndUpdate({enrollNum}, (err, data) =>{
+        if(err) return res.json({status: 400, msg: err.message})
+        if(!data) return res.json({status: 400, msg: "No data found"})
+    }, {$set: {password: newpassword}}, (err, user) =>{
+        if(!err && user)
+        {
+            return res.json({status: 200, msg: "Updated successfully"})
+        }
+    })
+})
+
 router.get('/attendance', async(req, res) => {
    
     return res.status(200).json({
