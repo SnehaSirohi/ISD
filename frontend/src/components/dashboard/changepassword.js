@@ -3,9 +3,34 @@ import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
 
+
 const ChangePassword = () => {
 
-   
+   const [oldpassword, setOldpassword] = useState("")
+   const [newpassword, setNewpassword] = useState("")
+   const [confirmpassword, setConfirmpassword] = useState("")
+   const [errmsg, setErrmsg] = useState("")
+
+    const updatepassword = async(e) => {
+        e.preventDefault()
+        if(oldpassword === newpassword)
+        {
+            setErrmsg("Old password and New password cannot be same");
+        }else if(newpassword !== confirmpassword){
+            setErrmsg("Confirm password and new password must be same");
+        } else{
+            const req = await fetch('http://localhost:4000/dashboard/changepassword', {
+                method: "PATCH",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },    
+            oldpassword, 
+            newpassword, 
+            enrollNum: localStorage.getItem(users)})
+            console.log(req)
+        }
+    }
 
     return(
         <>
@@ -23,6 +48,9 @@ const ChangePassword = () => {
                   id="floatingInput"
                   name="old_password"
                   placeholder="Old Password"
+                  onChange={(e)=>{
+                    setOldpassword(e.target.value)
+                  }}
                 />
               </div>
 
@@ -34,7 +62,9 @@ const ChangePassword = () => {
                   id="floatingPassword"
                   name="new_password"
                   placeholder="New Password"
-                  
+                  onChange={(e)=>{
+                    setNewpassword(e.target.value)
+                  }}
                 />
               </div>
 
@@ -46,13 +76,19 @@ const ChangePassword = () => {
                   id="floatingConfirmPassword"
                   name="confirm_password"
                   placeholder="Confirm Password"
+                  onChange={(e)=>{
+                    setConfirmpassword(e.target.value)
+                  }}
                 />
               </div>
+              {
+                errmsg?<h3 className='text-danger'>{errmsg}</h3>: ""
+              }
 
               <button
                 type="submit"
                 className="btn btn-primary submi_btn w-100 my-4"
-                // onClick={login}
+                onClick={updatepassword}
               >
                 Update Password
               </button>
