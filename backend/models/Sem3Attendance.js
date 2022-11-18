@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const Sem1Attendance = new Schema({
+const Sem3Attendance = new Schema({
   date: {
     type: String,
     required: true,
@@ -20,4 +20,4 @@ const Sem1Attendance = new Schema({
   },
 });
 
-module.exports = mongoose.model("Sem1Attendance", Sem1Attendance);
+module.exports = mongoose.model("Sem3Attendance", Sem3Attendance);

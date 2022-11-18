@@ -1,20 +1,15 @@
-
-td{
-    text-align: center;
+td {
+  text-align: center;
 }
-tr{
-    text-align: center;
+tr {
+  text-align: center;
 }
-.form-check
-{
-      background-color: aquamarine;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.form-check {
+  background-color: aquamarine;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.main
-{
-    width: 50vw;
+.main {
+  width: 50vw;
 }
-

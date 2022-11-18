@@ -27,7 +27,8 @@ const ChangePassword = () => {
                 },    
             oldpassword, 
             newpassword, 
-            enrollNum: localStorage.getItem(users)})
+            // enrollNum: localStorage.getItem(users)}) 
+              })
             console.log(req)
         }
     }
