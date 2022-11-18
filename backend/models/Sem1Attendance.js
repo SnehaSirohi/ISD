@@ -1,12 +1,16 @@
 const mongoose=require("mongoose")
 const Schema=mongoose.Schema
 
-const attendancereport = new Schema({
+const Sem1Attendance = new Schema({
 
     date:{
         type:String,
         required:true
 
+    },
+    subject:{
+        type:String,
+        required:true
     },
     name:{
         type:String,
@@ -19,4 +23,4 @@ const attendancereport = new Schema({
    }
 })
 
-module.exports=mongoose.model("attRep",attendancereport)
+module.exports=mongoose.model("Sem1Attendance",Sem1Attendance)

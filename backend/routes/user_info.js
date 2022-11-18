@@ -1,6 +1,6 @@
 const express = require('express')
 const Students = require('../models/studentdata')
-const attRep=require("../models/attendance_data")
+const Sem1Attendance=require("../models/Sem1Attendance")
 const Teacher = require('../models/teacherdata')
 const jwt = require('jsonwebtoken')
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -181,15 +181,18 @@ router.post('/scheduletest',async (req,res)=>{
     })
 })
 
-router.post('/attendancereport',async(req,res)=>{
+router.post('/attendance/sem1',async(req,res)=>{
      
-    for (const key in req.body)
+    const subject=req.body.subject
+    console.log(subject)
+    var nowDate = new Date(); 
+    const date = nowDate.getFullYear()+'-'+(nowDate.getMonth()+1)+'-'+nowDate.getDate(); 
+    for (const key in req.body.status)
     {   
-        var nowDate = new Date(); 
-        const date = nowDate.getFullYear()+'-'+(nowDate.getMonth()+1)+'-'+nowDate.getDate(); 
         const name=key
-        const temp=req.body[key]
+        const temp=req.body.status[key]
         var attendanceStatus
+        console.log(key)
          if(temp)
          {
             attendanceStatus="Present"
@@ -199,7 +202,7 @@ router.post('/attendancereport',async(req,res)=>{
             }
 
         try {
-          await attRep.create({date,name,attendanceStatus})
+          await Sem1Attendance.create({date,name,subject,attendanceStatus})
             
         } 
         catch (error){
