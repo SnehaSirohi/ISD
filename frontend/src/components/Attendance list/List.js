@@ -21,7 +21,8 @@ const List = ({ students, status, setstatus, subject }) => {
         return (
           <tr>
             <td>
-              {name} {rollNum}
+              {name} <br />
+ {rollNum}
             </td>
             <td>
               <div className="form-check">

@@ -18,7 +18,7 @@ import TestscheduleSem4 from './components/Test Schedule/Sem_4';
 import  Dashboard from './components/dashboard/dashboard';
 import Profile from './components/dashboard/profile'
 import ChangePassword from './components/dashboard/changepassword';
-import Att_rep from './components/Attendance Report/Att_rep';
+import Sem1Attendance from './components/Attendance Report/Sem1Attendance';
 
 function App() {
   useEffect(() => {
@@ -48,7 +48,7 @@ function App() {
       <Route path="/testschedule/sem2" element={<TestscheduleSem2/>}/>
       <Route path="/testschedule/sem3" element={<TestscheduleSem3/>}/>
       <Route path="/testschedule/sem4" element={<TestscheduleSem4/>}/>
-      <Route path="/attreport" element={<Att_rep/>}/>
+      <Route path="/attendancereport/sem1" element={<Sem1Attendance/>}/>
     </Routes>        
       </BrowserRouter>
     </div>
