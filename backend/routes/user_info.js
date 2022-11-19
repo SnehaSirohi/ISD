@@ -143,28 +143,64 @@ router.post('/registerteacher', async(req, res) => {
 
 })
 
+router.get('/dashboard/changepassword', async(req, res) =>{
+
+    const token = req.headers['x-access-token']
+    try{
+        const decoded = jwt.verify(token, 'secret123') 
+        const enrollNum = decoded.enrollNum
+        const student = await Students.findOne({enrollNum: enrollNum})
+
+        return res.json({ status: 'ok',enrollNum: student.enrollNum} )
+        
+    } catch(error) {
+        console.log(error)
+        res.json({ status: 'error', error: 'invalid token'})
+    }
+})
+
 router.patch('/dashboard/changepassword', async(req, res) => {
-    const {oldpassword, newpassword, enrollNum} = req.body
-
-    if(!oldpassword || !newpassword || !enrollNum)
-    {
-        return res.json({status : 400, msg: "Please enter all fields"})
-    }
-
-    if(oldpassword === newpassword)
-    {
-        return res.json({status : 400, msg: "old and new password cannot be same"})
-    }
-
-    User.findOneAndUpdate({enrollNum}, (err, data) =>{
-        if(err) return res.json({status: 400, msg: err.message})
-        if(!data) return res.json({status: 400, msg: "No data found"})
-    }, {$set: {password: newpassword}}, (err, user) =>{
-        if(!err && user)
+    console.log('patch')
+    const token = req.headers['x-access-token']
+    const {oldpassword, newpassword, confirmpassword} = req.body
+    try{
+        const decoded = jwt.verify(token, 'secret123') 
+        const enrollNum = decoded.enrollNum
+        if(!oldpassword || !newpassword || !confirmpassword)
         {
-            return res.json({status: 200, msg: "Updated successfully"})
+            return res.json({status : 400, msg: "Please enter all fields"})
         }
-    })
+    
+        if(oldpassword === newpassword)
+        {
+            return res.json({status : 400, msg: "old and new password cannot be same"})
+        }
+
+        Students.findOne({enrollNum: enrollNum}, (err, student) => {
+            if(student){    
+                if(oldpassword === student.password){
+                    Students.findOneAndUpdate({enrollNum}, {$set: {password: newpassword}}, (err, user) =>{
+                                                
+                        if(!err && user)
+                        {
+                            return res.json({status: 200, msg: "Updated successfully"})
+                        }
+                    })
+                } else {
+                    res.send({message: "password entered is incorrect"})
+                }
+                    
+            } else {
+                res.send({message: "Students not registered"})
+            }
+        })
+
+ 
+    } catch(error) {
+        console.log(error)
+        res.json({ status: 'error', error: 'invalid token'})
+    }
+
 })
 
 router.get('/attendance', async(req, res) => {
