@@ -18,7 +18,7 @@ import TestscheduleSem4 from './components/Test Schedule/Sem_4';
 import Student_Dashboard from './components/Student_dashboard/student_dashboard';
 import Student_Profile from './components/Student_dashboard/Student_profile'
 import ChangeStudentPassword from './components/Student_dashboard/change_student_password';
-
+import Sem1Attendance from './components/Attendance Report/Sem1Attendance';
 
 function App() {
   useEffect(() => {
