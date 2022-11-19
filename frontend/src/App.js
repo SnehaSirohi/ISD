@@ -21,7 +21,8 @@ import ChangeStudentPassword from './components/Student_dashboard/change_student
 import Teacher_Dashboard from './components/Teacher_dashboard/Teacher_dashboard';
 import Teacher_Profile from './components/Teacher_dashboard/Teacher_profile'
 import ChangeTeacherPassword from './components/Teacher_dashboard/change_teacher_password';
-import Att_rep from './components/Attendance Report/Att_rep';
+// import Att_rep from './components/Attendance Report/Att_rep';
+import Sem1Attendance from './components/Attendance Report/Sem1Attendance';
 
 function App() {
   useEffect(() => {
@@ -54,7 +55,7 @@ function App() {
       <Route path="/testschedule/sem2" element={<TestscheduleSem2/>}/>
       <Route path="/testschedule/sem3" element={<TestscheduleSem3/>}/>
       <Route path="/testschedule/sem4" element={<TestscheduleSem4/>}/>
-      <Route path="/attreport" element={<Att_rep/>}/>
+      <Route path="/attendancereport/sem1" element={<Sem1Attendance/>}/>
     </Routes>        
       </BrowserRouter>
     </div>

@@ -4,7 +4,7 @@ const List = ({student}) => {
   return (
    <>
     {student.map((stu)=>{
-        const {name,attendanceStatus}=stu;
+        const {date,name,attendanceStatus,subject}=stu;
         return(
             <>
                <tr>
@@ -12,6 +12,12 @@ const List = ({student}) => {
             </td>
             <td>
               {attendanceStatus}
+            </td>
+            <td>
+              {date}
+            </td>
+            <td>
+              {subject}
             </td>
           </tr>
             </>

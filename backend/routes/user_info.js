@@ -578,10 +578,30 @@ router.post("/attendance/sem4", async (req, res) => {
   }
 });
 
-router.get("/attendancereport", async (req, res) => {
+router.get("/attendancereport/sem1", async (req, res) => {
   return res.status(200).json({
     success: true,
-    data: await attRep.find({}),
+    data: await Sem1Attendance.find({}),
+  });
+
+});
+
+router.get("/attendancereport/sem2", async (req, res) => {
+  return res.status(200).json({
+    success: true,
+    data: await Sem2Attendance.find({}),
+  });
+});
+router.get("/attendancereport/sem3", async (req, res) => {
+  return res.status(200).json({
+    success: true,
+    data: await Sem3Attendance.find({}),
+  });
+});
+router.get("/attendancereport/sem4", async (req, res) => {
+  return res.status(200).json({
+    success: true,
+    data: await Sem4Attendance.find({}),
   });
 });
 module.exports = router;
