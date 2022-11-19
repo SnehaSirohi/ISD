@@ -1,12 +1,35 @@
 import React from "react";
-import { useState } from "react";
+import {useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import jwt from 'jsonwebtoken'
+import { useNavigate } from "react-router-dom"
 const Sem_1 = () => {
+  //
+  const navigate = useNavigate();
+  // const [name, setName] = useState([])
+  // const [email, setEmail] = useState([])
+//
   const [subject, setsubject] = useState("");
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
   const [message, setmessage] = useState("");
   const sem = "Sem-1";
+
+  //-----------
+  async function populate(e){
+    const req = await fetch('http://localhost:4000/scheduleclass',{
+      headers: {
+        'x-access-token': localStorage.getItem('token'), //adedd
+      },
+    })
+    const data = await req.json();
+
+    console.log(data)//added
+  //   if(data.status === 'ok'){
+  //     setName(data.name)
+  //     setEmail(data.email)
+  // }
+  }
 
   async function schedule(e) {
     e.preventDefault();
@@ -26,7 +49,23 @@ const Sem_1 = () => {
     });
 
     const data = await response.json();
+
   }
+
+  //--------------------
+  useEffect(() =>{
+    const token = localStorage.getItem('token')
+    if (token){
+        const user = jwt.decode(token)
+        console.log(user)
+        if(!user){
+            localStorage.removeItem('token')
+            navigate("/Teacherdashboard");
+        } else {
+             populate()
+        }
+    }
+}, [])
 
   return (
     <>

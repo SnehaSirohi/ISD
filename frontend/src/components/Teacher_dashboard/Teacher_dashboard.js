@@ -47,6 +47,8 @@ const Teacher_Dashboard = () => {
         <h1>{name}'s Dashboard</h1>
          <Link to="/Teacherdashboard/profile"><div className="button">profile</div></Link>
          <Link to="/Teacherdashboard/changepassword"><div className="button">change password</div></Link>
+         <Link to="/classschedule/sem1"><div className="button">Schedule Class sem-1</div></Link>
+         <Link to="/testschedule/sem1"><div className="button">test Class sem-1</div></Link>
         <button onClick={()=>{
             localStorage.removeItem('token')
             navigate("/")

@@ -422,27 +422,80 @@ router.get("/attendance", async (req, res) => {
   });
 });
 
-router.post("/scheduleclass", async (req, res) => {
-  const subject = req.body.subject;
-  const sem = req.body.sem;
-  const date = req.body.date;
-  const time = req.body.time;
-  const message = req.body.message;
-  console.log(req.body);
-  let data = await Students.find({});
-  data.forEach((student) => {
-    if (student.semester == sem) {
-      classScheduleMail(
-        subject,
-        date,
-        time,
-        student.email,
-        student.name,
-        message
-      );
-    }
-  });
+//..............
+
+router.get("/scheduleclass", async (req, res) => {
+  const token = req.headers["x-access-token"];
+
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+
+    return res.json({
+      status: "ok",
+      Teacher_id: teacher.Teacher_id,
+      name: teacher.name,
+      email: teacher.email,
+      contactNum: teacher.contactNum,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
 });
+
+//............
+
+
+router.post("/scheduleclass", async (req, res) => {
+    const subject = req.body.subject;
+    const sem = req.body.sem;
+    const date = req.body.date;
+    const time = req.body.time;
+    const message = req.body.message;
+    console.log(req.body);
+    let data = await Students.find({});
+    data.forEach((student) => {
+      if (student.semester == sem) {
+        classScheduleMail(
+          subject,
+          date,
+          time, 
+          student.email,
+          student.name,
+          message
+        );
+      }
+    });
+  });
+
+
+//..............
+
+router.get("/scheduletest", async (req, res) => {
+  const token = req.headers["x-access-token"];
+
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+
+    return res.json({
+      status: "ok",
+      Teacher_id: teacher.Teacher_id,
+      name: teacher.name,
+      email: teacher.email,
+      contactNum: teacher.contactNum,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+});
+
+//............
+
 
 router.post("/scheduletest", async (req, res) => {
   const subject = req.body.subject;
