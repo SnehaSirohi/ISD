@@ -35,9 +35,12 @@ const Loginteacher = () => {
       let data = await response.json();
       console.log(data);
       if (data.teacher) {
-        navigate("/");
+        localStorage.setItem('token', data.teacher)
+        alert("login successful")
+        navigate("/Teacherdashboard");
         setLoginstatus(data.message);
       } else {
+        alert("please check your username and password")
         setLoginstatus(data.message);
       }
   });

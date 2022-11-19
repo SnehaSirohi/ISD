@@ -18,6 +18,9 @@ import TestscheduleSem4 from './components/Test Schedule/Sem_4';
 import Student_Dashboard from './components/Student_dashboard/student_dashboard';
 import Student_Profile from './components/Student_dashboard/Student_profile'
 import ChangeStudentPassword from './components/Student_dashboard/change_student_password';
+import Teacher_Dashboard from './components/Teacher_dashboard/Teacher_dashboard';
+import Teacher_Profile from './components/Teacher_dashboard/Teacher_profile'
+import ChangeTeacherPassword from './components/Teacher_dashboard/change_teacher_password';
 import Att_rep from './components/Attendance Report/Att_rep';
 
 function App() {
@@ -36,6 +39,9 @@ function App() {
       <Route path='/dashboard' element = {<Student_Dashboard/>} />
       <Route path='/dashboard/profile' element = {<Student_Profile/>} />
       <Route path="/dashboard/changepassword" element={<ChangeStudentPassword/>}/>
+      <Route path='/Teacherdashboard' element = {<Teacher_Dashboard/>} />
+      <Route path='/Teacherdashboard/profile' element = {<Teacher_Profile/>} />
+      <Route path="/Teacherdashboard/changepassword" element={<ChangeTeacherPassword/>}/>
       <Route path='/attendance/sem1' element = {<AttendanceSem1/>} />
       <Route path='/attendance/sem2' element = {<AttendanceSem2/>} />
       <Route path='/attendance/sem3' element = {<AttendanceSem3/>} />

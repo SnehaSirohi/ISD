@@ -4,18 +4,15 @@ import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
 
 
-const ChangePassword = () => {
+const ChangeTeacherPassword = () => {
 
   const navigate = useNavigate();
-  const [enrollNum, setEnrollNum] = useState([])
+  const [teacher_id, setTeacher_id] = useState([])
   const [allpasswords, setAllpasswords] = useState({
     oldpassword: "",
     newpassword: "",
     confirmpassword: ""
   })
-  // const [oldpassword, setOldpassword] = useState("")
-  // const [newpassword, setNewpassword] = useState("")
-  // const [confirmpassword, setConfirmpassword] = useState("")
   const [errmsg, setErrmsg] = useState("")
 
   const handleChange = (e) => {
@@ -34,7 +31,7 @@ const ChangePassword = () => {
     } else if (allpasswords.newpassword !== allpasswords.confirmpassword) {
       setErrmsg("Confirm password and new password must be same");
     } else {
-      const req = await fetch('http://localhost:4000/dashboard/changepassword', {
+      const req = await fetch('http://localhost:4000/Teacherdashboard/changepassword', {
         method: "PATCH",
         headers: {
 
@@ -48,13 +45,13 @@ const ChangePassword = () => {
       const json = await req.json()
       console.log(json)
       if (json.status === 'ok') {
-        setEnrollNum(json.enrollNum)
+        setTeacher_id(json.Teacher_id)
       }
-      console.log(enrollNum)
+      // console.log(teacher_id)
       if (json) {
         setErrmsg("")
         alert("Password updated successful")
-        navigate("/login");
+        navigate("/loginteacher");
       }
     }
 
@@ -66,10 +63,10 @@ const ChangePassword = () => {
       const user = jwt.decode(token)
       if (!user) {
         localStorage.removeItem('token')
-        navigate("/dashboard");
+        navigate("/Teacherdashboard");
       }
     }
-  }, [enrollNum])
+  }, [teacher_id])
 
   return (
     <>
@@ -138,4 +135,4 @@ const ChangePassword = () => {
 
 }
 
-export default ChangePassword
+export default ChangeTeacherPassword
