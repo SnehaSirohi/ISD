@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
+import Navbar from './Navbar'
 
 
 const ChangeTeacherPassword = () => {
@@ -70,6 +71,7 @@ const ChangeTeacherPassword = () => {
 
   return (
     <>
+    <Navbar />
       <section className="wrapper">
         <div className="container">
           <div className="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center">
