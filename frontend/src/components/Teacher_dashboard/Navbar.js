@@ -1,5 +1,6 @@
 import React from "react";
 import './Navbar.css';
+import { useNavigate } from "react-router-dom"
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
@@ -8,10 +9,12 @@ import logo from './image.png'
 
 
 function Navbar() {
+    const navigate = useNavigate();
     const [sidebar, setSidebar] = React.useState(false);
     const [sem, setsem] = React.useState(false);
     const showsemesterhandler = () => setsem(!sem);
     const showSidebar = () => setSidebar(!sidebar);
+
 
     return (
         <>
@@ -22,7 +25,8 @@ function Navbar() {
                     </Link>
                     <div className="heading">
                         <i class="far fa-bell mt-1 fa-2x"></i>
-                        <img src={logo} alt="..." class="profilePic"></img>
+                        <Link to="/Teacherdashboard/profile"><div className="button"><img src={logo} alt="..." class="profilePic"></img></div></Link>
+                        
                     </div>
                 </div>
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -34,7 +38,11 @@ function Navbar() {
                         </li>
                         <li className="nav-text">
                             <AiIcons.AiFillHome />
-                            <span>Dashboard</span>
+                            <span><Link to="/Teacherdashboard">Home</Link></span>
+                        </li>
+                        <li className="nav-text">
+                            <AiIcons.AiFillHome />
+                            <span><Link to="/Teacherdashboard/profile">Profile</Link></span>
                         </li>
                         <li className="nav-text" onClick={showsemesterhandler} style={{
                             background: sem ? "#2BB0A8" : ""
@@ -61,7 +69,10 @@ function Navbar() {
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaSignInAlt />
-                            <span>Logout</span>
+                            <span><button onClick={() => {
+                                    localStorage.removeItem('token')
+                                    navigate("/")
+                                }}>Logout</button></span>
                         </li>
                     </ul>
                 </nav>

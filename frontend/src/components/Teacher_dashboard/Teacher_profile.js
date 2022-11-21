@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import jwt from 'jsonwebtoken'
 import "./Teacher_profile.css"
+import Navbar from './Navbar'
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
 
@@ -49,31 +50,50 @@ const Teacher_Profile = () => {
 
     return(
         <>
-         <div >
+        <div >
+            <Navbar />
             <div className='profilebody'>
-                 <br /><br />
-                 <div className='profileenroll'>
-                     {/* <img src={logo} alt="Avatar" class="avatar"></img> */}
-                    <div>
-                         <h1>{name}</h1>
-                         <h1>Professor ID: {teacher_id || 'ish'}</h1>
-                     </div>
-                 </div>
-                 <div className='personaldetails'>
-                     <div className='detailone'>
-                         <h2>Personal Details :</h2>
-                         <h4>Mail ID :{email}</h4>
-                         <h4>Mobile no - {contactNum} </h4>
-                     </div>
-                     {/* <div>
-                         <h2>Course Detail</h2>
-                         <h4>Semester - III </h4>
-                         <h4>Session - 2021 - 2023 </h4>
-                         <h4>Class roll no - {rollNum} </h4>
-                     </div> */}
-                 </div>
-             </div>
-         </div>
+                <h2>{name}'s Profile</h2>
+                <div className='profileContent'>
+                    <div className='profileenroll'>
+                        {/* <img src={logo} alt="" class="avatar mt-1"></img> */}
+                        <div class="mt-2">
+                            <h3>{name}</h3>
+                            <h3>Professor ID: {teacher_id || 'ish'}</h3>
+                        </div>
+                    </div>
+                    <div class="row mb-2 mr-0 detailblock">
+                        <div class="col-md-6 p-0 mb-2 detailcontent">
+                            <div class="col d-flex flex-column position-static details">
+                                <h3 class="mb-0">Personal Details</h3>
+                                <h6>Contact no. - {contactNum}</h6>
+                                <h6>Mobile no - xxxxxxxxxx </h6>
+                                <h6>D.O.B - 17/11/2000 </h6>
+                                <h6>Mail ID - {email} </h6>
+                            </div>
+                        </div>
+                        <div class="col-md-6 p-0 detailcontent">
+                            <div class="col d-flex flex-column position-static details">
+                                <h3 class="mb-0">Course Details</h3>
+                                {/* <h6>Semester - III </h6>
+                                <h6>Session - 2021 - 2023 </h6>
+                                <h6>Class roll no - 21/1402 </h6>
+                                <h6>Exam Rollno - xxxxxxxxxx </h6> */}
+                            </div>
+                        </div>
+                    </div>
+                    <div className='buttons'>
+                    <button onClick={() => {
+                        localStorage.removeItem('token')
+                        navigate("/")
+                        }}>Logout</button>
+                        <button><Link to="/Teacherdashboard/changepassword"><div className="button">Reset Password</div></Link></button> 
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         </>
     );
     

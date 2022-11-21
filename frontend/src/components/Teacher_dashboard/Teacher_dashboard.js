@@ -3,11 +3,8 @@ import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar.js";
-import Dashboardcontent from "./Teacher_dashboard_content.js";
 import logo from "./image.png"
 import "./Teacher_dashboard.css";
-// import Base from "../Base.jsx"
-import Sidebar from "./sidebar.js";
 
 
 const Teacher_Dashboard = (props) => {
@@ -54,49 +51,57 @@ const Teacher_Dashboard = (props) => {
             <Navbar />
             <div>
                 <div className="flex dashboardcontent">
-                    <Dashboardcontent />
+                <div class="col main pt-5  dashboardbackground">
+            <div class="row mb-3 dashblocks">
+                <div class="col-xl-3 col-sm-6 blockcolour">
+                    <div>
+                        <h5 class="text-uppercase">CLASS SCHEDULED</h5>
+                        <h1 class="display-4">2</h1>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 blockcolour">
+                    <div>
+                        <h5 class="text-uppercase">TEST SCHEDULED</h5>
+                        <h1 class="display-4">1</h1>
+                    </div>
+
+                </div>
+                <div class="col-xl-3 col-sm-6 blockcolour">
+                    <div>
+                        <h5 class="text-uppercase">ASSIGNMENT PENDING</h5>
+                        <h1 class="display-4">4</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row overviewdatacontent">
+                <div class="col-lg-7 col-md-6 col-sm-12 datacontent flex">
+                    <div class="classinfo">
+                        <h5>Total classes</h5>
+                        <h5>Total Tests</h5>
+                        <h5>Assignment submitted</h5>
+                        <h5>Attendence %</h5>
+                    </div>
+                    <div class="classinfoval">
+                        <h5>84</h5>
+                        <h5>12</h5>
+                        <h5>18</h5>
+                        <h5>58</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
                     <div className="profilecontent"
                         style={{
                             display: props.show ? "block" : "none"
                         }}>
                         <br /><br />
-                        <div >
-                            <img src={logo} alt="Avatar" class="Avatar"></img>
-                            <div className="enrollmentcontent">
-                                <h1>ABHISHEK TYAGI</h1>
-                                <h1>ENROLLMENT N0 xxxxxxxxxxxxxx</h1>
-                            </div>
-                        </div>
-                        <div>
-                            <br />
-                            <div className='detailcontent'>
-                                <h2>Personal Detail :</h2>
-
-                                <h4>Mail ID - abhishek.tyagi@iic.ac.in </h4>
-                                <h4>Mobile no - xxxxxxxxxx </h4>
-                                <h4>D.O.B - 17/11/2000 </h4>
-
-                                <h2>Course Detail</h2>
-
-                                <h4>Semester - III </h4>
-                                <h4>Session - 2021 - 2023 </h4>
-                                <h4>Class roll no - 21/1402 </h4>
-                                <h4>Exam Rollno - xxxxxxxxxx </h4>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
             </div >
-            <h1>{name}'s Dashboard</h1>
-            <Link to="/Teacherdashboard/profile"><div className="button">profile</div></Link>
-            <Link to="/Teacherdashboard/changepassword"><div className="button">change password</div></Link>
             <Link to="/classschedule/sem1"><div className="button">Schedule Class sem-1</div></Link>
             <Link to="/testschedule/sem1"><div className="button">test Class sem-1</div></Link>
-            <button onClick={() => {
-                localStorage.removeItem('token')
-                navigate("/")
-            }}>Logout</button>
         </>
     );
 
@@ -104,58 +109,3 @@ const Teacher_Dashboard = (props) => {
 
 export default Teacher_Dashboard
 
-
-
-// import React from "react";
-// import Navbar from "./navbar.js";
-// import Dashboardcontent from "./dashboardcontent.js";
-// import logo from "./image.png"
-// import "./Teacher_dashboard.css";
-// import Base from "../Base.jsx"
-// import Sidebar from "./sidebar.js";
-
-// const Dashboard = (props) => {
-//     return (
-//         <>
-//             <Navbar />
-//             <div>
-//                 <div className="flex dashboardcontent">
-//                     <Dashboardcontent />
-//                     <div className="profilecontent"
-//                         style={{
-//                             display: props.show ? "block" : "none"
-//                         }}>
-//                         <br /><br />
-//                         <div >
-//                             <img src={logo} alt="Avatar" class="Avatar"></img>
-//                             <div className="enrollmentcontent">
-//                                 <h1>ABHISHEK TYAGI</h1>
-//                                 <h1>ENROLLMENT N0 xxxxxxxxxxxxxx</h1>
-//                             </div>
-//                         </div>
-//                         <div>
-//                             <br />
-//                             <div className='detailcontent'>
-//                                 <h2>Personal Detail :</h2>
-
-//                                 <h4>Mail ID - abhishek.tyagi@iic.ac.in </h4>
-//                                 <h4>Mobile no - xxxxxxxxxx </h4>
-//                                 <h4>D.O.B - 17/11/2000 </h4>
-
-//                                 <h2>Course Detail</h2>
-
-//                                 <h4>Semester - III </h4>
-//                                 <h4>Session - 2021 - 2023 </h4>
-//                                 <h4>Class roll no - 21/1402 </h4>
-//                                 <h4>Exam Rollno - xxxxxxxxxx </h4>
-//                             </div>
-//                         </div>
-
-//                     </div>
-//                 </div>
-//             </div >
-//         </>
-//     )
-// }
-
-// export default Dashboard
