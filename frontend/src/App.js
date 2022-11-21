@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './components/login/login';
 import LoginTeacher from './components/loginteacher/loginteacher';
@@ -21,11 +22,21 @@ import ChangeStudentPassword from './components/Student_dashboard/change_student
 import Teacher_Dashboard from './components/Teacher_dashboard/Teacher_dashboard';
 import Teacher_Profile from './components/Teacher_dashboard/Teacher_profile'
 import ChangeTeacherPassword from './components/Teacher_dashboard/change_teacher_password';
-// import Att_rep from './components/Attendance Report/Att_rep';
 import Sem1Attendance from './components/Attendance Report/Sem1Attendance';
-
+import Sem2Attendance from './components/Attendance Report/Sem2Attendance';
+import Sem1filters from './components/Filters/Sem1filters';
+import Sem2filters from './components/Filters/Sem2filters';
 function App() {
+  const[subjectval,setsubjectval]=useState("")
+  const[dateval,setdateval]=useState("")
+  const[monthval,setmonthval]=useState("")
+  // const[subjectval2,setsubjectval2]=useState("")
+  // const[dateval2,setdateval2]=useState("")
+  // const[monthval2,setmonthval2]=useState("")
+
+
   useEffect(() => {
+
     window.process = {
       ...window.process,
     };
@@ -55,7 +66,11 @@ function App() {
       <Route path="/testschedule/sem2" element={<TestscheduleSem2/>}/>
       <Route path="/testschedule/sem3" element={<TestscheduleSem3/>}/>
       <Route path="/testschedule/sem4" element={<TestscheduleSem4/>}/>
-      <Route path="/attendancereport/sem1" element={<Sem1Attendance/>}/>
+      <Route path="/attendancereport/sem1" element={<Sem1Attendance subjectval={subjectval} dateval={dateval} monthval={monthval}/>}/>
+      <Route path="/filters/sem1" element={<Sem1filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
+      {/* <Route path="/attendancereport/sem2" element={<Sem2Attendance subjectval2={subjectval2} dateval2={dateval2} monthval2={monthval2}/>}/>
+      <Route path="/filters/sem2" element={<Sem2filters subjectval2={subjectval2} setsubjectval2={setsubjectval2} dateval2={dateval2} setdateval2={setdateval2} monthval2={monthval2} setmonthval2={setmonthval2} />}/> */}
+
     </Routes>        
       </BrowserRouter>
     </div>

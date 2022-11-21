@@ -1,11 +1,12 @@
 import React from 'react'
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useRef,useReactToPrint } from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
+// import { Button } from 'reactstrap';
+// import jsPDF from 'jspdf'
 import List from './List';
-const Att_rep = () => {
+const Sem1Attendance = ({subjectval,dateval,monthval}) => {
+ 
     const [student,setstudent]=useState([]);
-    console.log(student);
-    const [date,setdate]=useState("")
-    console.log(date)
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/attendancereport/sem1", {
             method: "GET",
@@ -14,9 +15,25 @@ const Att_rep = () => {
                 "Content-Type": "application/json",
             }})
             const json = await response.json()
-            console.log(json.data)
-            let data1=json.data.filter((data)=> data.date=="2022-11-19")
-            setstudent(data1)
+              if(monthval)
+              {
+                let data1=json.data.filter((data)=>data.date.slice(5,7)==monthval)
+                setstudent(data1)
+              }
+              else if(subjectval)
+              {
+                let data1=json.data.filter((data)=>data.subject==subjectval)
+                setstudent(data1)
+              }
+              else if(dateval)
+              {
+                let data1=json.data.filter((data)=>data.date==dateval)
+                setstudent(data1)
+              }
+              else
+              {
+                setstudent(json.data)
+              }
             
       }
       useEffect(()=>{
@@ -25,34 +42,30 @@ const Att_rep = () => {
 
       },[])
 
-    //   function printattendance(){
-    //     return(
-    //         <>
-    //         </>
-    //     )
-    //   }
   return (
    <>
-   {/* <input type="date" value={date} onChange={(e)=>setdate(e.target.value)}></input> */}
-   <h1> Attendance Report of </h1>
-     <div className='main'>
-    <table className="table table-bordered">
-    <thead>
-      <tr>
-        <th>Student</th>
-        <th>Attendance Status</th>
-        <th>Date</th>
-        <th>subject</th>
-      </tr>
-    </thead>
-    <tbody>
-     <List student={student} />
-    </tbody>
-  </table>
-    </div>
-    {/* <button onClick={printattendance}>Print Attendance</button> */}
+
+
+  <h1> Attendance Report of </h1>
+  <div classname="main">
+    <table classname="table table-bordered">
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Attendance Status</th>
+          <th>Date</th>
+          <th>subject</th>
+        </tr>
+      </thead>
+      <tbody>
+      <List student={student} />
+      </tbody>
+    </table>
+  </div>
+
+   <button  >Print In pdf</button>
    </>
   )
 }
 
-export default Att_rep
+export default Sem1Attendance
