@@ -88,6 +88,10 @@
     justify-content: start;
     align-items: center;
 }
+.navbar-toggle>span{
+    color: white;
+    font-size: 26px;
+}
 
 span {
     margin-left: 16px;

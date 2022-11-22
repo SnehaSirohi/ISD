@@ -32,11 +32,9 @@ function Navbar() {
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                     <ul className='nav-menu-items' >
                         <li className='navbar-toggle'>
-                            <Link to='#' className='menu-bars'>
-                                <AiIcons.AiOutlineClose onClick={showSidebar} />
-                            </Link>
+                            <AiIcons.AiOutlineClose size={40} onClick={showSidebar} />
                         </li>
-                        <li className="nav-text">
+                        <li className="nav-text ">
                             <AiIcons.AiFillHome />
                             <span><Link to="/Teacherdashboard">Home</Link></span>
                         </li>
