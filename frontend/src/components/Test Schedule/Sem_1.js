@@ -18,9 +18,13 @@ const Sem_1 = () => {
 
   async function populate(e){
     const req = await fetch('http://localhost:4000/scheduletest',{
+      method: "POST",//
       headers: {
-        'x-access-token': localStorage.getItem('token'), //adedd
+        Accept: "application/json",//
+        "Content-Type": "application/json", //
+        'x-access-token': localStorage.getItem('token'), //added
       },
+      body: JSON.stringify(req.json()),
     })
     const data = await req.json();
 
@@ -47,7 +51,6 @@ const Sem_1 = () => {
         message,
       }),
     });
-
     const data = await response.json();
   }
 
