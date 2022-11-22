@@ -33,6 +33,7 @@ function Navbar() {
                     <ul className='nav-menu-items' >
                         <li className='navbar-toggle'>
                             <AiIcons.AiOutlineClose size={40} onClick={showSidebar} />
+                            <span>Classopedia</span>
                         </li>
                         <li className="nav-text ">
                             <AiIcons.AiFillHome />
