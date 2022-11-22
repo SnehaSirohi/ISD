@@ -25,7 +25,7 @@ function Navbar() {
                     </Link>
                     <div className="heading">
                         <i class="far fa-bell mt-1 fa-2x"></i>
-                        <Link to="/Teacherdashboard/profile"><div className="button"><img src={logo} alt="..." class="profilePic"></img></div></Link>
+                        <Link to="/dashboard/profile"><div className="button"><img src={logo} alt="..." class="profilePic"></img></div></Link>
 
                     </div>
                 </div>
@@ -38,11 +38,11 @@ function Navbar() {
                         </li>
                         <li className="nav-text">
                             <AiIcons.AiFillHome />
-                            <span><Link to="/Teacherdashboard">Home</Link></span>
+                            <span><Link to="/dashboard">Home</Link></span>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaUserCircle />
-                            <span><Link to="/Teacherdashboard/profile">Profile</Link></span>
+                            <span><Link to="/dashboard/profile">Profile</Link></span>
                         </li>
                         <li className="nav-text" onClick={showsemesterhandler} style={{
                             background: sem ? "#2BB0A8" : ""
