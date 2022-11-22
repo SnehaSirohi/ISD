@@ -4,7 +4,8 @@ const Sem1Attendance = require("../models/Sem1Attendance");
 const Sem2Attendance = require("../models/Sem2Attendance");
 const Sem3Attendance = require("../models/Sem3Attendance");
 const Sem4Attendance = require("../models/Sem4Attendance");
-const ScheduleInfo = require("../models/scheduleinfo");
+const ScheduleInfoClass = require("../models/scheduleinfoclass");
+const ScheduleInfoTest = require("../models/scheduleinfotest");
 const Teacher = require("../models/teacherdata");
 const jwt = require("jsonwebtoken");
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -451,12 +452,33 @@ router.get("/scheduleclass", async (req, res) => {
 
 
 router.post("/scheduleclass", async (req, res) => {
+
+  const token = req.headers["x-access-token"];
+
     const subject = req.body.subject;
     const sem = req.body.sem;
     const date = req.body.date;
     const time = req.body.time;
     const message = req.body.message;
     console.log(req.body);
+
+
+    try {
+      const decoded = jwt.verify(token, "secret1234");
+      const Teacher_id = decoded.Teacher_id;
+      const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+      console.log(Teacher_id)
+      return res.status(200).json({
+        success: true,
+        data: await ScheduleInfoClass.create({name: teacher.name, subject, date }),
+      });
+  
+    } catch (error) {
+      console.log(error);
+      res.json({ status: "error", error: "invalid token" });
+    }
+  
+
     let data = await Students.find({});
     data.forEach((student) => {
       if (student.semester == sem) {
@@ -516,7 +538,7 @@ router.post("/scheduletest", async (req, res) => {
     console.log(Teacher_id)
     return res.status(200).json({
       success: true,
-      data: await ScheduleInfo.create({name: teacher.name, subject, date }),
+      data: await ScheduleInfoTest.create({name: teacher.name, subject, date }),
     });
 
   } catch (error) {

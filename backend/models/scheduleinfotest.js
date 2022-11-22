@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ScheduleInfo = new Schema({
+const ScheduleInfoTest = new Schema({
   name: {
     type: String,
     required: true,
@@ -16,4 +16,4 @@ const ScheduleInfo = new Schema({
   },
 });
 
-module.exports = mongoose.model("ScheduleInfo", ScheduleInfo);
+module.exports = mongoose.model("ScheduleInfoTest", ScheduleInfoTest);
