@@ -26,23 +26,22 @@ function Navbar() {
                     <div className="heading">
                         <i class="far fa-bell mt-1 fa-2x"></i>
                         <Link to="/Teacherdashboard/profile"><div className="button"><img src={logo} alt="..." class="profilePic"></img></div></Link>
-                        
+
                     </div>
                 </div>
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                     <ul className='nav-menu-items' >
                         <li className='navbar-toggle'>
-                            <Link to='#' className='menu-bars'>
-                                <AiIcons.AiOutlineClose onClick={showSidebar} />
-                            </Link>
+                            < FaIcons.FaCaretLeft size={40} onClick={showSidebar} />
+                            <span>Classopedia</span>
+                        </li>
+                        <li className="nav-text ">
+                            <AiIcons.AiFillHome />
+                            <Link to="/Teacherdashboard"><span>Home</span></Link>
                         </li>
                         <li className="nav-text">
-                            <AiIcons.AiFillHome />
-                            <span><Link to="/Teacherdashboard">Home</Link></span>
-                        </li>
-                        <li className="nav-text">
-                            <AiIcons.AiFillHome />
-                            <span><Link to="/Teacherdashboard/profile">Profile</Link></span>
+                            <FaIcons.FaUserCircle />
+                            <Link to="/Teacherdashboard/profile"><span>Profile</span></Link>
                         </li>
                         <li className="nav-text" onClick={showsemesterhandler} style={{
                             background: sem ? "#2BB0A8" : ""
@@ -54,7 +53,7 @@ function Navbar() {
                         <li className="semester" style={{
                             display: sem ? "block" : "none"
                         }}>
-                            <p>1st</p>
+                            <Link to = "/Teacherdashboard/sem1"><p>1st</p></Link>
                             <p>2nd</p>
                             <p>3rd</p>
                             <p>4th</p>
@@ -69,10 +68,10 @@ function Navbar() {
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaSignInAlt />
-                            <span><button onClick={() => {
-                                    localStorage.removeItem('token')
-                                    navigate("/")
-                                }}>Logout</button></span>
+                            <span onClick={() => {
+                                localStorage.removeItem('token')
+                                navigate("/")
+                            }}>Logout</span>
                         </li>
                     </ul>
                 </nav>

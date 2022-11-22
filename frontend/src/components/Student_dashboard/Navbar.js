@@ -26,22 +26,21 @@ function Navbar() {
                     <div className="heading">
                         <i class="far fa-bell mt-1 fa-2x"></i>
                         <Link to="/dashboard/profile"><div className="button"><img src={logo} alt="..." class="profilePic"></img></div></Link>
-                        
+
                     </div>
                 </div>
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                     <ul className='nav-menu-items' >
                         <li className='navbar-toggle'>
-                            <Link to='#' className='menu-bars'>
-                                <AiIcons.AiOutlineClose onClick={showSidebar} />
-                            </Link>
+                            <FaIcons.FaCaretLeft size={40} onClick={showSidebar} />
+                            <span>Classopedia</span>
                         </li>
                         <li className="nav-text">
                             <AiIcons.AiFillHome />
                             <span><Link to="/dashboard">Home</Link></span>
                         </li>
                         <li className="nav-text">
-                            <AiIcons.AiFillHome />
+                            <FaIcons.FaUserCircle />
                             <span><Link to="/dashboard/profile">Profile</Link></span>
                         </li>
                         <li className="nav-text" onClick={showsemesterhandler} style={{
@@ -69,10 +68,10 @@ function Navbar() {
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaSignInAlt />
-                            <span><button onClick={() => {
-                                    localStorage.removeItem('token')
-                                    navigate("/")
-                                }}>Logout</button></span>
+                            <span onClick={() => {
+                                localStorage.removeItem('token')
+                                navigate("/")
+                            }}>Logout</span>
                         </li>
                     </ul>
                 </nav>
