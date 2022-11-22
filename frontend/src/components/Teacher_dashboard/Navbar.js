@@ -37,11 +37,11 @@ function Navbar() {
                         </li>
                         <li className="nav-text ">
                             <AiIcons.AiFillHome />
-                            <span><Link to="/Teacherdashboard">Home</Link></span>
+                            <Link to="/Teacherdashboard"><span>Home</span></Link>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaUserCircle />
-                            <span><Link to="/Teacherdashboard/profile">Profile</Link></span>
+                            <Link to="/Teacherdashboard/profile"><span>Profile</span></Link>
                         </li>
                         <li className="nav-text" onClick={showsemesterhandler} style={{
                             background: sem ? "#2BB0A8" : ""
@@ -53,7 +53,7 @@ function Navbar() {
                         <li className="semester" style={{
                             display: sem ? "block" : "none"
                         }}>
-                            <p>1st</p>
+                            <Link to = "/Teacherdashboard/sem1"><p>1st</p></Link>
                             <p>2nd</p>
                             <p>3rd</p>
                             <p>4th</p>

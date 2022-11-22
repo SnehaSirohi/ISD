@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './components/login/login';
 import LoginTeacher from './components/loginteacher/loginteacher';
 import Homepage from './components/homepage/homepage'
@@ -22,14 +22,15 @@ import ChangeStudentPassword from './components/Student_dashboard/change_student
 import Teacher_Dashboard from './components/Teacher_dashboard/Teacher_dashboard';
 import Teacher_Profile from './components/Teacher_dashboard/Teacher_profile'
 import ChangeTeacherPassword from './components/Teacher_dashboard/change_teacher_password';
+import Sem1 from './components/Teacher_dashboard/sem1';
 import Sem1Attendance from './components/Attendance Report/Sem1Attendance';
 import Sem2Attendance from './components/Attendance Report/Sem2Attendance';
 import Sem1filters from './components/Filters/Sem1filters';
 import Sem2filters from './components/Filters/Sem2filters';
 function App() {
-  const[subjectval,setsubjectval]=useState("")
-  const[dateval,setdateval]=useState("")
-  const[monthval,setmonthval]=useState("")
+  const [subjectval, setsubjectval] = useState("")
+  const [dateval, setdateval] = useState("")
+  const [monthval, setmonthval] = useState("")
   // const[subjectval2,setsubjectval2]=useState("")
   // const[dateval2,setdateval2]=useState("")
   // const[monthval2,setmonthval2]=useState("")
@@ -44,34 +45,35 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Routes>
-      <Route path='/' exact element = {<Homepage/>} />
-      <Route path='/login' element = {<Login/>} />
-      <Route path='/loginteacher' element = {<LoginTeacher/>} />
-      <Route path='/dashboard' element = {<Student_Dashboard/>} />
-      <Route path='/dashboard/profile' element = {<Student_Profile/>} />
-      <Route path="/dashboard/changepassword" element={<ChangeStudentPassword/>}/>
-      <Route path='/Teacherdashboard' element = {<Teacher_Dashboard/>} />
-      <Route path='/Teacherdashboard/profile' element = {<Teacher_Profile/>} />
-      <Route path="/Teacherdashboard/changepassword" element={<ChangeTeacherPassword/>}/>
-      <Route path='/attendance/sem1' element = {<AttendanceSem1/>} />
-      <Route path='/attendance/sem2' element = {<AttendanceSem2/>} />
-      <Route path='/attendance/sem3' element = {<AttendanceSem3/>} />
-      <Route path='/attendance/sem4' element = {<AttendanceSem4/>} />
-      <Route path='/classschedule/sem1' element ={<ClassScheduleSem1/>}/>
-      <Route path='/classschedule/sem2' element ={<ClassScheduleSem2/>}/>
-      <Route path='/classschedule/sem3' element ={<ClassScheduleSem3/>}/>
-      <Route path='/classschedule/sem4' element ={<ClassScheduleSem4/>}/>
-      <Route path="/testschedule/sem1" element={<TestscheduleSem1/>}/>
-      <Route path="/testschedule/sem2" element={<TestscheduleSem2/>}/>
-      <Route path="/testschedule/sem3" element={<TestscheduleSem3/>}/>
-      <Route path="/testschedule/sem4" element={<TestscheduleSem4/>}/>
-      <Route path="/attendancereport/sem1" element={<Sem1Attendance subjectval={subjectval} dateval={dateval} monthval={monthval}/>}/>
-      <Route path="/filters/sem1" element={<Sem1filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
-      {/* <Route path="/attendancereport/sem2" element={<Sem2Attendance subjectval2={subjectval2} dateval2={dateval2} monthval2={monthval2}/>}/>
+        <Routes>
+          <Route path='/' exact element={<Homepage />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/loginteacher' element={<LoginTeacher />} />
+          <Route path='/dashboard' element={<Student_Dashboard />} />
+          <Route path='/dashboard/profile' element={<Student_Profile />} />
+          <Route path="/dashboard/changepassword" element={<ChangeStudentPassword />} />
+          <Route path='/Teacherdashboard' element={<Teacher_Dashboard />} />
+          <Route path='/Teacherdashboard/profile' element={<Teacher_Profile />} />
+          <Route path="/Teacherdashboard/changepassword" element={<ChangeTeacherPassword />} />
+          <Route path='/attendance/sem1' element={<AttendanceSem1 />} />
+          <Route path='/attendance/sem2' element={<AttendanceSem2 />} />
+          <Route path='/attendance/sem3' element={<AttendanceSem3 />} />
+          <Route path='/attendance/sem4' element={<AttendanceSem4 />} />
+          <Route path='/Teacherdashboard/sem1' element={<Sem1/>} />
+          <Route path='/classschedule/sem1' element={<ClassScheduleSem1 />} />
+          <Route path='/classschedule/sem2' element={<ClassScheduleSem2 />} />
+          <Route path='/classschedule/sem3' element={<ClassScheduleSem3 />} />
+          <Route path='/classschedule/sem4' element={<ClassScheduleSem4 />} />
+          <Route path="/testschedule/sem1" element={<TestscheduleSem1 />} />
+          <Route path="/testschedule/sem2" element={<TestscheduleSem2 />} />
+          <Route path="/testschedule/sem3" element={<TestscheduleSem3 />} />
+          <Route path="/testschedule/sem4" element={<TestscheduleSem4 />} />
+          <Route path="/attendancereport/sem1" element={<Sem1Attendance subjectval={subjectval} dateval={dateval} monthval={monthval} />} />
+          <Route path="/filters/sem1" element={<Sem1filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />} />
+          {/* <Route path="/attendancereport/sem2" element={<Sem2Attendance subjectval2={subjectval2} dateval2={dateval2} monthval2={monthval2}/>}/>
       <Route path="/filters/sem2" element={<Sem2filters subjectval2={subjectval2} setsubjectval2={setsubjectval2} dateval2={dateval2} setdateval2={setdateval2} monthval2={monthval2} setmonthval2={setmonthval2} />}/> */}
 
-    </Routes>        
+        </Routes>
       </BrowserRouter>
     </div>
   );
