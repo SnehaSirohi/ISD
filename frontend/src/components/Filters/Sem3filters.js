@@ -2,7 +2,7 @@ import React from 'react'
 import { useState,navigate } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from 'react-router-dom';
-const Sem2filters = ({subjectval,setsubjectval,dateval,setdateval,monthval,setmonthval}) => {
+const Sem3filters = ({subjectval,setsubjectval,dateval,setdateval,monthval,setmonthval}) => {
     const [subject,setsubject]=useState(false)
     const [date,setdate]=useState(false)
     const [month,setmonth]=useState(false)
@@ -95,23 +95,23 @@ const Sem2filters = ({subjectval,setsubjectval,dateval,setdateval,monthval,setmo
             value={monthval}
             onChange={(e) => setmonthval(e.target.value)}>
             <option required>Select Month</option>
-            <option value="01">
-              January
+            <option value="07">
+              July
             </option>
-            <option value="02">
-             February
+            <option value="08">
+             August
             </option>
-            <option value="03">
-              March
+            <option value="09">
+              September
             </option>
-            <option value="04">
-             April
+            <option value="10">
+             October
             </option>
-            <option value="05">
-             May
+            <option value="11">
+             November
             </option>
-            <option value="06">
-             June
+            <option value="12">
+             December
             </option>
           </select>
         </div>
@@ -127,30 +127,27 @@ const Sem2filters = ({subjectval,setsubjectval,dateval,setdateval,monthval,setmo
             value={subjectval}
             onChange={(e) => setsubjectval(e.target.value)}>
             <option required>Select Subject</option>
-            <option value="Computer Communication and Networks">
-           Computer Communication and Networks
+            <option value="Software Engineering">
+              Software Engineering
             </option>
-            <option value="Database Systems">
-              Database Systems
+            <option value="Information System Design">
+              Information System Design
             </option>
-            <option value="Operating Systems">
-              Operating Systems
+            <option value="IT Planning and Management">
+              IT Planning and Management
             </option>
-            <option value="Applied Machine Learning">
-              Applied Machine Learning
-            </option>
-            <option value="Open Elective-1">
-              Open Elective-1
+            <option value="Cloud Computing">
+              Cloud Computing
             </option>
           </select>
         </div>
 </form>}
    
     
-{button &&   <Link to="/attendancereport/sem2"><button type="submit" className="btn btn-primary"  >Print Attendance</button></Link> }
+{button &&   <Link to="/attendancereport/sem3"><button type="submit" className="btn btn-primary"  >Print Attendance</button></Link> }
 
     </>
   )
 }
 
-export default Sem2filters
+export default Sem3filters

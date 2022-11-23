@@ -2,7 +2,7 @@ import React from 'react'
 import { useState,navigate } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from 'react-router-dom';
-const Sem2filters = ({subjectval,setsubjectval,dateval,setdateval,monthval,setmonthval}) => {
+const Sem4filters = ({subjectval,setsubjectval,dateval,setdateval,monthval,setmonthval}) => {
     const [subject,setsubject]=useState(false)
     const [date,setdate]=useState(false)
     const [month,setmonth]=useState(false)
@@ -127,30 +127,27 @@ const Sem2filters = ({subjectval,setsubjectval,dateval,setdateval,monthval,setmo
             value={subjectval}
             onChange={(e) => setsubjectval(e.target.value)}>
             <option required>Select Subject</option>
-            <option value="Computer Communication and Networks">
-           Computer Communication and Networks
+            <option value="Research Methods in Informatics">
+              Research Methods in Informatics
             </option>
-            <option value="Database Systems">
-              Database Systems
+            <option value="Internet of Things Systems, Security and Cloud">
+              Internet of Things Systems, Security and Cloud
             </option>
-            <option value="Operating Systems">
-              Operating Systems
+            <option value="Dissertation Project">
+              Dissertation Project
             </option>
-            <option value="Applied Machine Learning">
-              Applied Machine Learning
-            </option>
-            <option value="Open Elective-1">
-              Open Elective-1
+            <option value="Health Informatics">
+              Health Informatics
             </option>
           </select>
         </div>
 </form>}
    
     
-{button &&   <Link to="/attendancereport/sem2"><button type="submit" className="btn btn-primary"  >Print Attendance</button></Link> }
+{button &&   <Link to="/attendancereport/sem4"><button type="submit" className="btn btn-primary"  >Print Attendance</button></Link> }
 
     </>
   )
 }
 
-export default Sem2filters
+export default Sem4filters
