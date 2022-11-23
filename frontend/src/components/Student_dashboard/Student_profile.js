@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import jwt from 'jsonwebtoken'
 import "./Student_profile.css"
+import Navbar from './Navbar'
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
 
@@ -52,8 +53,10 @@ const Profile = () => {
     return(
         <>
          <div >
+         <Navbar />
             <div className='profilebody'>
                  <br /><br />
+                 <h2>{name}'s Profile</h2>
                  <div className='profileenroll'>
                      {/* <img src={logo} alt="Avatar" class="avatar"></img> */}
                     <div>
@@ -74,6 +77,13 @@ const Profile = () => {
                          <h4>Class roll no - {rollNum} </h4>
                          <h4>Exam Rollno - xxxxxxxxxx </h4>
                      </div>
+                     <div className='buttons'>
+                    <button onClick={() => {
+                        localStorage.removeItem('token')
+                        navigate("/")
+                        }}>Logout</button>
+                        <button><Link to="/dashboard/changepassword"><div className="button">Reset Password</div></Link></button> 
+                    </div>
                  </div>
              </div>
          </div>

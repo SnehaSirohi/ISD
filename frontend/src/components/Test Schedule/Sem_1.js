@@ -4,32 +4,53 @@ import { useEffect, useState } from "react";
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 const Sem_1 = () => {
-
-  //---------
+  //
   const navigate = useNavigate();
+  const [name, setName] = useState([])
 
+//
   const [subject, setsubject] = useState("");
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
   const [message, setmessage] = useState("");
   const sem = "Sem-1";
 
-  //------------
+ //-----------
+ async function populate(e){
+  const req = await fetch('http://localhost:4000/scheduletest',{
+    headers: {
+      'x-access-token': localStorage.getItem('token'), //
+    },
+  })
+  const data = await req.json();
 
-  async function populate(e){
-    const req = await fetch('http://localhost:4000/scheduletest',{
-      headers: {
-        'x-access-token': localStorage.getItem('token'), //adedd
-      },
-    })
-    const data = await req.json();
+  console.log(data)
+  //added
+  if(data.status === 'ok'){
+    setName(data.name)
+}
+}
 
-    console.log(data)//added
-  //   if(data.status === 'ok'){
-  //     setName(data.name)
-  //     setEmail(data.email)
-  // }
-  }
+
+async function populateinfo(e){
+  const req = await fetch('http://localhost:4000/scheduletest',{
+    method: "POST",//
+    headers: {
+      Accept: "application/json",//
+      "Content-Type": "application/json", //
+      'x-access-token': localStorage.getItem('token'), //
+    },
+    body: JSON.stringify({
+      name,
+      subject,
+      date,
+    }),
+  }).then(async(response) => {
+    let dataa = await response.json();
+    console.log(dataa);
+});
+}
+
 
   async function schedule(e) {
     e.preventDefault();
@@ -47,8 +68,8 @@ const Sem_1 = () => {
         message,
       }),
     });
-
     const data = await response.json();
+    populateinfo()
   }
 
   //--------------------

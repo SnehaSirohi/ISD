@@ -9,8 +9,7 @@
     font-size: 2rem;
     background: none;
 }
-
-.heading {
+.heading{
     display: flex;
     margin-left: 2rem;
     align-items: center;
@@ -40,51 +39,35 @@
     justify-content: start;
     align-items: center;
     padding: 8px 0px 8px 16px;
-    font-size: 18px;
     list-style: none;
     height: 60px;
     color: black
 }
 
 .nav-text a {
-    color: black;
+    text-decoration: none;
+    color: #f5f5f5;
     font-size: 18px;
     width: 95%;
-    padding: 0;
     height: 100%;
     display: flex;
     align-items: center;
+    padding: 0 16px;
     border-radius: 4px;
 }
-
-.semester {
+.semester{
     text-align: center;
     background-color: #f5f5f5;
     display: none;
 }
-
-.semester>* {
-    margin-bottom: 2px;
-    height: 2.5rem;
+.semester>*{
+    margin-bottom: 0;
+    height: 2rem;
     display: flex;
-    color: inherit;
-    text-decoration: none;
     align-items: center;
     justify-content: center;
 }
-
-p{
-    margin-bottom: 0;
-}
-
-.semester>a{
-     color: inherit;
-     text-decoration: none;
-     display: flex;
-     align-items: center;
-}
-
-.semester>a:hover {
+.semester>p:hover{
     background-color: grey;
 }
 
@@ -104,6 +87,10 @@ p{
     display: flex;
     justify-content: start;
     align-items: center;
+}
+.navbar-toggle>span{
+    color: white;
+    font-size: 26px;
 }
 
 span {

@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom"
 const Sem_1 = () => {
   //
   const navigate = useNavigate();
-  // const [name, setName] = useState([])
-  // const [email, setEmail] = useState([])
+  const [name, setName] = useState([])
+
 //
   const [subject, setsubject] = useState("");
   const [date, setdate] = useState("");
@@ -19,16 +19,36 @@ const Sem_1 = () => {
   async function populate(e){
     const req = await fetch('http://localhost:4000/scheduleclass',{
       headers: {
-        'x-access-token': localStorage.getItem('token'), //adedd
+        'x-access-token': localStorage.getItem('token'), //
       },
     })
     const data = await req.json();
 
-    console.log(data)//added
-  //   if(data.status === 'ok'){
-  //     setName(data.name)
-  //     setEmail(data.email)
-  // }
+    console.log(data)
+    //added
+    if(data.status === 'ok'){
+      setName(data.name)
+      // setEmail(data.email)
+  }
+  }
+
+  async function populateinfo(e){
+    const req = await fetch('http://localhost:4000/scheduleclass',{
+      method: "POST",//
+      headers: {
+        Accept: "application/json",//
+        "Content-Type": "application/json", //
+        'x-access-token': localStorage.getItem('token'), //
+      },
+      body: JSON.stringify({
+        name,
+        subject,
+        date,
+      }),
+    }).then(async(response) => {
+      let dataa = await response.json();
+      console.log(dataa);
+  });
   }
 
   async function schedule(e) {
@@ -37,6 +57,7 @@ const Sem_1 = () => {
     const response = await fetch("http://localhost:4000/scheduleclass", {
       method: "POST",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -49,6 +70,7 @@ const Sem_1 = () => {
     });
 
     const data = await response.json();
+    populateinfo()
 
   }
 
@@ -63,6 +85,7 @@ const Sem_1 = () => {
             navigate("/Teacherdashboard");
         } else {
              populate()
+             
         }
     }
 }, [])

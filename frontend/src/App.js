@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './components/login/login';
 import LoginTeacher from './components/loginteacher/loginteacher';
 import Homepage from './components/homepage/homepage'
@@ -22,6 +22,7 @@ import ChangeStudentPassword from './components/Student_dashboard/change_student
 import Teacher_Dashboard from './components/Teacher_dashboard/Teacher_dashboard';
 import Teacher_Profile from './components/Teacher_dashboard/Teacher_profile'
 import ChangeTeacherPassword from './components/Teacher_dashboard/change_teacher_password';
+import Sem1 from './components/Teacher_dashboard/sem1';
 import Sem1Attendance from './components/Attendance Report/Sem1Attendance';
 import Sem2Attendance from './components/Attendance Report/Sem2Attendance';
 import Sem3Attendance from './components/Attendance Report/Sem3Attendance';
@@ -76,7 +77,7 @@ function App() {
       <Route path="/attendancereport/sem4" element={<Sem4Attendance subjectval={subjectval} dateval={dateval} monthval={monthval}/>}/>
       <Route path="/filters/sem4" element={<Sem4filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
 
-    </Routes>        
+        </Routes>
       </BrowserRouter>
     </div>
   );

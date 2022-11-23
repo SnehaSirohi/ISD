@@ -25,23 +25,23 @@ function Navbar() {
                     </Link>
                     <div className="heading">
                         <i class="far fa-bell mt-1 fa-2x"></i>
-                        <Link to="/Teacherdashboard/profile"><div className="button"><img src={logo} alt="..." class="profilePic"></img></div></Link>
+                        <Link to="/dashboard/profile"><div className="button"><img src={logo} alt="..." class="profilePic"></img></div></Link>
 
                     </div>
                 </div>
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                     <ul className='nav-menu-items' >
                         <li className='navbar-toggle'>
-                            < FaIcons.FaCaretLeft size={40} onClick={showSidebar} />
+                            <FaIcons.FaCaretLeft size={40} onClick={showSidebar} />
                             <span>Classopedia</span>
                         </li>
-                        <li className="nav-text ">
+                        <li className="nav-text">
                             <AiIcons.AiFillHome />
-                            <Link to="/Teacherdashboard"><span>Home</span></Link>
+                            <span><Link to="/dashboard">Home</Link></span>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaUserCircle />
-                            <Link to="/Teacherdashboard/profile"><span>Profile</span></Link>
+                            <span><Link to="/dashboard/profile">Profile</Link></span>
                         </li>
                         <li className="nav-text" onClick={showsemesterhandler} style={{
                             background: sem ? "#2BB0A8" : ""
@@ -53,7 +53,7 @@ function Navbar() {
                         <li className="semester" style={{
                             display: sem ? "block" : "none"
                         }}>
-                            <Link to = "/Teacherdashboard/sem1"><p>1st</p></Link>
+                            <p>1st</p>
                             <p>2nd</p>
                             <p>3rd</p>
                             <p>4th</p>
