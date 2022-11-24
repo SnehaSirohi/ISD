@@ -34,6 +34,9 @@ import Sem1filters from './components/Filters/Sem1filters';
 import Sem2filters from './components/Filters/Sem2filters';
 import Sem3filters from './components/Filters/Sem3filters';
 import Sem4filters from './components/Filters/Sem4filters';
+import Classreport from './components/Scheduled_Class_List/scheduleclassreport';
+import Testreport from './components/Scheduled_test_List/scheduletestreport';
+
 function App() {
   const[subjectval,setsubjectval]=useState("")
   const[dateval,setdateval]=useState("")
@@ -76,6 +79,8 @@ function App() {
       <Route path="/testschedule/sem3" element={<TestscheduleSem3/>}/>
       <Route path="/testschedule/sem4" element={<TestscheduleSem4/>}/>
       <Route path="/attendancereport/sem1" element={<Sem1Attendance subjectval={subjectval} dateval={dateval} monthval={monthval}/>}/>
+      <Route path='/scheduledclassreport' element={<Classreport/>}/>
+      <Route path='/scheduledtestreport' element={<Testreport/>}/>
       <Route path="/filters/sem1" element={<Sem1filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
       <Route path="/attendancereport/sem2" element={<Sem2Attendance subjectval={subjectval} dateval={dateval} monthval={monthval}/>}/>
       <Route path="/filters/sem2" element={<Sem2filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
