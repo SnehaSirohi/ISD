@@ -74,7 +74,7 @@ console.log(val);
     </table>
   </div>
 
-      <CSVLink data = {student}><button>Print In pdf</button></CSVLink>
+      <CSVLink data = {student}><button>Download in excel</button></CSVLink>
    </>
   )
 }
