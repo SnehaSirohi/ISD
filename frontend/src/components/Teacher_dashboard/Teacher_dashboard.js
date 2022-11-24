@@ -100,8 +100,6 @@ const Teacher_Dashboard = (props) => {
                     </div>
                 </div>
             </div >
-            <Link to="/classschedule/sem1"><div className="button">Schedule Class sem-1</div></Link>
-            <Link to="/testschedule/sem1"><div className="button">test Class sem-1</div></Link>
         </>
     );
 
