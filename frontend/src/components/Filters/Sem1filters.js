@@ -2,13 +2,11 @@ import React from 'react'
 import { useState,navigate } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from 'react-router-dom';
-import Sem2filters from './Sem2filters';
 const Sem1filters = ({subjectval,setsubjectval,dateval,setdateval,monthval,setmonthval}) => {
     const [subject,setsubject]=useState(false)
     const [date,setdate]=useState(false)
     const [month,setmonth]=useState(false)
     const[button,setbutton]=useState(false)
-    const[overall,setoverall]=useState(false)
     const[filter,setfilter]=useState("")
   
     function handlechange(e){
@@ -20,32 +18,37 @@ const Sem1filters = ({subjectval,setsubjectval,dateval,setdateval,monthval,setmo
             setdate(false)
             setmonth(false)
             setsubject(false)
-            setoverall(true)
             setbutton(true)
+            setdateval("")
+            setmonthval("")
+            setsubjectval("")
         }
         if(val=="date")
         {
             setdate(true)
             setmonth(false)
             setsubject(false)
-            setoverall(false)
             setbutton(true)
+            setmonthval("")
+            setsubjectval("")
         }
         if(val=="month")
         {
             setdate(false)
             setmonth(true)
             setsubject(false)
-            setoverall(false)
             setbutton(true)
+            setdateval("")
+            setsubjectval("")
         }
         if(val=="subject")
         {
             setdate(false)
             setmonth(false)
             setsubject(true)
-            setoverall(false)
             setbutton(true)
+            setdateval("")
+            setmonthval("")
         }
     }
   return (
@@ -74,6 +77,45 @@ const Sem1filters = ({subjectval,setsubjectval,dateval,setdateval,monthval,setmo
             </option>
           </select>
         </div>
+        {date && <form>
+  <div className="mb-3">
+    <label className="form-label">Enter Date</label>
+    <input type="date" className="form-control" value={dateval} onChange={(e)=>setdateval(e.target.value)} />
+  </div>
+
+</form>}
+{month &&    <form>
+    <div className=" mb-3">
+          <label className="form-label">Select Month</label>
+          <select
+            type="text"
+            className="form-control"
+            id="month"
+            name="month"
+            value={monthval}
+            onChange={(e) => setmonthval(e.target.value)}>
+            <option required>Select Month</option>
+            <option value="07">
+              July
+            </option>
+            <option value="08">
+             August
+            </option>
+            <option value="09">
+              September
+            </option>
+            <option value="10">
+             October
+            </option>
+            <option value="11">
+             November
+            </option>
+            <option value="12">
+             December
+            </option>
+          </select>
+        </div>
+</form>}
   {subject &&   <form>
     <div className=" mb-3">
           <label className="form-label">Select Subject</label>
@@ -100,45 +142,8 @@ const Sem1filters = ({subjectval,setsubjectval,dateval,setdateval,monthval,setmo
           </select>
         </div>
 </form>}
-    {date && <form>
-  <div className="mb-3">
-    <label className="form-label">Enter Date</label>
-    <input type="date" className="form-control" value={dateval} onChange={(e)=>setdateval(e.target.value)} />
-  </div>
-
-</form>}
-    {month &&    <form>
-    <div className=" mb-3">
-          <label className="form-label">Select Subject</label>
-          <select
-            type="text"
-            className="form-control"
-            id="subject"
-            name="subject"
-            value={monthval}
-            onChange={(e) => setmonthval(e.target.value)}>
-            <option required>Select Month</option>
-            <option value="07">
-              July
-            </option>
-            <option value="08">
-             August
-            </option>
-            <option value="09">
-              September
-            </option>
-            <option value="10">
-             October
-            </option>
-            <option value="11">
-             November
-            </option>
-            <option value="12">
-             December
-            </option>
-          </select>
-        </div>
-</form>}
+   
+    
 {button &&   <Link to="/attendancereport/sem1"><button type="submit" className="btn btn-primary"  >Print Attendance</button></Link> }
 
     </>

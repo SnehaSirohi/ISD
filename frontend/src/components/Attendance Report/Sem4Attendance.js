@@ -3,11 +3,11 @@ import { useState,useEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import List from './List';
-const Sem2Attendance = ({subjectval,dateval,monthval}) => {
+const Sem4Attendance = ({subjectval,dateval,monthval}) => {
     const[val,setval]=useState("")
     const [student,setstudent]=useState([]);
     const fetchdata=async()=>{
-        const response=await fetch("http://localhost:4000/attendancereport/sem2", {
+        const response=await fetch("http://localhost:4000/attendancereport/sem4", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -19,7 +19,7 @@ const Sem2Attendance = ({subjectval,dateval,monthval}) => {
               {
                 let data1=json.data.filter((data)=>data.date.slice(5,7)==monthval)
                 setstudent(data1)
-                const date = new Date();
+                 const date = new Date();
                 date.setMonth(monthval - 1);
 
                 var month= date.toLocaleString('en-US', {
@@ -38,7 +38,6 @@ const Sem2Attendance = ({subjectval,dateval,monthval}) => {
                 let data1=json.data.filter((data)=>data.date==dateval)
                 setstudent(data1)
                 setval(dateval)
-                 
               }
               else
               {
@@ -55,7 +54,7 @@ const Sem2Attendance = ({subjectval,dateval,monthval}) => {
   return (
    <>
 
-{val? <h1> Attendance Report of {val} </h1> : <h1>Overall Attendance Report of Semester 2</h1>}
+  {val? <h1> Attendance Report of {val} </h1> : <h1>Overall Attendance Report of Semester 4</h1>}
   <div classname="main">
     <table classname="table table-bordered">
       <thead>
@@ -76,4 +75,4 @@ const Sem2Attendance = ({subjectval,dateval,monthval}) => {
   )
 }
 
-export default Sem2Attendance
+export default Sem4Attendance
