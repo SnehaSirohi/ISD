@@ -23,6 +23,9 @@ import Teacher_Dashboard from './components/Teacher_dashboard/Teacher_dashboard'
 import Teacher_Profile from './components/Teacher_dashboard/Teacher_profile'
 import ChangeTeacherPassword from './components/Teacher_dashboard/change_teacher_password';
 import Sem1 from './components/Teacher_dashboard/sem1';
+import Sem2 from './components/Teacher_dashboard/sem2';
+import Sem3 from './components/Teacher_dashboard/sem3';
+import Sem4 from './components/Teacher_dashboard/sem4';
 import Sem1Attendance from './components/Attendance Report/Sem1Attendance';
 import Sem2Attendance from './components/Attendance Report/Sem2Attendance';
 import Sem1filters from './components/Filters/Sem1filters';
@@ -60,6 +63,9 @@ function App() {
           <Route path='/attendance/sem3' element={<AttendanceSem3 />} />
           <Route path='/attendance/sem4' element={<AttendanceSem4 />} />
           <Route path='/Teacherdashboard/sem1' element={<Sem1/>} />
+          <Route path='/Teacherdashboard/sem2' element={<Sem2/>} />
+          <Route path='/Teacherdashboard/sem3' element={<Sem3/>} />
+          <Route path='/Teacherdashboard/sem4' element={<Sem4/>} />
           <Route path='/classschedule/sem1' element={<ClassScheduleSem1 />} />
           <Route path='/classschedule/sem2' element={<ClassScheduleSem2 />} />
           <Route path='/classschedule/sem3' element={<ClassScheduleSem3 />} />

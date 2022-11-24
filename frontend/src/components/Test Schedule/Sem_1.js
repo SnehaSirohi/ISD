@@ -91,6 +91,7 @@ async function populateinfo(e){
     <>
       <form onSubmit={schedule}>
         <div className=" mb-3">
+          <h1>Test Schedule</h1>
           <label className="form-label">Select Subject</label>
           <select
             type="text"

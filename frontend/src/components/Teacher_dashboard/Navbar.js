@@ -54,9 +54,9 @@ function Navbar() {
                             display: sem ? "block" : "none"
                         }}>
                             <Link to = "/Teacherdashboard/sem1"><p>1st</p></Link>
-                            <p>2nd</p>
-                            <p>3rd</p>
-                            <p>4th</p>
+                            <Link to = "/Teacherdashboard/sem2"><p>2nd</p></Link>
+                            <Link to = "/Teacherdashboard/sem3"><p>3rd</p></Link>
+                            <Link to = "/Teacherdashboard/sem4"><p>4th</p></Link>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaRegSun />

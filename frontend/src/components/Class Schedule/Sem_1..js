@@ -94,6 +94,7 @@ const Sem_1 = () => {
     <>
       <form onSubmit={schedule}>
         <div className=" mb-3">
+          <h1>Class Schedule</h1>
           <label className="form-label">Select Subject</label>
           <select
             type="text"
