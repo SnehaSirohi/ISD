@@ -1,10 +1,13 @@
 import React from 'react'
 import { useState,useEffect,useRef,useReactToPrint } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
+import jsPDF from "jspdf";
+import autoTable from 'jspdf-autotable';
 // import { Button } from 'reactstrap';
 // import jsPDF from 'jspdf'
 import List from './List';
-import { CSVLink } from 'react-csv';
+var XLSX = require("xlsx");
+// import { CSVLink } from 'react-csv';
 const Sem1Attendance = ({dateval,monthval,subjectval}) => {
    const[val,setval]=useState("")
     const [student,setstudent]=useState([]);
@@ -52,14 +55,27 @@ const Sem1Attendance = ({dateval,monthval,subjectval}) => {
         fetchdata()
 
       },[])
-console.log(val);
+  
+  const exporttoexcelhandler= () =>{
+     var wb = XLSX.utils.book_new(),
+     ws = XLSX.utils.json_to_sheet(student);
+     XLSX.utils.book_append_sheet(wb,ws,"MySheet1");
+     XLSX.writeFile(wb,"MyExcel.xlsx")
+  };
+
+  const exporttopdfhandler = () =>{
+    const doc = new jsPDF()
+    doc.text("Attendence Report",70,10)
+    autoTable(doc, { html: '#mytable'})
+    doc.save('table.pdf')
+  };
   return (
    <>
 
  {val? <h1> Attendance Report of {val} </h1> : <h1>Overall Attendance Report of Semester 1</h1>}
  
   <div classname="main">
-    <table classname="table table-bordered">
+    <table classname="table table-bordered" id='mytable'>
       <thead>
         <tr>
           <th>Student</th>
@@ -74,7 +90,8 @@ console.log(val);
     </table>
   </div>
 
-      <CSVLink data = {student}><button>Download in excel</button></CSVLink>
+   <button onClick={exporttoexcelhandler}>Download in excel</button>
+   <button onClick={exporttopdfhandler}>Download in pdf</button>
    </>
   )
 }
