@@ -4,9 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import { Button } from 'reactstrap';
 // import jsPDF from 'jspdf'
 import List from './List';
+import { CSVLink } from 'react-csv';
 const Sem1Attendance = ({dateval,monthval,subjectval}) => {
    const[val,setval]=useState("")
     const [student,setstudent]=useState([]);
+    console.log(student);
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/attendancereport/sem1", {
             method: "GET",
@@ -42,15 +44,15 @@ const Sem1Attendance = ({dateval,monthval,subjectval}) => {
               else
               {
                 setstudent(json.data)
-              }
-            
+              } 
+
       }
       useEffect(()=>{
           
         fetchdata()
 
       },[])
-console.log(val)
+console.log(val);
   return (
    <>
 
@@ -72,7 +74,7 @@ console.log(val)
     </table>
   </div>
 
-   <button  >Print In pdf</button>
+      <CSVLink data = {student}><button>Print In pdf</button></CSVLink>
    </>
   )
 }
