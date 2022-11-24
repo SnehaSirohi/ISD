@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ScheduleInfoTest = new Schema({
+const ClassesTaken = new Schema({
   name: {
     type: String,
     required: true,
@@ -10,10 +10,14 @@ const ScheduleInfoTest = new Schema({
     type: String,
     required: true,
   },
+  semester: {
+    type: String,
+    require: true,
+  },
   date: {
     type: String,
     required: true,
-  },
+  }
 });
 
-module.exports = mongoose.model("ScheduleInfoTest", ScheduleInfoTest);
+module.exports = mongoose.model("ClassesTaken", ClassesTaken);

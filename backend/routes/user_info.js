@@ -4,8 +4,9 @@ const Sem1Attendance = require("../models/Sem1Attendance");
 const Sem2Attendance = require("../models/Sem2Attendance");
 const Sem3Attendance = require("../models/Sem3Attendance");
 const Sem4Attendance = require("../models/Sem4Attendance");
-const ScheduleInfoClass = require("../models/scheduleinfoclass");
-const ScheduleInfoTest = require("../models/scheduleinfotest");
+const ScheduledClass = require("../models/scheduledclass");
+const ScheduledTest = require("../models/scheduledtest");
+const ClassesTaken = require("../models/classestaken");
 const Teacher = require("../models/teacherdata");
 const jwt = require("jsonwebtoken");
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -255,9 +256,16 @@ router.get("/Teacherdashboard", async (req, res) => {
     const decoded = jwt.verify(token, "secret1234");
     const Teacher_id = decoded.Teacher_id;
     const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    const Classes_taken_count = await ClassesTaken.count({name: teacher.name});
+    const Classes_Scheduled = await ScheduledClass.count({name: teacher.name});
+    const Test_Scheduled = await ScheduledTest.count({name: teacher.name});
+
 
     return res.json({
       status: "ok",
+      Classes_taken_count,
+      Classes_Scheduled,
+      Test_Scheduled,
       Teacher_id: teacher.Teacher_id,
       name: teacher.name,
       email: teacher.email,
@@ -470,7 +478,7 @@ router.post("/scheduleclass", async (req, res) => {
       console.log(Teacher_id)
       return res.status(200).json({
         success: true,
-        data: await ScheduleInfoClass.create({name: teacher.name, subject, date }),
+        data: await ScheduledClass.create({name: teacher.name, subject, date }),
       });
   
     } catch (error) {
@@ -538,7 +546,7 @@ router.post("/scheduletest", async (req, res) => {
     console.log(Teacher_id)
     return res.status(200).json({
       success: true,
-      data: await ScheduleInfoTest.create({name: teacher.name, subject, date }),
+      data: await ScheduledTest.create({name: teacher.name, subject, date }),
     });
 
   } catch (error) {
@@ -567,7 +575,32 @@ router.post("/scheduletest", async (req, res) => {
 
 });
 
+//............
+router.get("/attendance", async (req, res) => {
+  const token = req.headers["x-access-token"];
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+
+    return res.json({
+      status: "ok",
+      Teacher_id: teacher.Teacher_id,
+      name: teacher.name,
+      email: teacher.email,
+      contactNum: teacher.contactNum,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+});
+
+//...........
+
 router.post("/attendance/sem1", async (req, res) => {
+  const token = req.headers["x-access-token"];
+  const semester = "1st";
   const subject = req.body.subject;
   console.log(subject);
   var nowDate = new Date();
@@ -577,7 +610,23 @@ router.post("/attendance/sem1", async (req, res) => {
     (nowDate.getMonth() + 1) +
     "-" +
     nowDate.getDate();
-  for (const key in req.body.status) {
+  
+    try {
+      const decoded = jwt.verify(token, "secret1234");
+      const Teacher_id = decoded.Teacher_id;
+      const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+      console.log(Teacher_id)
+      return res.status(200).json({
+        success: true,
+        data: await ClassesTaken.create({name: teacher.name, subject, semester, date }),
+      });
+  
+    } catch (error) {
+      console.log(error);
+      res.json({ status: "error", error: "invalid token" });
+    }
+  
+    for (const key in req.body.status) {
     const name = key;
     const temp = req.body.status[key];
     var attendanceStatus;
@@ -595,7 +644,10 @@ router.post("/attendance/sem1", async (req, res) => {
     }
   }
 });
+
 router.post("/attendance/sem2", async (req, res) => {
+  const token = req.headers["x-access-token"];
+  const semester = "2nd";
   const subject = req.body.subject;
   console.log(subject);
   var nowDate = new Date();
@@ -605,6 +657,22 @@ router.post("/attendance/sem2", async (req, res) => {
     (nowDate.getMonth() + 1) +
     "-" +
     nowDate.getDate();
+
+    try {
+      const decoded = jwt.verify(token, "secret1234");
+      const Teacher_id = decoded.Teacher_id;
+      const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+      console.log(Teacher_id)
+      return res.status(200).json({
+        success: true,
+        data: await ClassesTaken.create({name: teacher.name, subject, semester, date }),
+      });
+  
+    } catch (error) {
+      console.log(error);
+      res.json({ status: "error", error: "invalid token" });
+    }
+
   for (const key in req.body.status) {
     const name = key;
     const temp = req.body.status[key];
@@ -623,7 +691,11 @@ router.post("/attendance/sem2", async (req, res) => {
     }
   }
 });
+
+
 router.post("/attendance/sem3", async (req, res) => {
+  const token = req.headers["x-access-token"];
+  const semester = "3rd";
   const subject = req.body.subject;
   console.log(subject);
   var nowDate = new Date();
@@ -633,6 +705,22 @@ router.post("/attendance/sem3", async (req, res) => {
     (nowDate.getMonth() + 1) +
     "-" +
     nowDate.getDate();
+
+    try {
+      const decoded = jwt.verify(token, "secret1234");
+      const Teacher_id = decoded.Teacher_id;
+      const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+      console.log(Teacher_id)
+      return res.status(200).json({
+        success: true,
+        data: await ClassesTaken.create({name: teacher.name, subject, semester, date }),
+      });
+  
+    } catch (error) {
+      console.log(error);
+      res.json({ status: "error", error: "invalid token" });
+    }
+
   for (const key in req.body.status) {
     const name = key;
     const temp = req.body.status[key];
@@ -651,7 +739,10 @@ router.post("/attendance/sem3", async (req, res) => {
     }
   }
 });
+
 router.post("/attendance/sem4", async (req, res) => {
+  const token = req.headers["x-access-token"];
+  const semester = "4th";
   const subject = req.body.subject;
   console.log(subject);
   var nowDate = new Date();
@@ -661,6 +752,22 @@ router.post("/attendance/sem4", async (req, res) => {
     (nowDate.getMonth() + 1) +
     "-" +
     nowDate.getDate();
+
+    try {
+      const decoded = jwt.verify(token, "secret1234");
+      const Teacher_id = decoded.Teacher_id;
+      const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+      console.log(Teacher_id)
+      return res.status(200).json({
+        success: true,
+        data: await ClassesTaken.create({name: teacher.name, subject, semester, date }),
+      });
+  
+    } catch (error) {
+      console.log(error);
+      res.json({ status: "error", error: "invalid token" });
+    }
+
   for (const key in req.body.status) {
     const name = key;
     const temp = req.body.status[key];

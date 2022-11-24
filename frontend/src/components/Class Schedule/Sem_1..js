@@ -1,5 +1,5 @@
 import React from "react";
-import {useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
@@ -7,8 +7,7 @@ const Sem_1 = () => {
   //
   const navigate = useNavigate();
   const [name, setName] = useState([])
-
-//
+  //
   const [subject, setsubject] = useState("");
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
@@ -16,8 +15,8 @@ const Sem_1 = () => {
   const sem = "Sem-1";
 
   //-----------
-  async function populate(e){
-    const req = await fetch('http://localhost:4000/scheduleclass',{
+  async function populate(e) {
+    const req = await fetch('http://localhost:4000/scheduleclass', {
       headers: {
         'x-access-token': localStorage.getItem('token'), //
       },
@@ -26,14 +25,14 @@ const Sem_1 = () => {
 
     console.log(data)
     //added
-    if(data.status === 'ok'){
+    if (data.status === 'ok') {
       setName(data.name)
       // setEmail(data.email)
-  }
+    }
   }
 
-  async function populateinfo(e){
-    const req = await fetch('http://localhost:4000/scheduleclass',{
+  async function populateinfo(e) {
+    const req = await fetch('http://localhost:4000/scheduleclass', {
       method: "POST",//
       headers: {
         Accept: "application/json",//
@@ -45,10 +44,10 @@ const Sem_1 = () => {
         subject,
         date,
       }),
-    }).then(async(response) => {
+    }).then(async (response) => {
       let dataa = await response.json();
       console.log(dataa);
-  });
+    });
   }
 
   async function schedule(e) {
@@ -75,20 +74,20 @@ const Sem_1 = () => {
   }
 
   //--------------------
-  useEffect(() =>{
+  useEffect(() => {
     const token = localStorage.getItem('token')
-    if (token){
-        const user = jwt.decode(token)
-        console.log(user)
-        if(!user){
-            localStorage.removeItem('token')
-            navigate("/Teacherdashboard");
-        } else {
-             populate()
-             
-        }
+    if (token) {
+      const user = jwt.decode(token)
+      console.log(user)
+      if (!user) {
+        localStorage.removeItem('token')
+        navigate("/Teacherdashboard");
+      } else {
+        populate()
+
+      }
     }
-}, [])
+  }, [])
 
   return (
     <>
