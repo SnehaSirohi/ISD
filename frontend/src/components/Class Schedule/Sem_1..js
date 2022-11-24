@@ -101,6 +101,7 @@ const Sem_1 = () => {
             id="subject"
             name="subject"
             value={subject}
+            required
             onChange={(e) => setsubject(e.target.value)}>
             <option required>Select Subject</option>
             <option value="Software Design & Programming">
@@ -127,6 +128,7 @@ const Sem_1 = () => {
             id="date"
             aria-describedby="date"
             value={date}
+            required
             onChange={(e) => setdate(e.target.value)}
           />
         </div>
@@ -139,6 +141,7 @@ const Sem_1 = () => {
             className="form-control"
             id="time"
             value={time}
+            required
             onChange={(e) => settime(e.target.value)}
           />
         </div>
