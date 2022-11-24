@@ -1,12 +1,54 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import jwt from 'jsonwebtoken'
+import { useNavigate } from "react-router-dom"
 const Sem_3 = () => {
+  //
+  const navigate = useNavigate();
+  const [name, setName] = useState([])
+  //
   const [subject, setsubject] = useState("");
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
   const [message, setmessage] = useState("");
   const sem = "Sem-3";
+
+  //-----------
+  async function populate(e) {
+    const req = await fetch('http://localhost:4000/scheduleclass', {
+      headers: {
+        'x-access-token': localStorage.getItem('token'), //
+      },
+    })
+    const data = await req.json();
+
+    console.log(data)
+    //added
+    if (data.status === 'ok') {
+      setName(data.name)
+      // setEmail(data.email)
+    }
+  }
+
+  async function populateinfo(e) {
+    const req = await fetch('http://localhost:4000/scheduleclass', {
+      method: "POST",//
+      headers: {
+        Accept: "application/json",//
+        "Content-Type": "application/json", //
+        'x-access-token': localStorage.getItem('token'), //
+      },
+      body: JSON.stringify({
+        name,
+        subject,
+        date,
+      }),
+    }).then(async (response) => {
+      let dataa = await response.json();
+      console.log(dataa);
+    });
+  }
 
   async function schedule(e) {
     e.preventDefault();
@@ -26,12 +68,31 @@ const Sem_3 = () => {
     });
 
     const data = await response.json();
+    populateinfo()
+
   }
 
+  //--------------------
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      const user = jwt.decode(token)
+      console.log(user)
+      if (!user) {
+        localStorage.removeItem('token')
+        navigate("/Teacherdashboard");
+      } else {
+        populate()
+
+      }
+    }
+  }, [])
+  
   return (
     <>
       <form onSubmit={schedule}>
         <div className=" mb-3">
+        <h1>Class Schedule</h1>
           <label className="form-label">Select Subject</label>
           <select
             type="text"

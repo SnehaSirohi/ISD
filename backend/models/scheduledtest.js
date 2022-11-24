@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ScheduleInfoClass = new Schema({
+const ScheduledTest = new Schema({
   name: {
     type: String,
     required: true,
@@ -16,4 +16,4 @@ const ScheduleInfoClass = new Schema({
   },
 });
 
-module.exports = mongoose.model("ScheduleInfoClass", ScheduleInfoClass);
+module.exports = mongoose.model("ScheduledTest", ScheduledTest);

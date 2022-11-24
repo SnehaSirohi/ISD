@@ -1,11 +1,55 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./attendance.css";
+import jwt from 'jsonwebtoken' //
 import List from "./List";
+import { useNavigate } from "react-router-dom"
 const Sem_2 = () => {
+
+  //
+  const navigate = useNavigate();
+  const [teachername, setTeacherName] = useState([])
+
   const [students, setstudents] = useState([]);
   const [status, setstatus] = useState({});
   const [subject, setsubject] = useState("");
+
+
+//-----------
+async function populate(e) {
+  const req = await fetch('http://localhost:4000/attendance', {
+    headers: {
+      'x-access-token': localStorage.getItem('token'), //
+    },
+  })
+  const data = await req.json();
+
+  console.log(data)
+  //added
+  if (data.status === 'ok') {
+    setTeacherName(data.name)
+    // setEmail(data.email)
+  }
+}
+
+async function populateinfo(e) {
+  const req = await fetch('http://localhost:4000/attendance/sem2', {
+    method: "POST",//
+    headers: {
+      Accept: "application/json",//
+      "Content-Type": "application/json", //
+      'x-access-token': localStorage.getItem('token'), //
+    },
+    body: JSON.stringify({
+      teachername,
+      subject,
+    }),
+  }).then(async (response) => {
+    let dataa = await response.json();
+    console.log(dataa);
+  });
+}
+
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/attendance", {
       method: "GET",
@@ -18,8 +62,20 @@ const Sem_2 = () => {
     let data1 = json.data.filter((data) => data.semester == "Sem-2");
     setstudents(data1);
   };
+
   useEffect(() => {
     fetchdata();
+    const token = localStorage.getItem('token')
+    if (token) {
+      const user = jwt.decode(token)
+      console.log(user)
+      if (!user) {
+        localStorage.removeItem('token')
+        navigate("/Teacherdashboard");
+      } else {
+        populate()
+      }
+    }
   }, []);
 
   async function Submit(e) {
@@ -35,6 +91,7 @@ const Sem_2 = () => {
         status,
       }),
     });
+    populateinfo()
   }
 
   return (

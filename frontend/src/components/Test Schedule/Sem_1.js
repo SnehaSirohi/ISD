@@ -7,7 +7,6 @@ const Sem_1 = () => {
   //
   const navigate = useNavigate();
   const [name, setName] = useState([])
-
 //
   const [subject, setsubject] = useState("");
   const [date, setdate] = useState("");
