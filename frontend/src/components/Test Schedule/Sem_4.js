@@ -43,6 +43,7 @@ async function populateinfo(e){
       name,
       subject,
       date,
+      sem,
       time,
     }),
   }).then(async(response) => {
