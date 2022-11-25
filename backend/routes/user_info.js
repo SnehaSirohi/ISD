@@ -465,7 +465,7 @@ router.post("/scheduleclass", async (req, res) => {
   const token = req.headers["x-access-token"];
 
     const subject = req.body.subject;
-    const sem = req.body.sem;
+    const semester = req.body.sem;
     const date = req.body.date;
     const time = req.body.time;
     const message = req.body.message;
@@ -479,7 +479,7 @@ router.post("/scheduleclass", async (req, res) => {
       console.log(Teacher_id)
       return res.status(200).json({
         success: true,
-        data: await ScheduledClass.create({name: teacher.name, subject, date }),
+        data: await ScheduledClass.create({name: teacher.name, subject, semester ,date, time }),
       });
   
     } catch (error) {
@@ -490,7 +490,7 @@ router.post("/scheduleclass", async (req, res) => {
 
     let data = await Students.find({});
     data.forEach((student) => {
-      if (student.semester == sem) {
+      if (student.semester == semester) {
         classScheduleMail(
           subject,
           date,
@@ -537,7 +537,7 @@ router.post("/scheduletest", async (req, res) => {
   const subject = req.body.subject;
   const date = req.body.date;
   const time = req.body.time;
-  const sem = req.body.sem;
+  const semester = req.body.sem;
   const message = req.body.message;
 
   try {
@@ -547,7 +547,7 @@ router.post("/scheduletest", async (req, res) => {
     console.log(Teacher_id)
     return res.status(200).json({
       success: true,
-      data: await ScheduledTest.create({name: teacher.name, subject, date }),
+      data: await ScheduledTest.create({name: teacher.name, subject, semester, date, time }),
     });
 
   } catch (error) {
@@ -559,7 +559,7 @@ router.post("/scheduletest", async (req, res) => {
 
   let data = await Students.find({});
   data.forEach((student) => {
-    if (student.semester == sem) {
+    if (student.semester == semester) {
       testScheduleMail(
         subject,
         date,
@@ -601,10 +601,14 @@ router.get("/attendance", async (req, res) => {
 
 router.post("/attendance/sem1", async (req, res) => {
   const token = req.headers["x-access-token"];
-  const semester = "1st";
+  const semester = "Sem-1";
   const subject = req.body.subject;
   console.log(subject);
   var nowDate = new Date();
+  const time = 
+    nowDate.getHours() + 
+    ":"+ nowDate.getMinutes() +
+    ":"+ nowDate.getSeconds();
   const date =
     nowDate.getFullYear() +
     "-" +
@@ -619,7 +623,7 @@ router.post("/attendance/sem1", async (req, res) => {
       console.log(Teacher_id)
       return res.status(200).json({
         success: true,
-        data: await ClassesTaken.create({name: teacher.name, subject, semester, date }),
+        data: await ClassesTaken.create({name: teacher.name, subject, semester, date, time }),
       });
   
     } catch (error) {
@@ -639,7 +643,7 @@ router.post("/attendance/sem1", async (req, res) => {
     }
 
     try {
-      await Sem1Attendance.create({ date, name, subject, attendanceStatus });
+      await Sem1Attendance.create({ date, name, subject, semester, attendanceStatus,time });
     } catch (error) {
       console.log(error);
     }
@@ -648,10 +652,14 @@ router.post("/attendance/sem1", async (req, res) => {
 
 router.post("/attendance/sem2", async (req, res) => {
   const token = req.headers["x-access-token"];
-  const semester = "2nd";
+  const semester = "Sem-2";
   const subject = req.body.subject;
   console.log(subject);
   var nowDate = new Date();
+  const time = 
+    nowDate.getHours() + 
+    ":"+ nowDate.getMinutes() +
+    ":"+ nowDate.getSeconds();
   const date =
     nowDate.getFullYear() +
     "-" +
@@ -666,7 +674,7 @@ router.post("/attendance/sem2", async (req, res) => {
       console.log(Teacher_id)
       return res.status(200).json({
         success: true,
-        data: await ClassesTaken.create({name: teacher.name, subject, semester, date }),
+        data: await ClassesTaken.create({name: teacher.name, subject, semester, date,time }),
       });
   
     } catch (error) {
@@ -686,7 +694,7 @@ router.post("/attendance/sem2", async (req, res) => {
     }
 
     try {
-      await Sem2Attendance.create({ date, name, subject, attendanceStatus });
+      await Sem2Attendance.create({ date, name, subject, semester, attendanceStatus, time });
     } catch (error) {
       console.log(error);
     }
@@ -696,9 +704,13 @@ router.post("/attendance/sem2", async (req, res) => {
 
 router.post("/attendance/sem3", async (req, res) => {
   const token = req.headers["x-access-token"];
-  const semester = "3rd";
+  const semester = "Sem-3";
   const subject = req.body.subject;
   console.log(subject);
+  const time = 
+    nowDate.getHours() + 
+    ":"+ nowDate.getMinutes() +
+    ":"+ nowDate.getSeconds();
   var nowDate = new Date();
   const date =
     nowDate.getFullYear() +
@@ -714,7 +726,7 @@ router.post("/attendance/sem3", async (req, res) => {
       console.log(Teacher_id)
       return res.status(200).json({
         success: true,
-        data: await ClassesTaken.create({name: teacher.name, subject, semester, date }),
+        data: await ClassesTaken.create({name: teacher.name, subject, semester, date, time }),
       });
   
     } catch (error) {
@@ -734,7 +746,7 @@ router.post("/attendance/sem3", async (req, res) => {
     }
 
     try {
-      await Sem3Attendance.create({ date, name, subject, attendanceStatus });
+      await Sem3Attendance.create({ date, name, subject, semester, attendanceStatus, time });
     } catch (error) {
       console.log(error);
     }
@@ -743,9 +755,13 @@ router.post("/attendance/sem3", async (req, res) => {
 
 router.post("/attendance/sem4", async (req, res) => {
   const token = req.headers["x-access-token"];
-  const semester = "4th";
+  const semester = "Sem-4";
   const subject = req.body.subject;
   console.log(subject);
+  const time = 
+    nowDate.getHours() + 
+    ":"+ nowDate.getMinutes() +
+    ":"+ nowDate.getSeconds();
   var nowDate = new Date();
   const date =
     nowDate.getFullYear() +
@@ -761,7 +777,7 @@ router.post("/attendance/sem4", async (req, res) => {
       console.log(Teacher_id)
       return res.status(200).json({
         success: true,
-        data: await ClassesTaken.create({name: teacher.name, subject, semester, date }),
+        data: await ClassesTaken.create({name: teacher.name, subject, semester, date, time }),
       });
   
     } catch (error) {
@@ -781,7 +797,7 @@ router.post("/attendance/sem4", async (req, res) => {
     }
 
     try {
-      await Sem4Attendance.create({ date, name, subject, attendanceStatus });
+      await Sem4Attendance.create({ date, name, subject, semester, attendanceStatus, time });
     } catch (error) {
       console.log(error);
     }
