@@ -13,6 +13,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 const { classScheduleMail, testScheduleMail } = require("../utils/mail");
 const { json } = require("body-parser");
+const scheduledclass = require("../models/scheduledclass");
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -847,4 +848,20 @@ router.get("/scheduledtestreport", async (req, res) => {
   }
 
 });
+
+router.post("/random",async (req,res)=>{
+    // const date=req.body.date
+    // const time=req.body.time
+ 
+    let data = await ScheduledClass.find({});
+  data.forEach((classes) => {
+    console.log(classes.time);
+    // if(date==classes.date && time.slice(0,2)==classes.time)
+    // {
+    //   res.json({message:`class already schedule on ${classes.time} ${date}`})
+    // }
+  });
+    
+  
+})
 module.exports = router;
