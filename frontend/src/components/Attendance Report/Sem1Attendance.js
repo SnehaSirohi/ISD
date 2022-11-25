@@ -65,7 +65,8 @@ const Sem1Attendance = ({dateval,monthval,subjectval}) => {
 
   const exporttopdfhandler = () =>{
     const doc = new jsPDF()
-    doc.text("Attendence Report",70,10)
+    let heading = val ? "Attendance Report of " + val : "Overall Attendance Report of Semester 1";
+    doc.text(heading,20,10)
     autoTable(doc, { html: '#mytable'})
     doc.save('table.pdf')
   };
