@@ -42,6 +42,7 @@ const Sem_4 = () => {
       body: JSON.stringify({
         name,
         subject,
+        sem,
         date,
       }),
     }).then(async (response) => {
