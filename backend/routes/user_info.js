@@ -814,7 +814,37 @@ router.get("/attendancereport/sem4", async (req, res) => {
   });
 });
 
-router.post("/random",(req,res)=>{
-  console.log("req.body")
-})
+router.get("/scheduledclassreport", async (req, res) => {
+  const token = req.headers["x-access-token"];
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    return res.status(200).json({
+      success: true,
+      data: await ScheduledClass.find({name: teacher.name}),
+    });
+  }catch(error){
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+
+});
+
+router.get("/scheduledtestreport", async (req, res) => {
+  const token = req.headers["x-access-token"];
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    return res.status(200).json({
+      success: true,
+      data: await ScheduledTest.find({name: teacher.name}),
+    });
+  }catch(error){
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+
+});
 module.exports = router;
