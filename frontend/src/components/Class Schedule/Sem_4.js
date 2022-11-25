@@ -44,6 +44,7 @@ const Sem_4 = () => {
         subject,
         sem,
         date,
+        time,
       }),
     }).then(async (response) => {
       let dataa = await response.json();
