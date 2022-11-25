@@ -34,6 +34,7 @@ import Sem1filters from './components/Filters/Sem1filters';
 import Sem2filters from './components/Filters/Sem2filters';
 import Sem3filters from './components/Filters/Sem3filters';
 import Sem4filters from './components/Filters/Sem4filters';
+import Random from './components/random api/Random';
 function App() {
   const[subjectval,setsubjectval]=useState("")
   const[dateval,setdateval]=useState("")
@@ -83,7 +84,7 @@ function App() {
       <Route path="/filters/sem3" element={<Sem3filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
       <Route path="/attendancereport/sem4" element={<Sem4Attendance subjectval={subjectval} dateval={dateval} monthval={monthval}/>}/>
       <Route path="/filters/sem4" element={<Sem4filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
-
+      <Route path="/random" element={<Random/>}/>
         </Routes>
       </BrowserRouter>
     </div>

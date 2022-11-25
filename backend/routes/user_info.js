@@ -813,4 +813,8 @@ router.get("/attendancereport/sem4", async (req, res) => {
     data: await Sem4Attendance.find({}),
   });
 });
+
+router.post("/random",(req,res)=>{
+  console.log("req.body")
+})
 module.exports = router;
