@@ -51,27 +51,6 @@ const Sem_1 = () => {
     }
   }
 
-  // async function populateinfo(e) {
-  //   const req = await fetch('http://localhost:4000/scheduleclass', {
-  //     method: "POST",//
-  //     headers: {
-  //       Accept: "application/json",//
-  //       "Content-Type": "application/json", //
-  //       'x-access-token': localStorage.getItem('token'), //
-  //     },
-  //     body: JSON.stringify({
-  //       name,
-  //       subject,
-  //       sem,
-  //       date,
-  //       time,
-  //     }),
-  //   }).then(async (response) => {
-  //     let dataa = await response.json();
-  //     console.log(dataa.message);
-  //   });
-  // }
-
   async function schedule(e) {
     e.preventDefault();
 
@@ -95,9 +74,6 @@ const Sem_1 = () => {
        console.log(data);
       setwarning(data.warning)
     });
-
-    // const data = await response.json();
-    // populateinfo()
 
   }
 

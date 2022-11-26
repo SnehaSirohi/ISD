@@ -471,9 +471,9 @@ router.post("/scheduleclass", async (req, res) => {
     const message = req.body.message;
     let SCdata = await ScheduledClass.find({});
     for (const data of SCdata) {
-        if(date===data.date && time.slice(0,2)===data.time.slice(0,2))
+        if(date===data.date && time.slice(0,2)===data.time.slice(0,2) && semester==data.semester)
       
-         return res.status(200).json({warning:`One class is already scheduled on ${date} at ${data.time}, Please schedule your class on other time`})
+         return res.status(200).json({warning:`${data.name} has already scheduled the class of ${data.subject} on ${date} at ${data.time}, Please schedule your class on another time`})
     }
    let data = await Students.find({});
     data.forEach((student) => {
@@ -543,6 +543,26 @@ router.post("/scheduletest", async (req, res) => {
   const time = req.body.time;
   const semester = req.body.sem;
   const message = req.body.message;
+    let STdata = await ScheduledTest.find({});
+    for (const data of STdata) {
+        if(date===data.date && time.slice(0,2)===data.time.slice(0,2) && semester==data.semester)
+      
+         return res.status(200).json({warning:`${data.name} has already scheduled the test of ${data.subject} on ${date} at ${data.time}, Please schedule your test on another time`})
+    }
+     let data = await Students.find({});
+  data.forEach((student) => {
+    if (student.semester == semester) {
+      testScheduleMail(
+        subject,
+        date,
+        time,
+        student.email,
+        student.name,
+        message
+      );
+    }
+
+  });
 
   try {
     const decoded = jwt.verify(token, "secret1234");
@@ -561,20 +581,7 @@ router.post("/scheduletest", async (req, res) => {
 
  
 
-  let data = await Students.find({});
-  data.forEach((student) => {
-    if (student.semester == semester) {
-      testScheduleMail(
-        subject,
-        date,
-        time,
-        student.email,
-        student.name,
-        message
-      );
-    }
-
-  });
+ 
 
   
 
