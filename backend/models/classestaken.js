@@ -17,7 +17,11 @@ const ClassesTaken = new Schema({
   date: {
     type: String,
     required: true,
-  }
+  },
+  time: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("ClassesTaken", ClassesTaken);

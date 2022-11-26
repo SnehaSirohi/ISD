@@ -42,7 +42,9 @@ const Sem_3 = () => {
       body: JSON.stringify({
         name,
         subject,
+        sem,
         date,
+        time,
       }),
     }).then(async (response) => {
       let dataa = await response.json();
