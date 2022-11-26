@@ -12,8 +12,11 @@ const Sem_1 = () => {
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
   const [message, setmessage] = useState("");
+  const [warning, setwarning] = useState("");
   const [UnmeshShukla,setUnmeshShukla]=useState(false)
   const [NitishaAgg,setNitishaAgg]=useState(false)
+  const [MKDas,setMKDas]=useState(false)
+  const [SunilKumar,setSunilKumar]=useState(false)
   const sem = "Sem-1";
 
   //-----------
@@ -30,34 +33,43 @@ const Sem_1 = () => {
     {
       setUnmeshShukla(true)
     }
-    // if(data.name=="Nitis")
-    //added
+    if(data.name=="Nitisha Aggarwal")
+    {
+      setNitishaAgg(true)
+    }
+    if(data.name=="M.K Das")
+    {
+      setMKDas(true)
+    }
+    if(data.name=="Sunil Kumar")
+    {
+      setSunilKumar(true)
+    }
     if (data.status === 'ok') {
       setName(data.name)
-      // setEmail(data.email)
     }
   }
 
-  async function populateinfo(e) {
-    const req = await fetch('http://localhost:4000/scheduleclass', {
-      method: "POST",//
-      headers: {
-        Accept: "application/json",//
-        "Content-Type": "application/json", //
-        'x-access-token': localStorage.getItem('token'), //
-      },
-      body: JSON.stringify({
-        name,
-        subject,
-        sem,
-        date,
-        time,
-      }),
-    }).then(async (response) => {
-      let dataa = await response.json();
-      console.log(dataa.message);
-    });
-  }
+  // async function populateinfo(e) {
+  //   const req = await fetch('http://localhost:4000/scheduleclass', {
+  //     method: "POST",//
+  //     headers: {
+  //       Accept: "application/json",//
+  //       "Content-Type": "application/json", //
+  //       'x-access-token': localStorage.getItem('token'), //
+  //     },
+  //     body: JSON.stringify({
+  //       name,
+  //       subject,
+  //       sem,
+  //       date,
+  //       time,
+  //     }),
+  //   }).then(async (response) => {
+  //     let dataa = await response.json();
+  //     console.log(dataa.message);
+  //   });
+  // }
 
   async function schedule(e) {
     e.preventDefault();
@@ -67,18 +79,23 @@ const Sem_1 = () => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+         'x-access-token': localStorage.getItem('token'), 
       },
       body: JSON.stringify({
+        name,
         subject,
         sem,
         date,
         time,
         message,
       }),
+    }).then(async (response) => {
+      let data = await response.json();
+      setwarning(data.warning)
     });
 
-    const data = await response.json();
-    populateinfo()
+    // const data = await response.json();
+    // populateinfo()
 
   }
 
@@ -117,7 +134,7 @@ const Sem_1 = () => {
               Algorithms and Data Structure
             </option>
           </select></div> }
-          <label className="form-label">Select Subject</label>
+          {NitishaAgg && <div><label className="form-label">Select Subject</label>
           <select
             type="text"
             className="form-control"
@@ -127,19 +144,39 @@ const Sem_1 = () => {
             required
             onChange={(e) => setsubject(e.target.value)}>
             <option required>Select Subject</option>
-            <option value="Software Design & Programming">
+           <option value="Software Design & Programming">
               Software Design & Programming
             </option>
-            <option value="Algorithms And Data Structure">
-              Algorithms and Data Structure
-            </option>
-            <option value="Computer System Architecture">
-              Computer System Architecture
-            </option>
+          </select></div> }
+          {MKDas && <div><label className="form-label">Select Subject</label>
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            required
+            onChange={(e) => setsubject(e.target.value)}>
+            <option required>Select Subject</option>
             <option value="Mathematical Foundation Of Computing">
               Mathematical Foundation of Computing
             </option>
-          </select>
+          </select></div> }
+          {SunilKumar && <div><label className="form-label">Select Subject</label>
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            required
+            onChange={(e) => setsubject(e.target.value)}>
+            <option required>Select Subject</option>
+            <option value="Computer System Architecture">
+              Computer System Architecture
+            </option>
+          </select></div> }
+          
         </div>
         <div className="mb-3">
           <label htmlFor="date" className="form-label">
@@ -185,6 +222,11 @@ const Sem_1 = () => {
           Schedule Class
         </button>
       </form>
+     {warning &&  <div className="container warning">
+            <h3>{warning}</h3>
+            <button>Yes</button>
+            <button onClick={(e)=>setwarning(false)}>No</button>
+      </div>}
     </>
   );
 };

@@ -476,7 +476,7 @@ router.post("/scheduleclass", async (req, res) => {
       console.log(classes);
       if(date===classes.date && time.slice(0,2)===classes.time.slice(0,2))
       {
-        return res.status(200).json({message:`One class is already scheduled on ${date} at ${classes.time}`})
+        return res.status(200).json({warning:`One class is already scheduled on ${date} at ${classes.time}, Do you still want to continue?`})
       
         
         // console.log(`One class is already scheduled on ${date} at ${classes.time}`);
