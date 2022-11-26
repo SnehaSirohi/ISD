@@ -12,6 +12,8 @@ const Sem_1 = () => {
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
   const [message, setmessage] = useState("");
+  const [UnmeshShukla,setUnmeshShukla]=useState(false)
+  const [NitishaAgg,setNitishaAgg]=useState(false)
   const sem = "Sem-1";
 
   //-----------
@@ -24,6 +26,11 @@ const Sem_1 = () => {
     const data = await req.json();
 
     console.log(data)
+    if(data.name=="Unmesh Shukla")
+    {
+      setUnmeshShukla(true)
+    }
+    // if(data.name=="Nitis")
     //added
     if (data.status === 'ok') {
       setName(data.name)
@@ -47,7 +54,7 @@ const Sem_1 = () => {
       }),
     }).then(async (response) => {
       let dataa = await response.json();
-      console.log(dataa);
+      console.log(dataa.message);
     });
   }
 
@@ -89,12 +96,26 @@ const Sem_1 = () => {
       }
     }
   }, [])
-
+  
   return (
     <>
       <form onSubmit={schedule}>
         <div className=" mb-3">
           <h1>Class Schedule</h1>
+          {UnmeshShukla && <div><label className="form-label">Select Subject</label>
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            required
+            onChange={(e) => setsubject(e.target.value)}>
+            <option required>Select Subject</option>
+            <option value="Algorithms And Data Structure">
+              Algorithms and Data Structure
+            </option>
+          </select></div> }
           <label className="form-label">Select Subject</label>
           <select
             type="text"

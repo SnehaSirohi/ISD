@@ -462,45 +462,57 @@ router.get("/scheduleclass", async (req, res) => {
 
 router.post("/scheduleclass", async (req, res) => {
 
-  const token = req.headers["x-access-token"];
+  // const token = req.headers["x-access-token"];
 
     const subject = req.body.subject;
     const semester = req.body.sem;
     const date = req.body.date;
     const time = req.body.time;
     const message = req.body.message;
-    console.log(req.body);
-
-
-    try {
-      const decoded = jwt.verify(token, "secret1234");
-      const Teacher_id = decoded.Teacher_id;
-      const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
-      console.log(Teacher_id)
-      return res.status(200).json({
-        success: true,
-        data: await ScheduledClass.create({name: teacher.name, subject, semester ,date, time }),
-      });
-  
-    } catch (error) {
-      console.log(error);
-      res.json({ status: "error", error: "invalid token" });
-    }
-  
-
-    let data = await Students.find({});
-    data.forEach((student) => {
-      if (student.semester == semester) {
-        classScheduleMail(
-          subject,
-          date,
-          time, 
-          student.email,
-          student.name,
-          message
-        );
+    console.log("Request body = ",req.body)
+    let data = await ScheduledClass.find({});
+    console.log(data.length);
+    data.forEach((classes)=>{
+      console.log(classes);
+      if(date===classes.date && time.slice(0,2)===classes.time.slice(0,2))
+      {
+        return res.status(200).json({message:`One class is already scheduled on ${date} at ${classes.time}`})
+      
+        
+        // console.log(`One class is already scheduled on ${date} at ${classes.time}`);
       }
-    });
+    })
+ 
+
+    // try {
+    //   const decoded = jwt.verify(token, "secret1234");
+    //   const Teacher_id = decoded.Teacher_id;
+    //   const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    //   console.log(Teacher_id)
+    //   return res.status(200).json({
+    //     success: true,
+    //     data: await ScheduledClass.create({name: teacher.name, subject, semester ,date, time }),
+    //   });
+  
+    // } catch (error) {
+    //   console.log(error);
+    //   res.json({ status: "error", error: "invalid token" });
+    // }
+  
+
+    // let data = await Students.find({});
+    // data.forEach((student) => {
+    //   if (student.semester == semester) {
+    //     classScheduleMail(
+    //       subject,
+    //       date,
+    //       time, 
+    //       student.email,
+    //       student.name,
+    //       message
+    //     );
+    //   }
+    // });
   });
 
 
@@ -866,16 +878,16 @@ router.get("/scheduledtestreport", async (req, res) => {
 });
 
 router.post("/random",async (req,res)=>{
-    // const date=req.body.date
-    // const time=req.body.time
+    const date=req.body.date
+    const time=req.body.time
  
     let data = await ScheduledClass.find({});
   data.forEach((classes) => {
-    console.log(classes.time);
-    // if(date==classes.date && time.slice(0,2)==classes.time)
-    // {
-    //   res.json({message:`class already schedule on ${classes.time} ${date}`})
-    // }
+    const classtime=classes.time
+    if(date==classes.date && time.slice(0,2)==classtime.slice(0,2))
+    {
+      res.json({message:`class already schedule on  ${date} at ${classes.time},Do you still want to continue?`})
+    }
   });
     
   

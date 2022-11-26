@@ -25,7 +25,7 @@ const Random=()=>{
             <input type="date" value={date} onChange={(e)=>setdate(e.target.value)} />
             <input type="time" value={time} onChange={(e)=>settime(e.target.value)}/>
             <button onClick={send} >submit here</button>
-            {message && alert(message)}
+            {message && <h1>{message}</h1>}
         </div>
         </>
     )
