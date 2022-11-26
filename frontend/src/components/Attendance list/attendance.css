@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  
+}
+
+
 td {
   text-align: center;
 }
@@ -11,5 +17,36 @@ tr {
   align-items: center;
 }
 .main {
-  width: 50vw;
+  background-color: rgb(251, 249, 249);
+  width: 60vw;
+  margin-left: 20vw;
+  margin-right: 20vw;
 }
+
+thead { 
+  background-color: #2bb0a8;
+}
+
+h1 {
+  text-align: center;
+  justify-content: center;
+  background-color: aliceblue;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 0%
+  ;
+}
+
+.form-control{
+  background-color: #2bb0a8;
+}
+
+ option{
+  text-align: center;
+  background-color: aquamarine;
+ }
+
+ select{
+  text-align: center;
+  background-color: blue;
+ }
