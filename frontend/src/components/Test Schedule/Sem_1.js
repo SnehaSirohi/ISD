@@ -42,6 +42,8 @@ async function populateinfo(e){
     body: JSON.stringify({
       name,
       subject,
+      sem,
+      time,
       date,
     }),
   }).then(async(response) => {

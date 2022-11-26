@@ -719,11 +719,11 @@ router.post("/attendance/sem3", async (req, res) => {
   const semester = "Sem-3";
   const subject = req.body.subject;
   console.log(subject);
-  const time = 
-    nowDate.getHours() + 
-    ":"+ nowDate.getMinutes() +
-    ":"+ nowDate.getSeconds();
   var nowDate = new Date();
+  const time = 
+  nowDate.getHours() + 
+  ":"+ nowDate.getMinutes() +
+  ":"+ nowDate.getSeconds();
   const date =
     nowDate.getFullYear() +
     "-" +
@@ -770,11 +770,11 @@ router.post("/attendance/sem4", async (req, res) => {
   const semester = "Sem-4";
   const subject = req.body.subject;
   console.log(subject);
+  var nowDate = new Date();
   const time = 
     nowDate.getHours() + 
     ":"+ nowDate.getMinutes() +
     ":"+ nowDate.getSeconds();
-  var nowDate = new Date();
   const date =
     nowDate.getFullYear() +
     "-" +
