@@ -462,57 +462,49 @@ router.get("/scheduleclass", async (req, res) => {
 
 router.post("/scheduleclass", async (req, res) => {
 
-  // const token = req.headers["x-access-token"];
+  const token = req.headers["x-access-token"];
 
     const subject = req.body.subject;
     const semester = req.body.sem;
     const date = req.body.date;
     const time = req.body.time;
     const message = req.body.message;
-    console.log("Request body = ",req.body)
-    let data = await ScheduledClass.find({});
-    console.log(data.length);
-    data.forEach((classes)=>{
-      console.log(classes);
-      if(date===classes.date && time.slice(0,2)===classes.time.slice(0,2))
-      {
-        return res.status(200).json({warning:`One class is already scheduled on ${date} at ${classes.time}, Do you still want to continue?`})
+    let SCdata = await ScheduledClass.find({});
+    for (const data of SCdata) {
+        if(date===data.date && time.slice(0,2)===data.time.slice(0,2))
       
-        
-        // console.log(`One class is already scheduled on ${date} at ${classes.time}`);
+         return res.status(200).json({warning:`One class is already scheduled on ${date} at ${data.time}, Please schedule your class on other time`})
+    }
+   let data = await Students.find({});
+    data.forEach((student) => {
+      if (student.semester == semester) {
+        classScheduleMail(
+          subject,
+          date,
+          time, 
+          student.email,
+          student.name,
+          message
+        );
       }
-    })
- 
+    });
 
-    // try {
-    //   const decoded = jwt.verify(token, "secret1234");
-    //   const Teacher_id = decoded.Teacher_id;
-    //   const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
-    //   console.log(Teacher_id)
-    //   return res.status(200).json({
-    //     success: true,
-    //     data: await ScheduledClass.create({name: teacher.name, subject, semester ,date, time }),
-    //   });
+    try {
+      const decoded = jwt.verify(token, "secret1234");
+      const Teacher_id = decoded.Teacher_id;
+      const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+      return res.status(200).json({
+        success: true,
+        data: await ScheduledClass.create({name: teacher.name, subject, semester ,date, time }),
+      });
   
-    // } catch (error) {
-    //   console.log(error);
-    //   res.json({ status: "error", error: "invalid token" });
-    // }
+    } catch (error) {
+      console.log(error);
+      res.json({ status: "error", error: "invalid token" });
+    }
   
 
-    // let data = await Students.find({});
-    // data.forEach((student) => {
-    //   if (student.semester == semester) {
-    //     classScheduleMail(
-    //       subject,
-    //       date,
-    //       time, 
-    //       student.email,
-    //       student.name,
-    //       message
-    //     );
-    //   }
-    // });
+  
   });
 
 
