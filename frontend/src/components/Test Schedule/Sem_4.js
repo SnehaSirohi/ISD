@@ -6,8 +6,6 @@ import { useNavigate } from "react-router-dom"
 const Sem_4 = () => {
   //
   const navigate = useNavigate();
-  const [name, setName] = useState([])
-//
   const [subject, setsubject] = useState("");
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
@@ -45,10 +43,6 @@ const Sem_4 = () => {
     {
       setSanjeev(true)
     }
-  //added
-  if(data.status === 'ok'){
-    setName(data.name)
-}
 }
 
   async function schedule(e) {
@@ -62,7 +56,6 @@ const Sem_4 = () => {
       'x-access-token': localStorage.getItem('token'),
       },
       body: JSON.stringify({
-        name,
         subject,
         sem,
         date,

@@ -3,11 +3,8 @@ import { useState,useEffect,useRef,useReactToPrint } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
-// import { Button } from 'reactstrap';
-// import jsPDF from 'jspdf'
 import List from './List';
 var XLSX = require("xlsx");
-// import { CSVLink } from 'react-csv';
 const Sem1Attendance = ({dateval,monthval,subjectval}) => {
    const[val,setval]=useState("")
     const [student,setstudent]=useState([]);

@@ -7,8 +7,6 @@ import './CS.css'
 const Sem_1 = () => {
   //
   const navigate = useNavigate();
-  const [name, setName] = useState([])
-  //
   const [subject, setsubject] = useState("");
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
@@ -46,9 +44,6 @@ const Sem_1 = () => {
     {
       setSunilKumar(true)
     }
-    if (data.status === 'ok') {
-      setName(data.name)
-    }
   }
 
   async function schedule(e) {
@@ -62,7 +57,6 @@ const Sem_1 = () => {
          'x-access-token': localStorage.getItem('token'), 
       },
       body: JSON.stringify({
-        name,
         subject,
         sem,
         date,

@@ -420,14 +420,6 @@ router.post("/registerteacher", async (req, res) => {
 });
 
 
-
-router.get("/attendance", async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    data: await Students.find({}),
-  });
-});
-
 //..............
 
 router.get("/scheduleclass", async (req, res) => {
@@ -572,34 +564,32 @@ router.post("/scheduletest", async (req, res) => {
     console.log(error);
     res.json({ status: "error", error: "invalid token" });
   }
-
-
-
-
-
-
-
 });
 
 //............
+
+
 router.get("/attendance", async (req, res) => {
   const token = req.headers["x-access-token"];
   try {
-    const decoded = jwt.verify(token, "secret1234");
-    const Teacher_id = decoded.Teacher_id;
-    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+        const decoded = jwt.verify(token, "secret1234");
+        const Teacher_id = decoded.Teacher_id;
+        const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    
+        return res.json({
+          status: "ok",
+          success:true,
+          Teacher_id: teacher.Teacher_id,
+          name: teacher.name,
+          email: teacher.email,
+          contactNum: teacher.contactNum,
+          data: await Students.find({}),
+        });
+      } catch (error) {
+        console.log(error);
+        res.json({ status: "error", error: "invalid token" });
+      }
 
-    return res.json({
-      status: "ok",
-      Teacher_id: teacher.Teacher_id,
-      name: teacher.name,
-      email: teacher.email,
-      contactNum: teacher.contactNum,
-    });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "invalid token" });
-  }
 });
 
 //...........

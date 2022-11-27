@@ -8,48 +8,13 @@ import { useNavigate } from "react-router-dom"
 const Sem_1 = () => {
   //
   const navigate = useNavigate();
-  const [teachername, setTeacherName] = useState([])
-
   const [students, setstudents] = useState([]);
   const [status, setstatus] = useState({});
   const [subject, setsubject] = useState("");
-
-
-//-----------
-async function populate(e) {
-  const req = await fetch('http://localhost:4000/attendance', {
-    headers: {
-      'x-access-token': localStorage.getItem('token'), //
-    },
-  })
-  const data = await req.json();
-
-  console.log(data)
-  //added
-  if (data.status === 'ok') {
-    setTeacherName(data.name)
-    // setEmail(data.email)
-  }
-}
-
-async function populateinfo(e) {
-  const req = await fetch('http://localhost:4000/attendance/sem1', {
-    method: "POST",//
-    headers: {
-      Accept: "application/json",//
-      "Content-Type": "application/json", //
-      'x-access-token': localStorage.getItem('token'), //
-    },
-    body: JSON.stringify({
-      teachername,
-      subject,
-    }),
-  }).then(async (response) => {
-    let dataa = await response.json();
-    console.log(dataa);
-  });
-}
-
+  const [UnmeshShukla,setUnmeshShukla]=useState(false)
+  const [NitishaAgg,setNitishaAgg]=useState(false)
+  const [MKDas,setMKDas]=useState(false)
+  const [SunilKumar,setSunilKumar]=useState(false)
 
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/attendance", {
@@ -57,16 +22,37 @@ async function populateinfo(e) {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        'x-access-token': localStorage.getItem('token'), //
+
       },
     });
     const json = await response.json();
+    console.log(json)
+    console.log(json.name)
+    
+    if(json.name=="Unmesh Shukla")
+    {
+      setUnmeshShukla(true)
+    }
+    if(json.name=="Nitisha Aggarwal")
+    {
+      setNitishaAgg(true)
+    }
+    if(json.name=="M.K Das")
+    {
+      setMKDas(true)
+    }
+    if(json.name=="Sunil Kumar")
+    {
+      setSunilKumar(true)
+    }
+
     let data1 = json.data.filter((data) => data.semester == "Sem-1");
     setstudents(data1);
   };
 
 
   useEffect(() => {
-    fetchdata();
     const token = localStorage.getItem('token')
     if (token) {
       const user = jwt.decode(token)
@@ -75,7 +61,7 @@ async function populateinfo(e) {
         localStorage.removeItem('token')
         navigate("/Teacherdashboard");
       } else {
-        populate()
+        fetchdata()
       }
     }
 
@@ -88,44 +74,81 @@ async function populateinfo(e) {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        'x-access-token': localStorage.getItem('token'), //
       },
       body: JSON.stringify({
         subject,
         status,
       }),
+    }).then(async (response) => {
+      let dataa = await response.json();
+      console.log(dataa);
     });
-    populateinfo()
   }
 
   return (
     <>
       <h1>Sem 1 attendance</h1>
-<div className=" mb-3">
+      {UnmeshShukla && <div className="mb-3">
         <label className="form-label">Select Subject</label>
-        <select
-          type="text"
-          className="form-control"
-          id="subject"
-          name="subject"
-          value={subject}
-          onChange={(e) => setsubject(e.target.value)}>
-          <option required>Select Subject</option>
-       
-          <option value="Software Design & Programming">
-            Software Design & Programming
-          </option>
-          <option value="Algorithms And Data Structure">
-            Algorithms and Data Structure
-          </option>
-          <option value="Computer System Architecture">
-            Computer System Architecture
-          </option>
-          <option value="Mathematical Foundation Of Computing">
-            Mathematical Foundation of Computing
-          </option>
-        </select>
-      </div>
-     
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            required
+            onChange={(e) => setsubject(e.target.value)}>
+            <option required>Select Subject</option>
+            <option value="Algorithms And Data Structure">
+              Algorithms and Data Structure
+            </option>
+          </select></div> }
+          {NitishaAgg && <div className="mb-3">
+            <label className="form-label">Select Subject</label>
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            required
+            onChange={(e) => setsubject(e.target.value)}>
+            <option required>Select Subject</option>
+           <option value="Software Design & Programming">
+              Software Design & Programming
+            </option>
+          </select></div> }
+          {MKDas && <div className="mb-3">
+            <label className="form-label">Select Subject</label>
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            required
+            onChange={(e) => setsubject(e.target.value)}>
+            <option required>Select Subject</option>
+            <option value="Mathematical Foundation Of Computing">
+              Mathematical Foundation of Computing
+            </option>
+          </select></div> }
+          {SunilKumar && <div className="mb-3">
+            <label className="form-label">Select Subject</label>
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            required
+            onChange={(e) => setsubject(e.target.value)}>
+            <option required>Select Subject</option>
+            <option value="Computer System Architecture">
+              Computer System Architecture
+            </option>
+          </select></div> }
       
       <div className="main">
         <table className="table table-bordered">

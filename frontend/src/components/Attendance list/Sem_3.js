@@ -8,45 +8,13 @@ import { useNavigate } from "react-router-dom"
 const Sem_3 = () => {
   //
   const navigate = useNavigate();
-  const [teachername, setTeacherName] = useState([])
   const [students, setstudents] = useState([]);
   const [status, setstatus] = useState({});
   const [subject, setsubject] = useState("");
-
-//-----------
-async function populate(e) {
-  const req = await fetch('http://localhost:4000/attendance', {
-    headers: {
-      'x-access-token': localStorage.getItem('token'), //
-    },
-  })
-  const data = await req.json();
-
-  console.log(data)
-  //added
-  if (data.status === 'ok') {
-    setTeacherName(data.name)
-    // setEmail(data.email)
-  }
-}
-
-async function populateinfo(e) {
-  const req = await fetch('http://localhost:4000/attendance/sem3', {
-    method: "POST",//
-    headers: {
-      Accept: "application/json",//
-      "Content-Type": "application/json", //
-      'x-access-token': localStorage.getItem('token'), //
-    },
-    body: JSON.stringify({
-      teachername,
-      subject,
-    }),
-  }).then(async (response) => {
-    let dataa = await response.json();
-    console.log(dataa);
-  });
-}
+  const [UnmeshShukla,setUnmeshShukla]=useState(false)
+  const [NitishaAgg,setNitishaAgg]=useState(false)
+  const [MKDas,setMKDas]=useState(false)
+  const [Manish,setManish]=useState(false)
 
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/attendance", {
@@ -54,15 +22,34 @@ async function populateinfo(e) {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        'x-access-token': localStorage.getItem('token'), //
       },
     });
     const json = await response.json();
+    console.log(json)
+    console.log(json.name)
+    if(json.name=="Unmesh Shukla")
+    {
+      setUnmeshShukla(true)
+    }
+    if(json.name=="Nitisha Aggarwal")
+    {
+      setNitishaAgg(true)
+    }
+    if(json.name=="M.K Das")
+    {
+      setMKDas(true)
+    }
+    if(json.name=="Manish")
+    {
+      setManish(true)
+    }
+
     let data1 = json.data.filter((data) => data.semester == "Sem-3");
     setstudents(data1);
   };
 
   useEffect(() => {
-    fetchdata();
     const token = localStorage.getItem('token')
     if (token) {
       const user = jwt.decode(token)
@@ -71,7 +58,7 @@ async function populateinfo(e) {
         localStorage.removeItem('token')
         navigate("/Teacherdashboard");
       } else {
-        populate()
+        fetchdata();
       }
     }
   }, []);
@@ -83,20 +70,53 @@ async function populateinfo(e) {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        'x-access-token': localStorage.getItem('token'), //
+
       },
       body: JSON.stringify({
         subject,
         status,
       }),
+    }).then(async (response) => {
+      let dataa = await response.json();
+      console.log(dataa);
     });
-    populateinfo()
+    
   }
 
   return (
     <>
       <div className="main">
         <h1>Sem 3 attendance</h1>
-        <div className=" mb-3">
+        {NitishaAgg && <div className=" mb-3">
+          <label className="form-label">Select Subject</label>
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            onChange={(e) => setsubject(e.target.value)}>
+            <option>Select Subject</option>
+            <option value="Information System Design">
+              Information System Design
+            </option>
+          </select>
+        </div>}
+        {UnmeshShukla && <div className=" mb-3">
+          <label className="form-label">Select Subject</label>
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            onChange={(e) => setsubject(e.target.value)}>
+            <option>Select Subject</option>
+            <option value="Cloud Computing">Cloud Computing</option>
+          </select>
+        </div>}
+        {MKDas && <div className=" mb-3">
           <label className="form-label">Select Subject</label>
           <select
             type="text"
@@ -107,15 +127,23 @@ async function populateinfo(e) {
             onChange={(e) => setsubject(e.target.value)}>
             <option>Select Subject</option>
             <option value="Software Engineering">Software Engineering</option>
-            <option value="Information System Design">
-              Information System Design
-            </option>
+          </select>
+        </div>}
+        {Manish && <div className=" mb-3">
+          <label className="form-label">Select Subject</label>
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            onChange={(e) => setsubject(e.target.value)}>
+            <option>Select Subject</option>
             <option value="IT Planning and Management">
               IT Planning and Management
             </option>
-            <option value="Cloud Computing">Cloud Computing</option>
           </select>
-        </div>
+        </div>}
         <table className="table table-bordered">
           <thead>
             <tr>
