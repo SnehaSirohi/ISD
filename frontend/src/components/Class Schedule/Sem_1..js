@@ -100,12 +100,11 @@ const Sem_1 = () => {
       <Navbar/>
       <form onSubmit={schedule}>
         <div className=" mb-3">
-<<<<<<< HEAD
+ 
           <h1 className="class-1">Class Schedule</h1>
-=======
           <h1>Class Schedule</h1>
           {UnmeshShukla && <div><label className="form-label">Select Subject</label>
->>>>>>> 53a768dfed619487b4c6ba4a7c646c31690086b6
+
           <select
             type="text"
             className="form-control"
@@ -211,15 +210,15 @@ const Sem_1 = () => {
         <button type="submit" className="btn btn-primary" >
           Schedule Class
         </button>
-<<<<<<< HEAD
+
       
         </div>
-=======
+
      {warning &&  <div className="container warning">
             <h3>{warning}</h3>
             <button onClick={(e)=>setwarning(false)}>Ok</button>
       </div>}
->>>>>>> 53a768dfed619487b4c6ba4a7c646c31690086b6
+
       </form>
     </>
   );
