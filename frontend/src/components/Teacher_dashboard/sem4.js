@@ -50,7 +50,7 @@ function Sem1() {
                         <div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
-                                    <h3><Link to='/attendancereport/sem1'>Attendance Report</Link></h3>
+                                    <h3><Link to='/filters/sem4'>Attendance Report</Link></h3>
                                 </div>
                             </div>
                         </div>

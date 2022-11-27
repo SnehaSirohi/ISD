@@ -11,28 +11,32 @@ function Sem1() {
                 <h1 className='container semheadline'>Semester 3rd</h1>
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        <div class="col">
+                        <Link to='/classschedule/sem3'><div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
-                                    <h3><Link to='/classschedule/sem3'>Schedule Class</Link></h3>
+                                    <h3>Schedule Class</h3>
                                 </div>
                             </div>
                         </div>
+                        </Link>
+                        <Link to="/testschedule/sem3">
                         <div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
-                                    <h3><Link to="/testschedule/sem3">Schedule Test</Link></h3>
+                                    <h3>Schedule Test</h3>
                                 </div>
                             </div>
                         </div>
+                        </Link>
+                        <Link to="/attendance/sem3">
                         <div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
-                                    <h3><Link to="/attendance/sem3">Mark Attendance</Link></h3>
+                                    <h3>Mark Attendance</h3>
                                 </div>
                             </div>
                         </div>
-
+                        </Link>
                         <div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
@@ -47,13 +51,15 @@ function Sem1() {
                                 </div>
                             </div>
                         </div>
+                        <Link to='/filters/sem3'>
                         <div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
-                                    <h3><Link to='/attendancereport/sem1'>Attendance Report</Link></h3>
+                                    <h3>Attendance Report</h3>
                                 </div>
                             </div>
                         </div>
+                        </Link>
                     </div>
                 </div>
             </div>

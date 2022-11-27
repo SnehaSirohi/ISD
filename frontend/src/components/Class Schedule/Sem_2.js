@@ -13,6 +13,11 @@ const Sem_2 = () => {
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
   const [message, setmessage] = useState("");
+   const [warning, setwarning] = useState("");
+   const [UnmeshShukla,setUnmeshShukla]=useState(false)
+  const [NitishaAgg,setNitishaAgg]=useState(false)
+  const [MKDas,setMKDas]=useState(false)
+  const [Sanjeev,setSanjeev]=useState(false)
   const sem = "Sem-2";
 
   //-----------
@@ -25,6 +30,22 @@ const Sem_2 = () => {
     const data = await req.json();
 
     console.log(data)
+     if(data.name=="Unmesh Shukla")
+    {
+      setUnmeshShukla(true)
+    }
+    if(data.name=="Nitisha Aggarwal")
+    {
+      setNitishaAgg(true)
+    }
+    if(data.name=="M.K Das")
+    {
+      setMKDas(true)
+    }
+    if(data.name=="Sanjeev")
+    {
+      setSanjeev(false)
+    }
     //added
     if (data.status === 'ok') {
       setName(data.name)
@@ -32,45 +53,32 @@ const Sem_2 = () => {
     }
   }
 
-  async function populateinfo(e) {
-    const req = await fetch('http://localhost:4000/scheduleclass', {
-      method: "POST",//
-      headers: {
-        Accept: "application/json",//
-        "Content-Type": "application/json", //
-        'x-access-token': localStorage.getItem('token'), //
-      },
-      body: JSON.stringify({
-        name,
-        subject,
-        date,
-      }),
-    }).then(async (response) => {
-      let dataa = await response.json();
-      console.log(dataa);
-    });
-  }
-
+  
 
   async function schedule(e) {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:4000/scheduleclass", {
+    const req = await fetch("http://localhost:4000/scheduleclass", {
       method: "POST",
       headers: {
+        Accept: "application/json",
         "Content-Type": "application/json",
+         'x-access-token': localStorage.getItem('token'), 
       },
       body: JSON.stringify({
+        name,
         subject,
         sem,
         date,
         time,
         message,
       }),
+    }).then(async (response) => {
+      let data = await response.json();
+       console.log(data);
+      setwarning(data.warning)
     });
 
-    const data = await response.json();
-    populateinfo()
   }
   //--------------------
   useEffect(() => {
@@ -92,6 +100,7 @@ const Sem_2 = () => {
       <form onSubmit={schedule}>
         <div className=" mb-3">
         <h1>Class Schedule</h1>
+        {NitishaAgg && <div>
           <label className="form-label">Select Subject</label>
           <select
             type="text"
@@ -104,13 +113,50 @@ const Sem_2 = () => {
             <option value="Computer Communication and Networks">
               Computer Communication and Networks
             </option>
-            <option value="Database Systems">Database Systems</option>
             <option value="Operating Systems">Operating Systems</option>
+          </select></div>}
+          
+        {UnmeshShukla && <div>
+          <label className="form-label">Select Subject</label>
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            onChange={(e) => setsubject(e.target.value)}>
+            <option>Select Subject</option>
+            <option value="Database Systems">Database Systems</option>
+          </select></div>}
+          
+        {MKDas && <div>
+          <label className="form-label">Select Subject</label>
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            onChange={(e) => setsubject(e.target.value)}>
+            <option>Select Subject</option> 
             <option value="Applied Machine Learning">
               Applied Machine Learning
             </option>
+          </select></div>}
+          
+        {Sanjeev && <div>
+          <label className="form-label">Select Subject</label>
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            onChange={(e) => setsubject(e.target.value)}>
+            <option>Select Subject</option>
             <option value="Open Elective-1">Open Elective-1</option>
-          </select>
+          </select></div>}
+          
         </div>
 
         <div className="mb-3">
@@ -154,6 +200,10 @@ const Sem_2 = () => {
         <button type="submit" className="btn btn-primary">
           Schedule Class
         </button>
+         {warning &&  <div className="container warning">
+            <h3>{warning}</h3>
+            <button onClick={(e)=>setwarning(false)}>Ok</button>
+      </div>}
       </form>
     </>
   );

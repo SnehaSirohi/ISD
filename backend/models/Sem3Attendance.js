@@ -14,7 +14,15 @@ const Sem3Attendance = new Schema({
     type: String,
     required: true,
   },
+  semester:{
+    type: String,
+    required: true,
+  },
   attendanceStatus: {
+    type: String,
+    required: true,
+  },
+  time: {
     type: String,
     required: true,
   },
