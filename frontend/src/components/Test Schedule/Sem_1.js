@@ -1,5 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./testschedule.css";
+import Navbar from "../Student_dashboard/Navbar.js";
 import { useEffect, useState } from "react";
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
@@ -90,10 +92,10 @@ async function populateinfo(e){
 
   return (
     <>
+      <Navbar/>
       <form onSubmit={schedule}>
         <div className=" mb-3">
-          <h1>Test Schedule</h1>
-          <label className="form-label">Select Subject</label>
+          <h1 className="test-1">Test Schedule</h1>
           <select
             type="text"
             className="form-control"
@@ -117,12 +119,12 @@ async function populateinfo(e){
           </select>
         </div>
         <div className="mb-3">
-          <label htmlFor="date" className="form-label">
-            Date
+          <label htmlFor="date" className="test-form-label">
+            Date:
           </label>
           <input
             type="date"
-            className="form-control"
+            className="test-form-control"
             id="date"
             aria-describedby="date"
             value={date}
@@ -130,33 +132,37 @@ async function populateinfo(e){
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="time" className="form-label">
-            time
+          <label htmlFor="time" className="test-form-label">
+            Time:
           </label>
           <input
             type="time"
-            className="form-control"
+            className="test-form-control"
             id="time"
             value={time}
             onChange={(e) => settime(e.target.value)}
           />
         </div>
         <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">
-            Message
+        <div class="test-msg">
+          <label for="exampleFormControlTextarea1" class="test-form-label-1">
+            Message:
           </label>
+        </div>
           <textarea
             type="text"
-            class="form-control"
+            class="test-form-control-3"
             id="exampleFormControlTextarea1"
             rows="3"
             placeholder="Optional"
             value={message}
             onChange={(e) => setmessage(e.target.value)}></textarea>
         </div>
+        <div className="btn-test">
         <button type="submit" className="btn btn-primary">
           Schedule Test
         </button>
+        </div>
       </form>
     </>
   );

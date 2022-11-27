@@ -101,7 +101,7 @@ async function populateinfo(e) {
   return (
     <>
       <Navbar/>
-      <h1>Sem 1 Attendance</h1>
+      <h1 className="atte1">Sem-1 Attendance</h1>
 <div className=" mb-3">
         <select
           type="text"
@@ -128,9 +128,9 @@ async function populateinfo(e) {
       </div>
      
       
-      <div className="main">
+      <div className="table-1">
         <table className="table table-striped">
-          <thead>
+          <thead className="heading-1">
             <tr>
               <th>Student</th>
               <th>Present</th>
@@ -141,7 +141,9 @@ async function populateinfo(e) {
           </tbody>
         </table>
       </div>
-      <button onClick={Submit}>Submit</button>
+      <div className="button-1">
+        <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onClick={Submit}>Submit</button>
+      </div> 
     </>
   );
 };

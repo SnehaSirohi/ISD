@@ -1,5 +1,5 @@
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; 
   
 }
 
@@ -11,39 +11,54 @@ tr {
   text-align: center;
 }
 .form-check {
-  background-color: aquamarine;
+  background-color: #2bb0a8;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.main {
-  background-color: rgb(251, 249, 249);
-  width: 60vw;
-  margin-left: 20vw;
-  margin-right: 20vw;
+  width:60%;
+  margin: auto;
+  margin-top: 7px;
+  margin-bottom: 0px;
 }
 
-thead { 
+.button-1 {
+ margin-bottom: 20rem;
+ margin-left: 46%;
+ margin-right: 46%;
+  width: 6%;
+}
+
+
+.heading-1 { 
   background-color: #2bb0a8;
 }
 
-h1 {
+.table-1 {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 40px;
+  margin-bottom: 80px;
+ 
+}
+
+.atte1 {
   text-align: center;
-  justify-content: center;
-  background-color: aliceblue;
+  background-color: rgb(196, 255, 255);
+  margin-bottom: 0;
   padding-top: 5px;
   padding-bottom: 5px;
-  margin-bottom: 0%
-  ;
 }
 
 .form-control{
   background-color: #2bb0a8;
+  margin: auto;
+  margin-top: 40px;
+  width: 60%;
 }
 
  option{
   text-align: center;
-  background-color: aquamarine;
+
  }
 
  select{

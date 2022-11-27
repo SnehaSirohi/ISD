@@ -1,0 +1,54 @@
+.class-1 {
+    text-align: center;
+    background-color: rgb(196, 255, 255);
+    margin-bottom: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.class-form-label {
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.abc-1 {
+    text-align: center;
+}
+
+.class-form-control {
+    width: 10rem;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(196, 255, 255);
+    border-color:rgb(196, 255, 255) ;
+    border-radius: 4px;
+    height: 2rem;
+    margin-top: 20px;   
+}
+
+.time-form-label {
+    font-weight: bold;
+}
+
+.form-label {
+    margin-left: 20%;
+    margin-right: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.class-form-control-1 {
+    width: 60%;
+    border-radius: 4px;
+    background-color: rgb(196, 255, 255);
+    border-color:rgb(196, 255, 255) ;
+    margin-left: 20%;
+    border-style: groove;
+    height: 10rem;
+}
+
+.btn-class {
+    margin-left: 45%;
+    margin-right: 45%;
+    margin-top: 40px;
+}

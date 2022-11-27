@@ -1,0 +1,41 @@
+.attrep-1 {
+    text-align: center;
+}
+
+.heading-2 {
+    background-color: #2bb0a8;
+}
+
+.table-2 {
+    margin-left: 10%;
+    margin-right:10%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.attrep1 {
+    text-align: center;
+    margin-bottom: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+.button-3 {
+   margin-left: 38%;
+}
+
+#butn1 {
+    margin-right: 2rem;
+    width: 10rem;
+}
+
+#butn2 {
+    width: 10rem;
+}
+
+.attrep-1a {
+    background-color: rgb(196, 255, 255);
+    margin-bottom: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
