@@ -1,10 +1,10 @@
 import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import {CSVLink} from 'react-csv'
-const List = ({teacher}) => {
+const List = ({classes}) => {
   return (
    <>
-    {teacher.map((teach)=>{
+    {classes.map((teach)=>{
         const {name,subject,date}=teach;
         return(
             <>

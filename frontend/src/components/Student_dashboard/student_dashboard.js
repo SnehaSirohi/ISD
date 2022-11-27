@@ -6,7 +6,9 @@ import Navbar from "./Navbar.js";
 import "./student_dashboard.css";
 
 const Dashboard = (props) => {
-
+    const [totalClasstaken, setTotalClasstaken] = useState([])
+    const [totalClassScheduled, setTotalClassScheduled] = useState([])
+    const [totalTestScheduled, setTotalTestScheduled] = useState([])
     const navigate = useNavigate();
     const [name, setName] = useState([])
     const [email, setEmail] = useState([])
@@ -25,6 +27,9 @@ const Dashboard = (props) => {
         if(json.status === 'ok'){
             setName(json.name)
             setEmail(json.email)
+            setTotalClassScheduled(json.Classes_Scheduled)
+            setTotalClasstaken(json.Classes_taken_count)
+            setTotalTestScheduled(json.Test_Scheduled)
         }
         else{
             // alert(data.error)
@@ -53,14 +58,14 @@ const Dashboard = (props) => {
             <div class="row mb-3 dashblocks">
                 <div class="col-xl-3 col-sm-6 blockcolour">
                     <div>
-                        <h5 class="text-uppercase">CLASS SCHEDULED</h5>
-                        <h1 class="display-4">2</h1>
+                        <Link to='/classschedule'><h5 class="text-uppercase">CLASSES SCHEDULED</h5></Link>
+                        <h1 class="display-4">{totalClassScheduled}</h1>
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 blockcolour">
                     <div>
-                        <h5 class="text-uppercase">TEST SCHEDULED</h5>
-                        <h1 class="display-4">1</h1>
+                    <Link to='/testschedule'><h5 class="text-uppercase">TESTS SCHEDULED</h5></Link>
+                        <h1 class="display-4">{totalTestScheduled}</h1>
                     </div>
 
                 </div>
@@ -81,8 +86,8 @@ const Dashboard = (props) => {
                         <h5>Attendence %</h5>
                     </div>
                     <div class="classinfoval">
-                        <h5>84</h5>
-                        <h5>12</h5>
+                        <h5>{totalClasstaken}</h5>
+                        <h5>{totalTestScheduled}</h5>
                         <h5>18</h5>
                         <h5>58</h5>
                     </div>
