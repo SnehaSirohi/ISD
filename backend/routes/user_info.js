@@ -878,4 +878,41 @@ router.post("/random", async (req, res) => {
   });
 })
 
+
+//--------------
+router.get("/classschedule", async (req, res) => {
+  const token = req.headers["x-access-token"];
+  try {
+    const decoded = jwt.verify(token, "secret123");
+    const enrollNum = decoded.enrollNum;
+    const student = await Students.findOne({ enrollNum: enrollNum });
+    return res.status(200).json({
+      success: true,
+      data: await ScheduledClass.find({ semester: student.semester }),
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+
+});
+
+router.get("/testschedule", async (req, res) => {
+  const token = req.headers["x-access-token"];
+  try {
+    const decoded = jwt.verify(token, "secret123");
+    const enrollNum = decoded.enrollNum;
+    const student = await Students.findOne({ enrollNum: enrollNum });
+    return res.status(200).json({
+      success: true,
+      data: await ScheduledTest.find({ semester: student.semester }),
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+
+});
+
+
 module.exports = router;

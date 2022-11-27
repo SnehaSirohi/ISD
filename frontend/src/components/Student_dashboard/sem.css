@@ -1,0 +1,13 @@
+.card-body {
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: #2BB0A8;
+}
+
+.semheadline{
+     text-align: center;
+     margin-bottom: 2rem;
+}
