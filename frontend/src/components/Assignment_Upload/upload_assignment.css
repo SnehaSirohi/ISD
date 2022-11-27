@@ -80,10 +80,14 @@
     background: rgb(248, 246, 246);
 }
 
-.buttonafterdisc{
+.submitbutton{
     width: 8rem;
     height: 2rem;
     background: #2BB0A8;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 2rem;
 }
 
 textarea{
