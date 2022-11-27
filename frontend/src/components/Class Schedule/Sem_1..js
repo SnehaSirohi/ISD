@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
+import './CS.css'
 const Sem_1 = () => {
   //
   const navigate = useNavigate();
@@ -50,31 +51,10 @@ const Sem_1 = () => {
     }
   }
 
-  // async function populateinfo(e) {
-  //   const req = await fetch('http://localhost:4000/scheduleclass', {
-  //     method: "POST",//
-  //     headers: {
-  //       Accept: "application/json",//
-  //       "Content-Type": "application/json", //
-  //       'x-access-token': localStorage.getItem('token'), //
-  //     },
-  //     body: JSON.stringify({
-  //       name,
-  //       subject,
-  //       sem,
-  //       date,
-  //       time,
-  //     }),
-  //   }).then(async (response) => {
-  //     let dataa = await response.json();
-  //     console.log(dataa.message);
-  //   });
-  // }
-
   async function schedule(e) {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:4000/scheduleclass", {
+    const req = await fetch("http://localhost:4000/scheduleclass", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -91,11 +71,9 @@ const Sem_1 = () => {
       }),
     }).then(async (response) => {
       let data = await response.json();
+       console.log(data);
       setwarning(data.warning)
     });
-
-    // const data = await response.json();
-    // populateinfo()
 
   }
 
@@ -221,12 +199,11 @@ const Sem_1 = () => {
         <button type="submit" className="btn btn-primary">
           Schedule Class
         </button>
-      </form>
      {warning &&  <div className="container warning">
             <h3>{warning}</h3>
-            <button>Yes</button>
-            <button onClick={(e)=>setwarning(false)}>No</button>
+            <button onClick={(e)=>setwarning(false)}>Ok</button>
       </div>}
+      </form>
     </>
   );
 };
