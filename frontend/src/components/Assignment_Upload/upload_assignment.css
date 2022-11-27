@@ -85,3 +85,7 @@
     height: 2rem;
     background: #2BB0A8;
 }
+
+textarea{
+    resize: none;
+}
