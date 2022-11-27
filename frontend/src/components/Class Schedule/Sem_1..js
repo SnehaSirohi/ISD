@@ -5,6 +5,7 @@ import "./classschedule.css";
 import Navbar from "../Student_dashboard/Navbar.js";
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
+import './CS.css'
 const Sem_1 = () => {
   //
   const navigate = useNavigate();
@@ -14,6 +15,11 @@ const Sem_1 = () => {
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
   const [message, setmessage] = useState("");
+  const [warning, setwarning] = useState("");
+  const [UnmeshShukla,setUnmeshShukla]=useState(false)
+  const [NitishaAgg,setNitishaAgg]=useState(false)
+  const [MKDas,setMKDas]=useState(false)
+  const [SunilKumar,setSunilKumar]=useState(false)
   const sem = "Sem-1";
 
   //-----------
@@ -26,20 +32,36 @@ const Sem_1 = () => {
     const data = await req.json();
 
     console.log(data)
-    //added
+    if(data.name=="Unmesh Shukla")
+    {
+      setUnmeshShukla(true)
+    }
+    if(data.name=="Nitisha Aggarwal")
+    {
+      setNitishaAgg(true)
+    }
+    if(data.name=="M.K Das")
+    {
+      setMKDas(true)
+    }
+    if(data.name=="Sunil Kumar")
+    {
+      setSunilKumar(true)
+    }
     if (data.status === 'ok') {
       setName(data.name)
-      // setEmail(data.email)
     }
   }
 
-  async function populateinfo(e) {
-    const req = await fetch('http://localhost:4000/scheduleclass', {
-      method: "POST",//
+  async function schedule(e) {
+    e.preventDefault();
+
+    const req = await fetch("http://localhost:4000/scheduleclass", {
+      method: "POST",
       headers: {
-        Accept: "application/json",//
-        "Content-Type": "application/json", //
-        'x-access-token': localStorage.getItem('token'), //
+        Accept: "application/json",
+        "Content-Type": "application/json",
+         'x-access-token': localStorage.getItem('token'), 
       },
       body: JSON.stringify({
         name,
@@ -47,33 +69,13 @@ const Sem_1 = () => {
         sem,
         date,
         time,
-      }),
-    }).then(async (response) => {
-      let dataa = await response.json();
-      console.log(dataa);
-    });
-  }
-
-  async function schedule(e) {
-    e.preventDefault();
-
-    const response = await fetch("http://localhost:4000/scheduleclass", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        subject,
-        sem,
-        date,
-        time,
         message,
       }),
+    }).then(async (response) => {
+      let data = await response.json();
+       console.log(data);
+      setwarning(data.warning)
     });
-
-    const data = await response.json();
-    populateinfo()
 
   }
 
@@ -92,13 +94,18 @@ const Sem_1 = () => {
       }
     }
   }, [])
-
+  
   return (
     <>
       <Navbar/>
       <form onSubmit={schedule}>
         <div className=" mb-3">
+<<<<<<< HEAD
           <h1 className="class-1">Class Schedule</h1>
+=======
+          <h1>Class Schedule</h1>
+          {UnmeshShukla && <div><label className="form-label">Select Subject</label>
+>>>>>>> 53a768dfed619487b4c6ba4a7c646c31690086b6
           <select
             type="text"
             className="form-control"
@@ -108,19 +115,53 @@ const Sem_1 = () => {
             required
             onChange={(e) => setsubject(e.target.value)}>
             <option required>Select Subject</option>
-            <option value="Software Design & Programming">
-              Software Design & Programming
-            </option>
             <option value="Algorithms And Data Structure">
               Algorithms and Data Structure
             </option>
-            <option value="Computer System Architecture">
-              Computer System Architecture
+          </select></div> }
+          {NitishaAgg && <div><label className="form-label">Select Subject</label>
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            required
+            onChange={(e) => setsubject(e.target.value)}>
+            <option required>Select Subject</option>
+           <option value="Software Design & Programming">
+              Software Design & Programming
             </option>
+          </select></div> }
+          {MKDas && <div><label className="form-label">Select Subject</label>
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            required
+            onChange={(e) => setsubject(e.target.value)}>
+            <option required>Select Subject</option>
             <option value="Mathematical Foundation Of Computing">
               Mathematical Foundation of Computing
             </option>
-          </select>
+          </select></div> }
+          {SunilKumar && <div><label className="form-label">Select Subject</label>
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            required
+            onChange={(e) => setsubject(e.target.value)}>
+            <option required>Select Subject</option>
+            <option value="Computer System Architecture">
+              Computer System Architecture
+            </option>
+          </select></div> }
+          
         </div>
 
       <div className="abc-1">
@@ -170,8 +211,15 @@ const Sem_1 = () => {
         <button type="submit" className="btn btn-primary" >
           Schedule Class
         </button>
+<<<<<<< HEAD
       
         </div>
+=======
+     {warning &&  <div className="container warning">
+            <h3>{warning}</h3>
+            <button onClick={(e)=>setwarning(false)}>Ok</button>
+      </div>}
+>>>>>>> 53a768dfed619487b4c6ba4a7c646c31690086b6
       </form>
     </>
   );
