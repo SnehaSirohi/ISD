@@ -3,6 +3,9 @@ import { useState,useEffect,useRef,useReactToPrint } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
+import Navbar from "../Student_dashboard/Navbar.js";
+import "./attendance_report.css";
+
 import List from './List';
 var XLSX = require("xlsx");
 const Sem1Attendance = ({dateval,monthval,subjectval}) => {
@@ -62,19 +65,21 @@ const Sem1Attendance = ({dateval,monthval,subjectval}) => {
 
   const exporttopdfhandler = () =>{
     const doc = new jsPDF()
-    let heading = val ? "Attendance Report of " + val : "Overall Attendance Report of Semester 1";
+    let heading = val ? "Attendance Report of " + val : "Overall Attendance Report of Semester1";
     doc.text(heading,20,10)
     autoTable(doc, { html: '#mytable'})
     doc.save('table.pdf')
   };
   return (
    <>
+   <Navbar/>
+  <div className='attrep-1'>
+    {val? <h1 className='attrep-1a'> Attendance Report of {val} </h1> : <h1 className='attrep-1a'>Overall Attendance Report of Semester-1</h1>}
+  </div>
 
- {val? <h1> Attendance Report of {val} </h1> : <h1>Overall Attendance Report of Semester 1</h1>}
- 
-  <div classname="main">
-    <table classname="table table-bordered" id='mytable'>
-      <thead>
+  <div className='table-2'>
+    <table className='table table-striped'  id='mytable'>
+      <thead className='heading-2'>
         <tr>
           <th>Student</th>
           <th>Attendance Status</th>
@@ -87,9 +92,10 @@ const Sem1Attendance = ({dateval,monthval,subjectval}) => {
       </tbody>
     </table>
   </div>
-
-   <button onClick={exporttoexcelhandler}>Download in excel</button>
-   <button onClick={exporttopdfhandler}>Download in pdf</button>
+  <div className='button-3'>
+   <button type="button" class="btn btn-primary" id='butn1' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttoexcelhandler}>Download in excel</button>
+   <button type="button" class="btn btn-primary" id='butn2' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttopdfhandler}>Download in pdf</button>
+  </div>
    </>
   )
 }

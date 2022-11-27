@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./attendance_report.css";
 
 import List from './List';
 const Sem2Attendance = ({subjectval,dateval,monthval}) => {
@@ -54,11 +55,13 @@ const Sem2Attendance = ({subjectval,dateval,monthval}) => {
 
   return (
    <>
+  <div className='Attrep-1'>
+     {val? <h1> Attendance Report of {val} </h1> : <h1>Overall Attendance Report of Semester 2</h1>}
+  </div>
 
-{val? <h1> Attendance Report of {val} </h1> : <h1>Overall Attendance Report of Semester 2</h1>}
-  <div classname="main">
-    <table classname="table table-bordered">
-      <thead>
+  <div className='table-2'>
+    <table className='table table-striped'>
+      <thead className='heading-2'>
         <tr>
           <th>Student</th>
           <th>Attendance Status</th>
@@ -71,6 +74,11 @@ const Sem2Attendance = ({subjectval,dateval,monthval}) => {
       </tbody>
     </table>
   </div>
+
+
+  <div className="button-2">
+        <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" >Print</button>
+      </div> 
 
    </>
   )
