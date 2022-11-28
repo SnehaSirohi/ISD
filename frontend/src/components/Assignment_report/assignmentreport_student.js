@@ -8,11 +8,11 @@ import { useNavigate } from "react-router-dom"
 import List from './list';
 var XLSX = require("xlsx");
 
-const Testreport = () => {
+const Attendancereport = () => {
     const navigate = useNavigate();
-    const [teacher,setTeacher]=useState([]);
+    const [assignments,setAssignments]=useState([]);
     const fetchdata=async()=>{
-        const response=await fetch("http://localhost:4000/testschedule", {
+        const response=await fetch("http://localhost:4000/assignmentreportstudent", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -20,8 +20,7 @@ const Testreport = () => {
                 'x-access-token': localStorage.getItem('token'), //
             }})
             const json = await response.json()
-                setTeacher(json.data)
-                console.log(json.data)
+                setAssignments(json.data)
 
       }
       useEffect(() => {
@@ -41,21 +40,21 @@ const Testreport = () => {
   
   const exporttoexcelhandler= () =>{
      var wb = XLSX.utils.book_new(),
-     ws = XLSX.utils.json_to_sheet(teacher);
+     ws = XLSX.utils.json_to_sheet(assignments);
      XLSX.utils.book_append_sheet(wb,ws,"MySheet1");
      XLSX.writeFile(wb,"MyExcel.xlsx")
   };
 
   const exporttopdfhandler = () =>{
     const doc = new jsPDF()
-    doc.text("Overall Tests Scheduled",70,10)
+    doc.text("Overall Assignments Posted",70,10)
     autoTable(doc, { html: '#mytable'})
     doc.save('table.pdf')
   };
   return (
    <>
 
- {<h1>Overall Tests Scheduled </h1>}
+ {<h1>Overall Assignments Posted </h1>}
  
   <div classname="main">
     <table classname="table table-bordered" id='mytable'>
@@ -63,11 +62,12 @@ const Testreport = () => {
         <tr>
           <th>Professor</th>
           <th>Subject</th>
-          <th>Date</th>
+          <th>Deadline</th>
+          <th>Assignment</th>
         </tr>
       </thead>
       <tbody>
-      <List teacher={teacher} />
+      <List assignments={assignments} />
       </tbody>
     </table>
   </div>
@@ -78,4 +78,4 @@ const Testreport = () => {
   )
 }
 
-export default Testreport
+export default Attendancereport

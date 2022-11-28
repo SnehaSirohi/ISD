@@ -34,7 +34,8 @@ const Dashboard = (props) => {
             setTotalClassScheduled(json.Classes_Scheduled)
             setTotalClasstaken(json.Classes_taken_count)
             setTotalTestScheduled(json.Test_Scheduled)
-            setAssignments(json.assignments)
+            setAssignments(json.Assignment_posted)
+
         }
         else{
             // alert(data.error)
@@ -79,7 +80,7 @@ const Dashboard = (props) => {
                 </div>
                 <div class="col-xl-3 col-sm-6 blockcolour">
                     <div>
-                    <Link to='/'><h5 class="text-uppercase">ASSIGNMENTS</h5></Link>
+                    <Link to='/assignmentreportstudent'><h5 class="text-uppercase">ASSIGNMENTS</h5></Link>
                         <h1 class="display-4">{assignments}</h1>
                     </div>
                 </div>

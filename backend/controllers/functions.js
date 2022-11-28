@@ -63,13 +63,13 @@ const Getdashboard = async (req, res) => {
       console.log(Classes_taken_count)
     }
 
-    if(sem3Attendance.semester == "Sem-3")
+    if(student.semester == "Sem-3")
     {
       Classes_taken_count = sem3Attendance.length
       console.log(Classes_taken_count)
     }
 
-    if(sem4Attendance.semester == "Sem-4")
+    if(student.semester == "Sem-4")
     {
       Classes_taken_count = sem4Attendance.length
       console.log(Classes_taken_count)
@@ -78,6 +78,7 @@ const Getdashboard = async (req, res) => {
     const Classes_held = await ClassesTaken.count({semester: student.semester})
     const Classes_Scheduled = await ScheduledClass.count({ semester: student.semester });
     const Test_Scheduled = await ScheduledTest.count({ semester: student.semester });
+    const Assignment_posted = await AssignmentsPosted.count({ semester: student.semester})
 
     return res.json({
       status: "ok",
@@ -85,6 +86,7 @@ const Getdashboard = async (req, res) => {
       Classes_held,
       Classes_Scheduled,
       Test_Scheduled,
+      Assignment_posted,
       enrollNum: student.enrollNum,
       name: student.name,
       email: student.email,
@@ -898,6 +900,7 @@ const Test_Scheduled = async (req, res) => {
     const decoded = jwt.verify(token, "secret123");
     const enrollNum = decoded.enrollNum;
     const student = await Students.findOne({ enrollNum: enrollNum });
+    
     return res.status(200).json({
       success: true,
       data: await ScheduledTest.find({ semester: student.semester }),
@@ -922,8 +925,22 @@ const Classes_Scheduled = async (req, res) => {
     console.log(error);
     res.json({ status: "error", error: "invalid token" });
   }
+}
 
-
+const Assignment_Schedule_student = async (req, res) => {
+  const token = req.headers["x-access-token"];
+  try {
+    const decoded = jwt.verify(token, "secret123");
+    const enrollNum = decoded.enrollNum;
+    const student = await Students.findOne({ enrollNum: enrollNum });
+    return res.status(200).json({
+      success: true,
+      data: await AssignmentsPosted.find({ semester: student.semester }),
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
 }
 
 module.exports = {
@@ -933,5 +950,5 @@ module.exports = {
   RegisterTeacher, GetScheduleclass, Postscheduleclass, GetScheduletest, PostscheduleTest,
   GetAttendance, sem1Attendance, sem2Attendance, sem3Attendance, sem4Attendance,
   Sem1AttendanceReport, Sem2AttendanceReport, Sem3AttendanceReport, Sem4AttendanceReport,
-  ScheduledClassReport, ScheduledTestReport, Upload, Test_Scheduled, Classes_Scheduled, Getupload
+  ScheduledClassReport, ScheduledTestReport, Upload, Test_Scheduled, Classes_Scheduled, Getupload, Assignment_Schedule_student
 }

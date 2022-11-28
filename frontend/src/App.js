@@ -39,6 +39,8 @@ import Classreport from './components/Scheduled_Class_List/scheduleclassreport';
 import Testreport from './components/Scheduled_test_List/scheduletestreport';
 import Testreport_student from './components/Scheduled_test_List/testreport_student';
 import Classreport_student from './components/Scheduled_Class_List/classreport_student';
+import Assignmentreport_student from './components/Assignment_report/assignmentreport_student';
+
 import UploadAssignmentsem1 from './components/Assignment_Upload/Upload_assignment_sem1';
 import UploadAssignmentsem2 from './components/Assignment_Upload/Upload_assignment_sem2';
 import UploadAssignmentsem3 from './components/Assignment_Upload/Upload_assignment_sem3';
@@ -69,6 +71,7 @@ function App() {
       <Route path='/Studentdashboard/sem1' element={<Sem1_Student/>} />
       <Route path='/testschedule' element={<Testreport_student/>}/>
       <Route path='/classschedule' element={<Classreport_student/>}/>
+      <Route path='/assignmentreportstudent' element={<Assignmentreport_student/>}/>
 
       <Route path='/Teacherdashboard' element = {<Teacher_Dashboard/>} />
       <Route path='/Teacherdashboard/profile' element = {<Teacher_Profile/>} />
