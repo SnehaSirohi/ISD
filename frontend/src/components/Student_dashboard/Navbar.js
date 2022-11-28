@@ -53,7 +53,7 @@ function Navbar() {
                         <li className="semester" style={{
                             display: sem ? "block" : "none"
                         }}>
-                            <p>1st</p>
+                        <Link to = "/Studentdashboard/sem1"><p>1st</p></Link>
                             <p>2nd</p>
                             <p>3rd</p>
                             <p>4th</p>

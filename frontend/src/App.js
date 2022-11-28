@@ -26,6 +26,7 @@ import Sem1 from './components/Teacher_dashboard/sem1';
 import Sem2 from './components/Teacher_dashboard/sem2';
 import Sem3 from './components/Teacher_dashboard/sem3';
 import Sem4 from './components/Teacher_dashboard/sem4';
+import Sem1_Student from './components/Student_dashboard/sem1';
 import Sem1Attendance from './components/Attendance Report/Sem1Attendance';
 import Sem2Attendance from './components/Attendance Report/Sem2Attendance';
 import Sem3Attendance from './components/Attendance Report/Sem3Attendance';
@@ -36,6 +37,8 @@ import Sem3filters from './components/Filters/Sem3filters';
 import Sem4filters from './components/Filters/Sem4filters';
 import Classreport from './components/Scheduled_Class_List/scheduleclassreport';
 import Testreport from './components/Scheduled_test_List/scheduletestreport';
+import Testreport_student from './components/Scheduled_test_List/testreport_student';
+import Classreport_student from './components/Scheduled_Class_List/classreport_student';
 import UploadAssignmentsem1 from './components/Assignment_Upload/Upload_assignment_sem1';
 import UploadAssignmentsem2 from './components/Assignment_Upload/Upload_assignment_sem2';
 import UploadAssignmentsem3 from './components/Assignment_Upload/Upload_assignment_sem3';
@@ -63,6 +66,10 @@ function App() {
       <Route path='/dashboard' element = {<Student_Dashboard/>} />
       <Route path='/dashboard/profile' element = {<Student_Profile/>} />
       <Route path="/dashboard/changepassword" element={<ChangeStudentPassword/>}/>
+      <Route path='/Studentdashboard/sem1' element={<Sem1_Student/>} />
+      <Route path='/testschedule' element={<Testreport_student/>}/>
+      <Route path='/classschedule' element={<Classreport_student/>}/>
+
       <Route path='/Teacherdashboard' element = {<Teacher_Dashboard/>} />
       <Route path='/Teacherdashboard/profile' element = {<Teacher_Profile/>} />
       <Route path="/Teacherdashboard/changepassword" element={<ChangeTeacherPassword/>}/>

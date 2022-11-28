@@ -7,14 +7,12 @@ import { useNavigate } from "react-router-dom"
 const Sem_2 = () => {
   //
   const navigate = useNavigate();
-  const [name, setName] = useState([])
-  //
   const [subject, setsubject] = useState("");
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
   const [message, setmessage] = useState("");
-   const [warning, setwarning] = useState("");
-   const [UnmeshShukla,setUnmeshShukla]=useState(false)
+  const [warning, setwarning] = useState("");
+  const [UnmeshShukla,setUnmeshShukla]=useState(false)
   const [NitishaAgg,setNitishaAgg]=useState(false)
   const [MKDas,setMKDas]=useState(false)
   const [Sanjeev,setSanjeev]=useState(false)
@@ -46,14 +44,8 @@ const Sem_2 = () => {
     {
       setSanjeev(false)
     }
-    //added
-    if (data.status === 'ok') {
-      setName(data.name)
-      // setEmail(data.email)
-    }
   }
-
-  
+ 
 
   async function schedule(e) {
     e.preventDefault();
@@ -66,7 +58,6 @@ const Sem_2 = () => {
          'x-access-token': localStorage.getItem('token'), 
       },
       body: JSON.stringify({
-        name,
         subject,
         sem,
         date,

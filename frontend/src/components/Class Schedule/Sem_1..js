@@ -1,6 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./classschedule.css";
+import Navbar from "../Student_dashboard/Navbar.js";
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import './CS.css'
@@ -9,8 +11,6 @@ import * as AiIcons from 'react-icons/ai';
 const Sem_1 = () => {
   //
   const navigate = useNavigate();
-  const [name, setName] = useState([])
-  //
   const [subject, setsubject] = useState("");
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
@@ -53,9 +53,6 @@ const Sem_1 = () => {
     if (data.name == "Sunil Kumar") {
       setSunilKumar(true)
     }
-    if (data.status === 'ok') {
-      setName(data.name)
-    }
   }
 
   async function schedule(e) {
@@ -69,7 +66,6 @@ const Sem_1 = () => {
         'x-access-token': localStorage.getItem('token'),
       },
       body: JSON.stringify({
-        name,
         subject,
         sem,
         date,
@@ -102,7 +98,9 @@ const Sem_1 = () => {
 
   return (
     <>
+      <Navbar/>
       <form onSubmit={schedule}>
+<<<<<<< HEAD
         <div className="mb-3">
           <div>
             <h1>Class Schedule</h1>
@@ -140,6 +138,27 @@ const Sem_1 = () => {
                 Algorithms and Data Structure
               </option>
             </select></div>}
+=======
+        <div className=" mb-3">
+ 
+          <h1 className="class-1">Class Schedule</h1>
+          <h1>Class Schedule</h1>
+          {UnmeshShukla && <div><label className="form-label">Select Subject</label>
+
+          <select
+            type="text"
+            className="form-control"
+            id="subject"
+            name="subject"
+            value={subject}
+            required
+            onChange={(e) => setsubject(e.target.value)}>
+            <option required>Select Subject</option>
+            <option value="Algorithms And Data Structure">
+              Algorithms and Data Structure
+            </option>
+          </select></div> }
+>>>>>>> 08828cfdb2acaa22badade51e9dc2cc05f0d9791
           {NitishaAgg && <div><label className="form-label">Select Subject</label>
             <select
               type="text"
@@ -184,46 +203,50 @@ const Sem_1 = () => {
             </select></div>}
 
         </div>
+
+      <div className="abc-1">
         <div className="mb-3">
-          <label htmlFor="date" className="form-label">
-            Date
-          </label>
+          <label htmlFor="date" className="class-form-label">Date:</label>
           <input
             type="date"
-            className="form-control"
+            className="class-form-control"
             id="date"
             aria-describedby="date"
             value={date}
             required
             onChange={(e) => setdate(e.target.value)}
           />
-        </div>
+        </div >
         <div className="mb-3">
-          <label htmlFor="time" className="form-label">
-            time
+          <label htmlFor="time" className="time-form-label">
+            Time:
           </label>
           <input
             type="time"
-            className="form-control"
+            className="class-form-control"
             id="time"
             value={time}
             required
             onChange={(e) => settime(e.target.value)}
           />
         </div>
+      </div>
         <div class="mb-3">
+        <div class="msg-1">
           <label for="exampleFormControlTextarea1" class="form-label">
-            Message
+            Message:
           </label>
+        </div>
           <textarea
             type="text"
-            class="form-control"
+            class="class-form-control-1"
             id="exampleFormControlTextarea1"
             rows="3"
             placeholder="Optional"
             value={message}
             onChange={(e) => setmessage(e.target.value)}></textarea>
         </div>
+<<<<<<< HEAD
         <button type="submit" className="btn btn-primary" onClick={handleButtonClick}>
           Schedule Class
         </button>
@@ -232,6 +255,21 @@ const Sem_1 = () => {
           <h3>{warning}</h3>
           <button onClick={(e) => setwarning(false)}>Ok</button>
         </div>}
+=======
+        <div className="btn-class">
+
+        <button type="submit" className="btn btn-primary" >
+          Schedule Class
+        </button>
+
+      
+        </div>
+
+     {warning &&  <div className="container warning">
+            <h3>{warning}</h3>
+            <button onClick={(e)=>setwarning(false)}>Ok</button>
+      </div>}
+>>>>>>> 08828cfdb2acaa22badade51e9dc2cc05f0d9791
 
       </form>
     </>

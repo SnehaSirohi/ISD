@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom"
 import List from './list';
 var XLSX = require("xlsx");
 // import { CSVLink } from 'react-csv';
-const Sem1Attendance = () => {
+const Testreport = () => {
     const navigate = useNavigate();
     const [teacher,setTeacher]=useState([]);
     console.log(teacher);
@@ -81,4 +81,4 @@ const Sem1Attendance = () => {
   )
 }
 
-export default Sem1Attendance
+export default Testreport

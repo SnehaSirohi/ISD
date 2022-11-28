@@ -1,5 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./testschedule.css";
+import Navbar from "../Student_dashboard/Navbar.js";
 import { useEffect, useState } from "react";
 import jwt from 'jsonwebtoken'
 import './TS.css'
@@ -7,8 +9,6 @@ import { useNavigate } from "react-router-dom"
 const Sem_1 = () => {
   //
   const navigate = useNavigate();
-  const [name, setName] = useState([])
-//
   const [subject, setsubject] = useState("");
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
@@ -46,10 +46,6 @@ const Sem_1 = () => {
     {
       setSunilKumar(true)
     }
-  //added
-  if(data.status === 'ok'){
-    setName(data.name)
-}
 }
 
 
@@ -64,7 +60,6 @@ const Sem_1 = () => {
       'x-access-token': localStorage.getItem('token'),
       },
       body: JSON.stringify({
-        name,
         subject,
         sem,
         date,
@@ -95,10 +90,14 @@ const Sem_1 = () => {
 
   return (
     <>
+      <Navbar/>
       <form onSubmit={schedule}>
+        <div className=" mb-3">
+          <h1 className="test-1">Test Schedule</h1>
           <div className=" mb-3">
           <h1>Class Schedule</h1>
           {UnmeshShukla && <div><label className="form-label">Select Subject</label>
+
           <select
             type="text"
             className="form-control"
@@ -157,12 +156,12 @@ const Sem_1 = () => {
           
         </div>
         <div className="mb-3">
-          <label htmlFor="date" className="form-label">
-            Date
+          <label htmlFor="date" className="test-form-label">
+            Date:
           </label>
           <input
             type="date"
-            className="form-control"
+            className="test-form-control"
             id="date"
             aria-describedby="date"
             value={date}
@@ -170,37 +169,43 @@ const Sem_1 = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="time" className="form-label">
-            time
+          <label htmlFor="time" className="test-form-label">
+            Time:
           </label>
           <input
             type="time"
-            className="form-control"
+            className="test-form-control"
             id="time"
             value={time}
             onChange={(e) => settime(e.target.value)}
           />
         </div>
         <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">
-            Message
+        <div class="test-msg">
+          <label for="exampleFormControlTextarea1" class="test-form-label-1">
+            Message:
           </label>
+        </div>
           <textarea
             type="text"
-            class="form-control"
+            class="test-form-control-3"
             id="exampleFormControlTextarea1"
             rows="3"
             placeholder="Optional"
             value={message}
             onChange={(e) => setmessage(e.target.value)}></textarea>
         </div>
+        <div className="btn-test">
         <button type="submit" className="btn btn-primary">
           Schedule Test
         </button>
+
+        </div>
          {warning &&  <div className="container warning">
             <h3>{warning}</h3>
             <button onClick={(e)=>setwarning(false)}>Ok</button>
       </div>}
+        </div>
       </form>
     </>
   );

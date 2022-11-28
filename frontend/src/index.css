@@ -19,6 +19,10 @@ code {
     monospace;
 }
 
+<<<<<<< HEAD
 .App{
+=======
+.App {
+>>>>>>> 08828cfdb2acaa22badade51e9dc2cc05f0d9791
   height: 100vh;
 }
