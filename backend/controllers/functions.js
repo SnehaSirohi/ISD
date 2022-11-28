@@ -7,6 +7,7 @@ const ScheduledClass = require("../models/scheduledclass");
 const ScheduledTest = require("../models/scheduledtest");
 const ClassesTaken = require("../models/classestaken");
 const Teacher = require("../models/teacherdata");
+const AssignmentsPosted = require("../models/Assignment")
 const jwt = require("jsonwebtoken");
 const scheduledclass = require("../models/scheduledclass");
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -407,12 +408,12 @@ const GetScheduleclass = async (req, res) => {
 const Postscheduleclass = async (req, res) => {
 
   const token = req.headers["x-access-token"];
-
   const subject = req.body.subject;
   const semester = req.body.sem;
   const date = req.body.date;
   const time = req.body.time;
   const message = req.body.message;
+  const teacher = req.body.teacher
   let SCdata = await ScheduledClass.find({});
   for (const data of SCdata) {
     if (date === data.date && time.slice(0, 2) === data.time.slice(0, 2) && semester == data.semester)
@@ -428,6 +429,7 @@ const Postscheduleclass = async (req, res) => {
         time,
         student.email,
         student.name,
+        teacher,
         message
       );
     }
@@ -481,6 +483,7 @@ const PostscheduleTest = async (req, res) => {
   const time = req.body.time;
   const semester = req.body.sem;
   const message = req.body.message;
+  const teacher=req.body.teacher
   let STdata = await ScheduledTest.find({});
   for (const data of STdata) {
     if (date === data.date && time.slice(0, 2) === data.time.slice(0, 2) && semester == data.semester)
@@ -496,6 +499,7 @@ const PostscheduleTest = async (req, res) => {
         time,
         student.email,
         student.name,
+        teacher,
         message
       );
     }
@@ -804,8 +808,46 @@ const ScheduledTestReport = async (req, res) => {
 
 }
 
+const Getupload = async(req, res) =>{
+  const token = req.headers["x-access-token"];
+
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+
+    return res.json({
+      status: "ok",
+      Teacher_id: teacher.Teacher_id,
+      name: teacher.name,
+      email: teacher.email,
+      contactNum: teacher.contactNum,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+}
 const Upload = async (req, res) => {
-  console.log(req.body);
+  var nowDate = new Date();
+
+  var date =
+    nowDate.getFullYear() +
+    "-" +
+    (nowDate.getMonth() + 1) +
+    "-" +
+    nowDate.getDate();
+
+  const {subject,teacher,file,semester,deadline,description} = req.body
+  try {
+    const assignments = await AssignmentsPosted.create({
+      date,subject,teacher,file,semester,deadline,description
+    });
+ 
+    res.status(200).json(assignments);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 }
 
 //for students
@@ -850,5 +892,5 @@ module.exports = {
   RegisterTeacher, GetScheduleclass, Postscheduleclass, GetScheduletest, PostscheduleTest,
   GetAttendance, sem1Attendance, sem2Attendance, sem3Attendance, sem4Attendance,
   Sem1AttendanceReport, Sem2AttendanceReport, Sem3AttendanceReport, Sem4AttendanceReport,
-  ScheduledClassReport, ScheduledTestReport, Upload, Test_Scheduled, Classes_Scheduled
+  ScheduledClassReport, ScheduledTestReport, Upload, Test_Scheduled, Classes_Scheduled, Getupload
 }

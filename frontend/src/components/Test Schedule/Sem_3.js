@@ -15,6 +15,7 @@ const Sem_3 = () => {
   const [NitishaAgg,setNitishaAgg]=useState(false)
   const [MKDas,setMKDas]=useState(false)
   const [Manish,setManish]=useState(false)
+  const [teacher,setTeacher]=useState("")
   const sem = "Sem-3";
    //-----------
  async function populate(e){
@@ -24,7 +25,7 @@ const Sem_3 = () => {
     },
   })
   const data = await req.json();
-
+   setTeacher(data.name)
   console.log(data)
    if(data.name=="Unmesh Shukla")
     {
@@ -61,6 +62,7 @@ const Sem_3 = () => {
         date,
         time,
         message,
+        teacher
       }),
     }).then(async(response) => {
     let data = await response.json();
