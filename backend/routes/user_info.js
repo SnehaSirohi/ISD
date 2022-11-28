@@ -6,7 +6,7 @@ const {
     RegisterTeacher,GetScheduleclass, Postscheduleclass, GetScheduletest,PostscheduleTest,
     GetAttendance,sem1Attendance,sem2Attendance,sem3Attendance,sem4Attendance,
     Sem1AttendanceReport,Sem2AttendanceReport,Sem3AttendanceReport,Sem4AttendanceReport,
-    ScheduledClassReport,ScheduledTestReport,Upload, Test_Scheduled, Classes_Scheduled,Getupload, Assignment_Schedule_student
+    ScheduledClassReport,ScheduledTestReport,Upload, Test_Scheduled, Classes_Scheduled,Getupload, GetAssignments,classnotification, Assignment_Schedule_student
 } = require("../controllers/functions")
 const { json } = require("body-parser");
 const router = express.Router();
@@ -79,4 +79,7 @@ router.post("/upload",Upload)
 router.get("/classschedule", Classes_Scheduled);
 router.get("/testschedule", Test_Scheduled);
 router.get("/assignmentreportstudent", Assignment_Schedule_student)
+router.get("/notifications/assignment",GetAssignments)
+router.get("/notifications/classes",classnotification)
+
 module.exports = router;
