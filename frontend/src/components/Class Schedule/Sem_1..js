@@ -100,28 +100,27 @@ const Sem_1 = () => {
     <>
       <Navbar />
       <form onSubmit={schedule}>
-        <div className="mb-3">
-          <div>
+        <div>
 
-            {/* popup */}
-            {isAlertVisible && <div className="popup center">
-              <div class="icon">
-                <i class="fa fa-check"></i>
-              </div>
-              <div class="title">
-                Success!!
-              </div>
-              <div class="description">
-                class is scheduled successfully
-              </div>
-              <div class="dismiss-btn">
-                <button id="dismiss-popup-btn" onClick={() => setIsAlertVisible(false)}>
-                  Dismiss
-                </button>
-              </div>
-            </div>}
-          </div>
-
+          {/* popup */}
+          {isAlertVisible && <div className="popup center">
+            <div class="icon">
+              <i class="fa fa-check"></i>
+            </div>
+            <div class="title">
+              Success!!
+            </div>
+            <div class="description">
+              class is scheduled successfully
+            </div>
+            <div class="dismiss-btn">
+              <button id="dismiss-popup-btn" onClick={() => setIsAlertVisible(false)}>
+                Dismiss
+              </button>
+            </div>
+          </div>}
+        </div>
+        <div className="mb-3" style={{ filter: isAlertVisible ? "blur(3px)" : "none", background: isAlertVisible ? "#f1ebeb" : "none"}} >
           {UnmeshShukla && <div><label className="form-label">Select Subject</label>
             <select
               type="text"
