@@ -847,6 +847,13 @@ const ScheduledTestReport = async (req, res) => {
 
 }
 
+const GetAssignments = async(req,res)=>{
+      return res.status(200).json({
+      success: true,
+      data: await AssignmentsPosted.find({}),
+    });
+}
+
 const Getupload = async(req, res) =>{
   const token = req.headers["x-access-token"];
 
@@ -855,7 +862,7 @@ const Getupload = async(req, res) =>{
     const Teacher_id = decoded.Teacher_id;
     const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
 
-    return res.json({
+      return res.json({
       status: "ok",
       Teacher_id: teacher.Teacher_id,
       name: teacher.name,
@@ -866,6 +873,7 @@ const Getupload = async(req, res) =>{
     console.log(error);
     res.json({ status: "error", error: "invalid token" });
   }
+   
 }
 const Upload = async (req, res) => {
   var nowDate = new Date();
@@ -938,6 +946,13 @@ const Classes_Scheduled = async (req, res) => {
 
 }
 
+const classnotification = async(req,res)=>{
+  return res.status(200).json({
+    success : true,
+    data : await ScheduledClass.find({})
+  })
+}
+
 module.exports = {
   login, Getdashboard, Postdashboard, Getprofile, Postprofile, Getchangepassword,
   PatchChangepassword, register, loginteacher, GetTeacherdashboard, Postteacherdashboard,
@@ -945,5 +960,6 @@ module.exports = {
   RegisterTeacher, GetScheduleclass, Postscheduleclass, GetScheduletest, PostscheduleTest,
   GetAttendance, sem1Attendance, sem2Attendance, sem3Attendance, sem4Attendance,
   Sem1AttendanceReport, Sem2AttendanceReport, Sem3AttendanceReport, Sem4AttendanceReport,
-  ScheduledClassReport, ScheduledTestReport, Upload, Test_Scheduled, Classes_Scheduled, Getupload
+  ScheduledClassReport, ScheduledTestReport, Upload, Test_Scheduled, Classes_Scheduled, Getupload, GetAssignments,
+  classnotification
 }
