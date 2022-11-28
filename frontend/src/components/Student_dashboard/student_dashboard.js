@@ -10,6 +10,7 @@ const Dashboard = (props) => {
     const [totalClasstaken, setTotalClasstaken] = useState([])
     const [totalClassScheduled, setTotalClassScheduled] = useState([])
     const [totalTestScheduled, setTotalTestScheduled] = useState([])
+    const [assignments, setAssignments] = useState([])
     let attendancepercentage
     const navigate = useNavigate();
     const [name, setName] = useState([])
@@ -33,6 +34,7 @@ const Dashboard = (props) => {
             setTotalClassScheduled(json.Classes_Scheduled)
             setTotalClasstaken(json.Classes_taken_count)
             setTotalTestScheduled(json.Test_Scheduled)
+            setAssignments(json.assignments)
         }
         else{
             // alert(data.error)
@@ -77,8 +79,8 @@ const Dashboard = (props) => {
                 </div>
                 <div class="col-xl-3 col-sm-6 blockcolour">
                     <div>
-                        <h5 class="text-uppercase">ASSIGNMENTS</h5>
-                        <h1 class="display-4">4</h1>
+                    <Link to='/'><h5 class="text-uppercase">ASSIGNMENTS</h5></Link>
+                        <h1 class="display-4">{assignments}</h1>
                     </div>
                 </div>
             </div>
