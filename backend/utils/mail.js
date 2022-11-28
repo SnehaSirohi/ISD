@@ -45,5 +45,22 @@ const testScheduleMail = (
     })
     .catch((err) => console.log(err));
 };
+const AssignmentMail = (
+  subject,
+  deadline,
+  recieverEmail,
+  name,
+  teacher,
+  message
+) => {
+  transport
+    .sendMail({
+      from: process.env.EMAIL,
+      to: recieverEmail,
+      subject: `Assignment Posted`,
+      html: `Hello ${name} <br> ${teacher} has posted an assignment of ${subject} on classopedia. <br> The deadline of assignment submission is ${deadline}. <br> ${message}`,
+    })
+    .catch((err) => console.log(err));
+};
 
-module.exports = { classScheduleMail, testScheduleMail };
+module.exports = { classScheduleMail, testScheduleMail,AssignmentMail };

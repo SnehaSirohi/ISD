@@ -12,7 +12,7 @@ const jwt = require("jsonwebtoken");
 const scheduledclass = require("../models/scheduledclass");
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
-const { classScheduleMail, testScheduleMail } = require("../utils/mail");
+const { classScheduleMail, testScheduleMail, AssignmentMail } = require("../utils/mail");
 
 const login = (req, res) => {
   const { enrollNum, password } = req.body;
@@ -878,7 +878,6 @@ const Upload = async (req, res) => {
     nowDate.getDate();
 
   const {subject,teacher,file,semester,deadline,description} = req.body
-  console.log(semester);
   try {
     const assignments = await AssignmentsPosted.create({
       date,subject,teacher,file,semester,deadline,description
@@ -889,6 +888,19 @@ const Upload = async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
+   let data = await Students.find({});
+  data.forEach((student) => {
+    if (student.semester == semester) {
+      AssignmentMail(
+        subject,
+        deadline,
+        student.email,
+        student.name,
+        teacher,
+        description
+      );
+    }
+  });
 }
 
 //for students
