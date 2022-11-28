@@ -39,7 +39,6 @@ function UploadAssignmentsem2() {
                     <select
                         type="text"
                         className="form-control"
-                        id="subject"
                         name="subject"
                         value={subject}
                         onChange={(e) => setsubject(e.target.value)}

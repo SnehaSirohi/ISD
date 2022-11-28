@@ -98,12 +98,10 @@ const Sem_1 = () => {
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <form onSubmit={schedule}>
-<<<<<<< HEAD
         <div className="mb-3">
           <div>
-            <h1>Class Schedule</h1>
 
             {/* popup */}
             {isAlertVisible && <div className="popup center">
@@ -117,7 +115,7 @@ const Sem_1 = () => {
                 class is scheduled successfully
               </div>
               <div class="dismiss-btn">
-                <button id="dismiss-popup-btn" onClick= {()=> setIsAlertVisible(false)}>
+                <button id="dismiss-popup-btn" onClick={() => setIsAlertVisible(false)}>
                   Dismiss
                 </button>
               </div>
@@ -138,142 +136,127 @@ const Sem_1 = () => {
                 Algorithms and Data Structure
               </option>
             </select></div>}
-=======
-        <div className=" mb-3">
- 
-          <h1 className="class-1">Class Schedule</h1>
-          <h1>Class Schedule</h1>
-          {UnmeshShukla && <div><label className="form-label">Select Subject</label>
 
-          <select
-            type="text"
-            className="form-control"
-            id="subject"
-            name="subject"
-            value={subject}
-            required
-            onChange={(e) => setsubject(e.target.value)}>
-            <option required>Select Subject</option>
-            <option value="Algorithms And Data Structure">
-              Algorithms and Data Structure
-            </option>
-          </select></div> }
->>>>>>> 08828cfdb2acaa22badade51e9dc2cc05f0d9791
-          {NitishaAgg && <div><label className="form-label">Select Subject</label>
-            <select
+          <div className=" mb-3">
+
+            <h1 className="class-1">Class Schedule</h1>
+            {UnmeshShukla && <div><label className="form-label">Select Subject</label>
+
+              <select
+                type="text"
+                className="form-control"
+                id="subject"
+                name="subject"
+                value={subject}
+                required
+                onChange={(e) => setsubject(e.target.value)}>
+                <option required>Select Subject</option>
+                <option value="Algorithms And Data Structure">
+                  Algorithms and Data Structure
+                </option>
+              </select></div>}
+            {NitishaAgg && <div><label className="form-label">Select Subject</label>
+              <select
+                type="text"
+                className="form-control"
+                id="subject"
+                name="subject"
+                value={subject}
+                required
+                onChange={(e) => setsubject(e.target.value)}>
+                <option required>Select Subject</option>
+                <option value="Software Design & Programming">
+                  Software Design & Programming
+                </option>
+              </select></div>}
+            {MKDas && <div><label className="form-label">Select Subject</label>
+              <select
+                type="text"
+                className="form-control"
+                id="subject"
+                name="subject"
+                value={subject}
+                required
+                onChange={(e) => setsubject(e.target.value)}>
+                <option required>Select Subject</option>
+                <option value="Mathematical Foundation Of Computing">
+                  Mathematical Foundation of Computing
+                </option>
+              </select></div>}
+            {SunilKumar && <div><label className="form-label">Select Subject</label>
+              <select
+                type="text"
+                className="form-control"
+                id="subject"
+                name="subject"
+                value={subject}
+                required
+                onChange={(e) => setsubject(e.target.value)}>
+                <option required>Select Subject</option>
+                <option value="Computer System Architecture">
+                  Computer System Architecture
+                </option>
+              </select></div>}
+
+          </div>
+
+          <div className="abc-1">
+            <div className="mb-3">
+              <label htmlFor="date" className="class-form-label">Date:</label>
+              <input
+                type="date"
+                className="class-form-control"
+                id="date"
+                aria-describedby="date"
+                value={date}
+                required
+                onChange={(e) => setdate(e.target.value)}
+              />
+            </div >
+            <div className="mb-3">
+              <label htmlFor="time" className="time-form-label">
+                Time:
+              </label>
+              <input
+                type="time"
+                className="class-form-control"
+                id="time"
+                value={time}
+                required
+                onChange={(e) => settime(e.target.value)}
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="msg-1">
+              <label for="exampleFormControlTextarea1" class="form-label">
+                Message:
+              </label>
+            </div>
+            <textarea
               type="text"
-              className="form-control"
-              id="subject"
-              name="subject"
-              value={subject}
-              required
-              onChange={(e) => setsubject(e.target.value)}>
-              <option required>Select Subject</option>
-              <option value="Software Design & Programming">
-                Software Design & Programming
-              </option>
-            </select></div>}
-          {MKDas && <div><label className="form-label">Select Subject</label>
-            <select
-              type="text"
-              className="form-control"
-              id="subject"
-              name="subject"
-              value={subject}
-              required
-              onChange={(e) => setsubject(e.target.value)}>
-              <option required>Select Subject</option>
-              <option value="Mathematical Foundation Of Computing">
-                Mathematical Foundation of Computing
-              </option>
-            </select></div>}
-          {SunilKumar && <div><label className="form-label">Select Subject</label>
-            <select
-              type="text"
-              className="form-control"
-              id="subject"
-              name="subject"
-              value={subject}
-              required
-              onChange={(e) => setsubject(e.target.value)}>
-              <option required>Select Subject</option>
-              <option value="Computer System Architecture">
-                Computer System Architecture
-              </option>
-            </select></div>}
-
-        </div>
-
-      <div className="abc-1">
-        <div className="mb-3">
-          <label htmlFor="date" className="class-form-label">Date:</label>
-          <input
-            type="date"
-            className="class-form-control"
-            id="date"
-            aria-describedby="date"
-            value={date}
-            required
-            onChange={(e) => setdate(e.target.value)}
-          />
-        </div >
-        <div className="mb-3">
-          <label htmlFor="time" className="time-form-label">
-            Time:
-          </label>
-          <input
-            type="time"
-            className="class-form-control"
-            id="time"
-            value={time}
-            required
-            onChange={(e) => settime(e.target.value)}
-          />
-        </div>
-      </div>
-        <div class="mb-3">
-        <div class="msg-1">
-          <label for="exampleFormControlTextarea1" class="form-label">
-            Message:
-          </label>
-        </div>
-          <textarea
-            type="text"
-            class="class-form-control-1"
-            id="exampleFormControlTextarea1"
-            rows="3"
-            placeholder="Optional"
-            value={message}
-            onChange={(e) => setmessage(e.target.value)}></textarea>
-        </div>
-<<<<<<< HEAD
-        <button type="submit" className="btn btn-primary" onClick={handleButtonClick}>
-          Schedule Class
-        </button>
-
-        {warning && <div className="container warning">
-          <h3>{warning}</h3>
-          <button onClick={(e) => setwarning(false)}>Ok</button>
-        </div>}
-=======
-        <div className="btn-class">
-
-        <button type="submit" className="btn btn-primary" >
-          Schedule Class
-        </button>
-
-      
-        </div>
-
-     {warning &&  <div className="container warning">
+              class="class-form-control-1"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              placeholder="Optional"
+              value={message}
+              onChange={(e) => setmessage(e.target.value)}></textarea>
+          </div>
+          
+          <div className="btn-class">
+            <button type="submit" className="btn btn-primary" onClick={handleButtonClick} >
+              Schedule Class
+            </button>
+          </div>
+          {warning && <div className="container warning">
             <h3>{warning}</h3>
-            <button onClick={(e)=>setwarning(false)}>Ok</button>
-      </div>}
->>>>>>> 08828cfdb2acaa22badade51e9dc2cc05f0d9791
-
+            <button onClick={(e) => setwarning(false)}>Ok</button>
+          </div>}
+        </div>
       </form>
+
     </>
-  );
+  )
 };
 
 export default Sem_1;
