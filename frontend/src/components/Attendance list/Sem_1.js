@@ -88,7 +88,7 @@ const Sem_1 = () => {
   }
 
   return (
-    <>
+    <div className="attendencebody">
       <Navbar/>
       <h1 className="atte1">Sem-1 Attendance</h1>
       {UnmeshShukla && <div className="mb-3">
@@ -167,7 +167,7 @@ const Sem_1 = () => {
       <div className="button-1">
         <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onClick={Submit}>Submit</button>
       </div> 
-    </>
+    </div>
   );
 };
 

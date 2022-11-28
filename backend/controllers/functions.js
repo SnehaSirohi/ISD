@@ -43,9 +43,48 @@ const Getdashboard = async (req, res) => {
     const decoded = jwt.verify(token, "secret123");
     const enrollNum = decoded.enrollNum;
     const student = await Students.findOne({ enrollNum: enrollNum });
+   
+    const sem1Attendance = await Sem1Attendance.find({attendanceStatus: "Present", name: student.name})
+    const sem2Attendance = await Sem2Attendance.find({attendanceStatus: "Present", name: student.name})
+    const sem3Attendance = await Sem3Attendance.find({attendanceStatus: "Present", name: student.name})
+    const sem4Attendance = await Sem4Attendance.find({attendanceStatus: "Present", name: student.name})
+
+    let Classes_taken_count
+
+    if(student.semester == "Sem-1")
+    {
+      Classes_taken_count = sem1Attendance.length
+      console.log(Classes_taken_count)
+    }
+
+    else if(student.semester == "Sem-2")
+    {
+      Classes_taken_count = sem2Attendance.length
+      console.log(Classes_taken_count)
+    }
+
+    if(sem3Attendance.semester == "Sem-3")
+    {
+      Classes_taken_count = sem3Attendance.length
+      console.log(Classes_taken_count)
+    }
+
+    if(sem4Attendance.semester == "Sem-4")
+    {
+      Classes_taken_count = sem4Attendance.length
+      console.log(Classes_taken_count)
+    }
+
+    const Classes_held = await ClassesTaken.count({semester: student.semester})
+    const Classes_Scheduled = await ScheduledClass.count({ semester: student.semester });
+    const Test_Scheduled = await ScheduledTest.count({ semester: student.semester });
 
     return res.json({
       status: "ok",
+      Classes_taken_count,
+      Classes_held,
+      Classes_Scheduled,
+      Test_Scheduled,
       enrollNum: student.enrollNum,
       name: student.name,
       email: student.email,

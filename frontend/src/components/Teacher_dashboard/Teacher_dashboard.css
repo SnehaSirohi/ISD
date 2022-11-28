@@ -56,6 +56,7 @@ html{
     justify-content: space-around;
     margin-top: 2rem;
     border-radius: 50%;
+    --bs-gutter-x: 0.;
    
 }
 
