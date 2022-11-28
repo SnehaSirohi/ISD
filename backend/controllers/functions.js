@@ -13,7 +13,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 const { classScheduleMail, testScheduleMail } = require("../utils/mail");
 
-const login =  (req, res) => {
+const login = (req, res) => {
   const { enrollNum, password } = req.body;
   Students.findOne({ enrollNum: enrollNum }, (err, student) => {
     if (student) {
@@ -57,7 +57,7 @@ const Getdashboard = async (req, res) => {
   }
 }
 
-const Postdashboard =  async (req, res) => {
+const Postdashboard = async (req, res) => {
   const token = req.headers["x-access-token"];
 
   try {
@@ -102,7 +102,7 @@ const Getprofile = async (req, res) => {
   }
 }
 
-const Postprofile =  async (req, res) => {
+const Postprofile = async (req, res) => {
   const token = req.headers["x-access-token"];
 
   try {
@@ -139,7 +139,7 @@ const Getchangepassword = async (req, res) => {
   }
 }
 
-const PatchChangepassword =  async (req, res) => {
+const PatchChangepassword = async (req, res) => {
   console.log('patch')
   const token = req.headers['x-access-token']
   const { oldpassword, newpassword, confirmpassword } = req.body
@@ -179,7 +179,7 @@ const PatchChangepassword =  async (req, res) => {
   }
 }
 
-const register =  async (req, res) => {
+const register = async (req, res) => {
   const { name, semester, email, rollNum, contactNum, enrollNum, password } =
     req.body;
 
@@ -220,7 +220,7 @@ const loginteacher = (req, res) => {
   });
 }
 
-const GetTeacherdashboard =  async (req, res) => {
+const GetTeacherdashboard = async (req, res) => {
   const token = req.headers["x-access-token"];
 
   try {
@@ -248,7 +248,7 @@ const GetTeacherdashboard =  async (req, res) => {
   }
 }
 
-const Postteacherdashboard =  async (req, res) => {
+const Postteacherdashboard = async (req, res) => {
   const token = req.headers["x-access-token"];
 
   try {
@@ -291,7 +291,7 @@ const GetTeacherProfile = async (req, res) => {
   }
 }
 
-const PostTeacherProfile =  async (req, res) => {
+const PostTeacherProfile = async (req, res) => {
   const token = req.headers["x-access-token"];
 
   try {
@@ -327,7 +327,7 @@ const GetTeacherChangePassword = async (req, res) => {
   }
 }
 
-const PatchTeacherChangePassword =  async (req, res) => {
+const PatchTeacherChangePassword = async (req, res) => {
   const token = req.headers['x-access-token']
   const { oldpassword, newpassword, confirmpassword } = req.body
   try {
@@ -366,7 +366,7 @@ const PatchTeacherChangePassword =  async (req, res) => {
   }
 }
 
-const RegisterTeacher =  async (req, res) => {
+const RegisterTeacher = async (req, res) => {
   const { name, email, Teacher_id, contactNum, password } = req.body;
 
   try {
@@ -383,7 +383,7 @@ const RegisterTeacher =  async (req, res) => {
   }
 }
 
-const GetScheduleclass =  async (req, res) => {
+const GetScheduleclass = async (req, res) => {
   const token = req.headers["x-access-token"];
 
   try {
@@ -404,7 +404,7 @@ const GetScheduleclass =  async (req, res) => {
   }
 }
 
-const Postscheduleclass =  async (req, res) => {
+const Postscheduleclass = async (req, res) => {
 
   const token = req.headers["x-access-token"];
 
@@ -518,30 +518,30 @@ const PostscheduleTest = async (req, res) => {
   }
 }
 
-const GetAttendance =  async (req, res) => {
+const GetAttendance = async (req, res) => {
   const token = req.headers["x-access-token"];
   try {
-        const decoded = jwt.verify(token, "secret1234");
-        const Teacher_id = decoded.Teacher_id;
-        const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
-    
-        return res.json({
-          status: "ok",
-          success:true,
-          Teacher_id: teacher.Teacher_id,
-          name: teacher.name,
-          email: teacher.email,
-          contactNum: teacher.contactNum,
-          data: await Students.find({}),
-        });
-      } catch (error) {
-        console.log(error);
-        res.json({ status: "error", error: "invalid token" });
-      }
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+
+    return res.json({
+      status: "ok",
+      success: true,
+      Teacher_id: teacher.Teacher_id,
+      name: teacher.name,
+      email: teacher.email,
+      contactNum: teacher.contactNum,
+      data: await Students.find({}),
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
 
 }
 
-const sem1Attendance =  async (req, res) => {
+const sem1Attendance = async (req, res) => {
   const token = req.headers["x-access-token"];
   const semester = "Sem-1";
   const subject = req.body.subject;
@@ -592,7 +592,7 @@ const sem1Attendance =  async (req, res) => {
   }
 }
 
-const sem2Attendance =  async (req, res) => {
+const sem2Attendance = async (req, res) => {
   const token = req.headers["x-access-token"];
   const semester = "Sem-2";
   const subject = req.body.subject;
@@ -642,7 +642,7 @@ const sem2Attendance =  async (req, res) => {
     }
   }
 }
-const sem3Attendance =  async (req, res) => {
+const sem3Attendance = async (req, res) => {
   const token = req.headers["x-access-token"];
   const semester = "Sem-3";
   const subject = req.body.subject;
@@ -692,7 +692,7 @@ const sem3Attendance =  async (req, res) => {
     }
   }
 }
-const sem4Attendance =  async (req, res) => {
+const sem4Attendance = async (req, res) => {
   const token = req.headers["x-access-token"];
   const semester = "Sem-4";
   const subject = req.body.subject;
@@ -751,7 +751,7 @@ const Sem1AttendanceReport = async (req, res) => {
 
 }
 
-const Sem2AttendanceReport =async (req, res) => {
+const Sem2AttendanceReport = async (req, res) => {
   return res.status(200).json({
     success: true,
     data: await Sem2Attendance.find({}),
@@ -763,7 +763,7 @@ const Sem3AttendanceReport = async (req, res) => {
     data: await Sem3Attendance.find({}),
   });
 }
-const Sem4AttendanceReport =async (req, res) => {
+const Sem4AttendanceReport = async (req, res) => {
   return res.status(200).json({
     success: true,
     data: await Sem4Attendance.find({}),
@@ -804,16 +804,51 @@ const ScheduledTestReport = async (req, res) => {
 
 }
 
-const Upload =  async (req, res) => {
+const Upload = async (req, res) => {
   console.log(req.body);
 }
 
+//for students
+const Test_Scheduled = async (req, res) => {
+  const token = req.headers["x-access-token"];
+  try {
+    const decoded = jwt.verify(token, "secret123");
+    const enrollNum = decoded.enrollNum;
+    const student = await Students.findOne({ enrollNum: enrollNum });
+    return res.status(200).json({
+      success: true,
+      data: await ScheduledTest.find({ semester: student.semester }),
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+}
+
+const Classes_Scheduled = async (req, res) => {
+  const token = req.headers["x-access-token"];
+  try {
+    const decoded = jwt.verify(token, "secret123");
+    const enrollNum = decoded.enrollNum;
+    const student = await Students.findOne({ enrollNum: enrollNum });
+    return res.status(200).json({
+      success: true,
+      data: await ScheduledClass.find({ semester: student.semester }),
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+
+
+}
+
 module.exports = {
-    login,Getdashboard,Postdashboard, Getprofile, Postprofile, Getchangepassword,
-    PatchChangepassword, register,loginteacher,GetTeacherdashboard,Postteacherdashboard,
-    GetTeacherProfile,PostTeacherProfile,GetTeacherChangePassword,PatchTeacherChangePassword,
-    RegisterTeacher,GetScheduleclass, Postscheduleclass, GetScheduletest,PostscheduleTest,
-    GetAttendance,sem1Attendance,sem2Attendance,sem3Attendance,sem4Attendance,
-    Sem1AttendanceReport,Sem2AttendanceReport,Sem3AttendanceReport,Sem4AttendanceReport,
-    ScheduledClassReport,ScheduledTestReport,Upload
+  login, Getdashboard, Postdashboard, Getprofile, Postprofile, Getchangepassword,
+  PatchChangepassword, register, loginteacher, GetTeacherdashboard, Postteacherdashboard,
+  GetTeacherProfile, PostTeacherProfile, GetTeacherChangePassword, PatchTeacherChangePassword,
+  RegisterTeacher, GetScheduleclass, Postscheduleclass, GetScheduletest, PostscheduleTest,
+  GetAttendance, sem1Attendance, sem2Attendance, sem3Attendance, sem4Attendance,
+  Sem1AttendanceReport, Sem2AttendanceReport, Sem3AttendanceReport, Sem4AttendanceReport,
+  ScheduledClassReport, ScheduledTestReport, Upload, Test_Scheduled, Classes_Scheduled
 }
