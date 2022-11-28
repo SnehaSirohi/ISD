@@ -878,10 +878,12 @@ const Upload = async (req, res) => {
     nowDate.getDate();
 
   const {subject,teacher,file,semester,deadline,description} = req.body
+  console.log(semester);
   try {
     const assignments = await AssignmentsPosted.create({
       date,subject,teacher,file,semester,deadline,description
     });
+
  
     res.status(200).json(assignments);
   } catch (error) {

@@ -12,7 +12,6 @@ function UploadAssignmentsem1() {
     const [deadline,setdeadline]=useState("")
     const [teacher,setTeacher] = useState("")
     const [description,setdescription]=useState("")
-    const semester = "Sem-1"
 
 
      async function populate(e) {
@@ -38,7 +37,7 @@ function UploadAssignmentsem1() {
                 file,
                 subject,
                 deadline,
-                semester,
+                semester:"Sem-1",
                 teacher,
                 description
             }),

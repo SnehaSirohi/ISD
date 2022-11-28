@@ -93,9 +93,9 @@ function App() {
       <Route path='/scheduledclassreport' element={<Classreport/>}/>
       <Route path='/scheduledtestreport' element={<Testreport/>}/>
       <Route path='/UploadAssignment/sem1' element={<UploadAssignmentsem1 />} />
-      <Route path='/UploadAssignment/sem2' element={<UploadAssignmentsem1 />} />
-      <Route path='/UploadAssignment/sem3' element={<UploadAssignmentsem1 />} />
-      <Route path='/UploadAssignment/sem4' element={<UploadAssignmentsem1 />} />
+      <Route path='/UploadAssignment/sem2' element={<UploadAssignmentsem2 />} />
+      <Route path='/UploadAssignment/sem3' element={<UploadAssignmentsem3 />} />
+      <Route path='/UploadAssignment/sem4' element={<UploadAssignmentsem4 />} />
       <Route path="/filters/sem1" element={<Sem1filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
       <Route path="/attendancereport/sem2" element={<Sem2Attendance subjectval={subjectval} dateval={dateval} monthval={monthval}/>}/>
       <Route path="/filters/sem2" element={<Sem2filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
