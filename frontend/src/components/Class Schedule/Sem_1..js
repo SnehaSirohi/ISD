@@ -22,13 +22,18 @@ const Sem_1 = () => {
   const [SunilKumar, setSunilKumar] = useState(false)
   const [teacher,setTeacher] = useState("")
   const [isAlertVisible, setIsAlertVisible] = useState(false);
+  const [isdot, setIsdotVisible] = useState(false);
+
   const handleButtonClick = () => {
-    setIsAlertVisible(true);
+    setIsdotVisible(true);
+    setTimeout(() => {
+      setIsdotVisible(false);
+      setIsAlertVisible(true);
+    }, 2000);
   }
 
-  // setTimeout(() => {
-  //   setIsAlertVisible(false);
-  // }, 5000);
+
+
 
   const sem = "Sem-1";
 
@@ -41,7 +46,6 @@ const Sem_1 = () => {
     })
     const data = await req.json();
     setTeacher(data.name)
-    console.log(data)
     if (data.name == "Unmesh Shukla") {
       setUnmeshShukla(true)
     }
@@ -100,10 +104,29 @@ const Sem_1 = () => {
 
   return (
     <>
+      <div>
+        {isdot && <div class="loader"  >
+          <div class="pair p1">
+            <div class="dot dot-1 ">
+
+            </div>
+            <div class="dot dot-2">
+
+            </div>
+          </div>
+          <div class="pair p2">
+            <div class="dot dot-1">
+
+            </div>
+            <div class="dot dot-2">
+
+            </div>
+          </div>
+        </div>}
+      </div>
       <Navbar />
       <form onSubmit={schedule}>
         <div>
-
           {/* popup */}
           {isAlertVisible && <div className="popup center">
             <div class="icon">
@@ -122,27 +145,33 @@ const Sem_1 = () => {
             </div>
           </div>}
         </div>
-        <div className="mb-3" style={{ filter: isAlertVisible ? "blur(3px)" : "none", background: isAlertVisible ? "#f1ebeb" : "none"}} >
-          {UnmeshShukla && <div><label className="form-label">Select Subject</label>
-            <select
-              type="text"
-              className="form-control"
-              id="subject"
-              name="subject"
-              value={subject}
-              required
-              onChange={(e) => setsubject(e.target.value)}>
-              <option required>Select Subject</option>
-              <option value="Algorithms And Data Structure">
-                Algorithms and Data Structure
-              </option>
-            </select></div>}
+
+        {/* loading */}
+
+
+
+        <div className="mb-3" style={{ filter: isAlertVisible || isdot ? "blur(3px)" : "none", background: isAlertVisible ? "#f1ebeb" : "none" }} >
+        
 
           <div className=" mb-3">
 
             <h1 className="class-1">Class Schedule</h1>
-            
-            {NitishaAgg && <div><label className="form-label">Select Subject</label>
+            {UnmeshShukla && <div><label className="form-label mt-2">Select Subject</label>
+
+              <select
+                type="text"
+                className="form-control"
+                id="subject"
+                name="subject"
+                value={subject}
+                required
+                onChange={(e) => setsubject(e.target.value)}>
+                <option required>Select Subject</option>
+                <option value="Algorithms And Data Structure">
+                  Algorithms and Data Structure
+                </option>
+              </select></div>}
+            {NitishaAgg && <div><label className="form-label mt-2">Select Subject</label>
               <select
                 type="text"
                 className="form-control"
@@ -159,7 +188,7 @@ const Sem_1 = () => {
             {MKDas && <div><label className="form-label">Select Subject</label>
               <select
                 type="text"
-                className="form-control"
+                className="form-control mt-2"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -173,7 +202,7 @@ const Sem_1 = () => {
             {SunilKumar && <div><label className="form-label">Select Subject</label>
               <select
                 type="text"
-                className="form-control"
+                className="form-control mt-2"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -188,7 +217,7 @@ const Sem_1 = () => {
           </div>
 
           <div className="abc-1">
-            <div className="mb-3">
+            <div>
               <label htmlFor="date" className="class-form-label">Date:</label>
               <input
                 type="date"
@@ -200,8 +229,8 @@ const Sem_1 = () => {
                 onChange={(e) => setdate(e.target.value)}
               />
             </div >
-            <div className="mb-3">
-              <label htmlFor="time" className="time-form-label">
+            <div >
+              <label htmlFor="time" className="time-form-label mb-3 ">
                 Time:
               </label>
               <input
@@ -214,7 +243,7 @@ const Sem_1 = () => {
               />
             </div>
           </div>
-          <div class="mb-3">
+          <div>
             <div class="msg-1">
               <label for="exampleFormControlTextarea1" class="form-label">
                 Message:
@@ -229,9 +258,9 @@ const Sem_1 = () => {
               value={message}
               onChange={(e) => setmessage(e.target.value)}></textarea>
           </div>
-          
+
           <div className="btn-class">
-            <button type="submit" className="btn btn-primary" onClick={handleButtonClick} >
+            <button type="submit" className="btn btn-primary submit-btn" onClick={handleButtonClick} >
               Schedule Class
             </button>
           </div>

@@ -62,5 +62,21 @@ const AssignmentMail = (
     })
     .catch((err) => console.log(err));
 };
+const StudyMaterialMail = (
+  subject,
+  recieverEmail,
+  name,
+  teacher,
+  message
+) => {
+  transport
+    .sendMail({
+      from: process.env.EMAIL,
+      to: recieverEmail,
+      subject: `Study Material Posted`,
+      html: `Hello ${name} <br> ${teacher} has posted some study material of ${subject} on classopedia.<br> ${message}`,
+    })
+    .catch((err) => console.log(err));
+};
 
-module.exports = { classScheduleMail, testScheduleMail,AssignmentMail };
+module.exports = { classScheduleMail, testScheduleMail,AssignmentMail,StudyMaterialMail };
