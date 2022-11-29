@@ -26,7 +26,7 @@ const Dashboard = (props) => {
 
         const json = await req.json()
 
-        console.log(json)
+        // console.log(json)
         if(json.status === 'ok'){
             setName(json.name)
             setEmail(json.email)
@@ -43,7 +43,7 @@ const Dashboard = (props) => {
     }
 
     attendancepercentage = (totalClasstaken/totalclassesheld)*100
-    console.log(attendancepercentage)
+    // console.log(attendancepercentage)
 
     useEffect(() =>{
         const token = localStorage.getItem('token')
