@@ -13,7 +13,7 @@ const jwt = require("jsonwebtoken");
 const scheduledclass = require("../models/scheduledclass");
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
-const { classScheduleMail, testScheduleMail, AssignmentMail,StudyMaterialMail } = require("../utils/mail");
+const { classScheduleMail, testScheduleMail, AssignmentMail,StudyMaterialMail, MonthlyMail } = require("../utils/mail");
 
 const login = (req, res) => {
   const { enrollNum, password } = req.body;
@@ -1041,20 +1041,99 @@ const StudyMaterial_Posted = async (req, res) => {
   }
 }
 
-// const cron = require("node-cron")
-// cron.schedule('* * * * * *', async () =>
-//     {  
-//           const arr=["Sem-1","Sem-2","Sem-3","Sem-4"]
-//           for(let i=0;i<4;i++)
-//        {
-//            let classdata = await ClassesTaken.find({semester:arr[i]})
-//            const TotalClasses = classdata.length
-              // let studentdata= await Students.find({semester:arr[i]})
-//           }
+const cron = require("node-cron")
+cron.schedule('* * 1 * *', async () =>
+    {  
+          const arr=["Sem-1","Sem-2","Sem-3","Sem-4"]
+          const date=new Date();
+          const monthval=date.getMonth();
+          date.setMonth(monthval - 1);
+          var monthname= date.toLocaleString('en-US', {
+            month: 'long',
+          })
+          
+
+          for(let i=0;i<4;i++)
+       {
+           let TotalClasses = await ClassesTaken.find({semester:arr[i]})
+            TotalClasses=TotalClasses.filter((classes)=>{
+                 if(classes.date.slice(5,7)==monthval)
+                 {
+                      return classes
+                 }
+           })
+          
+           const classes=TotalClasses.length
+           let studentdata= await Students.find({semester:arr[i]})
+              if(arr[i]=="Sem-1")
+              {
+                 studentdata.forEach( async(student)=>{
+                   let presentdata= await Sem1Attendance.find({attendanceStatus:"Present",name:student.name})
+                   presentdata=presentdata.filter((data)=>{
+                    if(data.date.slice(5,7)==monthval)
+                    {
+                      return data
+                    }
+                   })
+                   const attendance = presentdata.length;
+                   const perecentage = (attendance/classes)*100;
+                   MonthlyMail(student.name,student.email,classes,attendance,monthname,perecentage)
+                 })
+
+               }
+              else if(arr[i]=="Sem-2")
+              {
+                 studentdata.forEach( async(student)=>{
+                   let presentdata= await Sem2Attendance.find({attendanceStatus:"Present",name:student.name})
+                   presentdata=presentdata.filter((data)=>{
+                    if(data.date.slice(5,7)==monthval)
+                    {
+                      return data
+                    }
+                   })
+                   const attendance = presentdata.length;
+                   const perecentage = (attendance/classes)*100;
+                   MonthlyMail(student.name,student.email,classes,attendance,monthname,perecentage)
+                 })
+
+               }
+              else if(arr[i]=="Sem-3")
+              {
+                 studentdata.forEach( async(student)=>{
+                   let presentdata= await Sem3Attendance.find({attendanceStatus:"Present",name:student.name})
+                   presentdata=presentdata.filter((data)=>{
+                    if(data.date.slice(5,7)==monthval)
+                    {
+                      return data
+                    }
+                   })
+                   const attendance = presentdata.length;
+                   const perecentage = (attendance/classes)*100;
+                   MonthlyMail(student.name,student.email,classes,attendance,monthname,perecentage)
+                 })
+
+               }
+              else 
+              {
+                 studentdata.forEach( async(student)=>{
+                   let presentdata= await Sem2Attendance.find({attendanceStatus:"Present",name:student.name})
+                   presentdata=presentdata.filter((data)=>{
+                    if(data.date.slice(5,7)==monthval)
+                    {
+                      return data
+                    }
+                   })
+                   const attendance = presentdata.length;
+                   const perecentage = (attendance/classes)*100;
+                   MonthlyMail(student.name,student.email,classes,attendance,monthname,perecentage)
+                 })
+
+               }
+          }
           
     
-//     }
-// );
+    }
+);
 
 module.exports = {
   login, Getdashboard, Postdashboard, Getprofile, Postprofile, Getchangepassword,

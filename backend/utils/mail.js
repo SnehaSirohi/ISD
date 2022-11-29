@@ -78,5 +78,22 @@ const StudyMaterialMail = (
     })
     .catch((err) => console.log(err));
 };
+const MonthlyMail = (
+  name,
+  recieverEmail,
+  totalclasses,
+  attendance,
+  monthname,
+  percentage
+) => {
+  transport
+    .sendMail({
+      from: process.env.EMAIL,
+      to: recieverEmail,
+      subject: `Attendance Report of ${monthname}`,
+      html: `Hello ${name} <br> Total Classes held : ${totalclasses} <br> Total classes attended : ${attendance} <br> Attendance Percentage : ${percentage}%`,
+    })
+    .catch((err) => console.log(err));
+};
 
-module.exports = { classScheduleMail, testScheduleMail,AssignmentMail,StudyMaterialMail };
+module.exports = { classScheduleMail, testScheduleMail,AssignmentMail,StudyMaterialMail,MonthlyMail };
