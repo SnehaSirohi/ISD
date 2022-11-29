@@ -74,3 +74,76 @@
 }
 
 
+
+.loader {
+    position: absolute;
+    z-index: 1;
+    top: 45%;
+    left: 45vw;
+    transform: translate(-50%, -50%);
+    width: 20px;
+}
+
+.loader .pair {
+    position: absolute;
+    width: 60px;
+    height: 20px;
+}
+
+.loader .pair .dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #000;
+    border-radius: 50%;
+}
+
+.loader .pair .dot-2 {
+    right: 0px;
+}
+
+.loader .p2 {
+    left: 40px;
+}
+
+.loader .p1 {
+    animation: spin 1000ms ease-in-out infinite;
+}
+
+.loader .p2 {
+    animation: spin 1000ms ease-in-out infinite reverse;
+}
+
+.loader .p1 .dot-1 {
+    opacity: 0;
+    animation: hide 1000ms ease-in-out infinite reverse;
+}
+
+.loader .p2 .dot-2 {
+    opacity: 0;
+    animation: hide 1000ms ease-in-out infinite;
+}
+
+@keyframes hide {
+
+    0%,
+    49% {
+        opacity: 0;
+    }
+
+    50%,
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50%,
+    100% {
+        transform: rotate(180deg);
+    }
+}
