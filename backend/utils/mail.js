@@ -15,6 +15,7 @@ const classScheduleMail = (
   time,
   recieverEmail,
   name,
+  teacher,
   message
 ) => {
   transport
@@ -22,7 +23,7 @@ const classScheduleMail = (
       from: process.env.EMAIL,
       to: recieverEmail,
       subject: `${subject}'s class`,
-      html: `Hello ${name} <br> ${subject}'s class scheduled on ${date} at ${time} <br> ${message} `,
+      html: `Hello ${name} <br> ${teacher} has scheduled ${subject}'s class on ${date} at ${time} <br> ${message} `,
     })
     .catch((err) => console.log(err));
 };
@@ -32,6 +33,7 @@ const testScheduleMail = (
   time,
   recieverEmail,
   name,
+  teacher,
   message
 ) => {
   transport
@@ -39,9 +41,26 @@ const testScheduleMail = (
       from: process.env.EMAIL,
       to: recieverEmail,
       subject: `${subject}'s Test`,
-      html: `Hello ${name} <br> ${subject}'s test scheduled on ${date} at ${time} <br> ${message}`,
+      html: `Hello ${name} <br> ${teacher} has scheduled ${subject}'s test on ${date} at ${time} <br> ${message}`,
+    })
+    .catch((err) => console.log(err));
+};
+const AssignmentMail = (
+  subject,
+  deadline,
+  recieverEmail,
+  name,
+  teacher,
+  message
+) => {
+  transport
+    .sendMail({
+      from: process.env.EMAIL,
+      to: recieverEmail,
+      subject: `Assignment Posted`,
+      html: `Hello ${name} <br> ${teacher} has posted an assignment of ${subject} on classopedia. <br> The deadline of assignment submission is ${deadline}. <br> ${message}`,
     })
     .catch((err) => console.log(err));
 };
 
-module.exports = { classScheduleMail, testScheduleMail };
+module.exports = { classScheduleMail, testScheduleMail,AssignmentMail };

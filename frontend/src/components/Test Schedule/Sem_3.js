@@ -6,8 +6,6 @@ import { useNavigate } from "react-router-dom"
 const Sem_3 = () => {
   //
   const navigate = useNavigate();
-  const [name, setName] = useState([])
-//
   const [subject, setsubject] = useState("");
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
@@ -17,6 +15,7 @@ const Sem_3 = () => {
   const [NitishaAgg,setNitishaAgg]=useState(false)
   const [MKDas,setMKDas]=useState(false)
   const [Manish,setManish]=useState(false)
+  const [teacher,setTeacher]=useState("")
   const sem = "Sem-3";
    //-----------
  async function populate(e){
@@ -26,7 +25,7 @@ const Sem_3 = () => {
     },
   })
   const data = await req.json();
-
+   setTeacher(data.name)
   console.log(data)
    if(data.name=="Unmesh Shukla")
     {
@@ -44,10 +43,6 @@ const Sem_3 = () => {
     {
       setManish(true)
     }
-  //added
-  if(data.status === 'ok'){
-    setName(data.name)
-}
 }
 
 
@@ -62,12 +57,12 @@ const Sem_3 = () => {
       'x-access-token': localStorage.getItem('token'),
       },
       body: JSON.stringify({
-        name,
         subject,
         sem,
         date,
         time,
         message,
+        teacher
       }),
     }).then(async(response) => {
     let data = await response.json();

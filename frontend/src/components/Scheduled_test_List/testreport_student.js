@@ -8,11 +8,11 @@ import { useNavigate } from "react-router-dom"
 import List from './list';
 var XLSX = require("xlsx");
 
-const Classreport = () => {
+const Testreport = () => {
     const navigate = useNavigate();
-    const [classes, setClasses]=useState([]);
+    const [teacher,setTeacher]=useState([]);
     const fetchdata=async()=>{
-        const response=await fetch("http://localhost:4000/scheduledclassreport", {
+        const response=await fetch("http://localhost:4000/testschedule", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -20,7 +20,8 @@ const Classreport = () => {
                 'x-access-token': localStorage.getItem('token'), //
             }})
             const json = await response.json()
-                setClasses(json.data)
+                setTeacher(json.data)
+                console.log(json.data)
 
       }
       useEffect(() => {
@@ -30,7 +31,7 @@ const Classreport = () => {
           console.log(user)
           if (!user) {
             localStorage.removeItem('token')
-            navigate("/Teacherdashboard");
+            navigate("/dashboard");
           } else {
             fetchdata()
     
@@ -40,21 +41,21 @@ const Classreport = () => {
   
   const exporttoexcelhandler= () =>{
      var wb = XLSX.utils.book_new(),
-     ws = XLSX.utils.json_to_sheet(classes);
+     ws = XLSX.utils.json_to_sheet(teacher);
      XLSX.utils.book_append_sheet(wb,ws,"MySheet1");
      XLSX.writeFile(wb,"MyExcel.xlsx")
   };
 
   const exporttopdfhandler = () =>{
     const doc = new jsPDF()
-    doc.text("Overall Classes Scheduled",70,10)
+    doc.text("Overall Tests Scheduled",70,10)
     autoTable(doc, { html: '#mytable'})
     doc.save('table.pdf')
   };
   return (
    <>
 
- {<h1>Overall Scheduled Classes </h1>}
+ {<h1>Overall Tests Scheduled </h1>}
  
   <div classname="main">
     <table classname="table table-bordered" id='mytable'>
@@ -66,7 +67,7 @@ const Classreport = () => {
         </tr>
       </thead>
       <tbody>
-      <List classes={classes} />
+      <List teacher={teacher} />
       </tbody>
     </table>
   </div>
@@ -77,4 +78,4 @@ const Classreport = () => {
   )
 }
 
-export default Classreport
+export default Testreport

@@ -10,9 +10,9 @@ var XLSX = require("xlsx");
 
 const Classreport = () => {
     const navigate = useNavigate();
-    const [classes, setClasses]=useState([]);
+    const [classes,setClasses]=useState([]);
     const fetchdata=async()=>{
-        const response=await fetch("http://localhost:4000/scheduledclassreport", {
+        const response=await fetch("http://localhost:4000/classschedule", {
             method: "GET",
             headers: {
                 Accept: "application/json",

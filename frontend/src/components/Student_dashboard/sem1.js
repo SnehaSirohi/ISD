@@ -8,31 +8,21 @@ function Sem1() {
         <div className='page'>
             <Navbar />
             <div class="album py-5 bg-light">
-                <h1 className='container semheadline'>Semester 3rd</h1>
+                <h1 className='container semheadline'>Semester 1st</h1>
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        <Link to='/classschedule/sem3'><div class="col">
+                         <Link to=''><div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
-                                    <h3>Schedule Class</h3>
+                                   <h3>Scheduled Classes</h3>
                                 </div>
                             </div>
                         </div>
                         </Link>
-                        <Link to="/testschedule/sem3">
-                        <div class="col">
+                        <Link to=""><div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
-                                    <h3>Schedule Test</h3>
-                                </div>
-                            </div>
-                        </div>
-                        </Link>
-                        <Link to="/attendance/sem3">
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <div class="card-body">
-                                    <h3>Mark Attendance</h3>
+                                    <h3>Scheduled Tests</h3>
                                 </div>
                             </div>
                         </div>
@@ -40,21 +30,18 @@ function Sem1() {
                         <div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
-                                    <h3>Upload Study Material</h3>
+                                    <h3>Study Material</h3>
                                 </div>
                             </div>
                         </div>
-                         <Link to="/UploadAssignment/sem3">
                         <div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
-                                    <h3>Upload Assignment</h3>
+                                    <h3>Assignment</h3>
                                 </div>
                             </div>
                         </div>
-                         </Link>
-                        <Link to='/filters/sem3'>
-                        <div class="col">
+                        <Link to=''><div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <h3>Attendance Report</h3>
