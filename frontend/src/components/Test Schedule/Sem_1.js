@@ -102,7 +102,6 @@ const Sem_1 = () => {
         <div className=" mb-3">
           <h1 className="test-1">Test Schedule</h1>
           <div className=" mb-3">
-          <h1>Class Schedule</h1>
           {UnmeshShukla && <div><label className="form-label">Select Subject</label>
 
           <select
