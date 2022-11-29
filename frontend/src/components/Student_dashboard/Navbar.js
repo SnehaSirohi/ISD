@@ -24,7 +24,7 @@ function Navbar() {
                         <FaIcons.FaBars onClick={showSidebar} />
                     </Link>
                     <div className="heading">
-                        <i class="far fa-bell mt-1 fa-2x"></i>
+                        <i class="fa fa-bell mt-1 fa-2x"></i>
                         <Link to="/dashboard/profile"><div className="button"><img src={logo} alt="..." class="profilePic"></img></div></Link>
 
                     </div>
