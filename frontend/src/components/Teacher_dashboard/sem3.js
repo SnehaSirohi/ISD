@@ -11,7 +11,7 @@ function Sem1() {
                 <h1 className='container semheadline'>Semester 3rd</h1>
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        <Link to='/classschedule/sem3'><div class="col">
+                        <Link to='/Teacherdashboard/sem3/classschedule'><div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <h3>Schedule Class</h3>
@@ -19,7 +19,7 @@ function Sem1() {
                             </div>
                         </div>
                         </Link>
-                        <Link to="/testschedule/sem3">
+                        <Link to="/Teacherdashboard/sem3/testschedule">
                         <div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
@@ -28,7 +28,7 @@ function Sem1() {
                             </div>
                         </div>
                         </Link>
-                        <Link to="/attendance/sem3">
+                        <Link to="/Teacherdashboard/sem3/attendance">
                         <div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
@@ -37,7 +37,7 @@ function Sem1() {
                             </div>
                         </div>
                         </Link>
-                        <Link to="/studymaterial/sem3" >
+                        <Link to="/Teacherdashboard/sem3/studymaterial" >
                         <div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
@@ -46,7 +46,7 @@ function Sem1() {
                             </div>
                         </div>
                         </Link>
-                         <Link to="/assignment/sem3">
+                         <Link to="/Teacherdashboard/sem3/assignment">
                         <div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
@@ -55,7 +55,7 @@ function Sem1() {
                             </div>
                         </div>
                          </Link>
-                        <Link to='/filters/sem3'>
+                        <Link to='/Teacherdashboard/filters/sem3'>
                         <div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">

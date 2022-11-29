@@ -78,41 +78,41 @@ function App() {
       <Route path='/Teacherdashboard' element = {<Teacher_Dashboard/>} />
       <Route path='/Teacherdashboard/profile' element = {<Teacher_Profile/>} />
       <Route path="/Teacherdashboard/changepassword" element={<ChangeTeacherPassword/>}/>
-      <Route path='/attendance/sem1' element = {<AttendanceSem1/>} />
-      <Route path='/attendance/sem2' element = {<AttendanceSem2/>} />
-      <Route path='/attendance/sem3' element = {<AttendanceSem3/>} />
-      <Route path='/attendance/sem4' element = {<AttendanceSem4/>} />
+      <Route path='/Teacherdashboard/sem1/attendance' element = {<AttendanceSem1/>} />
+      <Route path='/Teacherdashboard/sem2/attendance' element = {<AttendanceSem2/>} />
+      <Route path='/Teacherdashboard/sem3/attendance' element = {<AttendanceSem3/>} />
+      <Route path='/Teacherdashboard/sem4/attendance' element = {<AttendanceSem4/>} />
       <Route path='/Teacherdashboard/sem1' element={<Sem1/>} />
       <Route path='/Teacherdashboard/sem2' element={<Sem2/>} />
       <Route path='/Teacherdashboard/sem3' element={<Sem3/>} />
       <Route path='/Teacherdashboard/sem4' element={<Sem4/>} />
-      <Route path='/classschedule/sem1' element ={<ClassScheduleSem1/>}/>
-      <Route path='/classschedule/sem2' element ={<ClassScheduleSem2/>}/>
-      <Route path='/classschedule/sem3' element ={<ClassScheduleSem3/>}/>
-      <Route path='/classschedule/sem4' element ={<ClassScheduleSem4/>}/>
-      <Route path="/testschedule/sem1" element={<TestscheduleSem1/>}/>
-      <Route path="/testschedule/sem2" element={<TestscheduleSem2/>}/>
-      <Route path="/testschedule/sem3" element={<TestscheduleSem3/>}/>
-      <Route path="/testschedule/sem4" element={<TestscheduleSem4/>}/>
+      <Route path='/Teacherdashboard/sem1/classschedule' element ={<ClassScheduleSem1/>}/>
+      <Route path='/Teacherdashboard/sem2/classschedule' element ={<ClassScheduleSem2/>}/>
+      <Route path='/Teacherdashboard/sem3/classschedule' element ={<ClassScheduleSem3/>}/>
+      <Route path='/Teacherdashboard/sem4/classschedule' element ={<ClassScheduleSem4/>}/>
+      <Route path="/Teacherdashboard/sem1/testschedule" element={<TestscheduleSem1/>}/>
+      <Route path="/Teacherdashboard/sem2/testschedule" element={<TestscheduleSem2/>}/>
+      <Route path="/Teacherdashboard/sem3/testschedule" element={<TestscheduleSem3/>}/>
+      <Route path="/Teacherdashboard/sem4/testschedule" element={<TestscheduleSem4/>}/>
       <Route path="/attendancereport/sem1" element={<Sem1Attendance subjectval={subjectval} dateval={dateval} monthval={monthval}/>}/>
       <Route path='/scheduledclassreport' element={<Classreport/>}/>
       <Route path='/scheduledtestreport' element={<Testreport/>}/>
-      <Route path='/assignment/sem1' element={<UploadAssignmentsem1 />} />
-      <Route path='/assignment/sem2' element={<UploadAssignmentsem2 />} />
-      <Route path='/assignment/sem3' element={<UploadAssignmentsem3 />} />
-      <Route path='/assignment/sem4' element={<UploadAssignmentsem4 />} />
-      <Route path='/studymaterial/sem1' element={<UploadStudyMaterialSem1 />} />
-      <Route path='/studymaterial/sem2' element={<UploadStudyMaterialSem2 />} />
-      <Route path='/studymaterial/sem3' element={<UploadStudyMaterialSem3 />} />
-      <Route path='/studymaterial/sem4' element={<UploadStudyMaterialSem4/>} />
+      <Route path='/Teacherdashboard/sem1/assignment' element={<UploadAssignmentsem1 />} />
+      <Route path='/Teacherdashboard/sem2/assignment' element={<UploadAssignmentsem2 />} />
+      <Route path='/Teacherdashboard/sem3/assignment' element={<UploadAssignmentsem3 />} />
+      <Route path='/Teacherdashboard/sem4/assignment' element={<UploadAssignmentsem4 />} />
+      <Route path='/Teacherdashboard/sem1/studymaterial' element={<UploadStudyMaterialSem1 />} />
+      <Route path='/Teacherdashboard/sem2/studymaterial' element={<UploadStudyMaterialSem2 />} />
+      <Route path='/Teacherdashboard/sem3/studymaterial' element={<UploadStudyMaterialSem3 />} />
+      <Route path='/Teacherdashboard/sem4/studymaterial' element={<UploadStudyMaterialSem4/>} />
       <Route path='/Notifications' element={<Notifications />} />
-      <Route path="/filters/sem1" element={<Sem1filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
+      <Route path="/Teacherdashboard/filters/sem1" element={<Sem1filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
       <Route path="/attendancereport/sem2" element={<Sem2Attendance subjectval={subjectval} dateval={dateval} monthval={monthval}/>}/>
-      <Route path="/filters/sem2" element={<Sem2filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
+      <Route path="/Teacherdashboard/filters/sem2" element={<Sem2filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
       <Route path="/attendancereport/sem3" element={<Sem3Attendance subjectval={subjectval} dateval={dateval} monthval={monthval}/>}/>
-      <Route path="/filters/sem3" element={<Sem3filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
+      <Route path="/Teacherdashboard/filters/sem3" element={<Sem3filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
       <Route path="/attendancereport/sem4" element={<Sem4Attendance subjectval={subjectval} dateval={dateval} monthval={monthval}/>}/>
-      <Route path="/filters/sem4" element={<Sem4filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
+      <Route path="/Teacherdashboard/filters/sem4" element={<Sem4filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />}/>
         </Routes>
       </BrowserRouter>
     </div>

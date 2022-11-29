@@ -91,6 +91,7 @@ const Getdashboard = async (req, res) => {
       enrollNum: student.enrollNum,
       name: student.name,
       email: student.email,
+      semester: student.semester,
       rollNum: student.rollNum,
       contactNum: student.contactNum,
     });

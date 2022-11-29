@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./classschedule.css";
-import Navbar from "../Student_dashboard/Navbar.js";
+import Navbar from "../Teacher_dashboard/Navbar";
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import './CS.css'
