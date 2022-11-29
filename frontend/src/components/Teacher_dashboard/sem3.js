@@ -37,6 +37,7 @@ function Sem1() {
                             </div>
                         </div>
                         </Link>
+                        <Link to="/studymaterial/sem3" >
                         <div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">
@@ -44,7 +45,8 @@ function Sem1() {
                                 </div>
                             </div>
                         </div>
-                         <Link to="/UploadAssignment/sem3">
+                        </Link>
+                         <Link to="/assignment/sem3">
                         <div class="col">
                             <div class="card shadow-sm">
                                 <div class="card-body">

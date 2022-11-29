@@ -43,7 +43,7 @@ const Notifications = () => {
         const {teacher,subject,date} = notification
          return(
             <>
-            <div className='container'>
+            <div className='container information'>
                 <h4>{teacher} has posted an assignment of {subject}</h4>
                 <p>{date}</p>
             </div>
@@ -54,7 +54,7 @@ const Notifications = () => {
         const {name,subject,date} = notification
          return(
             <>
-            <div className='container'>
+            <div className='container information'>
                 <h4>{name} has scheduled a class of {subject} on {date}</h4>
                 <p>{date}</p>
             </div>

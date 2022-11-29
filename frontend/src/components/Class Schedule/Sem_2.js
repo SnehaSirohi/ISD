@@ -28,7 +28,6 @@ const Sem_2 = () => {
     })
     const data = await req.json();
      setTeacher(data.name)
-    console.log(data)
      if(data.name=="Unmesh Shukla")
     {
       setUnmeshShukla(true)
