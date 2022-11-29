@@ -98,26 +98,39 @@ function Navbar() {
                             background: sem ? "#2BB0A8" : ""
                         }}>
                             <FaIcons.FaPenSquare />
-                            <span>Semester</span>
+                            <span>Subjects</span>
                             <FaIcons.FaCaretDown />
                         </li>
                         <li className="semester" style={{
                             display: sem ? "block" : "none"
                         }}>
-                          {/* {sem1 && <div><label className="form-label">Select Subject</label>
-                            <select
-                            type="text"
-                            className="form-control"
-                            id="subject"
-                            name="subject"
-                            value={subject}
-                            required
-                            onChange={(e) => setsubject(e.target.value)}>
-                            <option required>Select Subject</option>
-                            <option value="Algorithms And Data Structure">
-                                Algorithms and Data Structure
-                            </option>
-                            </select></div>} */}
+                          {sem1 && <>
+                            <Link to="/"><p>Algorithms and Data Structure</p></Link>
+                            <Link><p>Software Design & Programming</p></Link>
+                            <Link><p>Mathematical Foundation of Computing</p></Link>
+                            <Link><p>Computer System Architecture</p></Link>
+                            </>}
+
+                            {sem2 && <>
+                            <Link to="/"><p>Computer Communication and Networks</p></Link>
+                            <Link><p>Operating Systems</p></Link>
+                            <Link><p>Database Systems</p></Link>
+                            <Link><p>Applied Machine Learning</p></Link>
+                            </>}
+
+                            {sem3 && <>
+                            <Link to="/"><p>Information System Design</p></Link>
+                            <Link><p>Cloud Computing</p></Link>
+                            <Link><p>Software Engineering</p></Link>
+                            <Link><p>IT Planning and Management</p></Link>
+                            </>}
+
+                            {sem4 && <>
+                            <Link to="/"><p>Internet of Things Systems, Security and Cloud</p></Link>
+                            <Link><p>Health Informatics</p></Link>
+                            <Link><p>Dissertation Project</p></Link>
+                            <Link><p>Research Methods in Informatics</p></Link>
+                            </>}
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaRegSun />
