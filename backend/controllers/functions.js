@@ -274,39 +274,20 @@ const GetTeacherdashboard = async (req, res) => {
     const Classes_taken_count = await ClassesTaken.count({ name: teacher.name });
     const Classes_Scheduled = await ScheduledClass.count({ name: teacher.name });
     const Test_Scheduled = await ScheduledTest.count({ name: teacher.name });
-
-
+    const Assignments_posted = await AssignmentsPosted.count({teacher: teacher.name})
+    const Study_Material_posted = await StudyMaterial.count({teacher: teacher.name})
+    
     return res.json({
       status: "ok",
       Classes_taken_count,
       Classes_Scheduled,
       Test_Scheduled,
+      Assignments_posted,
+      Study_Material_posted,
       Teacher_id: teacher.Teacher_id,
       name: teacher.name,
       email: teacher.email,
       contactNum: teacher.contactNum,
-    });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "invalid token" });
-  }
-}
-
-const Postteacherdashboard = async (req, res) => {
-  const token = req.headers["x-access-token"];
-
-  try {
-    const decoded = jwt.verify(token, "secret1234");
-    const Teacher_id = decoded.Teacher_id;
-    return res.status(200).json({
-      success: true,
-      data: await Teacher.UpdateOne(
-        { Teacher_id: Teacher_id },
-        { $set: { Teacher_id: Teacher_id } },
-        { $set: { name: req.body.name } },
-        { $set: { email: req.body.email } },
-        { $set: { contactNum: req.body.contactNum } }
-      ),
     });
   } catch (error) {
     console.log(error);
@@ -965,6 +946,22 @@ const Assignment_Schedule_student = async (req, res) => {
   }
 }
 
+const Assignment_Schedule_teacher = async (req, res) => {
+  const token = req.headers["x-access-token"];
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    return res.status(200).json({
+      success: true,
+      data: await AssignmentsPosted.find({teacher: teacher.name }),
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+}
+
 const classnotification = async(req,res)=>{
   return res.status(200).json({
     success : true,
@@ -994,6 +991,7 @@ const GetStudyMaterial = async(req, res) =>{
    
 }
 const PostStudyMaterial = async (req, res) => {
+  const token = req.headers["x-access-token"];
   var nowDate = new Date();
 
   var date =
@@ -1008,7 +1006,6 @@ const PostStudyMaterial = async (req, res) => {
     const assignments = await StudyMaterial.create({
       date,subject,teacher,file,semester,description
     });
-
  
     res.status(200).json(assignments);
   } catch (error) {
@@ -1028,6 +1025,21 @@ const PostStudyMaterial = async (req, res) => {
   });
 }
 
+const StudyMaterial_Posted = async (req, res) => {
+  const token = req.headers["x-access-token"];
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    return res.status(200).json({
+      success: true,
+      data: await StudyMaterial.find({teacher: teacher.name }),
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+}
 
 // const cron = require("node-cron")
 // cron.schedule('* * * * * *', async () =>
@@ -1046,11 +1058,10 @@ const PostStudyMaterial = async (req, res) => {
 
 module.exports = {
   login, Getdashboard, Postdashboard, Getprofile, Postprofile, Getchangepassword,
-  PatchChangepassword, register, loginteacher, GetTeacherdashboard, Postteacherdashboard,
-  GetTeacherProfile, PostTeacherProfile, GetTeacherChangePassword, PatchTeacherChangePassword,
+  PatchChangepassword, register, loginteacher, GetTeacherdashboard, GetTeacherProfile, PostTeacherProfile, GetTeacherChangePassword, PatchTeacherChangePassword,
   RegisterTeacher, GetScheduleclass, Postscheduleclass, GetScheduletest, PostscheduleTest,
   GetAttendance, sem1Attendance, sem2Attendance, sem3Attendance, sem4Attendance,
   Sem1AttendanceReport, Sem2AttendanceReport, Sem3AttendanceReport, Sem4AttendanceReport,
-  ScheduledClassReport, ScheduledTestReport, PostUploadassignment, Test_Scheduled, Classes_Scheduled, Getuploadassignment, Assignment_Schedule_student, GetAssignments, classnotification,
-  GetStudyMaterial,PostStudyMaterial
+  ScheduledClassReport, ScheduledTestReport, PostUploadassignment, Test_Scheduled, Classes_Scheduled, Getuploadassignment, Assignment_Schedule_student,Assignment_Schedule_teacher, GetAssignments, classnotification,
+  GetStudyMaterial,PostStudyMaterial, StudyMaterial_Posted
 }

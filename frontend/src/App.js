@@ -40,6 +40,8 @@ import Testreport from './components/Scheduled_test_List/scheduletestreport';
 import Testreport_student from './components/Scheduled_test_List/testreport_student';
 import Classreport_student from './components/Scheduled_Class_List/classreport_student';
 import Assignmentreport_student from './components/Assignment_report/assignmentreport_student';
+import Assignmentreport_teacher from './components/Assignment_report/teacher_assignment_report';
+import Studymaterial_teacher from './components/Study Material/teacher_studymaterial';
 import UploadAssignmentsem1 from './components/Assignment_Upload/Upload_assignment_sem1';
 import UploadAssignmentsem2 from './components/Assignment_Upload/Upload_assignment_sem2';
 import UploadAssignmentsem3 from './components/Assignment_Upload/Upload_assignment_sem3';
@@ -75,6 +77,7 @@ function App() {
       <Route path='/testschedule' element={<Testreport_student/>}/>
       <Route path='/classschedule' element={<Classreport_student/>}/>
       <Route path='/assignmentreportstudent' element={<Assignmentreport_student/>}/>
+      <Route path='/Teacherdashboard/assignmentreportteacher' element={<Assignmentreport_teacher/>}/>
       <Route path='/Teacherdashboard' element = {<Teacher_Dashboard/>} />
       <Route path='/Teacherdashboard/profile' element = {<Teacher_Profile/>} />
       <Route path="/Teacherdashboard/changepassword" element={<ChangeTeacherPassword/>}/>
@@ -97,6 +100,7 @@ function App() {
       <Route path="/attendancereport/sem1" element={<Sem1Attendance subjectval={subjectval} dateval={dateval} monthval={monthval}/>}/>
       <Route path='/scheduledclassreport' element={<Classreport/>}/>
       <Route path='/scheduledtestreport' element={<Testreport/>}/>
+      <Route path='/Teacherdashboard/studymaterial' element={<Studymaterial_teacher/>}/>
       <Route path='/Teacherdashboard/sem1/assignment' element={<UploadAssignmentsem1 />} />
       <Route path='/Teacherdashboard/sem2/assignment' element={<UploadAssignmentsem2 />} />
       <Route path='/Teacherdashboard/sem3/assignment' element={<UploadAssignmentsem3 />} />

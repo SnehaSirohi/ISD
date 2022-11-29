@@ -92,14 +92,14 @@ const Dashboard = (props) => {
                         <h5>Total classes Held</h5>
                         <h5>Total classes Taken</h5>
                         <h5>Total Tests</h5>
-                        <h5>Assignment submitted</h5>
+                        <h5>Assignments submitted</h5>
                         <h5>Attendance %</h5>
                     </div>
                     <div class="classinfoval">
                         <h5>{totalclassesheld}</h5>
                         <h5>{totalClasstaken}</h5>
                         <h5>{totalTestScheduled}</h5>
-                        <h5>18</h5>
+                        <h5>{assignments}</h5>
                         <h5>{attendancepercentage} %</h5>
                     </div>
                 </div>
