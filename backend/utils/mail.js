@@ -95,5 +95,19 @@ const MonthlyMail = (
     })
     .catch((err) => console.log(err));
 };
+const WarningMail = (
+  name,
+  recieverEmail,
+ semester
+) => {
+  transport
+    .sendMail({
+      from: process.env.EMAIL,
+      to: recieverEmail,
+      subject: `Alert`,
+      html: `Hello ${name} <br> Your attendance percentage in {} is lesser than 50%. <br> Kindly start attedning the class`,
+    })
+    .catch((err) => console.log(err));
+};
 
-module.exports = { classScheduleMail, testScheduleMail,AssignmentMail,StudyMaterialMail,MonthlyMail };
+module.exports = { classScheduleMail, testScheduleMail,AssignmentMail,StudyMaterialMail,MonthlyMail,WarningMail };
