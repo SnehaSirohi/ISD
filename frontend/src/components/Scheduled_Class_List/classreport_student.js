@@ -11,6 +11,9 @@ var XLSX = require("xlsx");
 const Classreport = () => {
     const navigate = useNavigate();
     const [classes,setClasses]=useState([]);
+    const newdate= new Date()
+    const monthval= newdate.getMonth()+1;
+    const day =newdate.getDate()
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/classschedule", {
             method: "GET",
@@ -20,8 +23,19 @@ const Classreport = () => {
                 'x-access-token': localStorage.getItem('token'), //
             }})
             const json = await response.json()
-            const data = json.data.reverse()
-                setClasses(data)
+            let data = json.data.filter((data)=>{
+              if(data.date.slice(5,7)==monthval && data.date.slice(8,10)>=day)
+              {
+                  return data
+              }
+              else if(data.date.slice(5,7)>monthval)
+              {
+                return data
+              }
+            })
+
+            const data2 = json.data.reverse()
+                setClasses(data2)
       }
       useEffect(() => {
         const token = localStorage.getItem('token')
