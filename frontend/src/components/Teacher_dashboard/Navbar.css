@@ -70,7 +70,8 @@
     border-radius: 4px;
 }
 
-.nav-text>span {
+.nav-text span {
+    margin-left: 16px;
     font-size: 18px;
     font-weight: 501;
     color: rgb(0, 104, 74);
@@ -135,6 +136,6 @@ p {
     align-items: center;
 }
 
-span {
-    margin-left: 16px;
+.navbar-toggle span {
+    font-weight: 600;
 }
