@@ -9,7 +9,8 @@
     font-size: 2rem;
     background: none;
 }
-.heading{
+
+.heading {
     display: flex;
     margin-left: 2rem;
     align-items: center;
@@ -44,30 +45,21 @@
     color: black
 }
 
-.nav-text a {
-    text-decoration: none;
-    color: #f5f5f5;
-    font-size: 18px;
-    width: 95%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0 16px;
-    border-radius: 4px;
-}
-.semester{
+.semester {
     text-align: center;
     background-color: #f5f5f5;
     display: none;
 }
-.semester>*{
+
+.semester>* {
     margin-bottom: 0;
     height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.semester>p:hover{
+
+.semester>p:hover {
     background-color: grey;
 }
 
@@ -88,7 +80,8 @@
     justify-content: start;
     align-items: center;
 }
-.navbar-toggle>span{
+
+.navbar-toggle>span {
     color: white;
     font-size: 26px;
 }

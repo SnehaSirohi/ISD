@@ -2,6 +2,7 @@
     background: #2BB0A8;
     height: 80px;
     display: flex;
+    box-shadow: rgb(50 50 93) 0px 30px 60px -12px inset, rgb(0 0 0 / 30%) 0px 18px 36px -18px inset;
 }
 
 .menu-bars {
@@ -49,6 +50,7 @@
 .nav-text a {
     color: black;
     font-size: 18px;
+    font-weight: 501;
     width: 95%;
     padding: 0;
     height: 100%;
@@ -78,6 +80,7 @@ p{
 }
 
 .semester>a{
+    font-weight: 600;
      color: inherit;
      text-decoration: none;
      display: flex;

@@ -35,22 +35,22 @@ function Navbar() {
                             < FaIcons.FaCaretLeft size={40} onClick={showSidebar} />
                             <span>Classopedia</span>
                         </li>
-                        <li className="nav-text ">
-                            <AiIcons.AiFillHome />
+                        <li className="nav-text">
+                            <AiIcons.AiFillHome color='black' />
                             <Link to="/Teacherdashboard"><span>Home</span></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaUserCircle />
+                            <FaIcons.FaUserCircle color='black' />
                             <Link to="/Teacherdashboard/profile"><span>Profile</span></Link>
                         </li>
                         <li className="nav-text" onClick={showsemesterhandler} style={{
                             background: sem ? "#2BB0A8" : ""
                         }}>
-                            <FaIcons.FaPenSquare />
-                            <span>Semester</span>
+                            <FaIcons.FaPenSquare color='black' />
+                            <a><span>Semester</span></a>
                             <FaIcons.FaCaretDown />
                         </li>
-                        <li className="semester" style={{
+                        <li className="semester " style={{
                             display: sem ? "block" : "none"
                         }}>
                             <Link to = "/Teacherdashboard/sem1"><p>1st</p></Link>
@@ -59,15 +59,15 @@ function Navbar() {
                             <Link to = "/Teacherdashboard/sem4"><p>4th</p></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaRegSun />
+                            <FaIcons.FaRegSun color='black' />
                             <Link to="/Teacherdashboard/studymaterial"><span>Study Material</span></Link>
                         </li>
-                        <li className="nav-text">
-                            <FaIcons.FaSignInAlt />
-                            <span onClick={() => {
-                                localStorage.removeItem('token')
-                                navigate("/")
-                            }}>Logout</span>
+                        <li className="nav-text" onClick={() => {
+                            localStorage.removeItem('token')
+                            navigate("/")
+                        }}>
+                            <FaIcons.FaSignInAlt color='black' />
+                            <a><span>Logout</span></a>
                         </li>
                     </ul>
                 </nav>

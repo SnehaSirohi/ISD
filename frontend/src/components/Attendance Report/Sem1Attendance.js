@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useReactToPrint } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
-import Navbar from "../Student_dashboard/Navbar.js";
+import Navbar from "../Teacher_dashboard/Navbar.js";
 import "./attendance_report.css";
 
 import List from './List';

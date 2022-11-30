@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./attendance.css";
 import jwt from 'jsonwebtoken' //
 import List from "./List";
-import Navbar from "../Student_dashboard/Navbar.js";
+import Navbar from "../Teacher_dashboard/Navbar.js";
 import { useNavigate } from "react-router-dom"
 
 const Sem_1 = () => {
