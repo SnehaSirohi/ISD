@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./classschedule.css";
-import Navbar from "../Student_dashboard/Navbar.js";
+import Navbar from "../Teacher_dashboard/Navbar";
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import './CS.css'
@@ -46,7 +46,6 @@ const Sem_1 = () => {
     })
     const data = await req.json();
     setTeacher(data.name)
-    console.log(data)
     if (data.name == "Unmesh Shukla") {
       setUnmeshShukla(true)
     }
@@ -152,20 +151,7 @@ const Sem_1 = () => {
 
 
         <div className="mb-3" style={{ filter: isAlertVisible || isdot ? "blur(3px)" : "none", background: isAlertVisible ? "#f1ebeb" : "none" }} >
-          {UnmeshShukla && <div><label className="form-label">Select Subject</label>
-            <select
-              type="text"
-              className="form-control"
-              id="subject"
-              name="subject"
-              value={subject}
-              required
-              onChange={(e) => setsubject(e.target.value)}>
-              <option required>Select Subject</option>
-              <option value="Algorithms And Data Structure">
-                Algorithms and Data Structure
-              </option>
-            </select></div>}
+        
 
           <div className=" mb-3">
 

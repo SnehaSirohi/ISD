@@ -60,11 +60,7 @@ function Navbar() {
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaRegSun />
-                            <span>Setting</span>
-                        </li>
-                        <li className="nav-text">
-                            <FaIcons.FaRegQuestionCircle />
-                            <span>FAQ</span>
+                            <Link to="/Teacherdashboard/studymaterial"><span>Study Material</span></Link>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaSignInAlt />

@@ -1,15 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Navbar from "../Student_dashboard/Navbar";
-import "./upload_assignment.css";
 import jwt from "jsonwebtoken";
 import { useNavigate } from "react-router-dom";
 
-function UploadAssignmentsem2() {
+function UploadStudyMaterialSem2() {
   const navigate = useNavigate();
   const [file, setFile] = useState("");
   const [subject, setsubject] = useState("");
-  const [deadline, setdeadline] = useState("");
   const [teacher, setTeacher] = useState("");
   const [description, setdescription] = useState("");
   const [UnmeshShukla, setUnmeshShukla] = useState(false);
@@ -18,7 +16,7 @@ function UploadAssignmentsem2() {
   const [Sanjeev, setSanjeev] = useState(false);
 
   async function populate(e) {
-    const req = await fetch("http://localhost:4000/upload/assignment", {
+    const req = await fetch("http://localhost:4000/upload/studymaterial", {
       headers: {
         "x-access-token": localStorage.getItem("token"), //
       },
@@ -40,7 +38,7 @@ function UploadAssignmentsem2() {
   }
 
   async function Upload() {
-    const response = await fetch("http://localhost:4000/upload/assignment", {
+    const response = await fetch("http://localhost:4000/upload/studymaterial", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -50,7 +48,6 @@ function UploadAssignmentsem2() {
       body: JSON.stringify({
         file,
         subject,
-        deadline,
         semester: "Sem-2",
         teacher,
         description,
@@ -78,17 +75,7 @@ function UploadAssignmentsem2() {
     <div className="uploadassignmentbody">
       <Navbar />
       <div className="uploadheading">
-        <h2>Upload Assignment</h2>
-      </div>
-      <div className="uploadassignmentcontent">
-        <div className=" mb-3">
-          <label htmlFor="form-label">Deadline</label>
-          <input
-            type="date"
-            value={deadline}
-            onChange={(e) => setdeadline(e.target.value)}
-          />
-        </div>
+        <h2>Upload Studymaterial</h2>
       </div>
       <div className="uploadassignmentcontent">
         <div className=" mb-3">
@@ -204,4 +191,4 @@ function UploadAssignmentsem2() {
   );
 }
 
-export default UploadAssignmentsem2;
+export default UploadStudyMaterialSem2;
