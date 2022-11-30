@@ -29,9 +29,7 @@
     transition: 850ms;
 }
 
-.nav-menu-items {
-    background: #d6e6e7;
-}
+
 
 .nav-menu.active {
     box-shadow: 3px 0 15px rgb(78 130 147);
