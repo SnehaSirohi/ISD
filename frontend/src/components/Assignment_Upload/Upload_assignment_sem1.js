@@ -81,16 +81,7 @@ function UploadAssignmentsem1() {
       <div className="uploadheading">
         <h2>Upload Assignment</h2>
       </div>
-      <div className="uploadassignmentcontent">
-        <div className=" mb-3">
-          <label htmlFor="form-label">Deadline</label>
-          <input
-            type="date"
-            value={deadline}
-            onChange={(e) => setdeadline(e.target.value)}
-          />
-        </div>
-      </div>
+
       <div className="uploadassignmentcontent">
         {UnmeshShukla && (
           <div>
@@ -104,7 +95,7 @@ function UploadAssignmentsem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-                 <option>Select Subject</option>
+              <option>Select Subject</option>
               <option value="Algorithms And Data Structure">
                 Algorithms and Data Structure
               </option>
@@ -122,7 +113,7 @@ function UploadAssignmentsem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-                 <option>Select Subject</option>
+              <option>Select Subject</option>
               <option value="Software Design & Programming">
                 Software Design & Programming
               </option>
@@ -140,7 +131,7 @@ function UploadAssignmentsem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-                 <option>Select Subject</option>
+              <option>Select Subject</option>
               <option value="Mathematical Foundation Of Computing">
                 Mathematical Foundation of Computing
               </option>
@@ -158,7 +149,7 @@ function UploadAssignmentsem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-                 <option>Select Subject</option>
+              <option>Select Subject</option>
               <option value="Computer System Architecture">
                 Computer System Architecture
               </option>
@@ -175,7 +166,7 @@ function UploadAssignmentsem1() {
               value={file}
               onChange={(e) => setFile(e.target.value)}
             />
-            <button>Upload</button>
+            <button>Select File</button>
           </div>
           <div className="infocontent">
             <p className="main">Supported files</p>
@@ -183,26 +174,35 @@ function UploadAssignmentsem1() {
           </div>
         </div>
 
+        <div className="mb-3 mt-3">
+          <label className="form-label deadline">Deadline</label>
+          <input
+            type="date"
+            value={deadline}
+            onChange={(e) => setdeadline(e.target.value)}
+          />
+        </div>
         {/* text box */}
 
-        <div class="mb-3 mt-4">
+        <div class="mb-3 mt-4 descriptionbody">
           <label for="exampleFormControlTextarea1" class="form-label">
             Discription
           </label>
           <textarea
             class="form-control"
             placeholder="optional"
-            id="exampleFormControlTextarea1"
+            id="text-area"
             rows="3"
             value={description}
             onChange={(e) => setdescription(e.target.value)}></textarea>
+          <button className="submitbutton mt-3" onClick={Upload}>
+            Submit
+          </button>
         </div>
 
         {/* submit button */}
 
-        <button className="submitbutton" onClick={Upload}>
-          Submit
-        </button>
+
       </div>
     </div>
   );
