@@ -104,10 +104,12 @@ const Sem_1 = () => {
 
   return (
     <>
+
       <div>
         {isdot && <div class="loader"  >
           <div class="pair p1">
             <div class="dot dot-1 ">
+
 
             </div>
             <div class="dot dot-2">
