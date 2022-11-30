@@ -18,7 +18,6 @@
 }
 
 .nav-menu {
-    background-color: white;
     width: 250px;
     height: 100vh;
     display: flex;
@@ -29,10 +28,14 @@
     transition: 850ms;
 }
 
+.nav-menu-items {
+    background: #d6e6e7;
+}
+
 .nav-menu.active {
+    box-shadow: 3px 0 15px rgb(78 130 147);
     left: 0;
     transition: 350ms;
-    box-shadow: 3px 0 5px rgb(202, 201, 201);
     z-index: 1;
 }
 
@@ -47,8 +50,8 @@
     color: black
 }
 
-.nav-text a {
-    color: black;
+.nav-text>a {
+    color: rgb(0, 104, 74);
     font-size: 18px;
     font-weight: 501;
     width: 95%;
@@ -58,6 +61,30 @@
     align-items: center;
     border-radius: 4px;
 }
+
+.nav-text>a:hover {
+    font-weight: 501;
+    width: 95%;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.nav-text>span {
+    font-size: 18px;
+    font-weight: 501;
+    color: rgb(0, 104, 74);
+}
+
+.nav-text span:hover {
+    font-size: 20px;
+    font-weight: 501;
+    color: rgb(7, 109, 112);
+}
+
+
 
 .semester {
     text-align: center;
@@ -75,16 +102,16 @@
     justify-content: center;
 }
 
-p{
+p {
     margin-bottom: 0;
 }
 
-.semester>a{
+.semester>a {
     font-weight: 600;
-     color: inherit;
-     text-decoration: none;
-     display: flex;
-     align-items: center;
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 
 .semester>a:hover {
@@ -92,7 +119,7 @@ p{
 }
 
 .nav-text:hover {
-    background-color: #2BB0A8;
+    background-color: #ccdddd;
 }
 
 .nav-menu-items {
@@ -101,7 +128,8 @@ p{
 }
 
 .navbar-toggle {
-    background: black;
+    background: #2BB0A8;
+    box-shadow: rgb(50 50 93) 0px 30px 60px -12px inset, rgb(0 0 0 / 30%) 0px 18px 36px -18px inset;
     width: 100%;
     height: 80px;
     display: flex;

@@ -36,38 +36,38 @@ function Navbar() {
                             <span>Classopedia</span>
                         </li>
                         <li className="nav-text">
-                            <AiIcons.AiFillHome color='black' />
+                            <AiIcons.AiFillHome color='cadetblue' />
                             <Link to="/Teacherdashboard"><span>Home</span></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaUserCircle color='black' />
+                            <FaIcons.FaUserCircle color='cadetblue' />
                             <Link to="/Teacherdashboard/profile"><span>Profile</span></Link>
                         </li>
                         <li className="nav-text" onClick={showsemesterhandler} style={{
                             background: sem ? "#2BB0A8" : ""
                         }}>
-                            <FaIcons.FaPenSquare color='black' />
-                            <a><span>Semester</span></a>
+                            <FaIcons.FaPenSquare color='cadetblue' />
+                            <span>Semester</span>
                             <FaIcons.FaCaretDown />
                         </li>
                         <li className="semester " style={{
                             display: sem ? "block" : "none"
                         }}>
-                            <Link to = "/Teacherdashboard/sem1"><p>1st</p></Link>
-                            <Link to = "/Teacherdashboard/sem2"><p>2nd</p></Link>
-                            <Link to = "/Teacherdashboard/sem3"><p>3rd</p></Link>
-                            <Link to = "/Teacherdashboard/sem4"><p>4th</p></Link>
+                            <Link to="/Teacherdashboard/sem1"><p>1st</p></Link>
+                            <Link to="/Teacherdashboard/sem2"><p>2nd</p></Link>
+                            <Link to="/Teacherdashboard/sem3"><p>3rd</p></Link>
+                            <Link to="/Teacherdashboard/sem4"><p>4th</p></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaRegSun color='black' />
+                            <FaIcons.FaRegSun color='cadetblue' />
                             <Link to="/Teacherdashboard/studymaterial"><span>Study Material</span></Link>
                         </li>
                         <li className="nav-text" onClick={() => {
                             localStorage.removeItem('token')
                             navigate("/")
                         }}>
-                            <FaIcons.FaSignInAlt color='black' />
-                            <a><span>Logout</span></a>
+                            <FaIcons.FaSignInAlt color='cadetblue' />
+                            <span>Logout</span>
                         </li>
                     </ul>
                 </nav>
