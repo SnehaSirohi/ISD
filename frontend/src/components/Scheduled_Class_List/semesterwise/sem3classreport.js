@@ -5,7 +5,7 @@ import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
-import List from './list';
+import List from '../list';
 var XLSX = require("xlsx");
 
 const Classreport = () => {
@@ -14,7 +14,7 @@ const Classreport = () => {
     const newdate= new Date()
     const monthval= newdate.getMonth()+1;
     const day =newdate.getDate()
-    const year = newdate.getFullYear()
+    const [subject, setSubject] = useState("")
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/classschedule", {
             method: "GET",
@@ -24,16 +24,36 @@ const Classreport = () => {
                 'x-access-token': localStorage.getItem('token'), //
             }})
             const json = await response.json()
+          
             let data = json.data.filter((data)=>{
-              if((data.date.slice(8,10)>=day &&  data.date.slice(5,7)==monthval) || data.date.slice(5,7)>monthval || data.date.slice(0,5)>year  )
+              if(data.date.slice(5,7)==monthval && data.date.slice(8,10)>=day)
               {
                   return data
               }
-             
+              else if(data.date.slice(5,7)>monthval)
+              {
+                return data
+              }
             })
+            let data2 = data.filter((data) => {
+              if(data.subject == subject)
+              {
+                return data
+              }
+            })
+            console.log(data2)
 
-                setClasses(data.reverse())
+                setClasses(data2.reverse())
       }
+
+      async function subjectupdate(e) {
+        e.preventDefault();
+    
+        console.log(subject)
+        fetchdata()
+    
+      }
+
       useEffect(() => {
         const token = localStorage.getItem('token')
         if (token) {
@@ -43,7 +63,7 @@ const Classreport = () => {
             localStorage.removeItem('token')
             navigate("/Teacherdashboard");
           } else {
-            fetchdata()
+            // fetchdata()
     
           }
         }
@@ -58,15 +78,35 @@ const Classreport = () => {
 
   const exporttopdfhandler = () =>{
     const doc = new jsPDF()
-    doc.text("Overall Classes Scheduled",70,10)
+    doc.text("Classes Scheduled",70,10)
     autoTable(doc, { html: '#mytable'})
     doc.save('table.pdf')
   };
   return (
    <>
 
- {<h1>Overall Scheduled Classes </h1>}
- 
+ {<h1>Scheduled Classes </h1>}
+ <div><label className="form-label mt-2">Select Subject</label>
+    <form onSubmit={subjectupdate}>
+    <select
+                type="text"
+                className="form-control"
+                id="subject"
+                name="subject"
+                value={subject}
+                required
+                onChange={(e) => setSubject(e.target.value)}>
+                <option required>Select Subject</option>
+                <option value="Information System Design">Information System Design</option>
+                <option value="Cloud Computing">Cloud Computing</option>
+                <option value="Software Engineering">Software Engineering</option>
+                <option value="IT Planning and Management">IT Planning and Management</option>
+              </select>
+              <button type="submit" className="btn btn-primary submit-btn" >
+              Submit
+            </button>
+    </form>
+  </div>
   <div classname="main">
     <table classname="table table-bordered" id='mytable'>
       <thead>

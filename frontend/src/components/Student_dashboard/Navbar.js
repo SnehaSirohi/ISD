@@ -106,27 +106,27 @@ function Navbar() {
                         }}>
                           {sem1 && <>
                             <Link to="/scheduledclass/sem1"><p>Algorithms and Data Structure</p></Link>
-                            <Link><p>Software Design & Programming</p></Link>
+                            <Link to='/studymaterial/sem1'><p>Software Design & Programming</p></Link>
                             <Link><p>Mathematical Foundation of Computing</p></Link>
                             <Link><p>Computer System Architecture</p></Link>
                             </>}
 
                             {sem2 && <>
-                            <Link to="/"><p>Computer Communication and Networks</p></Link>
+                            <Link to="/studymaterial/sem1"><p>Computer Communication and Networks</p></Link>
                             <Link><p>Operating Systems</p></Link>
                             <Link><p>Database Systems</p></Link>
                             <Link><p>Applied Machine Learning</p></Link>
                             </>}
 
                             {sem3 && <>
-                            <Link to="/"><p>Information System Design</p></Link>
+                            <Link to="/studymaterial/sem1"><p>Information System Design</p></Link>
                             <Link><p>Cloud Computing</p></Link>
                             <Link><p>Software Engineering</p></Link>
                             <Link><p>IT Planning and Management</p></Link>
                             </>}
 
                             {sem4 && <>
-                            <Link to="/"><p>Internet of Things Systems, Security and Cloud</p></Link>
+                            <Link to="/studymaterial/sem1"><p>Internet of Things Systems, Security and Cloud</p></Link>
                             <Link><p>Health Informatics</p></Link>
                             <Link><p>Dissertation Project</p></Link>
                             <Link><p>Research Methods in Informatics</p></Link>
