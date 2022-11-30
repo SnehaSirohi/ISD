@@ -29,7 +29,6 @@ body {
 .screen__content {
     z-index: 1;
     position: relative;
-    height: 100%;
 }
 
 .screen__background {
@@ -76,12 +75,12 @@ body {
 }
 
 .screen__background__shape4 {
-    height: 400px;
-    width: 200px;
-    background: linear-gradient(270deg, #04625c, #1fa89f);
-    top: 420px;
-    right: 50px;
-    border-radius: 60px;
+    height: 220px;
+    width: 220px;
+    background: linear-gradient(270deg, #26aca3, #1fa89f);
+    top: 340px;
+    right: -138px;
+    border-radius: 32px;
 }
 
 .login {

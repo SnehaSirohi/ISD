@@ -2,7 +2,6 @@ import React from 'react'
 import './login2.css'
 function Login2() {
     return (
-        <div>
             <div class="container">
                 <div class="screen">
                     <div class="screen__content">
@@ -27,7 +26,6 @@ function Login2() {
                     </div>
                 </div>
             </div>
-        </div>
     )
 }
 
