@@ -105,7 +105,7 @@ function Navbar() {
                             display: sem ? "block" : "none"
                         }}>
                           {sem1 && <>
-                            <Link to="/"><p>Algorithms and Data Structure</p></Link>
+                            <Link to="/scheduledclass/sem1"><p>Algorithms and Data Structure</p></Link>
                             <Link><p>Software Design & Programming</p></Link>
                             <Link><p>Mathematical Foundation of Computing</p></Link>
                             <Link><p>Computer System Architecture</p></Link>

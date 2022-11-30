@@ -10,7 +10,10 @@ var XLSX = require("xlsx");
 
 const Testreport = () => {
     const navigate = useNavigate();
-    const [teacher,setTeacher]=useState([]);
+    const [tests,setTests]=useState([]);
+    const newdate= new Date()
+    const monthval= newdate.getMonth()+1;
+    const day =newdate.getDate()
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/testschedule", {
             method: "GET",
@@ -20,8 +23,18 @@ const Testreport = () => {
                 'x-access-token': localStorage.getItem('token'), //
             }})
             const json = await response.json()
-                setTeacher(json.data)
-                console.log(json.data)
+            let data = json.data.filter((data)=>{
+              if(data.date.slice(5,7)==monthval && data.date.slice(8,10)>=day)
+              {
+                  return data
+              }
+              else if(data.date.slice(5,7)>monthval)
+              {
+                return data
+              }
+            })
+
+                setTests(data.reverse())
 
       }
       useEffect(() => {
@@ -41,7 +54,7 @@ const Testreport = () => {
   
   const exporttoexcelhandler= () =>{
      var wb = XLSX.utils.book_new(),
-     ws = XLSX.utils.json_to_sheet(teacher);
+     ws = XLSX.utils.json_to_sheet(tests);
      XLSX.utils.book_append_sheet(wb,ws,"MySheet1");
      XLSX.writeFile(wb,"MyExcel.xlsx")
   };
@@ -64,10 +77,11 @@ const Testreport = () => {
           <th>Professor</th>
           <th>Subject</th>
           <th>Date</th>
+          <th>Time</th>
         </tr>
       </thead>
       <tbody>
-      <List teacher={teacher} />
+      <List tests={tests} />
       </tbody>
     </table>
   </div>

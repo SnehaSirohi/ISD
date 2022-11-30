@@ -34,8 +34,7 @@ const Classreport = () => {
               }
             })
 
-            const data2 = json.data.reverse()
-                setClasses(data2)
+                setClasses(data.reverse())
       }
       useEffect(() => {
         const token = localStorage.getItem('token')

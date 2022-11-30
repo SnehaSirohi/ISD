@@ -21,8 +21,7 @@ const Attendancereport = () => {
       }
     })
     const json = await response.json()
-    setAssignments(json.data)
-
+        setAssignments(json.data.reverse())
   }
   useEffect(() => {
     const token = localStorage.getItem('token')
