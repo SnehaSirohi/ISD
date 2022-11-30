@@ -9,6 +9,7 @@ function UploadStudyMaterialSem1() {
   const [file, setFile] = useState("");
   const [subject, setsubject] = useState("");
   const [teacher, setTeacher] = useState("");
+  const [deadline, setdeadline] = useState("");
   const [description, setdescription] = useState("");
   const [UnmeshShukla, setUnmeshShukla] = useState(false);
   const [NitishaAgg, setNitishaAgg] = useState(false);
@@ -91,7 +92,7 @@ function UploadStudyMaterialSem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-                 <option>Select Subject</option>
+              <option>Select Subject</option>
               <option value="Algorithms And Data Structure">
                 Algorithms and Data Structure
               </option>
@@ -109,7 +110,7 @@ function UploadStudyMaterialSem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-                 <option>Select Subject</option>
+              <option>Select Subject</option>
               <option value="Software Design & Programming">
                 Software Design & Programming
               </option>
@@ -127,7 +128,7 @@ function UploadStudyMaterialSem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-                 <option>Select Subject</option>
+              <option>Select Subject</option>
               <option value="Mathematical Foundation Of Computing">
                 Mathematical Foundation of Computing
               </option>
@@ -145,7 +146,7 @@ function UploadStudyMaterialSem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-                 <option>Select Subject</option>
+              <option>Select Subject</option>
               <option value="Computer System Architecture">
                 Computer System Architecture
               </option>
@@ -168,6 +169,15 @@ function UploadStudyMaterialSem1() {
             <p className="main">Supported files</p>
             <p className="info">PDF,Doc, JPG, PNG</p>
           </div>
+        </div>
+
+        <div className="mb-3 mt-3">
+          <label className="form-label deadline">Deadline</label>
+          <input
+            type="date"
+            value={deadline}
+            onChange={(e) => setdeadline(e.target.value)}
+          />
         </div>
 
         {/* text box */}
