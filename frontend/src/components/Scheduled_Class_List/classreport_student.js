@@ -14,6 +14,7 @@ const Classreport = () => {
     const newdate= new Date()
     const monthval= newdate.getMonth()+1;
     const day =newdate.getDate()
+    const year = newdate.getFullYear()
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/classschedule", {
             method: "GET",
@@ -24,18 +25,14 @@ const Classreport = () => {
             }})
             const json = await response.json()
             let data = json.data.filter((data)=>{
-              if(data.date.slice(5,7)==monthval && data.date.slice(8,10)>=day)
+              if((data.date.slice(8,10)>=day &&  data.date.slice(5,7)==monthval) || data.date.slice(5,7)>monthval || data.date.slice(0,5)>year  )
               {
                   return data
               }
-              else if(data.date.slice(5,7)>monthval)
-              {
-                return data
-              }
+             
             })
 
-            const data2 = json.data.reverse()
-                setClasses(data2)
+                setClasses(data.reverse())
       }
       useEffect(() => {
         const token = localStorage.getItem('token')

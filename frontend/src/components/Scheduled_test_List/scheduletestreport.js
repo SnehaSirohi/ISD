@@ -6,16 +6,13 @@ import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import './scheduletest.css';
 import { useNavigate } from "react-router-dom"
-
-// import { Button } from 'reactstrap';
-// import jsPDF from 'jspdf'
 import List from './list';
 var XLSX = require("xlsx");
-// import { CSVLink } from 'react-csv';
+
 const Testreport = () => {
   const navigate = useNavigate();
-  const [teacher, setTeacher] = useState([]);
-  console.log(teacher);
+  const [tests, setTests] = useState([]);
+  console.log(tests);
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/scheduledtestreport", {
       method: "GET",
@@ -26,7 +23,7 @@ const Testreport = () => {
       }
     })
     const json = await response.json()
-    setTeacher(json.data)
+    setTests(json.data)
 
   }
   useEffect(() => {
@@ -46,7 +43,7 @@ const Testreport = () => {
 
   const exporttoexcelhandler = () => {
     var wb = XLSX.utils.book_new(),
-      ws = XLSX.utils.json_to_sheet(teacher);
+      ws = XLSX.utils.json_to_sheet(tests);
     XLSX.utils.book_append_sheet(wb, ws, "MySheet1");
     XLSX.writeFile(wb, "MyExcel.xlsx")
   };
@@ -69,10 +66,11 @@ const Testreport = () => {
               <th>Professor</th>
               <th>Subject</th>
               <th>Date</th>
+              <th>Time</th>
             </tr>
           </thead>
           <tbody>
-            <List teacher={teacher} />
+            <List tests={tests} />
           </tbody>
         </table>
         <div className='text-center'>
