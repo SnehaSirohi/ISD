@@ -11,7 +11,7 @@ const AssignmentsPosted = require("../models/Assignment")
 const StudyMaterial = require("../models/StudyMaterial")
 const jwt = require("jsonwebtoken");
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-const { classScheduleMail, testScheduleMail, AssignmentMail,StudyMaterialMail, MonthlyMail } = require("../utils/mail");
+const { classScheduleMail, testScheduleMail, AssignmentMail,StudyMaterialMail, MonthlyMail,WarningMail } = require("../utils/mail");
 
 const Postscheduleclass = async (req, res) => {
 
@@ -215,6 +215,10 @@ cron.schedule('* * 1 * *', async () =>
                    })
                    const attendance = presentdata.length;
                    const perecentage = (attendance/classes)*100;
+                   if(perecentage<=50 && classes>=10)
+                   {
+                      WarningMail(student.name,student.email,student.semester)
+                   }
                    MonthlyMail(student.name,student.email,classes,attendance,monthname,perecentage)
                  })
 
@@ -231,6 +235,10 @@ cron.schedule('* * 1 * *', async () =>
                    })
                    const attendance = presentdata.length;
                    const perecentage = (attendance/classes)*100;
+                   if(perecentage<=50 && classes>=10)
+                   {
+                      WarningMail(student.name,student.email,student.semester)
+                   }
                    MonthlyMail(student.name,student.email,classes,attendance,monthname,perecentage)
                  })
 
@@ -247,6 +255,10 @@ cron.schedule('* * 1 * *', async () =>
                    })
                    const attendance = presentdata.length;
                    const perecentage = (attendance/classes)*100;
+                   if(perecentage<=50 && classes>=10)
+                   {
+                      WarningMail(student.name,student.email,student.semester)
+                   }
                    MonthlyMail(student.name,student.email,classes,attendance,monthname,perecentage)
                  })
 
@@ -263,6 +275,10 @@ cron.schedule('* * 1 * *', async () =>
                    })
                    const attendance = presentdata.length;
                    const perecentage = (attendance/classes)*100;
+                   if(perecentage<=50 && classes>=10)
+                   {
+                      WarningMail(student.name,student.email,student.semester)
+                   }
                    MonthlyMail(student.name,student.email,classes,attendance,monthname,perecentage)
                  })
 

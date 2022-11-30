@@ -35,39 +35,39 @@ function Navbar() {
                             < FaIcons.FaCaretLeft size={40} onClick={showSidebar} />
                             <span>Classopedia</span>
                         </li>
-                        <li className="nav-text ">
-                            <AiIcons.AiFillHome />
+                        <li className="nav-text">
+                            <AiIcons.AiFillHome color='rgb(0, 104, 74)' />
                             <Link to="/Teacherdashboard"><span>Home</span></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaUserCircle />
+                            <FaIcons.FaUserCircle color='rgb(0, 104, 74)' />
                             <Link to="/Teacherdashboard/profile"><span>Profile</span></Link>
                         </li>
                         <li className="nav-text" onClick={showsemesterhandler} style={{
                             background: sem ? "#2BB0A8" : ""
                         }}>
-                            <FaIcons.FaPenSquare />
+                            <FaIcons.FaPenSquare color='rgb(0, 104, 74)' />
                             <span>Semester</span>
                             <FaIcons.FaCaretDown />
                         </li>
-                        <li className="semester" style={{
+                        <li className="semester " style={{
                             display: sem ? "block" : "none"
                         }}>
-                            <Link to = "/Teacherdashboard/sem1"><p>1st</p></Link>
-                            <Link to = "/Teacherdashboard/sem2"><p>2nd</p></Link>
-                            <Link to = "/Teacherdashboard/sem3"><p>3rd</p></Link>
-                            <Link to = "/Teacherdashboard/sem4"><p>4th</p></Link>
+                            <Link to="/Teacherdashboard/sem1"><p>1st</p></Link>
+                            <Link to="/Teacherdashboard/sem2"><p>2nd</p></Link>
+                            <Link to="/Teacherdashboard/sem3"><p>3rd</p></Link>
+                            <Link to="/Teacherdashboard/sem4"><p>4th</p></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaRegSun />
+                            <FaIcons.FaBookReader color='rgb(0, 104, 74)' />
                             <Link to="/Teacherdashboard/studymaterial"><span>Study Material</span></Link>
                         </li>
-                        <li className="nav-text">
-                            <FaIcons.FaSignInAlt />
-                            <span onClick={() => {
-                                localStorage.removeItem('token')
-                                navigate("/")
-                            }}>Logout</span>
+                        <li className="nav-text" onClick={() => {
+                            localStorage.removeItem('token')
+                            navigate("/")
+                        }}>
+                            <FaIcons.FaSignInAlt color='rgb(0, 104, 74)' />
+                            <span>Logout</span>
                         </li>
                     </ul>
                 </nav>

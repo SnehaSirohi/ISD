@@ -5,6 +5,7 @@ import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
+import './assignment_report.css'
 import List from './list';
 var XLSX = require("xlsx");
 
@@ -57,7 +58,7 @@ const Attendancereport = () => {
       {<h1>Overall Assignments Posted </h1>}
 
       <div classname="main">
-        <table classname="table table-striped" id='mytable'>
+        <table className='table table-striped' id='mytable'>
           <thead>
             <tr>
               <th>Professor</th>
