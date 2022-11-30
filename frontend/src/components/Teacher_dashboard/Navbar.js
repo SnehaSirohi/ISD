@@ -36,17 +36,17 @@ function Navbar() {
                             <span>Classopedia</span>
                         </li>
                         <li className="nav-text">
-                            <AiIcons.AiFillHome color='cadetblue' />
+                            <AiIcons.AiFillHome color='rgb(0, 104, 74)' />
                             <Link to="/Teacherdashboard"><span>Home</span></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaUserCircle color='cadetblue' />
+                            <FaIcons.FaUserCircle color='rgb(0, 104, 74)' />
                             <Link to="/Teacherdashboard/profile"><span>Profile</span></Link>
                         </li>
                         <li className="nav-text" onClick={showsemesterhandler} style={{
                             background: sem ? "#2BB0A8" : ""
                         }}>
-                            <FaIcons.FaPenSquare color='cadetblue' />
+                            <FaIcons.FaPenSquare color='rgb(0, 104, 74)' />
                             <span>Semester</span>
                             <FaIcons.FaCaretDown />
                         </li>
@@ -59,14 +59,14 @@ function Navbar() {
                             <Link to="/Teacherdashboard/sem4"><p>4th</p></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaRegSun color='cadetblue' />
+                            <FaIcons.FaBookReader color='rgb(0, 104, 74)' />
                             <Link to="/Teacherdashboard/studymaterial"><span>Study Material</span></Link>
                         </li>
                         <li className="nav-text" onClick={() => {
                             localStorage.removeItem('token')
                             navigate("/")
                         }}>
-                            <FaIcons.FaSignInAlt color='cadetblue' />
+                            <FaIcons.FaSignInAlt color='rgb(0, 104, 74)' />
                             <span>Logout</span>
                         </li>
                     </ul>
