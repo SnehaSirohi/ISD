@@ -1,10 +1,13 @@
 const express = require("express");
 const {
-    login, Getdashboard, Postdashboard, Getprofile, Postprofile, Getchangepassword,
-    PatchChangepassword, register, loginteacher, GetTeacherdashboard, GetTeacherProfile, PostTeacherProfile, GetTeacherChangePassword, PatchTeacherChangePassword, RegisterTeacher, GetScheduleclass, Postscheduleclass, GetScheduletest, PostscheduleTest, GetAttendance, sem1Attendance, sem2Attendance, sem3Attendance, sem4Attendance,
-    Sem1AttendanceReport, Sem2AttendanceReport, Sem3AttendanceReport, Sem4AttendanceReport, ScheduledClassReport, ScheduledTestReport, Getuploadassignment, Test_Scheduled, Classes_Scheduled, PostUploadassignment, GetAssignments, classnotification, Assignment_Schedule_student, Assignment_Schedule_teacher,
-    GetStudyMaterial, PostStudyMaterial, StudyMaterial_Posted
-} = require("../controllers/functions")
+    loginteacher, GetTeacherdashboard, GetTeacherProfile, PostTeacherProfile, GetTeacherChangePassword, PatchTeacherChangePassword, RegisterTeacher, GetScheduleclass, GetScheduletest,GetAttendance, sem1Attendance, sem2Attendance, sem3Attendance, sem4Attendance,
+    Sem1AttendanceReport, Sem2AttendanceReport, Sem3AttendanceReport, Sem4AttendanceReport, ScheduledClassReport, ScheduledTestReport, Getuploadassignment, Assignment_Schedule_teacher, GetStudyMaterial,StudyMaterial_Posted
+} = require("../controllers/teachercontrol")
+
+const {login, Getdashboard, Getprofile, Postprofile, Getchangepassword, PatchChangepassword, register, Test_Scheduled, Classes_Scheduled,Assignment_Schedule_student, GetAssignments, classnotification } = require("../controllers/studentscontrol")
+
+const { Postscheduleclass, PostscheduleTest,PostUploadassignment, PostStudyMaterial } = require("../controllers/emailcontrol")
+
 const { json } = require("body-parser");
 const StudyMaterial = require("../models/StudyMaterial");
 const router = express.Router();
@@ -13,9 +16,6 @@ router.post("/login", login);
 
 //Dashboard - student (get)
 router.get("/dashboard", Getdashboard);
-
-//Dashboard - student  (post)
-router.post("/dashboard", Postdashboard);
 
 //student profile (get)
 router.get("/dashboard/profile", Getprofile);
