@@ -7,11 +7,11 @@
     font-family: Raleway, sans-serif;
 }
 
-body {
+.login2body {
     background: linear-gradient(90deg, #b6d3d0, #118f86);
 }
 
-.container {
+.login2body {
     display: flex;
     align-items: center;
     justify-content: center;
