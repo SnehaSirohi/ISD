@@ -20,7 +20,8 @@ const Classreport = () => {
                 'x-access-token': localStorage.getItem('token'), //
             }})
             const json = await response.json()
-                setClasses(json.data)
+            const data = json.data.reverse()
+                setClasses(data)
 
       }
       useEffect(() => {

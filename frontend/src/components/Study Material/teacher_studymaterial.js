@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState,useEffect,useRef,useReactToPrint } from 'react';
+import { useState, useEffect} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
@@ -8,11 +8,12 @@ import { useNavigate } from "react-router-dom"
 import List from './list';
 var XLSX = require("xlsx");
 
-const Testreport = () => {
+const Studymaterial_report = () => {
     const navigate = useNavigate();
     const [teacher,setTeacher]=useState([]);
+    console.log(teacher);
     const fetchdata=async()=>{
-        const response=await fetch("http://localhost:4000/testschedule", {
+        const response=await fetch("http://localhost:4000/studymaterial_teacher", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -21,7 +22,7 @@ const Testreport = () => {
             }})
             const json = await response.json()
                 setTeacher(json.data)
-                console.log(json.data)
+                console.log(json)
 
       }
       useEffect(() => {
@@ -31,7 +32,7 @@ const Testreport = () => {
           console.log(user)
           if (!user) {
             localStorage.removeItem('token')
-            navigate("/dashboard");
+            navigate("/Teacherdashboard");
           } else {
             fetchdata()
     
@@ -58,12 +59,13 @@ const Testreport = () => {
  {<h1>Overall Tests Scheduled </h1>}
  
   <div classname="main">
-        <table classname="table table-bordered table-striped" id='mytable'>
+    <table classname="table table-bordered" id='mytable'>
       <thead>
         <tr>
           <th>Professor</th>
           <th>Subject</th>
-          <th>Date</th>
+          <th>Semester</th>
+          <th>File</th>
         </tr>
       </thead>
       <tbody>
@@ -78,4 +80,4 @@ const Testreport = () => {
   )
 }
 
-export default Testreport
+export default Studymaterial_report

@@ -11,6 +11,8 @@ const Teacher_Dashboard = (props) => {
     const [totalClasstaken, setTotalClasstaken] = useState([])
     const [totalClassScheduled, setTotalClassScheduled] = useState([])
     const [totalTestScheduled, setTotalTestScheduled] = useState([])
+    const [totalAssignments, setTotalAssignments] = useState([])
+    const [totalStudymaterial, setTotalStudymaterial] = useState([])
     const navigate = useNavigate();
     const [name, setName] = useState([])
     const [email, setEmail] = useState([])
@@ -32,10 +34,13 @@ const Teacher_Dashboard = (props) => {
             setTotalClassScheduled(json.Classes_Scheduled)
             setTotalClasstaken(json.Classes_taken_count)
             setTotalTestScheduled(json.Test_Scheduled)
+            setTotalAssignments(json.Assignments_posted)
+            setTotalStudymaterial(json.Study_Material_posted)
         }
         else {
             // alert(data.error)
         }
+    
     }
 
 
@@ -73,8 +78,8 @@ const Teacher_Dashboard = (props) => {
                 </div>
                 <div class="col-xl-3 col-sm-6 blockcolour">
                     <div>
-                        <h5 class="text-uppercase">ASSIGNMENT PENDING</h5>
-                        <h1 class="display-4">4</h1>
+                    <Link to='/Teacherdashboard/assignmentreportteacher'><h5 class="text-uppercase">ASSIGNMENTS POSTED</h5></Link>   
+                        <h1 class="display-4">{totalAssignments}</h1>
                     </div>
                 </div>
             </div>
@@ -84,12 +89,12 @@ const Teacher_Dashboard = (props) => {
                     <div class="classinfo">
                         <h5>Total classes Held</h5>
                         <h5>Total Tests</h5>
-                        <h5>Assignment submitted</h5>
+                        <h5>Total Study Material Uploaded</h5>
                     </div>
                     <div class="classinfoval">
                         <h5>{totalClasstaken}</h5>
                         <h5>{totalTestScheduled}</h5>
-                        <h5>18</h5>
+                        <h5>{totalStudymaterial}</h5>
                     </div>
                 </div>
             </div>
