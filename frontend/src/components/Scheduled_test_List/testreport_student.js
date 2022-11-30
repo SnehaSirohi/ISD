@@ -58,7 +58,7 @@ const Testreport = () => {
  {<h1>Overall Tests Scheduled </h1>}
  
   <div classname="main">
-    <table classname="table table-bordered" id='mytable'>
+        <table classname="table table-bordered table-striped" id='mytable'>
       <thead>
         <tr>
           <th>Professor</th>
