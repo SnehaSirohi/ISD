@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 50vw;
     height: 50vh;
     border: 20px;
     background-color: aliceblue;
@@ -21,4 +20,8 @@
     border-radius: 8px;
     outline: none;
     cursor: pointer;
+}
+
+.classopedialogo{
+   width: 70%;
 }
