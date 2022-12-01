@@ -31,10 +31,7 @@ const Sem_1 = () => {
       setIsAlertVisible(true);
     }, 2000);
   }
-
-
-
-
+  
   const sem = "Sem-1";
 
   //-----------

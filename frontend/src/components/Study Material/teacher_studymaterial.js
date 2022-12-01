@@ -10,8 +10,8 @@ var XLSX = require("xlsx");
 
 const Studymaterial_report = () => {
     const navigate = useNavigate();
-    const [teacher,setTeacher]=useState([]);
-    console.log(teacher);
+    const [material,setMaterial]=useState([]);
+    console.log(material);
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/studymaterial_teacher", {
             method: "GET",
@@ -21,7 +21,7 @@ const Studymaterial_report = () => {
                 'x-access-token': localStorage.getItem('token'), //
             }})
             const json = await response.json()
-                setTeacher(json.data)
+                setMaterial(json.data)
                 console.log(json)
 
       }
@@ -42,7 +42,7 @@ const Studymaterial_report = () => {
   
   const exporttoexcelhandler= () =>{
      var wb = XLSX.utils.book_new(),
-     ws = XLSX.utils.json_to_sheet(teacher);
+     ws = XLSX.utils.json_to_sheet(material);
      XLSX.utils.book_append_sheet(wb,ws,"MySheet1");
      XLSX.writeFile(wb,"MyExcel.xlsx")
   };
@@ -69,7 +69,7 @@ const Studymaterial_report = () => {
         </tr>
       </thead>
       <tbody>
-      <List teacher={teacher} />
+      <List material={material} />
       </tbody>
     </table>
   </div>

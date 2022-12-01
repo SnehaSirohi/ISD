@@ -63,6 +63,7 @@ const Classreport = () => {
           <th>Professor</th>
           <th>Subject</th>
           <th>Date</th>
+          <th>Time</th>
         </tr>
       </thead>
       <tbody>

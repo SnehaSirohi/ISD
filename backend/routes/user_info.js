@@ -4,7 +4,7 @@ const {
     Sem1AttendanceReport, Sem2AttendanceReport, Sem3AttendanceReport, Sem4AttendanceReport, ScheduledClassReport, ScheduledTestReport, Getuploadassignment, Assignment_Schedule_teacher, GetStudyMaterial,StudyMaterial_Posted
 } = require("../controllers/teachercontrol")
 
-const {login, Getdashboard, Getprofile, Postprofile, Getchangepassword, PatchChangepassword, register, Test_Scheduled, Classes_Scheduled,Assignment_Schedule_student, GetAssignments, classnotification } = require("../controllers/studentscontrol")
+const {login, Getdashboard, Getprofile, Postprofile, Getchangepassword, PatchChangepassword, register, Test_Scheduled, Classes_Scheduled,Assignment_Schedule_student, GetAssignments, classnotification, StudyMaterial_Posted_Students } = require("../controllers/studentscontrol")
 
 const { Postscheduleclass, PostscheduleTest,PostUploadassignment, PostStudyMaterial } = require("../controllers/emailcontrol")
 
@@ -78,6 +78,7 @@ router.get("/testschedule", Test_Scheduled);
 router.get("/assignmentreportstudent", Assignment_Schedule_student)
 router.get("/assignmentreportteacher", Assignment_Schedule_teacher)
 router.get("/studymaterial_teacher", StudyMaterial_Posted)
+router.get("/studymaterial_student", StudyMaterial_Posted_Students)
 router.get("/notifications/assignment", GetAssignments)
 router.get("/notifications/classes", classnotification)
 

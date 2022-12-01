@@ -28,7 +28,9 @@
     transition: 850ms;
 }
 
-
+.nav-menu-items {
+    background: #d6e6e7;
+}
 
 .nav-menu.active {
     box-shadow: 3px 0 15px rgb(78 130 147);
@@ -71,8 +73,7 @@
     border-radius: 4px;
 }
 
-.nav-text span {
-    margin-left: 16px;
+.nav-text>span {
     font-size: 18px;
     font-weight: 501;
     color: rgb(0, 104, 74);
@@ -139,6 +140,6 @@ p {
     align-items: center;
 }
 
-.navbar-toggle span {
-    font-weight: 600;
+span {
+    margin-left: 16px;
 }
