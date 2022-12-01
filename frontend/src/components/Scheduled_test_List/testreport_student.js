@@ -2,10 +2,13 @@ import React from 'react'
 import { useState,useEffect,useRef,useReactToPrint } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
+import './scheduletest.css';
+import '../Student_dashboard/Navbar';
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from './list';
+import Navbar from '../Student_dashboard/Navbar';
 var XLSX = require("xlsx");
 
 const Testreport = () => {
@@ -67,12 +70,13 @@ const Testreport = () => {
   };
   return (
    <>
+   <Navbar/>
 
- {<h1>Overall Tests Scheduled </h1>}
+ {<h1 className='text-center'>Overall Tests Scheduled </h1>}
  
-  <div classname="main">
-        <table classname="table table-bordered table-striped" id='mytable'>
-      <thead>
+  <div className='tableblock'>
+        <table className='table table-striped' id='mytable'>
+      <thead className='heading-2'>
         <tr>
           <th>Professor</th>
           <th>Subject</th>
@@ -85,9 +89,10 @@ const Testreport = () => {
       </tbody>
     </table>
   </div>
-
-   <button onClick={exporttoexcelhandler}>Download in excel</button>
-   <button onClick={exporttopdfhandler}>Download in pdf</button>
+  <div className='text-center'>
+   <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
+   <button id='butn' class="btn btn-primary" onClick={exporttopdfhandler}>Download in pdf</button>
+  </div>
    </>
   )
 }

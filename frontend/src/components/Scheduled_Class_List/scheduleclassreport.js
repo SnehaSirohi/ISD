@@ -2,6 +2,7 @@ import React from 'react'
 import { useState,useEffect,useRef,useReactToPrint } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
+import './scheduledclass.css';
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
@@ -54,11 +55,11 @@ const Classreport = () => {
   return (
    <>
 
- {<h1>Overall Scheduled Classes </h1>}
+ {<h1 className='text-center'>Overall Scheduled Classes </h1>}
  
-  <div classname="main">
-    <table classname="table table-bordered" id='mytable'>
-      <thead>
+  <div className='tableblock'>
+    <table className='table table-striped' id='mytable'>
+      <thead className='heading-2'>
         <tr>
           <th>Professor</th>
           <th>Subject</th>
@@ -71,9 +72,10 @@ const Classreport = () => {
       </tbody>
     </table>
   </div>
-
-   <button onClick={exporttoexcelhandler}>Download in excel</button>
-   <button onClick={exporttopdfhandler}>Download in pdf</button>
+  <div className='text-center'>
+   <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
+   <button id='butn' class="btn btn-primary" onClick={exporttopdfhandler}>Download in pdf</button>
+   </div>
    </>
   )
 }
