@@ -5,41 +5,38 @@ import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
-import List from './list';
+import List from '../list';
 var XLSX = require("xlsx");
 
-const Classreport = () => {
+const Assignmentreport = () => {
     const navigate = useNavigate();
-    const [material,setMaterial]=useState([]);
+    const [assignments,setAssignments]=useState([]);
     const [subject, setSubject] = useState("")
     const [sem1, setSem1] = useState(false)
     const [sem2, setSem2] = useState(false)
     const [sem3, setSem3] = useState(false)
     const [sem4, setSem4] = useState(false)
-    const [study, setStudy] = useState({})
-    
+    const [report, setReport] = useState({})
+
     const fetchdata=async()=>{
-        const response=await fetch("http://localhost:4000/studymaterial_student", {
+        const response=await fetch("http://localhost:4000/assignmentreportstudent", {
             method: "GET",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
-                'x-access-token': localStorage.getItem('token'),
+                'x-access-token': localStorage.getItem('token'), //
             }})
             const json = await response.json()
-            console.log(json.sem)
-            
-            // console.log(json.success)
-            setStudy(json)
-          // console.log(sem1)
+            setReport(json)
+
       }
 
-      console.log(sem1)
-      console.log(study)
       async function subjectupdate(e) {
         e.preventDefault();
-        console.log(study)
-        let data = study.data.filter((data) => {
+        console.log(subject)
+        console.log(report)
+
+        let data = report.data.filter((data) => {
           if(data.subject == subject)
           {
             return data
@@ -47,72 +44,68 @@ const Classreport = () => {
         })
         console.log(data)
 
-            setMaterial(data.reverse())
+            setAssignments(data.reverse())
     
       }
 
       useEffect(() =>{
-        if(study.sem == 'Sem-1')
+        if(report.sem == 'Sem-1')
             {
                 setSem1(true)
                 console.log("This is sem1",sem1)
                 
             }
 
-            else if(study.sem == "Sem-2")
+            else if(report.sem == "Sem-2")
             {
                 setSem2(true)
                 console.log(sem2)
             }
-            else if(study.sem == "Sem-3")
+            else if(report.sem == "Sem-3")
             {
                 setSem3(true)
                 console.log(sem3)
             }
             
-            else if(study.sem == "Sem-4")
+            else if(report.sem == "Sem-4")
             {
                 setSem4(true)
                 console.log(sem4)
             }
           
-      },[study])
+      },[report])
 
       useEffect(() => {
         const token = localStorage.getItem('token')
-        console.log('useeffect called')
         if (token) {
           const user = jwt.decode(token)
           console.log(user)
           if (!user) {
             localStorage.removeItem('token')
             navigate("/dashboard");
-            
           } else {
             fetchdata()
-            console.log('useeffect called !!!!!')
-
           }
         }
       }, [])
   
   const exporttoexcelhandler= () =>{
      var wb = XLSX.utils.book_new(),
-     ws = XLSX.utils.json_to_sheet(material);
+     ws = XLSX.utils.json_to_sheet(assignments);
      XLSX.utils.book_append_sheet(wb,ws,"MySheet1");
      XLSX.writeFile(wb,"MyExcel.xlsx")
   };
 
   const exporttopdfhandler = () =>{
     const doc = new jsPDF()
-    doc.text("Classes Scheduled",70,10)
+    doc.text("Assignments Posted",70,10)
     autoTable(doc, { html: '#mytable'})
     doc.save('table.pdf')
   };
   return (
    <>
 
- {<h1>Study Material Uploaded</h1>}
+ {<h1>Assignments Posted </h1>}
  {sem1 && <div>
   <form onSubmit={subjectupdate}>
     <select
@@ -209,14 +202,14 @@ const Classreport = () => {
     <table classname="table table-bordered" id='mytable'>
       <thead>
         <tr>
-          <th>Professor</th>
-          <th>Subject</th>
-          <th>File</th>
-          <th>Date</th>
+            <th>Professor</th>
+            <th>Subject</th>
+            <th>Deadline</th>
+            <th>Assignment</th>
         </tr>
       </thead>
       <tbody>
-      <List material={material} />
+      <List assignments={assignments} />
       </tbody>
     </table>
   </div>
@@ -227,136 +220,4 @@ const Classreport = () => {
   )
 }
 
-export default Classreport
-
-// import React from 'react'
-// import { useState,useEffect,useRef,useReactToPrint } from 'react';
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import jsPDF from "jspdf";
-// import autoTable from 'jspdf-autotable';
-// import jwt from 'jsonwebtoken'
-// import { useNavigate } from "react-router-dom"
-// import List from './list';
-// var XLSX = require("xlsx");
-
-// const Classreport = () => {
-//     const navigate = useNavigate();
-//     const [material,setMaterial]=useState([]);
-//     const [subject, setSubject] = useState("")
-//     const [study, setStudy] = useState({})
-//     const fetchdata=async()=>{
-//         const response=await fetch("http://localhost:4000/studymaterial_student", {
-//             method: "GET",
-//             headers: {
-//                 Accept: "application/json",
-//                 "Content-Type": "application/json",
-//                 'x-access-token': localStorage.getItem('token'), //
-//             }})
-//             const json = await response.json()
-//             console.log(json)
-//             setStudy(json)
-          
-//       }
-
-//       async function subjectupdate(e) {
-//         e.preventDefault();
-    
-//         console.log(subject)
-//         // console.log(json.semester)
-        
-//             let data2 = study.data.filter((data) => {
-//               if(data.subject == subject)
-//               {
-//                 return data
-//               }
-//             })
-//             console.log(data2)
-
-//                 setMaterial(data2.reverse())
-    
-//       }
-
-//       useEffect(() => {
-//         const token = localStorage.getItem('token')
-//         if (token) {
-//           const user = jwt.decode(token)
-//           console.log(user)
-//           if (!user) {
-//             localStorage.removeItem('token')
-//             navigate("/dashboard");
-//           } else {
-//             fetchdata()
-    
-//           }
-//         }
-//       }, [])
-  
-//   const exporttoexcelhandler= () =>{
-//      var wb = XLSX.utils.book_new(),
-//      ws = XLSX.utils.json_to_sheet(material);
-//      XLSX.utils.book_append_sheet(wb,ws,"MySheet1");
-//      XLSX.writeFile(wb,"MyExcel.xlsx")
-//   };
-
-//   const exporttopdfhandler = () =>{
-//     const doc = new jsPDF()
-//     doc.text("Classes Scheduled",70,10)
-//     autoTable(doc, { html: '#mytable'})
-//     doc.save('table.pdf')
-//   };
-//   return (
-//    <>
-
-//  {<h1>Scheduled Classes </h1>}
-//  <div><label className="form-label mt-2">Select Subject</label>
-//     <form onSubmit={subjectupdate}>
-//     <select
-//                 type="text"
-//                 className="form-control"
-//                 id="subject"
-//                 name="subject"
-//                 value={subject}
-//                 required
-//                 onChange={(e) => setSubject(e.target.value)}>
-//                 <option required>Select Subject</option>
-//                 <option value="Algorithms And Data Structure">
-//                   Algorithms and Data Structure
-//                 </option>
-//                 <option value="Software Design & Programming">
-//                   Software Design & Programming
-//                 </option>
-//                 <option value="Mathematical Foundation Of Computing">
-//                   Mathematical Foundation of Computing
-//                 </option>
-//                 <option value="Computer System Architecture">
-//                   Computer System Architecture
-//                 </option>
-//               </select>
-//               <button type="submit" className="btn btn-primary submit-btn" >
-//               Submit
-//             </button>
-//     </form>
-//   </div>
-//   <div classname="main">
-//     <table classname="table table-bordered" id='mytable'>
-//       <thead>
-//         <tr>
-//           <th>Professor</th>
-//           <th>Subject</th>
-//           <th>file</th>
-//           <th>Time</th>
-//         </tr>
-//       </thead>
-//       <tbody>
-//       <List material={material} />
-//       </tbody>
-//     </table>
-//   </div>
-
-//    <button onClick={exporttoexcelhandler}>Download in excel</button>
-//    <button onClick={exporttopdfhandler}>Download in pdf</button>
-//    </>
-//   )
-// }
-
-// export default Classreport
+export default Assignmentreport
