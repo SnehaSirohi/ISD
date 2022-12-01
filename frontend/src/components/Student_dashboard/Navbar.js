@@ -90,19 +90,19 @@ function Navbar() {
                             <span><Link to="/dashboard/profile">Profile</Link></span>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaRegQuestionCircle />
+                            <FaIcons.FaRegCalendarCheck color='rgb(0, 104, 74)'/>
                             <Link to='/scheduledclass'><p>Scheduled Classes</p></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaRegQuestionCircle />
+                            <FaIcons.FaBookReader color='rgb(0, 104, 74)'/>
                             <Link to='/scheduledtests'><p>Scheduled Tests</p></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaRegSun />
+                            <FaIcons.FaRegListAlt color='rgb(0, 104, 74)' />
                             <Link to='/assignments'><p>Assignments Posted</p></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaRegQuestionCircle />
+                            <FaIcons.FaBook color='rgb(0, 104, 74)'/>
                             <Link to='/studymaterial'><p>Study Materials Posted</p></Link>
                         </li>
                         <li className="nav-text">
