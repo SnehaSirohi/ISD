@@ -11,7 +11,6 @@ tr {
   text-align: center;
 }
 .form-check {
-  background-color: #2bb0a8;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,4 +61,9 @@ tr {
  select{
   text-align: center;
   background-color: blue;
+ }
+
+ .checkbox{
+    transform: scale(1.5);
+    accent-color: green;
  }
