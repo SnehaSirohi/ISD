@@ -48,7 +48,7 @@ function Navbar() {
                         }}>
                             <FaIcons.FaPenSquare color='rgb(0, 104, 74)' />
                             <span>Semester</span>
-                            <FaIcons.FaCaretDown />
+                            <FaIcons.FaCaretDown color = "#0f5132" />
                         </li>
                         <li className="semester " style={{
                             display: sem ? "block" : "none"

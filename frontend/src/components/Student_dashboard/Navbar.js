@@ -30,35 +30,30 @@ function Navbar() {
         })
 
         const json = await req.json()
-        if(json.status == "ok")
-        {
-            if(json.semester == "Sem-1")
-            {
+        if (json.status == "ok") {
+            if (json.semester == "Sem-1") {
                 setSem1(true)
             }
 
-            else if(json.semester == "Sem-2")
-            {
+            else if (json.semester == "Sem-2") {
                 setSem2(true)
             }
-            else if(json.semester == "Sem-3")
-            {
+            else if (json.semester == "Sem-3") {
                 setSem3(true)
             }
-            
-            else if(json.semester == "Sem-4")
-            {
+
+            else if (json.semester == "Sem-4") {
                 setSem4(true)
             }
         }
         console.log(json);
     }
 
-    useEffect(() =>{
+    useEffect(() => {
         const token = localStorage.getItem('token')
-        if (token){
+        if (token) {
             const user = jwt.decode(token)
-            if(!user){
+            if (!user) {
                 localStorage.removeItem('token')
                 navigate("/");
             } else {
@@ -87,23 +82,16 @@ function Navbar() {
                             <span>Classopedia</span>
                         </li>
                         <li className="nav-text">
-                            <AiIcons.AiFillHome />
+                            <AiIcons.AiFillHome color='rgb(0, 104, 74)' />
                             <span><Link to="/dashboard">Home</Link></span>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaUserCircle />
+                            <FaIcons.FaUserCircle color='rgb(0, 104, 74)' />
                             <span><Link to="/dashboard/profile">Profile</Link></span>
                         </li>
-                        <li className="nav-text" onClick={showsemesterhandler} style={{
-                            background: sem ? "#2BB0A8" : ""
-                        }}>
-                            <FaIcons.FaPenSquare />
-                            <span>Subjects</span>
-                            <FaIcons.FaCaretDown />
-                        </li>
                         <li className="nav-text">
-                            <FaIcons.FaRegSun />
-                            <Link to="/scheduledclass"><p>Scheduled Classes</p></Link>
+                            <FaIcons.FaRegQuestionCircle />
+                            <Link to='/scheduledclass'><p>Scheduled Classes</p></Link>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaRegQuestionCircle />
@@ -118,7 +106,7 @@ function Navbar() {
                             <Link to='/studymaterial'><p>Study Materials Posted</p></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaSignInAlt />
+                            <FaIcons.FaSignInAlt color='rgb(0, 104, 74)' />
                             <span onClick={() => {
                                 localStorage.removeItem('token')
                                 navigate("/")
