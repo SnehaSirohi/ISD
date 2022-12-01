@@ -27,7 +27,7 @@ const List = ({ students, status, setstatus, subject }) => {
             <td>
               <div className="form-check">
                 <input
-                  className="form-check-input"
+                  className="checkbox"
                   type="checkbox"
                   id="flexCheckChecked1"
                   onChange={(e) =>
