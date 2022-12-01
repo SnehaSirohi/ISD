@@ -44,6 +44,7 @@
     padding: 8px 0px 8px 16px;
     font-size: 18px;
     list-style: none;
+    cursor: pointer;
     height: 60px;
     color: black
 }
@@ -124,6 +125,8 @@ p {
 .nav-menu-items {
     width: 100%;
     padding-left: 0;
+    background: #d6e6e7;
+    height: 100%;
 }
 
 .navbar-toggle {
