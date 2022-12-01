@@ -11,6 +11,7 @@
     width: 35%;
     left: 0px;
     bottom: 0px;
+    margin-bottom: 2%;
 }
 
 .image2 {
@@ -18,29 +19,33 @@
     width: 40%;
     right: 0px;
     bottom: 0px;
+    margin-bottom: 2%;
 }
 
 .homepage .button {
-    background: #1877f2;
-    border: 1px solid #1877f2;
+    background: #2BB0A8;
+    width: 120%;
+    text-align: center;
     color: #fff;
     font-size: 1.25rem;
-    margin-right: 2rem;
     padding: 0.5rem;
-    margin: 0.5rem 0;
+    margin-top: 0.5rem;
+    margin-left: -0.5rem;
     border-radius: 8px;
     outline: none;
     cursor: pointer;
 }
 
-.bttn11 {
-    background-color: rebeccapurple;
+.bttnmargin
+{
+    display: flex;
+    justify-content: space-around;
 }
 
 
 .classopedialogo {
     text-align: center;
-    padding-top: 3rem;
+    padding-top: 8rem;
     display: flex;
     Width: 50%;
     justify-content: center;
