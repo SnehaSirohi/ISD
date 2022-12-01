@@ -6,7 +6,7 @@
     justify-content: center;
     color: white;
     border: none;
-    box-shadow: 1px 1px 5px #333;
+    box-shadow: 1px 1px 5px rgb(121, 120, 120);
     /* box-shadow: rgb(50 70 70) 0px 30px 60px -12px inset, rgb(0 0 0 / 30%) 0px 18px 36px -18px inset; */
     background: #2BB0A8;
     transition: transform .2s;

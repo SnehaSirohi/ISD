@@ -47,51 +47,32 @@ const Login = () => {
 
   }
 
-  return (
-    <>
-      <section className="wrapper">
-        <div className="container">
-          <div className="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center">
-            <form className="rounded bg-white shadow p-5">
-              <h3 className="text-dark fw-bolder fs-4 mb-2">Login</h3>
-        
-              <div className="form-floating mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="floatingInput"
-                  name="enrollNum"
-                  placeholder="Enrollment Number"
-                  value={user.enrollNum}
-                  onChange={ handleChange }
-                />
-                <label htmlFor="floatingInput">Enrollment Number</label>
-              </div>
-              <div className="form-floating mb-3">
-                <input
-                  type="password"
-                  className="form-control"
-                  id="floatingPassword"
-                  name="password"
-                  placeholder="Password"
-                  value={user.password}
-                  onChange={ handleChange }
-                />
-                <label htmlFor="floatingPassword">Password</label>
-              </div>
-              <button
-                type="submit"
-                className="btn btn-primary submi_btn w-100 my-4"
-                onClick={login}
-              >
-                Login
-              </button>
-            </form>
-          </div>
+ return (
+        <div class="login2body">
+            <div class="screen">
+                <div class="screen__content">
+                    <form class="login">
+                        <div class="login__field">
+                            <input type="text" class="login__input" placeholder="Enrollment Number" name="enrollNum" value={user.enrollNum} onChange={handleChange} />
+                        </div>
+                        <div class="login__field">
+                            <input type="password" class="login__input" placeholder="Password" name="password" value={user.password} onChange={handleChange} />
+                        </div>
+                        <button class="button login__submit" type="submit">
+                            <span class="button__text" onClick={login}  >Log In Now</span>
+                        </button>
+                    </form>
+
+                </div>
+                <div class="screen__background">
+                    <span class="screen__background__shape screen__background__shape4"></span>
+                    <span class="screen__background__shape screen__background__shape3"></span>
+                    <span class="screen__background__shape screen__background__shape2"></span>
+                    <span class="screen__background__shape screen__background__shape1"></span>
+                </div>
+            </div>
         </div>
-      </section>
-    </>
-  );
+    );
 };
 
 

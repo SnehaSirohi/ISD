@@ -13,9 +13,9 @@ const Homepage = () => {
 
             <img src={image1} className="image1" ></img>
             <img src={image2} className="image2" ></img>
-            <div className="mt-3">
+            <div className="mt-4">
                 <h3>Choose Your Role</h3>
-                <div className="flex bttnmargin">
+                <div className="bttnmargin ">
                     <Link to="/login"><div className="button bttn11">Student</div></Link>
                     <Link to="/loginteacher"><div className="button">Teacher</div></Link>
                 </div>

@@ -40,24 +40,14 @@ import Classreport from './components/Scheduled_Class_List/scheduleclassreport';
 import Testreport from './components/Scheduled_test_List/scheduletestreport';
 import Testreport_student from './components/Scheduled_test_List/testreport_student';
 import Classreport_student from './components/Scheduled_Class_List/classreport_student';
-import Classreport_sem1 from './components/Scheduled_Class_List/semesterwise/sem1classreport';
-import Classreport_sem2 from './components/Scheduled_Class_List/semesterwise/sem2classreport';
-import Classreport_sem3 from './components/Scheduled_Class_List/semesterwise/sem3classreport';
-import Classreport_sem4 from './components/Scheduled_Class_List/semesterwise/sem4classreport';
-import Testreport_sem1 from './components/Scheduled_test_List/semesterwise/sem1testreport';
-import Testreport_sem2 from './components/Scheduled_test_List/semesterwise/sem2testreport';
-import Testreport_sem3 from './components/Scheduled_test_List/semesterwise/sem3testreport';
-import Testreport_sem4 from './components/Scheduled_test_List/semesterwise/sem4testreport';
-import Assignmentreport_sem1 from './components/Assignment_report/semesterwise/sem1assignmentreport';
-import Assignmentreport_sem2 from './components/Assignment_report/semesterwise/sem2assignmentreport';
-import Assignmentreport_sem3 from './components/Assignment_report/semesterwise/sem3assignmentreport';
-import Assignmentreport_sem4 from './components/Assignment_report/semesterwise/sem4assignmentreport';
-
+import Classreport_semester from './components/Scheduled_Class_List/semesterwise/Classreport_semester';
+import Testreport_semester from './components/Scheduled_test_List/semesterwise/Testreport_semester';
+import Assignmentreport_semester from './components/Assignment_report/semesterwise/Assignmentreport_semester';
 
 import Assignmentreport_student from './components/Assignment_report/assignmentreport_student';
 import Assignmentreport_teacher from './components/Assignment_report/teacher_assignment_report';
 import Studymaterial_teacher from './components/Study Material/teacher_studymaterial';
-import Studymaterial_student_sem1 from './components/Study Material/semesterwise/sem1_studymaterial';
+import Studymaterial_student from './components/Study Material/semesterwise/studymaterial_semester';
 import UploadAssignmentsem1 from './components/Assignment_Upload/Upload_assignment_sem1';
 import UploadAssignmentsem2 from './components/Assignment_Upload/Upload_assignment_sem2';
 import UploadAssignmentsem3 from './components/Assignment_Upload/Upload_assignment_sem3';
@@ -118,20 +108,10 @@ function App() {
           <Route path="/attendancereport/sem1" element={<Sem1Attendance subjectval={subjectval} dateval={dateval} monthval={monthval} />} />
           <Route path='/scheduledclassreport' element={<Classreport />} />
           <Route path='/scheduledtestreport' element={<Testreport />} />
-          <Route path='/scheduledclass/sem1' element={<Classreport_sem1/>}/>
-          <Route path='/scheduledclass/sem2' element={<Classreport_sem2/>}/>
-          <Route path='/scheduledclass/sem3' element={<Classreport_sem3/>}/>
-          <Route path='/scheduledclass/sem4' element={<Classreport_sem4/>}/>
-          <Route path='/scheduledtests/sem1' element={<Testreport_sem1/>}/>
-          <Route path='/scheduledtests/sem2' element={<Testreport_sem2/>}/>
-          <Route path='/scheduledtests/sem3' element={<Testreport_sem3/>}/>
-          <Route path='/scheduledtests/sem4' element={<Testreport_sem4/>}/>
-          <Route path='/assignments/sem1' element={<Assignmentreport_sem1/>}/>
-          <Route path='/assignments/sem2' element={<Assignmentreport_sem2/>}/>
-          <Route path='/assignments/sem3' element={<Assignmentreport_sem3/>}/>
-          <Route path='/assignments/sem4' element={<Assignmentreport_sem4/>}/>
-          <Route path='/studymaterial/sem1' element={<Studymaterial_student_sem1/>}/>
-
+          <Route path='/scheduledclass' element={<Classreport_semester/>}/>
+          <Route path='/scheduledtests' element={<Testreport_semester/>}/>
+          <Route path='/assignments' element={<Assignmentreport_semester/>}/>
+          <Route path='/studymaterial' element={<Studymaterial_student/>}/>
 
           <Route path='/Teacherdashboard/studymaterial' element={<Studymaterial_teacher />} />
           <Route path='/Teacherdashboard/sem1/assignment' element={<UploadAssignmentsem1 />} />

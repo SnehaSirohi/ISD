@@ -227,6 +227,7 @@ const Test_Scheduled = async (req, res) => {
       return res.status(200).json({
         success: true,
         data: await ScheduledTest.find({ semester: student.semester }),
+        sem: student.semester
       });
     } catch (error) {
       console.log(error);
@@ -243,6 +244,7 @@ const Test_Scheduled = async (req, res) => {
       return res.status(200).json({
         success: true,
         data: await ScheduledClass.find({ semester: student.semester }),
+        sem: student.semester
       });
     } catch (error) {
       console.log(error);
@@ -259,6 +261,7 @@ const Test_Scheduled = async (req, res) => {
       return res.status(200).json({
         success: true,
         data: await AssignmentsPosted.find({ semester: student.semester }),
+        sem: student.semester
       });
     } catch (error) {
       console.log(error);
