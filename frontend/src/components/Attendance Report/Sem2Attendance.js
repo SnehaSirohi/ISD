@@ -3,8 +3,9 @@ import { useState,useEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./attendance_report.css";
 
-import List from '../Filters/List';
+import List from './List';
 const Sem2Attendance = ({subjectval,dateval,monthval}) => {
+
     const[val,setval]=useState("")
     const [student,setstudent]=useState([]);
     const fetchdata=async()=>{
@@ -15,7 +16,6 @@ const Sem2Attendance = ({subjectval,dateval,monthval}) => {
                 "Content-Type": "application/json",
             }})
             const json = await response.json()
-            console.log(json.data)
               if(monthval)
               {
                 let data1=json.data.filter((data)=>data.date.slice(5,7)==monthval)
