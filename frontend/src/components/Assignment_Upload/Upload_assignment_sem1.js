@@ -191,7 +191,9 @@ function UploadAssignmentsem1() {
             rows="3"
             value={description}
             onChange={(e) => setdescription(e.target.value)}></textarea>
-          <button className="submitbutton mt-3" onClick={Upload}>
+        </div>
+        <div className="text-center">
+          <button className="submitbutton mt-3 " onClick={Upload}>
             Submit
           </button>
         </div>

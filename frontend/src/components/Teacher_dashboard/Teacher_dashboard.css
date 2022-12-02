@@ -27,6 +27,10 @@ html{
    
 }
 
+.dashblocks>a{
+    width: fit-content;
+}
+
 .blockcolour {
     background: #2BB0A8;
     height: 140px;
