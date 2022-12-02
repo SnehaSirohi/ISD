@@ -6,6 +6,8 @@ import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from '../list';
+import Navbar from "../../Student_dashboard/Navbar";
+
 var XLSX = require("xlsx");
 
 const Classreport = () => {
@@ -117,7 +119,7 @@ const Classreport = () => {
   };
   return (
    <>
-
+<Navbar />
  {<h1>Scheduled Classes </h1>}
  {sem1 && <div>
   <form onSubmit={subjectupdate}>

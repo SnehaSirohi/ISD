@@ -7,6 +7,8 @@ import jwt from 'jsonwebtoken'
 import './scheduletest.css';
 import { useNavigate } from "react-router-dom"
 import List from './list';
+import Navbar from "../Teacher_dashboard/Navbar";
+
 var XLSX = require("xlsx");
 
 const Testreport = () => {
@@ -56,7 +58,7 @@ const Testreport = () => {
   };
   return (
     <>
-
+<Navbar />
       {<h1 className='text-center'>Overall Tests Scheduled </h1>}
 
       <div className='tableblock'>

@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Sem4Attendance = new Schema({
+  teacher:{
+    type:String,
+    required:true,
+  },
   date: {
     type: String,
     required: true,

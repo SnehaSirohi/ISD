@@ -1,114 +1,128 @@
 import React from 'react'
-import { useState,useEffect,useRef,useReactToPrint } from 'react';
+import { useState, useEffect, useRef, useReactToPrint } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
-import List from '../list';
-import Navbar from "../../Student_dashboard/Navbar";
+import './attendance_report.css'
+import List from './list2';
+import Navbar from "../Student_dashboard/Navbar";
 
 var XLSX = require("xlsx");
 
-const Assignmentreport = () => {
-    const navigate = useNavigate();
-    const [assignments,setAssignments]=useState([]);
-    const [subject, setSubject] = useState("")
-    const [sem1, setSem1] = useState(false)
-    const [sem2, setSem2] = useState(false)
-    const [sem3, setSem3] = useState(false)
-    const [sem4, setSem4] = useState(false)
-    const [report, setReport] = useState({})
-
-    const fetchdata=async()=>{
-        const response=await fetch("http://localhost:4000/assignmentreportstudent", {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                'x-access-token': localStorage.getItem('token'), //
-            }})
-            const json = await response.json()
-            setReport(json)
-
+const Attendancereport = () => {
+  const navigate = useNavigate();
+  const [student, setstudent] = useState([]);
+  const [attendmaterial,setAttendmaterial]=useState([]);
+  var [string, setString] = useState("Overall Attendance Report")
+  const [sem1, setSem1] = useState(false)
+  const [sem2, setSem2] = useState(false)
+  const [sem3, setSem3] = useState(false)
+  const [sem4, setSem4] = useState(false)
+  const [subject, setSubject] = useState("")
+  const [semester, setSemester] = useState("")
+  const fetchdata = async () => {
+    const response = await fetch("http://localhost:4000/dashboard", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        'x-access-token': localStorage.getItem('token'), //
       }
+    })
+    const json = await response.json()
+        setSemester(json.semester)
+        setstudent(json.attend.reverse())
+        setAttendmaterial(json.attend)
+  }
 
-      async function subjectupdate(e) {
-        e.preventDefault();
-        console.log(subject)
-        console.log(report)
 
-        let data = report.data.filter((data) => {
-          if(data.subject == subject)
-          {
-            return data
-          }
-        })
-        console.log(data)
+  async function subjectupdate(e) {
+    e.preventDefault();
+    console.log(student)
+    if(subject != "overall")
+      setString("Attendance Report : "+ subject)
 
-            setAssignments(data.reverse())
-    
+    let data = student.filter((data) => {
+      if(data.subject == subject)
+      {
+        return data
       }
+    })
+    console.log(data)
 
-      useEffect(() =>{
-        if(report.sem == 'Sem-1')
-            {
-                setSem1(true)
-                console.log("This is sem1",sem1)
-                
-            }
+    setAttendmaterial(data)
 
-            else if(report.sem == "Sem-2")
-            {
-                setSem2(true)
-                console.log(sem2)
-            }
-            else if(report.sem == "Sem-3")
-            {
-                setSem3(true)
-                console.log(sem3)
-            }
+    if(subject == "overall")
+    {
+      setAttendmaterial(student)
+      setString("Overall Attendance Report")
+    }
+
+  }
+
+  useEffect(() =>{
+    if(semester == 'Sem-1')
+        {
+            setSem1(true)
+            console.log("This is sem1",sem1)
             
-            else if(report.sem == "Sem-4")
-            {
-                setSem4(true)
-                console.log(sem4)
-            }
-          
-      },[report])
-
-      useEffect(() => {
-        const token = localStorage.getItem('token')
-        if (token) {
-          const user = jwt.decode(token)
-          console.log(user)
-          if (!user) {
-            localStorage.removeItem('token')
-            navigate("/dashboard");
-          } else {
-            fetchdata()
-          }
         }
-      }, [])
-  
-  const exporttoexcelhandler= () =>{
-     var wb = XLSX.utils.book_new(),
-     ws = XLSX.utils.json_to_sheet(assignments);
-     XLSX.utils.book_append_sheet(wb,ws,"MySheet1");
-     XLSX.writeFile(wb,"MyExcel.xlsx")
+
+        else if(semester == "Sem-2")
+        {
+            setSem2(true)
+            console.log(sem2)
+        }
+        else if(semester == "Sem-3")
+        {
+            setSem3(true)
+            console.log(sem3)
+        }
+        
+        else if(semester == "Sem-4")
+        {
+            setSem4(true)
+            console.log(sem4)
+        }
+      
+  },[student])
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      const user = jwt.decode(token)
+      console.log(user)
+      if (!user) {
+        localStorage.removeItem('token')
+        navigate("/dashboard");
+      } else {
+        fetchdata()
+
+      }
+    }
+  }, [])
+
+  const exporttoexcelhandler = () => {
+    var wb = XLSX.utils.book_new(),
+      ws = XLSX.utils.json_to_sheet(attendmaterial);
+    XLSX.utils.book_append_sheet(wb, ws, "MySheet1");
+    XLSX.writeFile(wb, "MyExcel.xlsx")
   };
 
-  const exporttopdfhandler = () =>{
+  const exporttopdfhandler = () => {
     const doc = new jsPDF()
-    doc.text("Assignments Posted",70,10)
-    autoTable(doc, { html: '#mytable'})
+    doc.text("Overall Attendance", 70, 10)
+    autoTable(doc, { html: '#mytable' })
     doc.save('table.pdf')
   };
+
   return (
-   <>
-<Navbar />
- {<h1>Assignments Posted </h1>}
- {sem1 && <div>
+    <>
+    <Navbar />
+    {<h1>{string}</h1>}
+      {sem1 && <div>
   <form onSubmit={subjectupdate}>
     <select
                 type="text"
@@ -119,6 +133,7 @@ const Assignmentreport = () => {
                 required
                 onChange={(e) => setSubject(e.target.value)}>
                 <option required>Select Subject</option>
+                <option value='overall'>Overall</option>
                 <option value="Algorithms And Data Structure">
                   Algorithms and Data Structure
                 </option>
@@ -148,6 +163,7 @@ const Assignmentreport = () => {
                 required
                 onChange={(e) => setSubject(e.target.value)}>
                 <option required>Select Subject</option>
+                <option value='overall'>Overall</option>
                 <option value="Computer Communication and Networks">Computer Communication and Networks</option>
                 <option value="Operating Systems">Operating Systems</option>
                 <option value="Database Systems">Database Systems</option>
@@ -170,6 +186,7 @@ const Assignmentreport = () => {
                 required
                 onChange={(e) => setSubject(e.target.value)}>
                 <option required>Select Subject</option>
+                <option value='overall'>Overall Attendance</option>
                 <option value="Information System Design">Information System Design</option>
                 <option value="Cloud Computing">Cloud Computing</option>
                 <option value="Software Engineering">Software Engineering</option>
@@ -191,6 +208,7 @@ const Assignmentreport = () => {
                 required
                 onChange={(e) => setSubject(e.target.value)}>
                 <option required>Select Subject</option>
+                <option value='overall'>Overall</option>
                 <option value="Internet of Things Systems, Security and Cloud">Internet of Things Systems, Security and Cloud</option>
                 <option value="Health Informatics">Health Informatics</option>
                 <option value="Research Methods in Informatics">Research Methods in Informatics</option>
@@ -200,26 +218,27 @@ const Assignmentreport = () => {
             </button>
     </form>
   </div>}
-  <div classname="main">
-    <table classname="table table-bordered" id='mytable'>
-      <thead>
-        <tr>
-            <th>Professor</th>
-            <th>Subject</th>
-            <th>Deadline</th>
-            <th>Assignment</th>
-        </tr>
-      </thead>
-      <tbody>
-      <List assignments={assignments} />
-      </tbody>
-    </table>
-  </div>
 
-   <button onClick={exporttoexcelhandler}>Download in excel</button>
-   <button onClick={exporttopdfhandler}>Download in pdf</button>
-   </>
+      <div className='table-2'>
+        <table className='table table-striped' id='mytable2'>
+          <thead className='heading-2' >{<h3 color='#ffffff'>{string}</h3>}</thead>
+          <thead className='heading-2'>
+            <tr>
+                <th>subject</th>
+                <th>Date</th>
+                <th>Attendance Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <List attendmaterial={attendmaterial} />
+          </tbody>
+        </table>
+      </div>
+
+      <button onClick={exporttoexcelhandler}>Download in excel</button>
+      <button onClick={exporttopdfhandler}>Download in pdf</button>
+    </>
   )
 }
 
-export default Assignmentreport
+export default Attendancereport

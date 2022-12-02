@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./testschedule.css";
-import Navbar from "../Student_dashboard/Navbar.js";
+import Navbar from "../Teacher_dashboard/Navbar";
 import { useEffect, useState } from "react";
 import jwt from 'jsonwebtoken'
 import './TS.css'
@@ -13,7 +13,7 @@ const Sem_1 = () => {
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
   const [message, setmessage] = useState("");
-  const[warning,setwarning]=useState(false)
+  const [warning,setwarning]=useState(false)
   const [UnmeshShukla,setUnmeshShukla]=useState(false)
   const [NitishaAgg,setNitishaAgg]=useState(false)
   const [MKDas,setMKDas]=useState(false)
