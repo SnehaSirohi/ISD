@@ -16,8 +16,8 @@ const Homepage = () => {
             <div className="mt-4">
                 <h3>Choose Your Role</h3>
                 <div className="bttnmargin ">
-                    <Link to="/login"><div className="button bttn11">Student</div></Link>
-                    <Link to="/loginteacher"><div className="button">Teacher</div></Link>
+                    <Link to="/login"><div className="button bttn-1">Student</div></Link>
+                    <Link to="/loginteacher"><div className="button bttn-2">Teacher</div></Link>
                 </div>
 
             </div>
