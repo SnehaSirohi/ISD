@@ -69,8 +69,13 @@ const Sem_1 = () => {
   }, []);
 
   async function Submit(e) {
-    e.preventDefault();
-    const response = await fetch("http://localhost:4000/attendance/sem1", {
+    if(!subject)
+    {
+      alert("Please fill all the fields ")
+    }
+    else
+    {
+      const response = await fetch("http://localhost:4000/attendance/sem1", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -85,6 +90,8 @@ const Sem_1 = () => {
       let dataa = await response.json();
       console.log(dataa);
     });
+    }
+    
   }
 
   return (
