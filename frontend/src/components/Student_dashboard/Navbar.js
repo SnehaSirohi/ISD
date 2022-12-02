@@ -99,11 +99,11 @@ function Navbar() {
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaRegListAlt color='rgb(0, 104, 74)' />
-                            <Link to='/assignments'><p>Assignments Posted</p></Link>
+                            <Link to='/assignments'><p>Assignments</p></Link>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaBook color='rgb(0, 104, 74)'/>
-                            <Link to='/studymaterial'><p>Study Materials Posted</p></Link>
+                            <Link to='/studymaterial'><p>Study Material</p></Link>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaBook color='rgb(0, 104, 74)'/>

@@ -246,6 +246,7 @@ const sem1Attendance = async (req, res) => {
   const token = req.headers["x-access-token"];
   const semester = "Sem-1";
   const subject = req.body.subject;
+  let teachername 
   console.log(subject);
   var nowDate = new Date();
   const time =
@@ -263,8 +264,9 @@ const sem1Attendance = async (req, res) => {
     const decoded = jwt.verify(token, "secret1234");
     const Teacher_id = decoded.Teacher_id;
     const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
-    console.log(Teacher_id)
-    return res.status(200).json({
+    teachername = teacher.name
+    console.log(teachername)
+    res.status(200).json({
       success: true,
       data: await ClassesTaken.create({ name: teacher.name, subject, semester, date, time }),
     });
@@ -273,6 +275,7 @@ const sem1Attendance = async (req, res) => {
     console.log(error);
     res.json({ status: "error", error: "invalid token" });
   }
+  console.log(teachername)
 
   for (const key in req.body.status) {
     const name = key;
@@ -286,7 +289,7 @@ const sem1Attendance = async (req, res) => {
     }
 
     try {
-      await Sem1Attendance.create({ date, name, subject, semester, attendanceStatus, time });
+      await Sem1Attendance.create({ teacher: teachername, date, name, subject, semester, attendanceStatus, time });
     } catch (error) {
       console.log(error);
     }
@@ -297,6 +300,7 @@ const sem2Attendance = async (req, res) => {
   const token = req.headers["x-access-token"];
   const semester = "Sem-2";
   const subject = req.body.subject;
+  let teachername
   console.log(subject);
   var nowDate = new Date();
   const time =
@@ -315,7 +319,8 @@ const sem2Attendance = async (req, res) => {
     const Teacher_id = decoded.Teacher_id;
     const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
     console.log(Teacher_id)
-    return res.status(200).json({
+    teachername = teacher.name
+    res.status(200).json({
       success: true,
       data: await ClassesTaken.create({ name: teacher.name, subject, semester, date, time }),
     });
@@ -337,7 +342,7 @@ const sem2Attendance = async (req, res) => {
     }
 
     try {
-      await Sem2Attendance.create({ date, name, subject, semester, attendanceStatus, time });
+      await Sem2Attendance.create({ teacher: teachername, date, name, subject, semester, attendanceStatus, time });
     } catch (error) {
       console.log(error);
     }
@@ -347,6 +352,7 @@ const sem3Attendance = async (req, res) => {
   const token = req.headers["x-access-token"];
   const semester = "Sem-3";
   const subject = req.body.subject;
+  let teachername
   console.log(subject);
   var nowDate = new Date();
   const time =
@@ -364,8 +370,9 @@ const sem3Attendance = async (req, res) => {
     const decoded = jwt.verify(token, "secret1234");
     const Teacher_id = decoded.Teacher_id;
     const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    teachername = teacher.name
     console.log(Teacher_id)
-    return res.status(200).json({
+     res.status(200).json({
       success: true,
       data: await ClassesTaken.create({ name: teacher.name, subject, semester, date, time }),
     });
@@ -387,7 +394,7 @@ const sem3Attendance = async (req, res) => {
     }
 
     try {
-      await Sem3Attendance.create({ date, name, subject, semester, attendanceStatus, time });
+      await Sem3Attendance.create({teacher: teachername, date, name, subject, semester, attendanceStatus, time });
     } catch (error) {
       console.log(error);
     }
@@ -397,6 +404,7 @@ const sem4Attendance = async (req, res) => {
   const token = req.headers["x-access-token"];
   const semester = "Sem-4";
   const subject = req.body.subject;
+  let teachername
   console.log(subject);
   var nowDate = new Date();
   const time =
@@ -415,7 +423,8 @@ const sem4Attendance = async (req, res) => {
     const Teacher_id = decoded.Teacher_id;
     const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
     console.log(Teacher_id)
-    return res.status(200).json({
+    teachername = teacher.name
+    res.status(200).json({
       success: true,
       data: await ClassesTaken.create({ name: teacher.name, subject, semester, date, time }),
     });
@@ -437,7 +446,7 @@ const sem4Attendance = async (req, res) => {
     }
 
     try {
-      await Sem4Attendance.create({ date, name, subject, semester, attendanceStatus, time });
+      await Sem4Attendance.create({ teacher: teachername, date, name, subject, semester, attendanceStatus, time });
     } catch (error) {
       console.log(error);
     }
@@ -445,30 +454,81 @@ const sem4Attendance = async (req, res) => {
 }
 
 const Sem1AttendanceReport = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    data: await Sem1Attendance.find({}),
-  });
+  const token = req.headers["x-access-token"];
 
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    console.log(Teacher_id)
+    return res.status(200).json({
+        success: true,
+        data: await Sem1Attendance.find({teacher:teacher.name}),
+        name:teacher.name
+      });
+
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
 }
 
 const Sem2AttendanceReport = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    data: await Sem2Attendance.find({}),
-  });
+  const token = req.headers["x-access-token"];
+
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    console.log(Teacher_id)
+    return res.status(200).json({
+        success: true,
+        data: await Sem2Attendance.find({teacher:teacher.name}),
+        name:teacher.name
+      });
+
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
 }
 const Sem3AttendanceReport = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    data: await Sem3Attendance.find({}),
-  });
+  const token = req.headers["x-access-token"];
+
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    console.log(Teacher_id)
+    return res.status(200).json({
+        success: true,
+        data: await Sem3Attendance.find({teacher:teacher.name}),
+        name:teacher.name
+      });
+
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
 }
 const Sem4AttendanceReport = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    data: await Sem4Attendance.find({}),
-  });
+  const token = req.headers["x-access-token"];
+
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    console.log(Teacher_id)
+    return res.status(200).json({
+        success: true,
+        data: await Sem4Attendance.find({teacher:teacher.name}),
+        name:teacher.name
+      });
+
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
 }
 
 const ScheduledClassReport = async (req, res) => {

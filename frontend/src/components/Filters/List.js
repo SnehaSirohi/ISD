@@ -1,22 +1,24 @@
 import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import {CSVLink} from 'react-csv'
-const List = ({attendmaterial}) => {
+const List = ({student}) => {
   return (
    <>
-    {attendmaterial.map((stu)=>{
-        const {date,attendanceStatus,subject}=stu;
+    {student.map((stu)=>{
+        const {date,name,attendanceStatus,subject}=stu;
         return(
             <>
-            <tr>
+               <tr>
+            <td>{name}
+            </td>
+              {subject}
             <td>
-                {subject}
             </td>
             <td>
               {date}
             </td>
             <td>
-                {attendanceStatus}
+              {attendanceStatus}
             </td>
           </tr>
             </>

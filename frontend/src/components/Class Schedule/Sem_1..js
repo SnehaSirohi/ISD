@@ -217,7 +217,7 @@ const Sem_1 = () => {
 
           <div className="abc-1">
             <div>
-              <label htmlFor="date" className="class-form-label">Date:</label>
+              <label htmlFor="date" className="class-form-label">Date</label>
               <input
                 type="date"
                 className="class-form-control"

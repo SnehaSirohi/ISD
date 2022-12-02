@@ -155,9 +155,8 @@ html{
     margin-bottom: 0px;
 }
 
-.ohio-1 {
-    margin-bottom: 0px;
-    height: 100vh;
+#bootstrap-overrides .row>* {
+    width: none;
 }
 /* #semester{
     border: none;
