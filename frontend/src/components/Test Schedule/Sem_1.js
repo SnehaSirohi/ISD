@@ -13,7 +13,7 @@ const Sem_1 = () => {
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
   const [message, setmessage] = useState("");
-  const[warning,setwarning]=useState(false)
+  const [warning,setwarning]=useState(false)
   const [UnmeshShukla,setUnmeshShukla]=useState(false)
   const [NitishaAgg,setNitishaAgg]=useState(false)
   const [MKDas,setMKDas]=useState(false)

@@ -106,6 +106,10 @@ function Navbar() {
                             <Link to='/studymaterial'><p>Study Materials Posted</p></Link>
                         </li>
                         <li className="nav-text">
+                            <FaIcons.FaBook color='rgb(0, 104, 74)'/>
+                            <Link to='/attendancereport'><p>Attendance Report</p></Link>
+                        </li>
+                        <li className="nav-text">
                             <FaIcons.FaSignInAlt color='rgb(0, 104, 74)' />
                             <span onClick={() => {
                                 localStorage.removeItem('token')

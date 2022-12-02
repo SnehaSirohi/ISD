@@ -43,6 +43,7 @@ import Classreport_student from './components/Scheduled_Class_List/classreport_s
 import Classreport_semester from './components/Scheduled_Class_List/semesterwise/Classreport_semester';
 import Testreport_semester from './components/Scheduled_test_List/semesterwise/Testreport_semester';
 import Assignmentreport_semester from './components/Assignment_report/semesterwise/Assignmentreport_semester';
+import Attendancereport_student from './components/Attendance Report/attendancestudent';
 
 import Assignmentreport_student from './components/Assignment_report/assignmentreport_student';
 import Assignmentreport_teacher from './components/Assignment_report/teacher_assignment_report';
@@ -112,6 +113,7 @@ function App() {
           <Route path='/scheduledtests' element={<Testreport_semester/>}/>
           <Route path='/assignments' element={<Assignmentreport_semester/>}/>
           <Route path='/studymaterial' element={<Studymaterial_student/>}/>
+          <Route path='/attendancereport' element={<Attendancereport_student/>}/>
 
           <Route path='/Teacherdashboard/studymaterial' element={<Studymaterial_teacher />} />
           <Route path='/Teacherdashboard/sem1/assignment' element={<UploadAssignmentsem1 />} />

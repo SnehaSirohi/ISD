@@ -13,274 +13,316 @@ const jwt = require("jsonwebtoken");
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 
 const login = (req, res) => {
-    const { enrollNum, password } = req.body;
-    Students.findOne({ enrollNum: enrollNum }, (err, student) => {
-      if (student) {
-        const token = jwt.sign(
-          {
-            enrollNum: student.enrollNum,
-          },
-          "secret123"
-        );
-  
-        if (password === student.password) {
-          res.send({ message: "Login successful", student: token });
-        } else {
-          res.send({ message: "password didn't match" });
-        }
+  const { enrollNum, password } = req.body;
+  Students.findOne({ enrollNum: enrollNum }, (err, student) => {
+    if (student) {
+      const token = jwt.sign(
+        {
+          enrollNum: student.enrollNum,
+        },
+        "secret123"
+      );
+
+      if (password === student.password) {
+        res.send({ message: "Login successful", student: token });
       } else {
-        res.send({ message: "Students not registered" });
+        res.send({ message: "password didn't match" });
       }
-    });
-  }
-  
-  const Getdashboard = async (req, res) => {
-    const token = req.headers["x-access-token"];
-  
-    try {
-      const decoded = jwt.verify(token, "secret123");
-      const enrollNum = decoded.enrollNum;
-      const student = await Students.findOne({ enrollNum: enrollNum });
-     
-      const sem1Attendance = await Sem1Attendance.find({attendanceStatus: "Present", name: student.name})
-      const sem2Attendance = await Sem2Attendance.find({attendanceStatus: "Present", name: student.name})
-      const sem3Attendance = await Sem3Attendance.find({attendanceStatus: "Present", name: student.name})
-      const sem4Attendance = await Sem4Attendance.find({attendanceStatus: "Present", name: student.name})
-  
-      let Classes_taken_count
-  
-      if(student.semester == "Sem-1")
-      {
-        Classes_taken_count = sem1Attendance.length
-        console.log(Classes_taken_count)
-      }
-  
-      else if(student.semester == "Sem-2")
-      {
-        Classes_taken_count = sem2Attendance.length
-        console.log(Classes_taken_count)
-      }
-  
-      if(student.semester == "Sem-3")
-      {
-        Classes_taken_count = sem3Attendance.length
-        console.log(Classes_taken_count)
-      }
-  
-      if(student.semester == "Sem-4")
-      {
-        Classes_taken_count = sem4Attendance.length
-        console.log(Classes_taken_count)
-      }
-  
-      const Classes_held = await ClassesTaken.count({semester: student.semester})
-      const Classes_Scheduled = await ScheduledClass.count({ semester: student.semester });
-      const Test_Scheduled = await ScheduledTest.count({ semester: student.semester });
-      const Assignment_posted = await AssignmentsPosted.count({ semester: student.semester})
-  
-      return res.json({
-        status: "ok",
-        Classes_taken_count,
-        Classes_held,
-        Classes_Scheduled,
-        Test_Scheduled,
-        Assignment_posted,
-        enrollNum: student.enrollNum,
-        name: student.name,
-        email: student.email,
-        semester: student.semester,
-        rollNum: student.rollNum,
-        contactNum: student.contactNum,
-      });
-    } catch (error) {
-      console.log(error);
-      res.json({ status: "error", error: "invalid token" });
+    } else {
+      res.send({ message: "Students not registered" });
     }
-  }
-  
-  const Getprofile = async (req, res) => {
-    const token = req.headers["x-access-token"];
-  
-    try {
-      const decoded = jwt.verify(token, "secret123");
-      const enrollNum = decoded.enrollNum;
-      const student = await Students.findOne({ enrollNum: enrollNum });
-  
-      return res.json({
-        status: "ok",
-        enrollNum: student.enrollNum,
-        name: student.name,
-        email: student.email,
-        rollNum: student.rollNum,
-        contactNum: student.contactNum,
-      });
-    } catch (error) {
-      console.log(error);
-      res.json({ status: "error", error: "invalid token" });
-    }
-  }
-  
-  const Postprofile = async (req, res) => {
-    const token = req.headers["x-access-token"];
-  
-    try {
-      const decoded = jwt.verify(token, "secret123");
-      const enrollNum = decoded.enrollNum;
-      return res.status(200).json({
-        success: true,
-        data: await Students.UpdateOne(
-          { enrollNum: enrollNum },
-          { $set: { enrollNum: enrollNum } },
-          { $set: { name: req.body.name } },
-          { $set: { email: req.body.email } },
-          { $set: { rollNum: req.body.rollNum } },
-          { $set: { contactNum: req.body.contactNum } }
-        ),
-      });
-    } catch (error) {
-      console.log(error);
-      res.json({ status: "error", error: "invalid token" });
-    }
-  }
-  
-  const Getchangepassword = async (req, res) => {
-    const token = req.headers['x-access-token']
-    try {
-      const decoded = jwt.verify(token, 'secret123')
-      const enrollNum = decoded.enrollNum
-      const student = await Students.findOne({ enrollNum: enrollNum })
-      return res.json({ status: 'ok', enrollNum: student.enrollNum })
-  
-    } catch (error) {
-      console.log(error)
-      res.json({ status: 'error', error: 'invalid token' })
-    }
-  }
-  
-  const PatchChangepassword = async (req, res) => {
-    console.log('patch')
-    const token = req.headers['x-access-token']
-    const { oldpassword, newpassword, confirmpassword } = req.body
-    try {
-      const decoded = jwt.verify(token, 'secret123')
-      const enrollNum = decoded.enrollNum
-      if (!oldpassword || !newpassword || !confirmpassword) {
-        return res.json({ status: 400, msg: "Please enter all fields" })
-      }
-  
-      if (oldpassword === newpassword) {
-        return res.json({ status: 400, msg: "old and new password cannot be same" })
-      }
-  
-      Students.findOne({ enrollNum: enrollNum }, (err, student) => {
-        if (student) {
-          if (oldpassword === student.password) {
-            Students.findOneAndUpdate({ enrollNum }, { $set: { password: newpassword } }, (err, user) => {
-  
-              if (!err && user) {
-                return res.json({ status: 200, msg: "Updated successfully" })
-              }
-            })
-          } else {
-            res.send({ message: "password entered is incorrect" })
-          }
-  
-        } else {
-          res.send({ message: "Students not registered" })
-        }
-      })
-  
-  
-    } catch (error) {
-      console.log(error)
-      res.json({ status: 'error', error: 'invalid token' })
-    }
-  }
-  
-  const register = async (req, res) => {
-    const { name, semester, email, rollNum, contactNum, enrollNum, password } =
-      req.body;
-  
-    try {
-      const student = await Students.create({
-        name,
-        semester,
-        email,
-        rollNum,
-        contactNum,
-        enrollNum,
-        password,
-      });
-      res.status(200).json(student);
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
-  }
-
-const Test_Scheduled = async (req, res) => {
-    const token = req.headers["x-access-token"];
-    try {
-      const decoded = jwt.verify(token, "secret123");
-      const enrollNum = decoded.enrollNum;
-      const student = await Students.findOne({ enrollNum: enrollNum });
-      
-      return res.status(200).json({
-        success: true,
-        data: await ScheduledTest.find({ semester: student.semester }),
-        sem: student.semester
-      });
-    } catch (error) {
-      console.log(error);
-      res.json({ status: "error", error: "invalid token" });
-    }
-  }
-  
-  const Classes_Scheduled = async (req, res) => {
-    const token = req.headers["x-access-token"];
-    try {
-      const decoded = jwt.verify(token, "secret123");
-      const enrollNum = decoded.enrollNum;
-      const student = await Students.findOne({ enrollNum: enrollNum });
-      return res.status(200).json({
-        success: true,
-        data: await ScheduledClass.find({ semester: student.semester }),
-        sem: student.semester
-      });
-    } catch (error) {
-      console.log(error);
-      res.json({ status: "error", error: "invalid token" });
-    }
-  }
-  
-  const Assignment_Schedule_student = async (req, res) => {
-    const token = req.headers["x-access-token"];
-    try {
-      const decoded = jwt.verify(token, "secret123");
-      const enrollNum = decoded.enrollNum;
-      const student = await Students.findOne({ enrollNum: enrollNum });
-      return res.status(200).json({
-        success: true,
-        data: await AssignmentsPosted.find({ semester: student.semester }),
-        sem: student.semester
-      });
-    } catch (error) {
-      console.log(error);
-      res.json({ status: "error", error: "invalid token" });
-    }
-  }
-
-  
-const GetAssignments = async(req,res)=>{
-  return res.status(200).json({
-  success: true,
-  data: await AssignmentsPosted.find({}),
-});
+  });
 }
 
-const classnotification = async(req,res)=>{
+const Getdashboard = async (req, res) => {
+  const token = req.headers["x-access-token"];
+
+  try {
+    const decoded = jwt.verify(token, "secret123");
+    const enrollNum = decoded.enrollNum;
+    const student = await Students.findOne({ enrollNum: enrollNum });
+
+    const sem1Attendance = await Sem1Attendance.find({ name: student.name })
+    const sem2Attendance = await Sem2Attendance.find({ name: student.name })
+    const sem3Attendance = await Sem3Attendance.find({ name: student.name })
+    const sem4Attendance = await Sem4Attendance.find({ name: student.name })
+
+    let Classes_taken_count = 0;
+    let attend = []
+
+    if (student.semester == "Sem-1") {
+      attend = sem1Attendance
+      for (const k of sem1Attendance) {
+        if (k.attendanceStatus == "Present") {
+          Classes_taken_count = Classes_taken_count + 1;
+        }
+      }
+      console.log(Classes_taken_count)
+    }
+
+    else if (student.semester == "Sem-2") {
+      attend = sem2Attendance
+      for (const k of sem2Attendance) {
+        if (k.attendanceStatus == "Present") {
+          Classes_taken_count = Classes_taken_count + 1;
+        }
+      }
+      console.log(Classes_taken_count)
+    }
+
+    if (student.semester == "Sem-3") {
+      attend = sem3Attendance
+      for (const k of sem3Attendance) {
+        if (k.attendanceStatus == "Present") {
+          Classes_taken_count = Classes_taken_count + 1;
+        }
+      }
+      console.log(Classes_taken_count)
+    }
+
+    if (student.semester == "Sem-4") {
+      attend = sem4Attendance
+      for (const k of sem4Attendance) {
+        if (k.attendanceStatus == "Present") {
+          Classes_taken_count = Classes_taken_count + 1;
+        }
+      }
+      console.log(Classes_taken_count)
+    }
+    console.log(attend);
+    const newdate = new Date()
+    const monthval = newdate.getMonth() + 1;
+    const day = newdate.getDate()
+    const year = newdate.getFullYear()
+
+    let scheduledclasses = await ScheduledClass.find({ semester: student.semester })
+    const data1 = scheduledclasses.filter((data)=>{
+      if((data.date.slice(8,10)>=day &&  data.date.slice(5,7)==monthval) || data.date.slice(5,7)>monthval || data.date.slice(0,5)>year  )
+      {
+          return data
+      }
+     
+    })
+
+    let scheduledtests = await ScheduledTest.find({ semester: student.semester })
+    const data2 = scheduledtests.filter((data)=>{
+      if((data.date.slice(8,10)>=day &&  data.date.slice(5,7)==monthval) || data.date.slice(5,7)>monthval || data.date.slice(0,5)>year  )
+      {
+          return data
+      }
+     
+    })
+    
+
+    const Classes_held = await ClassesTaken.count({ semester: student.semester })
+    const Classes_Scheduled = data1.length;
+    const Test_Scheduled = data2.length;
+    const Assignment_posted = await AssignmentsPosted.count({ semester: student.semester })
+
+    return res.json({
+      status: "ok",
+      Classes_taken_count,
+      Classes_held,
+      Classes_Scheduled,
+      Test_Scheduled,
+      Assignment_posted,
+      attend,
+      enrollNum: student.enrollNum,
+      name: student.name,
+      email: student.email,
+      semester: student.semester,
+      rollNum: student.rollNum,
+      contactNum: student.contactNum,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+}
+
+const Getprofile = async (req, res) => {
+  const token = req.headers["x-access-token"];
+
+  try {
+    const decoded = jwt.verify(token, "secret123");
+    const enrollNum = decoded.enrollNum;
+    const student = await Students.findOne({ enrollNum: enrollNum });
+
+    return res.json({
+      status: "ok",
+      enrollNum: student.enrollNum,
+      name: student.name,
+      email: student.email,
+      rollNum: student.rollNum,
+      contactNum: student.contactNum,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+}
+
+const Postprofile = async (req, res) => {
+  const token = req.headers["x-access-token"];
+
+  try {
+    const decoded = jwt.verify(token, "secret123");
+    const enrollNum = decoded.enrollNum;
+    return res.status(200).json({
+      success: true,
+      data: await Students.UpdateOne(
+        { enrollNum: enrollNum },
+        { $set: { enrollNum: enrollNum } },
+        { $set: { name: req.body.name } },
+        { $set: { email: req.body.email } },
+        { $set: { rollNum: req.body.rollNum } },
+        { $set: { contactNum: req.body.contactNum } }
+      ),
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+}
+
+const Getchangepassword = async (req, res) => {
+  const token = req.headers['x-access-token']
+  try {
+    const decoded = jwt.verify(token, 'secret123')
+    const enrollNum = decoded.enrollNum
+    const student = await Students.findOne({ enrollNum: enrollNum })
+    return res.json({ status: 'ok', enrollNum: student.enrollNum })
+
+  } catch (error) {
+    console.log(error)
+    res.json({ status: 'error', error: 'invalid token' })
+  }
+}
+
+const PatchChangepassword = async (req, res) => {
+  console.log('patch')
+  const token = req.headers['x-access-token']
+  const { oldpassword, newpassword, confirmpassword } = req.body
+  try {
+    const decoded = jwt.verify(token, 'secret123')
+    const enrollNum = decoded.enrollNum
+    if (!oldpassword || !newpassword || !confirmpassword) {
+      return res.json({ status: 400, msg: "Please enter all fields" })
+    }
+
+    if (oldpassword === newpassword) {
+      return res.json({ status: 400, msg: "old and new password cannot be same" })
+    }
+
+    Students.findOne({ enrollNum: enrollNum }, (err, student) => {
+      if (student) {
+        if (oldpassword === student.password) {
+          Students.findOneAndUpdate({ enrollNum }, { $set: { password: newpassword } }, (err, user) => {
+
+            if (!err && user) {
+              return res.json({ status: 200, msg: "Updated successfully" })
+            }
+          })
+        } else {
+          res.send({ message: "password entered is incorrect" })
+        }
+
+      } else {
+        res.send({ message: "Students not registered" })
+      }
+    })
+
+
+  } catch (error) {
+    console.log(error)
+    res.json({ status: 'error', error: 'invalid token' })
+  }
+}
+
+const register = async (req, res) => {
+  const { name, semester, email, rollNum, contactNum, enrollNum, password } =
+    req.body;
+
+  try {
+    const student = await Students.create({
+      name,
+      semester,
+      email,
+      rollNum,
+      contactNum,
+      enrollNum,
+      password,
+    });
+    res.status(200).json(student);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+}
+
+const Test_Scheduled = async (req, res) => {
+  const token = req.headers["x-access-token"];
+  try {
+    const decoded = jwt.verify(token, "secret123");
+    const enrollNum = decoded.enrollNum;
+    const student = await Students.findOne({ enrollNum: enrollNum });
+
+    return res.status(200).json({
+      success: true,
+      data: await ScheduledTest.find({ semester: student.semester }),
+      sem: student.semester
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+}
+
+const Classes_Scheduled = async (req, res) => {
+  const token = req.headers["x-access-token"];
+  try {
+    const decoded = jwt.verify(token, "secret123");
+    const enrollNum = decoded.enrollNum;
+    const student = await Students.findOne({ enrollNum: enrollNum });
+    return res.status(200).json({
+      success: true,
+      data: await ScheduledClass.find({ semester: student.semester }),
+      sem: student.semester
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+}
+
+const Assignment_Schedule_student = async (req, res) => {
+  const token = req.headers["x-access-token"];
+  try {
+    const decoded = jwt.verify(token, "secret123");
+    const enrollNum = decoded.enrollNum;
+    const student = await Students.findOne({ enrollNum: enrollNum });
+    return res.status(200).json({
+      success: true,
+      data: await AssignmentsPosted.find({ semester: student.semester }),
+      sem: student.semester
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+}
+
+
+const GetAssignments = async (req, res) => {
   return res.status(200).json({
-    success : true,
-    data : await ScheduledClass.find({})
+    success: true,
+    data: await AssignmentsPosted.find({}),
+  });
+}
+
+const classnotification = async (req, res) => {
+  return res.status(200).json({
+    success: true,
+    data: await ScheduledClass.find({})
   })
 }
 
@@ -292,7 +334,7 @@ const StudyMaterial_Posted_Students = async (req, res) => {
     const students = await Students.findOne({ enrollNum: enrollNum });
     return res.status(200).json({
       success: true,
-      data: await StudyMaterial.find({semester: students.semester }),
+      data: await StudyMaterial.find({ semester: students.semester }),
       sem: students.semester
     });
   } catch (error) {
@@ -302,6 +344,6 @@ const StudyMaterial_Posted_Students = async (req, res) => {
 }
 
 
-  module.exports = {
-    login, Getdashboard, Getprofile, Postprofile, Getchangepassword, PatchChangepassword, register, Test_Scheduled, Classes_Scheduled,  Assignment_Schedule_student, GetAssignments, classnotification,StudyMaterial_Posted_Students
-  }
+module.exports = {
+  login, Getdashboard, Getprofile, Postprofile, Getchangepassword, PatchChangepassword, register, Test_Scheduled, Classes_Scheduled, Assignment_Schedule_student, GetAssignments, classnotification, StudyMaterial_Posted_Students
+}
