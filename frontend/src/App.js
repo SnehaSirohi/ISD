@@ -57,9 +57,11 @@ import UploadStudyMaterialSem1 from './components/Study Material/UploadStudyMate
 import UploadStudyMaterialSem2 from './components/Study Material/UploadStudyMaterialSem2';
 import UploadStudyMaterialSem3 from './components/Study Material/UploadStudyMaterialSem3';
 import UploadStudyMaterialSem4 from './components/Study Material/UploadStudyMaterialSem4';
-// import AttendanceReport from './components/Filters/AttendanceReport';
 function App() {
-  
+  const [subjectval, setsubjectval] = useState("")
+  const [dateval, setdateval] = useState("")
+  const [monthval, setmonthval] = useState("")
+
 
   useEffect(() => {
 
@@ -103,7 +105,7 @@ function App() {
           <Route path="/Teacherdashboard/sem2/testschedule" element={<TestscheduleSem2 />} />
           <Route path="/Teacherdashboard/sem3/testschedule" element={<TestscheduleSem3 />} />
           <Route path="/Teacherdashboard/sem4/testschedule" element={<TestscheduleSem4 />} />
-          <Route path="/attendancereport/sem1" element={<Sem1Attendance />} />
+          <Route path="/attendancereport/sem1" element={<Sem1Attendance subjectval={subjectval} dateval={dateval} monthval={monthval} />} />
           <Route path='/scheduledclassreport' element={<Classreport />} />
           <Route path='/scheduledtestreport' element={<Testreport />} />
           <Route path='/scheduledclass' element={<Classreport_semester/>}/>
@@ -121,14 +123,13 @@ function App() {
           <Route path='/Teacherdashboard/sem3/studymaterial' element={<UploadStudyMaterialSem3 />} />
           <Route path='/Teacherdashboard/sem4/studymaterial' element={<UploadStudyMaterialSem4 />} />
           <Route path='/Notifications' element={<Notifications />} />
-          {/* <Route path='/attendancereport' element={<AttendanceReport />} /> */}
-          <Route path="/Teacherdashboard/filters/sem1" element={<Sem1filters/>} />
-          <Route path="/attendancereport/sem2" element={<Sem2Attendance />} />
-          <Route path="/Teacherdashboard/filters/sem2" element={<Sem2filters/>} />
-          <Route path="/attendancereport/sem3" element={<Sem3Attendance/>} />
-          <Route path="/Teacherdashboard/filters/sem3" element={<Sem3filters  />} />
-          <Route path="/attendancereport/sem4" element={<Sem4Attendance />} />
-          <Route path="/Teacherdashboard/filters/sem4" element={<Sem4filters  />} />
+          <Route path="/Teacherdashboard/filters/sem1" element={<Sem1filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />} />
+          <Route path="/attendancereport/sem2" element={<Sem2Attendance subjectval={subjectval} dateval={dateval} monthval={monthval} />} />
+          <Route path="/Teacherdashboard/filters/sem2" element={<Sem2filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />} />
+          <Route path="/attendancereport/sem3" element={<Sem3Attendance subjectval={subjectval} dateval={dateval} monthval={monthval} />} />
+          <Route path="/Teacherdashboard/filters/sem3" element={<Sem3filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />} />
+          <Route path="/attendancereport/sem4" element={<Sem4Attendance subjectval={subjectval} dateval={dateval} monthval={monthval} />} />
+          <Route path="/Teacherdashboard/filters/sem4" element={<Sem4filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />} />
         </Routes>
       </BrowserRouter>
     </div>
