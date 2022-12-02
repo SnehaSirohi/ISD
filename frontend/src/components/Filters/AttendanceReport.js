@@ -1,8 +1,12 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import jwt from 'jsonwebtoken'
+import { useNavigate } from "react-router-dom"
 import List from './List'
+
 const AttendanceReport = () => {
+  const navigate = useNavigate();
   const [subject,setsubject]=useState(false)
   const [date,setdate]=useState(false)
   const [month,setmonth]=useState(false)
@@ -21,6 +25,7 @@ const AttendanceReport = () => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        'x-access-token': localStorage.getItem('token'), //
       }
     })
     const json = await response.json()
@@ -108,8 +113,20 @@ const AttendanceReport = () => {
   function Print()
   {
     setreport(true)
-    fetchdata();
+    const token = localStorage.getItem('token')
+    if (token) {
+      const user = jwt.decode(token)
+      console.log(user)
+      if (!user) {
+        localStorage.removeItem('token')
+        navigate("/dashboard");
+      } else {
+        fetchdata()
+
+      }
+    }  
   }
+
 return (
   <>
    <div className=" mb-3">
