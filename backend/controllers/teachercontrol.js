@@ -463,7 +463,8 @@ const Sem1AttendanceReport = async (req, res) => {
     console.log(Teacher_id)
     return res.status(200).json({
         success: true,
-        data: await Sem1Attendance.find({}),
+        data: await Sem1Attendance.find({teacher:teacher.name}),
+        name:teacher.name
       });
 
   } catch (error) {
@@ -473,22 +474,61 @@ const Sem1AttendanceReport = async (req, res) => {
 }
 
 const Sem2AttendanceReport = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    data: await Sem2Attendance.find({}),
-  });
+  const token = req.headers["x-access-token"];
+
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    console.log(Teacher_id)
+    return res.status(200).json({
+        success: true,
+        data: await Sem2Attendance.find({teacher:teacher.name}),
+        name:teacher.name
+      });
+
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
 }
 const Sem3AttendanceReport = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    data: await Sem3Attendance.find({}),
-  });
+  const token = req.headers["x-access-token"];
+
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    console.log(Teacher_id)
+    return res.status(200).json({
+        success: true,
+        data: await Sem3Attendance.find({teacher:teacher.name}),
+        name:teacher.name
+      });
+
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
 }
 const Sem4AttendanceReport = async (req, res) => {
-  return res.status(200).json({
-    success: true,
-    data: await Sem4Attendance.find({}),
-  });
+  const token = req.headers["x-access-token"];
+
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    console.log(Teacher_id)
+    return res.status(200).json({
+        success: true,
+        data: await Sem4Attendance.find({teacher:teacher.name}),
+        name:teacher.name
+      });
+
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
 }
 
 const ScheduledClassReport = async (req, res) => {
