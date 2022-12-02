@@ -151,6 +151,14 @@ html{
     margin-right: 2rem;
 }
 
+.display-4 {
+    margin-bottom: 0px;
+}
+
+.ohio-1 {
+    margin-bottom: 0px;
+    height: 100vh;
+}
 /* #semester{
     border: none;
     width: 100%;

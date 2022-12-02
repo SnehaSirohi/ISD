@@ -48,30 +48,53 @@ const Login = () => {
   }
 
  return (
-        <div class="login2body">
-            <div class="screen">
-                <div class="screen__content">
-                    <form class="login">
-                        <div class="login__field">
-                            <input type="text" class="login__input" placeholder="Enrollment Number" name="enrollNum" value={user.enrollNum} onChange={handleChange} />
-                        </div>
-                        <div class="login__field">
-                            <input type="password" class="login__input" placeholder="Password" name="password" value={user.password} onChange={handleChange} />
-                        </div>
-                        <button class="button login__submit" type="submit">
-                            <span class="button__text" onClick={login}  >Log In Now</span>
-                        </button>
-                    </form>
+      <>
+      <section className="login2body">
+        <div className="screen">
+          <div className="screen__content">
+            <form className="login">
+              {/* <h3 className="text-dark fw-bolder fs-4 mb-2">Login</h3> */}
 
-                </div>
-                <div class="screen__background">
+              <div className="login__field">
+                <input
+                  type="text"
+                  className="login__input"
+                  id="floatingInput"
+                  name="enrollNum"
+                  placeholder="Enrollment Number"
+                  value={user.enrollNum}
+                  onChange={ handleChange }
+                />
+              </div>
+              <div className="form-floating mb-3">
+                <input
+                  type="password"
+                  className="login__input"
+                  id="floatingPassword"
+                  name="password"
+                  placeholder="Password"
+                  value={user.password}
+                  onChange={ handleChange }
+                />
+              </div>
+              <button
+                type="submit"
+                className="button login__submit"
+                onClick={login}
+              >
+                <span className="button__text">Log In Now</span>
+              </button>
+            </form>
+          </div>
+          <div class="screen__background">
                     <span class="screen__background__shape screen__background__shape4"></span>
                     <span class="screen__background__shape screen__background__shape3"></span>
                     <span class="screen__background__shape screen__background__shape2"></span>
                     <span class="screen__background__shape screen__background__shape1"></span>
                 </div>
-            </div>
-        </div>
+          </div>
+      </section>
+        </>
     );
 };
 

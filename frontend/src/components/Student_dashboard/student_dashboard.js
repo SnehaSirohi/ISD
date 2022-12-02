@@ -64,31 +64,42 @@ const Dashboard = (props) => {
             <div>
                 <div className="flex dashboardcontent">
                 <div class="col main pt-5  dashboardbackground">
+                
             <div class="row mb-3 dashblocks">
-            <Link to='/classschedule'>
+               
                 <div class="col-xl-3 col-sm-6 blockcolour">
-                    <div>
+                <Link to='/classschedule'>
+                    <div className='ohio-1'>
                         <h5 class="text-uppercase">CLASSES SCHEDULED</h5>
                         <h1 class="display-4">{totalClassScheduled}</h1>
                     </div>
+                    </Link>
                 </div>
-                </Link>
-                <Link to='/testschedule'>
+              
+               
+
+                
+                
                 <div class="col-xl-3 col-sm-6 blockcolour">
+                <Link to='/testschedule'>
                     <div>
                     <h5 class="text-uppercase">TESTS SCHEDULED</h5>
                         <h1 class="display-4">{totalTestScheduled}</h1>
                     </div>
-                </div>
                 </Link>
-                <Link to='/assignmentreportstudent'>
+                </div>
+               
+
+            
                 <div class="col-xl-3 col-sm-6 blockcolour">
+                <Link to='/assignmentreportstudent'>
                     <div>
                     <h5 class="text-uppercase">ASSIGNMENTS</h5>
                         <h1 class="display-4">{assignments}</h1>
                     </div>
-                </div>
                 </Link>
+                </div>
+    
             </div>
 
             <div class="row overviewdatacontent">
