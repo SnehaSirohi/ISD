@@ -27,7 +27,7 @@
     width: 120%;
     text-align: center;
     color: #fff;
-    font-size: 1.25rem;
+    font-size: 120%;
     padding: 0.5rem;
     margin-top: 0.5rem;
     margin-left: -0.5rem;
@@ -36,12 +36,14 @@
     cursor: pointer;
 }
 
-.bttnmargin
-{
+.bttnmargin {
     display: flex;
     justify-content: space-around;
 }
 
+.bttnmargin>*{
+    margin-right: 1 rem;
+}
 
 .classopedialogo {
     text-align: center;
@@ -54,4 +56,41 @@
 .Clogo {
     display: flex;
     justify-content: center;
+}
+
+@media screen and (max-width: 500px) {
+
+    .classopedialogo {
+        padding-top: 11rem;
+        width: 88%;
+    }
+
+    .homepage .button {
+        font-size: 16px;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+
+    .classopedialogo {
+        padding-top: 49%
+    }
+
+
+    .image1 {
+        position: absolute;
+        width: 67%;
+        left: 2%;
+        top: 3%;
+    }
+
+    .image2 {
+        position: absolute;
+        width: 70%;
+        right: 0px;
+        bottom: 4%;
+    }
+
+
 }

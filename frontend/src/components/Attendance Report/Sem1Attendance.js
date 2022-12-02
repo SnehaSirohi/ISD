@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect, useRef, useReactToPrint } from 'react';
+import { useState, useEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
@@ -8,10 +8,12 @@ import "./attendance_report.css";
 
 import List from './List';
 var XLSX = require("xlsx");
-const Sem1Attendance = ({ dateval, monthval, subjectval }) => {
+const Sem1Attendance = ({ subjectval,dateval,monthval }) => {
+  console.log("subject : ",subjectval);
+  console.log("datev : ",dateval);
+  console.log("month : ",monthval);
   const [val, setval] = useState("")
   const [student, setstudent] = useState([]);
-  console.log(student);
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/attendancereport/sem1", {
       method: "GET",
@@ -21,12 +23,7 @@ const Sem1Attendance = ({ dateval, monthval, subjectval }) => {
       }
     })
     const json = await response.json()
-    if (dateval) {
-      let data1 = json.data.filter((data) => data.date == dateval)
-      setstudent(data1)
-      setval(dateval)
-    }
-    else if (monthval) {
+    if (monthval) {
       let data1 = json.data.filter((data) => data.date.slice(5, 7) == monthval)
       setstudent(data1)
       const date = new Date();
@@ -37,6 +34,13 @@ const Sem1Attendance = ({ dateval, monthval, subjectval }) => {
       });
       setval(month)
     }
+
+    else if (dateval) {
+      let data1 = json.data.filter((data) => data.date == dateval)
+      setstudent(data1)
+      setval(dateval)
+    }
+     
     else if (subjectval) {
       let data1 = json.data.filter((data) => data.subject == subjectval)
       setstudent(data1)

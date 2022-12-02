@@ -8,7 +8,6 @@ const Sem1filters = ({subjectval,setsubjectval,dateval,setdateval,monthval,setmo
     const [month,setmonth]=useState(false)
     const[button,setbutton]=useState(false)
     const[filter,setfilter]=useState("")
-  
     function handlechange(e){
         var val=e.target.value
         setfilter(val)
@@ -95,22 +94,22 @@ const Sem1filters = ({subjectval,setsubjectval,dateval,setdateval,monthval,setmo
             value={monthval}
             onChange={(e) => setmonthval(e.target.value)}>
             <option required>Select Month</option>
-            <option value="07">
+            <option value="01">
               July
             </option>
-            <option value="08">
+            <option value="02">
              August
             </option>
-            <option value="09">
+            <option value="03">
               September
             </option>
-            <option value="10">
-             October
+            <option value="04">
+            October
             </option>
-            <option value="11">
+            <option value="05">
              November
             </option>
-            <option value="12">
+            <option value="06">
              December
             </option>
           </select>
@@ -127,18 +126,18 @@ const Sem1filters = ({subjectval,setsubjectval,dateval,setdateval,monthval,setmo
             value={subjectval}
             onChange={(e) => setsubjectval(e.target.value)}>
             <option required>Select Subject</option>
-            <option value="Software Design & Programming">
-              Software Design & Programming
-            </option>
             <option value="Algorithms And Data Structure">
-              Algorithms and Data Structure
-            </option>
-            <option value="Computer System Architecture">
-              Computer System Architecture
-            </option>
-            <option value="Mathematical Foundation Of Computing">
-              Mathematical Foundation of Computing
-            </option>
+                  Algorithms and Data Structure
+                </option>
+                <option value="Software Design & Programming">
+                  Software Design & Programming
+                </option>
+                <option value="Mathematical Foundation Of Computing">
+                  Mathematical Foundation of Computing
+                </option>
+                <option value="Computer System Architecture">
+                  Computer System Architecture
+                </option>
           </select>
         </div>
 </form>}
