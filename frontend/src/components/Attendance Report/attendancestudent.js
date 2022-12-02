@@ -42,7 +42,7 @@ const Attendancereport = () => {
     e.preventDefault();
     console.log(student)
     if(subject != "overall")
-      setString("Subject-wise Attendance Report : "+ subject)
+      setString("Attendance Report : "+ subject)
 
     let data = student.filter((data) => {
       if(data.subject == subject)
@@ -221,6 +221,7 @@ const Attendancereport = () => {
 
       <div className='table-2'>
         <table className='table table-striped' id='mytable2'>
+          <thead className='heading-2' >{<h3 color='#ffffff'>{string}</h3>}</thead>
           <thead className='heading-2'>
             <tr>
                 <th>subject</th>
