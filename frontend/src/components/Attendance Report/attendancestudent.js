@@ -36,7 +36,7 @@ const Attendancereport = () => {
         setstudent(json.attend.reverse())
         setAttendmaterial(json.attend)
   }
-console.log(semester)
+
 
   async function subjectupdate(e) {
     e.preventDefault();
