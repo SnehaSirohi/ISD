@@ -122,13 +122,14 @@ function App() {
           <Route path='/Teacherdashboard/sem4/studymaterial' element={<UploadStudyMaterialSem4 />} />
           <Route path='/Notifications' element={<Notifications />} />
           {/* <Route path='/attendancereport' element={<AttendanceReport />} /> */}
-          <Route path="/Teacherdashboard/filters/sem1" element={<Sem1filters/>} />
-          <Route path="/attendancereport/sem2" element={<Sem2Attendance />} />
-          <Route path="/Teacherdashboard/filters/sem2" element={<Sem2filters/>} />
-          <Route path="/attendancereport/sem3" element={<Sem3Attendance/>} />
-          <Route path="/Teacherdashboard/filters/sem3" element={<Sem3filters  />} />
-          <Route path="/attendancereport/sem4" element={<Sem4Attendance />} />
-          <Route path="/Teacherdashboard/filters/sem4" element={<Sem4filters  />} />
+
+          <Route path="/Teacherdashboard/filters/sem1" element={<Sem1filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />} />
+          <Route path="/attendancereport/sem2" element={<Sem2Attendance subjectval={subjectval} dateval={dateval} monthval={monthval} />} />
+          <Route path="/Teacherdashboard/filters/sem2" element={<Sem2filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />} />
+          <Route path="/attendancereport/sem3" element={<Sem3Attendance subjectval={subjectval} dateval={dateval} monthval={monthval} />} />
+          <Route path="/Teacherdashboard/filters/sem3" element={<Sem3filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />} />
+          <Route path="/attendancereport/sem4" element={<Sem4Attendance subjectval={subjectval} dateval={dateval} monthval={monthval} />} />
+          <Route path="/Teacherdashboard/filters/sem4" element={<Sem4filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />} />
         </Routes>
       </BrowserRouter>
     </div>
