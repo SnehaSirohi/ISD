@@ -3,7 +3,7 @@ import { useState,useEffect } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./attendance_report.css";
 
-import List from './List';
+import List from '../Filters/List';
 const Sem2Attendance = ({subjectval,dateval,monthval}) => {
     const[val,setval]=useState("")
     const [student,setstudent]=useState([]);
