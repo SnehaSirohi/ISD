@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import jwt from 'jsonwebtoken'
+import Navbar from "../Teacher_dashboard/Navbar";
 import { useNavigate } from "react-router-dom"
 const Sem_3 = () => {
   //
@@ -89,9 +90,10 @@ const Sem_3 = () => {
   
   return (
     <>
+    <Navbar/>
       <form onSubmit={schedule}>
         <div className=" mb-3">
-        <h1>Class Schedule</h1>
+        <h1 className="class-1">Class Schedule</h1>
         {NitishaAgg && <div>
           <label className="form-label">Select Subject</label>
           <select
@@ -150,47 +152,53 @@ const Sem_3 = () => {
           </div>}
           
         </div>
-        <div className="mb-3">
-          <label htmlFor="date" className="form-label">
-            Date
+        <div className="abc-1">
+          <label htmlFor="date" className="class-form-label">
+            Date:
           </label>
           <input
             type="date"
-            className="form-control"
+            className="class-form-control"
             id="date"
             aria-describedby="date"
             value={date}
             onChange={(e) => setdate(e.target.value)}
           />
-        </div>
+       
         <div className="mb-3">
-          <label htmlFor="time" className="form-label">
-            time
+          <label htmlFor="time" className="time-form-label">
+            Time:
           </label>
           <input
             type="time"
-            className="form-control"
+            className="class-form-control"
             id="time"
             value={time}
             onChange={(e) => settime(e.target.value)}
           />
         </div>
-        <div class="mb-3">
+        </div>
+        <div>
+        <div class="msg-1">
           <label for="exampleFormControlTextarea1" class="form-label">
-            Message
+            Message:
           </label>
+          </div>
           <textarea
             type="text"
-            class="form-control"
+            class="class-form-control-1"
             id="exampleFormControlTextarea1"
             rows="3"
             placeholder="Optional"
             value={message}
             onChange={(e) => setmessage(e.target.value)}></textarea>
         </div>
+
+        <div className="btn-class">
         <button type="submit" className="btn btn-primary">
           Schedule Class
         </button>
+        </div>
          {warning &&  <div className="container warning">
             <h3>{warning}</h3>
             <button onClick={(e)=>setwarning(false)}>Ok</button>
