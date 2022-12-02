@@ -161,11 +161,7 @@ function UploadAssignmentsem1() {
 
         <div className="file-card">
           <div className="file-inputs">
-            <input
-              type="file"
-              value={file}
-              onChange={(e) => setFile(e.target.value)}
-            />
+            <input type="file" value={file} onChange={(e) => setFile(e.target.value)} />
             <button>Select File</button>
           </div>
           <div className="infocontent">

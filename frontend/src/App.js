@@ -43,6 +43,7 @@ import Classreport_student from './components/Scheduled_Class_List/classreport_s
 import Classreport_semester from './components/Scheduled_Class_List/semesterwise/Classreport_semester';
 import Testreport_semester from './components/Scheduled_test_List/semesterwise/Testreport_semester';
 import Assignmentreport_semester from './components/Assignment_report/semesterwise/Assignmentreport_semester';
+import Attendancereport_student from './components/Attendance Report/attendancestudent';
 
 import Assignmentreport_student from './components/Assignment_report/assignmentreport_student';
 import Assignmentreport_teacher from './components/Assignment_report/teacher_assignment_report';
@@ -61,7 +62,7 @@ import AttendanceReport from './components/Filters/AttendanceReport';
 function App() {
   const [subjectval, setsubjectval] = useState("")
   const [dateval, setdateval] = useState("")
-  const[monthval,setmonthval]=useState("")
+  const [monthval, setmonthval] = useState("")
 
   useEffect(() => {
 
@@ -107,10 +108,11 @@ function App() {
           <Route path="/Teacherdashboard/sem4/testschedule" element={<TestscheduleSem4 />} />
           <Route path='/scheduledclassreport' element={<Classreport />} />
           <Route path='/scheduledtestreport' element={<Testreport />} />
-          <Route path='/scheduledclass' element={<Classreport_semester/>}/>
-          <Route path='/scheduledtests' element={<Testreport_semester/>}/>
-          <Route path='/assignments' element={<Assignmentreport_semester/>}/>
-          <Route path='/studymaterial' element={<Studymaterial_student/>}/>
+          <Route path='/scheduledclass' element={<Classreport_semester />} />
+          <Route path='/scheduledtests' element={<Testreport_semester />} />
+          <Route path='/assignments' element={<Assignmentreport_semester />} />
+          <Route path='/studymaterial' element={<Studymaterial_student />} />
+          <Route path='/attendancereport' element={<Attendancereport_student/>}/>
           <Route path='/Teacherdashboard/studymaterial' element={<Studymaterial_teacher />} />
           <Route path='/Teacherdashboard/sem1/assignment' element={<UploadAssignmentsem1 />} />
           <Route path='/Teacherdashboard/sem2/assignment' element={<UploadAssignmentsem2 />} />
@@ -121,6 +123,8 @@ function App() {
           <Route path='/Teacherdashboard/sem3/studymaterial' element={<UploadStudyMaterialSem3 />} />
           <Route path='/Teacherdashboard/sem4/studymaterial' element={<UploadStudyMaterialSem4 />} />
           <Route path='/Notifications' element={<Notifications />} />
+          {/* <Route path='/attendancereport' element={<AttendanceReport />} /> */}
+
           <Route path='/attendancereport' element={<AttendanceReport />} />
           <Route path="/attendancereport/sem1" element={<Sem1Attendance subjectval={subjectval} dateval={dateval} monthval={monthval} />} />
           <Route path="/Teacherdashboard/filters/sem1" element={<Sem1filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />} />

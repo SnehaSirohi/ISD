@@ -6,6 +6,7 @@ import "./assignment_report.css";
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
+import Navbar from "../Teacher_dashboard/Navbar";
 
 import List from './list';
 var XLSX = require("xlsx");
@@ -55,7 +56,7 @@ const Attendancereport = () => {
   };
   return (
     <>
-
+  <Navbar />
       {<h1 className='text-center pt-3'>Overall Assignments Posted </h1>}
 
       <div className='table-2'>

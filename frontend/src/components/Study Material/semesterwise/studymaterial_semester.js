@@ -6,6 +6,8 @@ import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from './list';
+import Navbar from "../../Student_dashboard/Navbar";
+
 var XLSX = require("xlsx");
 
 const Classreport = () => {
@@ -28,10 +30,7 @@ const Classreport = () => {
             }})
             const json = await response.json()
             console.log(json.sem)
-            
-            // console.log(json.success)
             setStudy(json)
-          // console.log(sem1)
       }
 
       console.log(sem1)
@@ -111,7 +110,7 @@ const Classreport = () => {
   };
   return (
    <>
-
+<Navbar />
  {<h1>Study Material Uploaded</h1>}
  {sem1 && <div>
   <form onSubmit={subjectupdate}>

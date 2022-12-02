@@ -27,7 +27,7 @@
     width: 120%;
     text-align: center;
     color: #fff;
-    font-size: 1.25rem;
+    font-size: 120%;
     padding: 0.5rem;
     margin-top: 0.5rem;
     margin-left: -0.5rem;
@@ -41,8 +41,8 @@
     justify-content: space-around;
 }
 
-.bttn-2{
-    margin-left: 1rem;
+.bttnmargin>*{
+    margin-right: 1 rem;
 }
 
 .classopedialogo {
@@ -80,7 +80,7 @@
 
     .image1 {
         position: absolute;
-        width: 70%;
+        width: 67%;
         left: 2%;
         top: 3%;
     }
@@ -89,7 +89,7 @@
         position: absolute;
         width: 70%;
         right: 0px;
-        bottom: 2%;
+        bottom: 4%;
     }
 
 
