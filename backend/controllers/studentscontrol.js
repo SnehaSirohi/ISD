@@ -89,7 +89,7 @@ const Getdashboard = async (req, res) => {
       }
       console.log(Classes_taken_count)
     }
-    console.log(attend);
+    // console.log(attend);
     const newdate = new Date()
     const monthval = newdate.getMonth() + 1;
     const day = newdate.getDate()
