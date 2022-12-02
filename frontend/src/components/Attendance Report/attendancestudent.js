@@ -7,7 +7,6 @@ import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import './attendance_report.css'
 import List from './list2';
-import List2 from './list3'
 import Navbar from "../Student_dashboard/Navbar";
 
 var XLSX = require("xlsx");
@@ -15,9 +14,8 @@ var XLSX = require("xlsx");
 const Attendancereport = () => {
   const navigate = useNavigate();
   const [student, setstudent] = useState([]);
-  const [attendance, setAttendance] = useState({});
   const [attendmaterial,setAttendmaterial]=useState([]);
-
+  var [string, setString] = useState("Overall Attendance Report")
   const [sem1, setSem1] = useState(false)
   const [sem2, setSem2] = useState(false)
   const [sem3, setSem3] = useState(false)
@@ -36,15 +34,17 @@ const Attendancereport = () => {
     const json = await response.json()
         setSemester(json.semester)
         setstudent(json.attend.reverse())
-        setAttendance(json.attend)
+        setAttendmaterial(json.attend)
   }
 console.log(semester)
-console.log(attendance)
 
   async function subjectupdate(e) {
     e.preventDefault();
-    console.log(attendance)
-    let data = attendance.filter((data) => {
+    console.log(student)
+    if(subject != "overall")
+      setString("Subject-wise Attendance Report : "+ subject)
+
+    let data = student.filter((data) => {
       if(data.subject == subject)
       {
         return data
@@ -52,7 +52,13 @@ console.log(attendance)
     })
     console.log(data)
 
-        setAttendmaterial(data.reverse())
+    setAttendmaterial(data)
+
+    if(subject == "overall")
+    {
+      setAttendmaterial(student)
+      setString("Overall Attendance Report")
+    }
 
   }
 
@@ -81,7 +87,7 @@ console.log(attendance)
             console.log(sem4)
         }
       
-  },[attendance])
+  },[student])
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -100,7 +106,7 @@ console.log(attendance)
 
   const exporttoexcelhandler = () => {
     var wb = XLSX.utils.book_new(),
-      ws = XLSX.utils.json_to_sheet(student);
+      ws = XLSX.utils.json_to_sheet(attendmaterial);
     XLSX.utils.book_append_sheet(wb, ws, "MySheet1");
     XLSX.writeFile(wb, "MyExcel.xlsx")
   };
@@ -112,44 +118,10 @@ console.log(attendance)
     doc.save('table.pdf')
   };
 
-  const exporttoexcelhandler2 = () => {
-    var wb = XLSX.utils.book_new(),
-      ws = XLSX.utils.json_to_sheet(attendmaterial);
-    XLSX.utils.book_append_sheet(wb, ws, "MySheet1");
-    XLSX.writeFile(wb, "MyExcel.xlsx")
-  };
-
-  const exporttopdfhandler2 = () => {
-    const doc = new jsPDF()
-    doc.text(`Subject-wise attendance`, 70, 10)
-    autoTable(doc, { html: '#mytable2' })
-    doc.save('table.pdf')
-  };
-
   return (
     <>
     <Navbar />
-      {<h1>Overall Classes Attended</h1>}
-
-      <div className='table-2'>
-        <table className='table table-striped' id='mytable'>
-          <thead className='heading-2'>
-            <tr>
-                <th>subject</th>
-                <th>Date</th>
-                <th>Attendance Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <List student={student} />
-          </tbody>
-        </table>
-      </div>
-
-      <button onClick={exporttoexcelhandler}>Download in excel</button>
-      <button onClick={exporttopdfhandler}>Download in pdf</button>
-
-      {<h1>Subject-wise Classes Attended</h1>}
+    {<h1>{string}</h1>}
       {sem1 && <div>
   <form onSubmit={subjectupdate}>
     <select
@@ -161,6 +133,7 @@ console.log(attendance)
                 required
                 onChange={(e) => setSubject(e.target.value)}>
                 <option required>Select Subject</option>
+                <option value='overall'>Overall</option>
                 <option value="Algorithms And Data Structure">
                   Algorithms and Data Structure
                 </option>
@@ -190,6 +163,7 @@ console.log(attendance)
                 required
                 onChange={(e) => setSubject(e.target.value)}>
                 <option required>Select Subject</option>
+                <option value='overall'>Overall</option>
                 <option value="Computer Communication and Networks">Computer Communication and Networks</option>
                 <option value="Operating Systems">Operating Systems</option>
                 <option value="Database Systems">Database Systems</option>
@@ -212,6 +186,7 @@ console.log(attendance)
                 required
                 onChange={(e) => setSubject(e.target.value)}>
                 <option required>Select Subject</option>
+                <option value='overall'>Overall Attendance</option>
                 <option value="Information System Design">Information System Design</option>
                 <option value="Cloud Computing">Cloud Computing</option>
                 <option value="Software Engineering">Software Engineering</option>
@@ -233,6 +208,7 @@ console.log(attendance)
                 required
                 onChange={(e) => setSubject(e.target.value)}>
                 <option required>Select Subject</option>
+                <option value='overall'>Overall</option>
                 <option value="Internet of Things Systems, Security and Cloud">Internet of Things Systems, Security and Cloud</option>
                 <option value="Health Informatics">Health Informatics</option>
                 <option value="Research Methods in Informatics">Research Methods in Informatics</option>
@@ -242,8 +218,6 @@ console.log(attendance)
             </button>
     </form>
   </div>}
-
-  {<h1>Showing results for {subject}</h1>}
 
       <div className='table-2'>
         <table className='table table-striped' id='mytable2'>
@@ -255,13 +229,13 @@ console.log(attendance)
             </tr>
           </thead>
           <tbody>
-            <List2 attendmaterial={attendmaterial} />
+            <List attendmaterial={attendmaterial} />
           </tbody>
         </table>
       </div>
 
-      <button onClick={exporttoexcelhandler2}>Download in excel</button>
-      <button onClick={exporttopdfhandler2}>Download in pdf</button>
+      <button onClick={exporttoexcelhandler}>Download in excel</button>
+      <button onClick={exporttopdfhandler}>Download in pdf</button>
     </>
   )
 }
