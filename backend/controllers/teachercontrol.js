@@ -445,10 +445,23 @@ const sem4Attendance = async (req, res) => {
 }
 
 const Sem1AttendanceReport = async (req, res) => {
-  return res.status(200).json({
-    success: true,
+  const token = req.headers["x-access-token"];
+  try {
+    const decoded = jwt.verify(token, "secret1234");
+    const Teacher_id = decoded.Teacher_id;
+    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    console.log(Teacher_id)
+    return res.status(200).json({
+      success: true,
     data: await Sem1Attendance.find({}),
-  });
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+
+  
 
 }
 
