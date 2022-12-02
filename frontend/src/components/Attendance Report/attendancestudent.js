@@ -33,7 +33,8 @@ const Attendancereport = () => {
     })
     const json = await response.json()
         setSemester(json.semester)
-        setstudent(json.attend.reverse())
+        const json2=json.data.reverse()
+        setstudent(json2.attend)
         setAttendmaterial(json.attend)
   }
 

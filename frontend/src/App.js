@@ -100,7 +100,7 @@ function App() {
           <Route path='/scheduledtests' element={<Testreport_semester />} />
           <Route path='/assignments' element={<Assignmentreport_semester />} />
           <Route path='/studymaterial' element={<Studymaterial_student />} />
-          {/* <Route path='/attendancereport' element={<Attendancereport_student/>}/> */}
+          <Route path='/attendancereport' element={<Attendancereport_student/>}/>
           <Route path='/Teacherdashboard/studymaterial' element={<Studymaterial_teacher />} />
           <Route path='/Teacherdashboard/sem1/assignment' element={<UploadAssignmentsem1 />} />
           <Route path='/Teacherdashboard/sem2/assignment' element={<UploadAssignmentsem2 />} />
