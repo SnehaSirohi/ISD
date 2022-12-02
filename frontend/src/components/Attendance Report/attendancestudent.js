@@ -33,7 +33,8 @@ const Attendancereport = () => {
     })
     const json = await response.json()
         setSemester(json.semester)
-        setstudent(json.attend.reverse())
+        const json2=json.data.reverse()
+        setstudent(json2.attend)
         setAttendmaterial(json.attend)
   }
 
@@ -42,7 +43,7 @@ const Attendancereport = () => {
     e.preventDefault();
     console.log(student)
     if(subject != "overall")
-      setString("Attendance Report : "+ subject)
+      setString("Subject-wise Attendance Report : "+ subject)
 
     let data = student.filter((data) => {
       if(data.subject == subject)
@@ -221,7 +222,6 @@ const Attendancereport = () => {
 
       <div className='table-2'>
         <table className='table table-striped' id='mytable2'>
-          <thead className='heading-2' >{<h3 color='#ffffff'>{string}</h3>}</thead>
           <thead className='heading-2'>
             <tr>
                 <th>subject</th>

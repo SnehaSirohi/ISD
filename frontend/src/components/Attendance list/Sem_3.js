@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./attendance.css";
 import List from "./List";
+import Navbar from "../Teacher_dashboard/Navbar.js";
 import jwt from 'jsonwebtoken' //
 import { useNavigate } from "react-router-dom"
 
@@ -86,10 +87,10 @@ const Sem_3 = () => {
 
   return (
     <>
-      <div className="main">
-        <h1>Sem 3 attendance</h1>
+      <div className="attendencebody">
+        <Navbar/>
+        <h1 className="atte1">Sem-3 attendance</h1>
         {NitishaAgg && <div className=" mb-3">
-          <label className="form-label">Select Subject</label>
           <select
             type="text"
             className="form-control"
@@ -144,8 +145,10 @@ const Sem_3 = () => {
             </option>
           </select>
         </div>}
-        <table className="table table-bordered">
-          <thead>
+
+      <div className="table-1">
+        <table className="table table-striped">
+          <thead className="heading-1">
             <tr>
               <th>Student</th>
               <th>Present</th>
@@ -156,7 +159,10 @@ const Sem_3 = () => {
           </tbody>
         </table>
       </div>
-      <button onClick={Submit}>Submit</button>
+      <div className="button-1">
+        <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onClick={Submit}>Submit</button>
+      </div> 
+    </div>
     </>
   );
 };
