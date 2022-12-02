@@ -57,7 +57,7 @@ import UploadStudyMaterialSem1 from './components/Study Material/UploadStudyMate
 import UploadStudyMaterialSem2 from './components/Study Material/UploadStudyMaterialSem2';
 import UploadStudyMaterialSem3 from './components/Study Material/UploadStudyMaterialSem3';
 import UploadStudyMaterialSem4 from './components/Study Material/UploadStudyMaterialSem4';
-import AttendanceReport from './components/Filters/AttendanceReport';
+// import AttendanceReport from './components/Filters/AttendanceReport';
 function App() {
   
 
@@ -121,7 +121,7 @@ function App() {
           <Route path='/Teacherdashboard/sem3/studymaterial' element={<UploadStudyMaterialSem3 />} />
           <Route path='/Teacherdashboard/sem4/studymaterial' element={<UploadStudyMaterialSem4 />} />
           <Route path='/Notifications' element={<Notifications />} />
-          <Route path='/attendancereport' element={<AttendanceReport />} />
+          {/* <Route path='/attendancereport' element={<AttendanceReport />} /> */}
           <Route path="/Teacherdashboard/filters/sem1" element={<Sem1filters/>} />
           <Route path="/attendancereport/sem2" element={<Sem2Attendance />} />
           <Route path="/Teacherdashboard/filters/sem2" element={<Sem2filters/>} />
