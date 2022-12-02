@@ -126,7 +126,7 @@ function App() {
           {/* <Route path='/attendancereport' element={<AttendanceReport />} /> */}
 
           <Route path='/attendancereport' element={<AttendanceReport />} />
-          <Route path="/attendancereport/sem1" element={<Sem1Attendance subjectval={subjectval} dateval={dateval} monthval={monthval} />} />
+          
           <Route path="/Teacherdashboard/filters/sem1" element={<Sem1filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />} />
           <Route path="/attendancereport/sem2" element={<Sem2Attendance subjectval={subjectval} dateval={dateval} monthval={monthval} />} />
           <Route path="/Teacherdashboard/filters/sem2" element={<Sem2filters subjectval={subjectval} setsubjectval={setsubjectval} dateval={dateval} setdateval={setdateval} monthval={monthval} setmonthval={setmonthval} />} />
