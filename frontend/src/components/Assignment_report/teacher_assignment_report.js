@@ -63,6 +63,7 @@ const Attendancereport = () => {
         <table className='table table-striped' id='mytable'>
           <thead>
             <tr>
+              <th>Date</th>
               <th>Professor</th>
               <th>Subject</th>
               <th>Deadline</th>

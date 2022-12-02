@@ -5,10 +5,13 @@ const List = ({ assignments }) => {
   return (
     <>
       {assignments.map((teach) => {
-        const { teacher, subject, deadline, file } = teach;
+        const {date, teacher, subject, deadline, file } = teach;
         return (
           <>
             <tr>
+              <td>
+                {date}
+              </td>
               <td>{teacher}
               </td>
               <td>
