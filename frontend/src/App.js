@@ -57,11 +57,9 @@ import UploadStudyMaterialSem1 from './components/Study Material/UploadStudyMate
 import UploadStudyMaterialSem2 from './components/Study Material/UploadStudyMaterialSem2';
 import UploadStudyMaterialSem3 from './components/Study Material/UploadStudyMaterialSem3';
 import UploadStudyMaterialSem4 from './components/Study Material/UploadStudyMaterialSem4';
+// import AttendanceReport from './components/Filters/AttendanceReport';
 function App() {
-  const [subjectval, setsubjectval] = useState("")
-  const [dateval, setdateval] = useState("")
-  const [monthval, setmonthval] = useState("")
-
+  
 
   useEffect(() => {
 
@@ -105,7 +103,7 @@ function App() {
           <Route path="/Teacherdashboard/sem2/testschedule" element={<TestscheduleSem2 />} />
           <Route path="/Teacherdashboard/sem3/testschedule" element={<TestscheduleSem3 />} />
           <Route path="/Teacherdashboard/sem4/testschedule" element={<TestscheduleSem4 />} />
-          <Route path="/attendancereport/sem1" element={<Sem1Attendance subjectval={subjectval} dateval={dateval} monthval={monthval} />} />
+          <Route path="/attendancereport/sem1" element={<Sem1Attendance />} />
           <Route path='/scheduledclassreport' element={<Classreport />} />
           <Route path='/scheduledtestreport' element={<Testreport />} />
           <Route path='/scheduledclass' element={<Classreport_semester/>}/>
