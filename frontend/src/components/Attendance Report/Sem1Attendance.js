@@ -9,9 +9,6 @@ import "./attendance_report.css";
 import List from './List';
 var XLSX = require("xlsx");
 const Sem1Attendance = ({ subjectval,dateval,monthval }) => {
-  console.log("subject : ",subjectval);
-  console.log("datev : ",dateval);
-  console.log("month : ",monthval);
   const [val, setval] = useState("")
   const [student, setstudent] = useState([]);
   const fetchdata = async () => {
