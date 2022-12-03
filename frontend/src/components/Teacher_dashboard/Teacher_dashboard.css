@@ -1,4 +1,4 @@
-html{
+html {
     background: rgb(248, 246, 246);
 }
 
@@ -24,10 +24,10 @@ html{
     margin-top: 2rem;
     border-radius: 50%;
     --bs-gutter-x: 0.;
-   
+
 }
 
-.dashblocks>a{
+.dashblocks>a {
     width: fit-content;
 }
 
@@ -41,10 +41,12 @@ html{
     box-shadow: 1px 1px 5px rgb(121, 120, 120);
     transition: transform .2s;
 }
+
 .blockcolour:hover {
     transform: scale(1.05);
-    
+
 }
+
 .blockcolour>div {
     margin-top: 1rem;
 }
@@ -63,9 +65,12 @@ html{
 }
 
 
-.dashboardbackground{
-    background: rgb(248, 246, 246);
+.dashboardbackground {
     width: 100vw;
+}
+
+.dashboardcontent {
+    background: rgb(248, 246, 246);
 }
 
 
@@ -87,7 +92,8 @@ html{
 .enrollmentcontent {
     margin-top: 2rem;
 }
-.enrollmentcontent>h1{
+
+.enrollmentcontent>h1 {
     font-size: 1rem;
 }
 
@@ -100,6 +106,7 @@ html{
     margin-top: 2rem;
     height: 3rem;
     display: flex;
+    box-shadow: rgb(0 0 0 / 26%) 2px 8px 7px, rgb(0 3 7 / 23%) 1px 8px 1px;
     align-items: center;
     justify-content: center;
     width: 66vw;
@@ -113,10 +120,9 @@ html{
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: rgb(0 0 0 / 26%) 2px 8px 7px, rgb(0 3 7 / 23%) 1px 8px 1px;
     width: 18vw;
     background: #2BB0A8;
     margin-right: 2rem;
     /* box-shadow: 1px 1px 5px rgb(121, 120, 120); */
 }
-
-

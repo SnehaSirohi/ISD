@@ -44,7 +44,7 @@ function Navbar() {
                             <Link to="/Teacherdashboard/profile"><span>Profile</span></Link>
                         </li>
                         <li className="nav-text" onClick={showsemesterhandler} style={{
-                            background: sem ? "#2BB0A8" : ""
+                            background: sem ? "#ccdddd" : ""
                         }}>
                             <FaIcons.FaPenSquare color='rgb(0, 104, 74)' />
                             <span>Semester</span>
