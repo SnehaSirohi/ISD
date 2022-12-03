@@ -223,7 +223,7 @@ return (
         </select>
       </div>
 </form>}
-{subject && NitishaAgg ?  <form>
+{subject && NitishaAgg &&  <form>
   <div className=" mb-3">
         <label className="form-label">Select Subject</label>
         <select
@@ -241,7 +241,8 @@ return (
           
         </select>
       </div>
-</form> : UnmeshShukla? <form>
+</form> }
+{subject && UnmeshShukla && <form>
   <div className=" mb-3">
         <label className="form-label">Select Subject</label>
         <select
@@ -255,7 +256,8 @@ return (
             <option value="Database Systems">Database Systems</option>
         </select>
       </div>
-</form>:MKDas? <form>
+</form>}
+{subject && MKDas && <form>
   <div className=" mb-3">
         <label className="form-label">Select Subject</label>
         <select
@@ -272,7 +274,8 @@ return (
             
         </select>
       </div>
-</form>:Sanjeev&& <form>
+</form>}
+{subject && Sanjeev&& <form>
   <div className=" mb-3">
         <label className="form-label">Select Subject</label>
         <select
