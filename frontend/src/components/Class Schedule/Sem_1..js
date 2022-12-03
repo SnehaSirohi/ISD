@@ -20,7 +20,7 @@ const Sem_1 = () => {
   const [NitishaAgg, setNitishaAgg] = useState(false)
   const [MKDas, setMKDas] = useState(false)
   const [SunilKumar, setSunilKumar] = useState(false)
-  const [teacher,setTeacher] = useState("")
+  const [teacher, setTeacher] = useState("")
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [isdot, setIsdotVisible] = useState(false);
 
@@ -31,7 +31,7 @@ const Sem_1 = () => {
       setIsAlertVisible(true);
     }, 2000);
   }
-  
+
   const sem = "Sem-1";
 
   //-----------
@@ -150,12 +150,12 @@ const Sem_1 = () => {
 
 
         <div className="mb-3" style={{ filter: isAlertVisible || isdot ? "blur(3px)" : "none", background: isAlertVisible ? "#f1ebeb" : "none" }} >
-        
+
 
           <div className=" mb-3">
 
             <h1 className="class-1">Class Schedule</h1>
-            {UnmeshShukla && <div><label className="form-label mt-2">Select Subject</label>
+            {UnmeshShukla && <div className="selectsubjectcontainer"><label className="form-label mt-2">Select Subject</label>
 
               <select
                 type="text"
@@ -170,7 +170,7 @@ const Sem_1 = () => {
                   Algorithms and Data Structure
                 </option>
               </select></div>}
-            {NitishaAgg && <div><label className="form-label mt-2">Select Subject</label>
+            {NitishaAgg && <div className="selectsubjectcontainer"><label className="form-label mt-2">Select Subject</label>
               <select
                 type="text"
                 className="form-control"
@@ -184,7 +184,7 @@ const Sem_1 = () => {
                   Software Design & Programming
                 </option>
               </select></div>}
-            {MKDas && <div><label className="form-label">Select Subject</label>
+            {MKDas && <div className="selectsubjectcontainer"><label className="form-label">Select Subject</label>
               <select
                 type="text"
                 className="form-control mt-2"
@@ -198,7 +198,7 @@ const Sem_1 = () => {
                   Mathematical Foundation of Computing
                 </option>
               </select></div>}
-            {SunilKumar && <div><label className="form-label">Select Subject</label>
+            {SunilKumar && <div className="selectsubjectcontainer"><label className="form-label">Select Subject</label>
               <select
                 type="text"
                 className="form-control mt-2"
@@ -242,16 +242,11 @@ const Sem_1 = () => {
               />
             </div>
           </div>
-          <div>
-            <div class="msg-1">
-              <label for="exampleFormControlTextarea1" class="form-label">
-                Message:
-              </label>
-            </div>
-            <textarea
-              type="text"
-              class="class-form-control-1"
-              id="exampleFormControlTextarea1"
+          <div className="messagecontent">
+            <label for="exampleFormControlTextarea1" class="form-label">
+              Message:
+            </label><br />
+            <textarea type="text" class="class-form-control-1" id="exampleFormControlTextarea1"
               rows="3"
               placeholder="Optional"
               value={message}

@@ -36,11 +36,10 @@
 }
 
 .class-form-control-1 {
-    width: 60%;
+    width: 100%;
     border-radius: 4px;
     background-color: rgb(196, 255, 255);
     border-color:rgb(196, 255, 255) ;
-    margin-left: 20%;
     border-style: groove;
     height: 10rem;
 }
@@ -52,4 +51,12 @@
 
 .submit-btn{
     width: 9rem;
+}
+
+.selectsubjectcontainer{
+    margin: 0 20%;
+}
+
+.messagecontent{
+    margin : 0 20%
 }

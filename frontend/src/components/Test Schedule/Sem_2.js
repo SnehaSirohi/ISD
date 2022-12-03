@@ -148,7 +148,7 @@ async function populate(e){
           </select></div>}
           
         </div>
-        <div className="mb-3">
+        <div className="mb-3 text-center">
           <label htmlFor="date" className="form-label">
             Date
           </label>
@@ -161,7 +161,7 @@ async function populate(e){
             onChange={(e) => setdate(e.target.value)}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-3 text-center">
           <label htmlFor="time" className="form-label">
             time
           </label>

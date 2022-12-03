@@ -22,3 +22,7 @@ code {
 .text-center {
   text-align: center;
 }
+
+.App{
+  height: 100vh;
+}

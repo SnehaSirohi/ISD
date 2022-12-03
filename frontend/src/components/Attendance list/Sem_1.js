@@ -12,10 +12,10 @@ const Sem_1 = () => {
   const [students, setstudents] = useState([]);
   const [status, setstatus] = useState({});
   const [subject, setsubject] = useState("");
-  const [UnmeshShukla,setUnmeshShukla]=useState(false)
-  const [NitishaAgg,setNitishaAgg]=useState(false)
-  const [MKDas,setMKDas]=useState(false)
-  const [SunilKumar,setSunilKumar]=useState(false)
+  const [UnmeshShukla, setUnmeshShukla] = useState(false)
+  const [NitishaAgg, setNitishaAgg] = useState(false)
+  const [MKDas, setMKDas] = useState(false)
+  const [SunilKumar, setSunilKumar] = useState(false)
 
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/attendance", {
@@ -30,21 +30,17 @@ const Sem_1 = () => {
     const json = await response.json();
     console.log(json)
     console.log(json.name)
-    
-    if(json.name=="Unmesh Shukla")
-    {
+
+    if (json.name == "Unmesh Shukla") {
       setUnmeshShukla(true)
     }
-    if(json.name=="Nitisha Aggarwal")
-    {
+    if (json.name == "Nitisha Aggarwal") {
       setNitishaAgg(true)
     }
-    if(json.name=="M.K Das")
-    {
+    if (json.name == "M.K Das") {
       setMKDas(true)
     }
-    if(json.name=="Sunil Kumar")
-    {
+    if (json.name == "Sunil Kumar") {
       setSunilKumar(true)
     }
 
@@ -69,95 +65,93 @@ const Sem_1 = () => {
   }, []);
 
   async function Submit(e) {
-    if(!subject)
-    {
+    if (!subject) {
       alert("Please fill all the fields ")
     }
-    else
-    {
+    else {
       const response = await fetch("http://localhost:4000/attendance/sem1", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        'x-access-token': localStorage.getItem('token'), //
-      },
-      body: JSON.stringify({
-        subject,
-        status,
-      }),
-    }).then(async (response) => {
-      let dataa = await response.json();
-      console.log(dataa);
-    });
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          'x-access-token': localStorage.getItem('token'), //
+        },
+        body: JSON.stringify({
+          subject,
+          status,
+        }),
+      }).then(async (response) => {
+        let dataa = await response.json();
+        console.log(dataa);
+      });
     }
-    
+
   }
 
   return (
     <div className="attendencebody">
-      <Navbar/>
+      <Navbar />
       <h1 className="atte1">Sem-1 Attendance</h1>
-      {UnmeshShukla && <div className="mb-3">
-          <select
-            type="text"
-            className="form-control"
-            id="subject"
-            name="subject"
-            value={subject}
-            required
-            onChange={(e) => setsubject(e.target.value)}>
-            <option required>Select Subject</option>
-            <option value="Algorithms And Data Structure">
-              Algorithms and Data Structure
-            </option>
-          </select></div> }
-          {NitishaAgg && <div className="mb-3">
-            <label className="form-label">Select Subject</label>
-          <select
-            type="text"
-            className="form-control"
-            id="subject"
-            name="subject"
-            value={subject}
-            required
-            onChange={(e) => setsubject(e.target.value)}>
-            <option required>Select Subject</option>
-           <option value="Software Design & Programming">
-              Software Design & Programming
-            </option>
-          </select></div> }
-          {MKDas && <div className="mb-3">
-            <label className="form-label">Select Subject</label>
-          <select
-            type="text"
-            className="form-control"
-            id="subject"
-            name="subject"
-            value={subject}
-            required
-            onChange={(e) => setsubject(e.target.value)}>
-            <option required>Select Subject</option>
-            <option value="Mathematical Foundation Of Computing">
-              Mathematical Foundation of Computing
-            </option>
-          </select></div> }
-          {SunilKumar && <div className="mb-3">
-            <label className="form-label">Select Subject</label>
-          <select
-            type="text"
-            className="form-control"
-            id="subject"
-            name="subject"
-            value={subject}
-            required
-            onChange={(e) => setsubject(e.target.value)}>
-            <option required>Select Subject</option>
-            <option value="Computer System Architecture">
-              Computer System Architecture
-            </option>
-          </select></div> }
-      
+      {UnmeshShukla && <div className="mb-3 selectsubjectcontainer ">
+        <select
+          type="text"
+          className="form-control"
+          id="subject"
+          name="subject"
+          value={subject}
+          required
+          onChange={(e) => setsubject(e.target.value)}>
+          <option required>Select Subject</option>
+          <option value="Algorithms And Data Structure">
+            Algorithms and Data Structure
+          </option>
+        </select></div>}
+      {NitishaAgg && <div className="mb-3 selectsubjectcontainer">
+        <label className="form-label">Select Subject</label>
+        <select
+          type="text"
+          className="form-control"
+          id="subject"
+          name="subject"
+          value={subject}
+          required
+          onChange={(e) => setsubject(e.target.value)}>
+          <option required>Select Subject</option>
+          <option value="Software Design & Programming">
+            Software Design & Programming
+          </option>
+        </select></div>}
+      {MKDas && <div className="mb-3 selectsubjectcontainer">
+        <label className="form-label">Select Subject</label>
+        <select
+          type="text"
+          className="form-control"
+          id="subject"
+          name="subject"
+          value={subject}
+          required
+          onChange={(e) => setsubject(e.target.value)}>
+          <option required>Select Subject</option>
+          <option value="Mathematical Foundation Of Computing">
+            Mathematical Foundation of Computing
+          </option>
+        </select></div>}
+      {SunilKumar && <div className="mb-3 selectsubjectcontainer">
+        <label className="form-label">Select Subject</label>
+        <select
+          type="text"
+          className="form-control"
+          id="subject"
+          name="subject"
+          value={subject}
+          required
+          onChange={(e) => setsubject(e.target.value)}>
+          <option required>Select Subject</option>
+          <option value="Computer System Architecture">
+            Computer System Architecture
+          </option>
+        </select></div>}
+
       <div className="table-1">
         <table className="table table-striped">
           <thead className="heading-1">
@@ -173,7 +167,7 @@ const Sem_1 = () => {
       </div>
       <div className="button-1">
         <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onClick={Submit}>Submit</button>
-      </div> 
+      </div>
     </div>
   );
 };
