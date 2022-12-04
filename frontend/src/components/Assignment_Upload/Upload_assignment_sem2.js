@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Navbar from "../Student_dashboard/Navbar";
+import Navbar from "../Teacher_dashboard/Navbar";
 import "./upload_assignment.css";
 import jwt from "jsonwebtoken";
 import { useNavigate } from "react-router-dom";

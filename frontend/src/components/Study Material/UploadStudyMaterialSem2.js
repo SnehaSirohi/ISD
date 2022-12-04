@@ -1,8 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Navbar from "../Student_dashboard/Navbar";
+import Navbar from "../Teacher_dashboard/Navbar";
 import jwt from "jsonwebtoken";
 import { useNavigate } from "react-router-dom";
+import './study.css'
 
 function UploadStudyMaterialSem2() {
   const navigate = useNavigate();
@@ -55,6 +56,7 @@ function UploadStudyMaterialSem2() {
     });
 
     const data = await response.json();
+    console.log(data);
   }
 
   //--------------------
@@ -160,12 +162,13 @@ function UploadStudyMaterialSem2() {
             />
             <button>Upload</button>
           </div>
+         {file && <div className="fileuploaddisplay">{file}</div>}
           <div className="infocontent">
             <p className="main">Supported files</p>
             <p className="info">PDF,Doc, JPG, PNG</p>
           </div>
         </div>
-
+          
         {/* text box */}
 
         <div class="mb-3 mt-4">
