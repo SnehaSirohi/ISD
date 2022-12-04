@@ -155,7 +155,7 @@ const Sem_1 = () => {
           <div className=" mb-3">
 
             <h1 className="class-1">Class Schedule</h1>
-            {UnmeshShukla && <div className="selectsubjectcontainer"><label className="form-label mt-2">Select Subject</label>
+            {UnmeshShukla && <div className="selectsubjectcontainer">
 
               <select
                 type="text"
@@ -170,7 +170,7 @@ const Sem_1 = () => {
                   Algorithms and Data Structure
                 </option>
               </select></div>}
-            {NitishaAgg && <div className="selectsubjectcontainer"><label className="form-label mt-2">Select Subject</label>
+            {NitishaAgg && <div className="selectsubjectcontainer">
               <select
                 type="text"
                 className="form-control"
@@ -184,7 +184,7 @@ const Sem_1 = () => {
                   Software Design & Programming
                 </option>
               </select></div>}
-            {MKDas && <div className="selectsubjectcontainer"><label className="form-label">Select Subject</label>
+            {MKDas && <div className="selectsubjectcontainer">
               <select
                 type="text"
                 className="form-control mt-2"
@@ -198,7 +198,7 @@ const Sem_1 = () => {
                   Mathematical Foundation of Computing
                 </option>
               </select></div>}
-            {SunilKumar && <div className="selectsubjectcontainer"><label className="form-label">Select Subject</label>
+            {SunilKumar && <div className="selectsubjectcontainer">
               <select
                 type="text"
                 className="form-control mt-2"
@@ -216,8 +216,8 @@ const Sem_1 = () => {
           </div>
 
           <div className="abc-1">
-            <div>
-              <label htmlFor="date" className="class-form-label">Date</label>
+            <div className="class-div">
+              <label htmlFor="date" className="class-form-label" id="date-1">Date:</label>
               <input
                 type="date"
                 className="class-form-control"
@@ -228,14 +228,14 @@ const Sem_1 = () => {
                 onChange={(e) => setdate(e.target.value)}
               />
             </div >
-            <div >
-              <label htmlFor="time" className="time-form-label mb-3 ">
-                Time:
+            <div className="time-div">
+              <label htmlFor="time" className="time-form-label " id="time">
+                Time:  
               </label>
               <input
                 type="time"
                 className="class-form-control"
-                id="time"
+                id="time-1"
                 value={time}
                 required
                 onChange={(e) => settime(e.target.value)}
