@@ -110,7 +110,7 @@ p {
 }
 
 .semester>a:hover {
- background: rgb(0, 104, 74);
+    background-color: #ccdddd;
 }
 
 .nav-text:hover {
