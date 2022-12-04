@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../Teacher_dashboard/Navbar";
 import jwt from "jsonwebtoken";
 import { useNavigate } from "react-router-dom";
+import './study.css'
 
 function UploadStudyMaterialSem1() {
   const navigate = useNavigate();
@@ -165,20 +166,14 @@ function UploadStudyMaterialSem1() {
             />
             <button>Upload</button>
           </div>
+          {file && <div className="fileuploaddisplay">{file}</div>}
           <div className="infocontent">
             <p className="main">Supported files</p>
             <p className="info">PDF,Doc, JPG, PNG</p>
           </div>
         </div>
 
-        <div className="mb-3 mt-3">
-          <label className="form-label deadline">Deadline</label>
-          <input
-            type="date"
-            value={deadline}
-            onChange={(e) => setdeadline(e.target.value)}
-          />
-        </div>
+        
 
         {/* text box */}
 

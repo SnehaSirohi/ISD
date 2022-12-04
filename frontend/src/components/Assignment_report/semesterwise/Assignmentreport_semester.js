@@ -20,31 +20,38 @@ const Assignmentreport = () => {
     const [sem3, setSem3] = useState(false)
     const [sem4, setSem4] = useState(false)
     const [report, setReport] = useState({})
+    const newdate = new Date()
+    const monthval = newdate.getMonth()+1;
+    const day = newdate.getDate()
+    const year = newdate.getFullYear()
     const[files,setfile]=useState("")
     
     const fetchdata=async()=>{
-        const response=await fetch("http://localhost:4000/assignmentreportstudent", {
+        const response = await fetch("http://localhost:4000/assignmentreportstudent", {
             method: "GET",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
                 'x-access-token': localStorage.getItem('token'), //
             }})
+
             const json = await response.json()
            
-            setReport(json)
+              setReport(json)
 
       }
       
       async function subjectupdate(e) {
         e.preventDefault();
 
-        let data = report.data.filter((data) => {
-          if(data.subject == subject)
+        let data = report.data.filter((data)=>{
+          if(((data.deadline.slice(8,10)>=day &&  data.deadline.slice(5,7)==monthval) || data.deadline.slice(5,7)>monthval || data.deadline.slice(0,5)>year  ) && (data.subject == subject))
           {
-            return data
+              return data
           }
+         
         })
+
         console.log(data)
 
             setAssignments(data.reverse())

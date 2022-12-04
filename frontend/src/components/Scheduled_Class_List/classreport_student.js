@@ -14,9 +14,9 @@ var XLSX = require("xlsx");
 const Classreport = () => {
     const navigate = useNavigate();
     const [classes,setClasses]=useState([]);
-    const newdate= new Date()
-    const monthval= newdate.getMonth()+1;
-    const day =newdate.getDate()
+    const newdate = new Date()
+    const monthval = newdate.getMonth()+1;
+    const day = newdate.getDate()
     const year = newdate.getFullYear()
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/classschedule", {

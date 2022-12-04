@@ -1,0 +1,9 @@
+.fileuploaddisplay{
+    /* background-color: rgb(243, 142, 105); */
+    box-sizing: border-box;
+    padding: 2px 10px 2px 10px;
+    border: dotted  orangered;
+    border-radius: 5px;
+    border-width: 0.5px;
+    color: black;
+}
