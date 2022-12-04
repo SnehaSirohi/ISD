@@ -80,6 +80,7 @@ const Teacher_Dashboard = (props) => {
 
                         <div class="row overviewdatacontent">
                             <div class="col-lg-7 col-md-6 col-sm-12 datacontent flex">
+                                
                                 <div class="classinfo">
                                     <h5>Total classes Held</h5>
                                     <h5>Total Tests</h5>

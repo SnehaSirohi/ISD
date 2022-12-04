@@ -175,3 +175,18 @@
 .social-login__icon:hover {
     transform: scale(1.5);
 }
+
+
+@media screen and (max-width: 750px) {
+    .screen__background__shape3 {
+        display: none;
+    }
+
+    .screen__background__shape4{
+        display: none;
+    }
+
+    .screen__background__shape2{
+        display: none;
+    }
+}

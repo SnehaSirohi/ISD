@@ -93,7 +93,7 @@ const Sem_1 = () => {
         <div className=" mb-3">
           <h1 className="test-1">Test Schedule</h1>
           <div className=" mb-3">
-            {UnmeshShukla && <div className="selectsubjectcontainer"><label className="form-label">Select Subject</label>
+            {UnmeshShukla && <div className="selectsubjectcontainer">
 
               <select
                 type="text"
@@ -108,7 +108,7 @@ const Sem_1 = () => {
                   Algorithms and Data Structure
                 </option>
               </select></div>}
-            {NitishaAgg && <div className="selectsubjectcontainer"><label className="form-label">Select Subject</label>
+            {NitishaAgg && <div className="selectsubjectcontainer">
               <select
                 type="text"
                 className="form-control"
@@ -122,7 +122,7 @@ const Sem_1 = () => {
                   Software Design & Programming
                 </option>
               </select></div>}
-            {MKDas && <div className="selectsubjectcontainer"><label className="form-label">Select Subject</label>
+            {MKDas && <div className="selectsubjectcontainer">
               <select
                 type="text"
                 className="form-control"
@@ -136,7 +136,7 @@ const Sem_1 = () => {
                   Mathematical Foundation of Computing
                 </option>
               </select></div>}
-            {SunilKumar && <div className="selectsubjectcontainer"><label className="form-label">Select Subject</label>
+            {SunilKumar && <div className="selectsubjectcontainer">
               <select
                 type="text"
                 className="form-control"
