@@ -258,7 +258,7 @@ const Assignmentreport = () => {
         </tr>
       </thead>
       <tbody>
-      <List assignments={assignments} files={files} setfile={setfile} AssignmentSubmit={AssignmentSubmit} />
+      <List key={assignments.id} assignments={assignments} files={files} setfile={setfile} AssignmentSubmit={AssignmentSubmit} />
       </tbody>
     </table>
   </div>
