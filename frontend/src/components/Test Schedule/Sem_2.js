@@ -91,7 +91,7 @@ async function populate(e){
          <div className=" mb-3">
         <h1>Test Schedule</h1>
         {NitishaAgg && <div>
-          <label className="form-label">Select Subject</label>
+        
           <select
             type="text"
             className="form-control"
@@ -107,7 +107,7 @@ async function populate(e){
           </select></div>}
           
         {UnmeshShukla && <div>
-          <label className="form-label">Select Subject</label>
+        
           <select
             type="text"
             className="form-control"
@@ -120,7 +120,7 @@ async function populate(e){
           </select></div>}
           
         {MKDas && <div>
-          <label className="form-label">Select Subject</label>
+        
           <select
             type="text"
             className="form-control"
@@ -135,7 +135,7 @@ async function populate(e){
           </select></div>}
           
         {Sanjeev && <div>
-          <label className="form-label">Select Subject</label>
+        
           <select
             type="text"
             className="form-control"
