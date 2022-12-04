@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./attendance.css";
 
-const List = ({ students, status, setstatus, subject }) => {
+const List = ({ students, status, setstatus }) => {
   useEffect(() => {
     let obj = {};
     {

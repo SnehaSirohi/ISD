@@ -20,7 +20,7 @@ const Assignmentreport = () => {
     const [sem3, setSem3] = useState(false)
     const [sem4, setSem4] = useState(false)
     const [report, setReport] = useState({})
-    const[file,setfile]=useState("")
+    const[files,setfile]=useState("")
     
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/assignmentreportstudent", {
@@ -90,7 +90,8 @@ const Assignmentreport = () => {
           }
         }
       }, [])
-      const AssignmentSubmit=async()=>{
+      const AssignmentSubmit=async(e)=>{
+        e.preventDefault()
         console.log("this is user",user);
         await fetch("http://localhost:4000/assignmentsubmit", {
           method: "POST",
@@ -99,7 +100,7 @@ const Assignmentreport = () => {
             "Content-Type": "application/json",
           },
           body:JSON.stringify({
-            file,
+            files,
             enrollNum:user.enrollNum,
             subject
           })
@@ -124,7 +125,7 @@ const Assignmentreport = () => {
 <Navbar />
  {<h1 className='text-center-1'>Assignments Posted </h1>}
  {sem1 && <div className='classrepcontainer'>
-  <form className='repform1' onSubmit={subjectupdate}>
+    <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
                 className="form-control"
@@ -133,7 +134,7 @@ const Assignmentreport = () => {
                 value={subject}
                 required
                 onChange={(e) => setSubject(e.target.value)}>
-                <option required>Select Subject</option>
+                 <option required>Select Subject</option>
                 <option value="Algorithms And Data Structure">
                   Algorithms and Data Structure
                 </option>
@@ -147,13 +148,13 @@ const Assignmentreport = () => {
                   Computer System Architecture
                 </option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn " id='btn-12' >
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
               Search
             </button>
     </form>
   </div>}
   {sem2 && <div className='classrepcontainer'>
-    <form onSubmit={subjectupdate}>
+    <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
                 className="form-control"
@@ -175,7 +176,7 @@ const Assignmentreport = () => {
     </form>
   </div>}
   {sem3 && <div className='classrepcontainer'>
-    <form onSubmit={subjectupdate}>
+    <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
                 className="form-control"
@@ -196,7 +197,7 @@ const Assignmentreport = () => {
     </form>
   </div>}
   {sem4 && <div className='classrepcontainer'>
-    <form onSubmit={subjectupdate}>
+    <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
                 className="form-control"
@@ -219,7 +220,7 @@ const Assignmentreport = () => {
     <table className='table table-striped' id='mytable-1'>
       <thead className='heading_1'>
         <tr>
-          <th>Date</th>
+            <th>Date</th>
             <th>Professor</th>
             <th>Subject</th>
             <th>Deadline</th>
@@ -228,7 +229,7 @@ const Assignmentreport = () => {
         </tr>
       </thead>
       <tbody>
-      <List assignments={assignments} file={file} setfile={setfile} AssignmentSubmit={AssignmentSubmit} />
+      <List assignments={assignments} files={files} setfile={setfile} AssignmentSubmit={AssignmentSubmit} />
       </tbody>
     </table>
   </div>
