@@ -117,10 +117,12 @@
 .profile-tab p {
     font-weight: 600;
     color: #0062cc;
+    text-align: initial;
 }
 
 .teacherInfo {
     justify-content: center;
+    display: flex;
 }
 
 .profile-head {
