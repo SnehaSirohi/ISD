@@ -106,7 +106,7 @@ function Navbar() {
                             <Link to='/studymaterial'><p>Study Material</p></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaBook color='rgb(0, 104, 74)'/>
+                            <FaIcons.FaUserCheck color='rgb(0, 104, 74)'/>
                             <Link to='/attendancereport'><p>Attendance Report</p></Link>
                         </li>
                         <li className="nav-text">
