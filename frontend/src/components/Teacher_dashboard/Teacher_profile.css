@@ -17,7 +17,7 @@ a {
 
 .profilebody {
     display: flex;
-    background: violet;
+    background: white;
     justify-content: center;
     height: 100vh;
 }
@@ -88,4 +88,10 @@ a {
 
 .resetpass{
     margin-left: 1rem;
+}
+
+.profilephoto{
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
 }
