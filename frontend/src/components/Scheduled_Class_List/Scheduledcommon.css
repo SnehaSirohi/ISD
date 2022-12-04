@@ -34,3 +34,29 @@
     background-color: #CA0F03;
     border-color: #006600;
 }
+
+.classrepcontainer {
+    /* margin: 0 20%; */
+    white-space: nowrap;
+    /* margin: 0 20%; */
+}
+.form-control {
+    display: inline-block;
+    /* width: 63%; */
+    /* margin-left: 20%; */
+}
+
+.repform1 {
+    margin-left: 20%;
+    margin-right: 27%;
+}
+
+#btn-12 {
+    width: 12%;
+    margin-left: 1%;
+}
+
+rep-1 {
+    display: flex;
+    /* margin: 0 20%; */
+}
