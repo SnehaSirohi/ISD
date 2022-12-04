@@ -15,8 +15,6 @@ var XLSX = require("xlsx");
 const Attendancereport = () => {
   const navigate = useNavigate();
   const [assignments, setAssignments] = useState([]);
-
-  
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/assignmentreportstudent", {
       method: "GET",

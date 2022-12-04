@@ -1,18 +1,20 @@
-// import React from 'react'
+import React from "react";
 
-// const List = ({notification}) => {
-//   return (
-//     <>
-//     { notification.map(x)=()=>{
-//         const {name,subject}=x
-//         return(
-//             <div>
-//                 <h1>{name} has submitted the assignment of {subject}</h1>
-//             </div>
-//         )
-//     }}
-//     </>
-//   )
-// }
+const List = ({ notification }) => {
+    console.log("notifications : ",notification)
+  return (
+    <>
+     {notification.map((noti)=>{
+        const {name,subject}=noti;
+        return(
+            
+            <>
+            <h3>{name} has Submitted the assignment of {subject}</h3>
+            </>
+        )
+     })}
+    </>
+  );
+};
 
-// export default List
+export default List;
