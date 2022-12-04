@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import List from './List'
 const Notifications = () => {
     const[notification,setnotification]=useState("")
+    console.log(notification)
     const fetchdata=async()=>{
         const response = await fetch("http://localhost:4000/assignmentsubmit", {
       
@@ -12,17 +13,17 @@ const Notifications = () => {
               "Content-Type": "application/json",
             }})
             const json = await response.json()
-            setnotification(json.data)
+            setnotification(json.data.reverse())
     }
         useEffect(() => {
      
             fetchdata();
-        }, [])
+        },[])
         
   return (
     <>
       <h1> Notifications</h1>
-      {/* <List notification={notification} /> */}
+     {notification && <List notification={notification} />} 
     </>
   )
 }

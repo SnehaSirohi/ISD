@@ -5,7 +5,7 @@ const List = ({ assignments }) => {
   return (
     <>
       {assignments.map((teach) => {
-        const {date, teacher, subject, deadline, file} = teach;
+        const {date, teacher, subject, deadline, file } = teach;
         return (
           <>
             <tr>
