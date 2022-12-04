@@ -90,7 +90,8 @@ const Assignmentreport = () => {
           }
         }
       }, [])
-      const AssignmentSubmit=async()=>{
+      const AssignmentSubmit=async(e)=>{
+        e.preventDefault()
         console.log("this is user",user);
         await fetch("http://localhost:4000/assignmentsubmit", {
           method: "POST",

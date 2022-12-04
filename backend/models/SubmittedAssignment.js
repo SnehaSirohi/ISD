@@ -17,7 +17,7 @@ const SubmittedAssignment = new Schema({
         type:String,
         required:true
     },
-    file:{
+    files:{
         type:String,
         required:true
     },

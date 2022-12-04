@@ -355,7 +355,7 @@ const StudyMaterial_Posted_Students = async (req, res) => {
 };
 
 const PostAssignmentSubmitt = async (req, res) => {
-  const {file,enrollNum,subject}=req.body
+  const {files,enrollNum,subject}=req.body
   const student = await Students.findOne({enrollNum:enrollNum})
   const name=student.name;
   const semester=student.semester;
@@ -375,9 +375,8 @@ const PostAssignmentSubmitt = async (req, res) => {
       subject,
       semester,
       date,
-      file
+      files
     });
-
     res.status(200).json(assignment);
   } catch (error) {
     res.status(400).json({ error: error.message });

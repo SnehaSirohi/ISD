@@ -23,10 +23,6 @@ const List = ({ assignments,AssignmentSubmit }) => {
               <td>
                 {file}
               </td>
-              <td>
-                <input type="file" value={assignment} onChange={(e)=>setassignment(e.target.value)}/>
-                <button type='submit' onClick={AssignmentSubmit}>Submit</button>
-              </td>
             </tr>
           </>
         )
