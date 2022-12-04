@@ -29,7 +29,6 @@ const List = ({ assignments,AssignmentSubmit,files,setfile }) => {
                 <input type="file" value={files} onChange={(e)=>setfile(e.target.value)} />
                 <button type='submit'  onClick={AssignmentSubmit}>Submit</button>
                 </form>
-                {/* <button onClick={AssignmentSubmit}>Submit</button> */}
               </td>
             </tr>
           </>
