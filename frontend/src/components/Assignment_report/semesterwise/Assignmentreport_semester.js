@@ -125,6 +125,35 @@ const Assignmentreport = () => {
 <Navbar />
  {<h1 className='text-center-1'>Assignments Posted </h1>}
  {sem1 && <div className='classrepcontainer'>
+    <form onSubmit={subjectupdate}>
+    <select
+                type="text"
+                className="form-control"
+                id="subject"
+                name="subject"
+                value={subject}
+                required
+                onChange={(e) => setSubject(e.target.value)}>
+                 <option required>Select Subject</option>
+                <option value="Algorithms And Data Structure">
+                  Algorithms and Data Structure
+                </option>
+                <option value="Software Design & Programming">
+                  Software Design & Programming
+                </option>
+                <option value="Mathematical Foundation Of Computing">
+                  Mathematical Foundation of Computing
+                </option>
+                <option value="Computer System Architecture">
+                  Computer System Architecture
+                </option>
+              </select>
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
+              Search
+            </button>
+    </form>
+  </div>}
+ {/* {sem1 && <div className='classrepcontainer'>
   <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
@@ -152,7 +181,7 @@ const Assignmentreport = () => {
               Search
             </button>
     </form>
-  </div>}
+  </div>} */}
   {sem2 && <div className='classrepcontainer'>
     <form onSubmit={subjectupdate}>
     <select
