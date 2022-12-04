@@ -170,7 +170,7 @@ const Classreport = () => {
                 <option value="Applied Machine Learning">Applied Machine Learning</option>
                 <option value="Open Elective-1">Open Elective-1</option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
              Search
             </button>
     </form>
@@ -191,7 +191,7 @@ const Classreport = () => {
                 <option value="Software Engineering">Software Engineering</option>
                 <option value="IT Planning and Management">IT Planning and Management</option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12' >
               Search
             </button>
     </form>
@@ -211,7 +211,7 @@ const Classreport = () => {
                 <option value="Health Informatics">Health Informatics</option>
                 <option value="Research Methods in Informatics">Research Methods in Informatics</option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
               Search
             </button>
     </form>

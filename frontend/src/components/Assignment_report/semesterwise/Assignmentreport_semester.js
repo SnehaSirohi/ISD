@@ -134,7 +134,7 @@ const Assignmentreport = () => {
                 </option>
               </select>
               <button type="submit" className="btn btn-primary submit-btn " id='btn-12' >
-              Submit
+              Search
             </button>
     </form>
   </div>}
@@ -156,7 +156,7 @@ const Assignmentreport = () => {
                 <option value="Open Elective-1">Open Elective-1</option>
               </select>
               <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
-              Submit
+              Search
             </button>
     </form>
   </div>}
@@ -177,7 +177,7 @@ const Assignmentreport = () => {
                 <option value="IT Planning and Management">IT Planning and Management</option>
               </select>
               <button type="submit" className="btn btn-primary submit-btn"id='btn-12' >
-              Submit
+              Search
             </button>
     </form>
   </div>}
@@ -197,7 +197,7 @@ const Assignmentreport = () => {
                 <option value="Research Methods in Informatics">Research Methods in Informatics</option>
               </select>
               <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
-              Submit
+              Search
             </button>
     </form>
   </div>}
