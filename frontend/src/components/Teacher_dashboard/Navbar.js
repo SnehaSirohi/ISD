@@ -24,7 +24,7 @@ function Navbar() {
                         <FaIcons.FaBars onClick={showSidebar} />
                     </Link>
                     <div className="heading">
-                        <i class="fa fa-bell mt-1 fa-2x"></i>
+                       <Link to="/teacherNotifications"><i class="fa fa-bell mt-1 fa-2x"></i></Link> 
                         <Link to="/Teacherdashboard/profile"><div className="button"><img src={logo} alt="..." class="profilePic"></img></div></Link>
 
                     </div>
@@ -61,6 +61,10 @@ function Navbar() {
                         <li className="nav-text">
                             <FaIcons.FaBookReader color='rgb(0, 104, 74)' />
                             <Link to="/Teacherdashboard/studymaterial"><span>Study Material</span></Link>
+                        </li>
+                        <li className="nav-text">
+                            <FaIcons.FaBell color='rgb(0, 104, 74)' />
+                            <Link to="/teacherNotifications"><span>Notifications</span></Link>
                         </li>
                         <li className="nav-text" onClick={() => {
                             localStorage.removeItem('token')

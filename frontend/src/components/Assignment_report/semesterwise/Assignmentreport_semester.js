@@ -25,7 +25,7 @@ const Assignmentreport = () => {
     const day = newdate.getDate()
     const year = newdate.getFullYear()
     const[files,setfile]=useState("")
-    
+
     const fetchdata=async()=>{
         const response = await fetch("http://localhost:4000/assignmentreportstudent", {
             method: "GET",
@@ -236,7 +236,7 @@ const Assignmentreport = () => {
         </tr>
       </thead>
       <tbody>
-      <List assignments={assignments} files={files} setfile={setfile} AssignmentSubmit={AssignmentSubmit} />
+      <List key={assignments.id} assignments={assignments} files={files} setfile={setfile} AssignmentSubmit={AssignmentSubmit} />
       </tbody>
     </table>
   </div>

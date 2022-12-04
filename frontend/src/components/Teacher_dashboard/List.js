@@ -9,7 +9,13 @@ const List = ({ notification }) => {
         return(
             
             <>
-            <h3>{name} has Submitted the assignment of {subject}</h3>
+            
+            <div className="container noti">
+
+<h5>{name} has Submitted the assignment of {subject}</h5>
+
+            </div>
+            
             </>
         )
      })}
