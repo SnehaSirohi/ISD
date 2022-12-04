@@ -152,6 +152,7 @@ const Sem_1 = () => {
               </select></div>}
 
           </div>
+          <div className="abc-1">
           <div className="mb-3 text-center">
             <label htmlFor="date" className="test-form-label">
               Date:
@@ -176,6 +177,7 @@ const Sem_1 = () => {
               value={time}
               onChange={(e) => settime(e.target.value)}
             />
+          </div>
           </div>
           <div class="mb-3">
             <div class="test-msg">

@@ -23,8 +23,8 @@
     width: 70%;
     /* align-items: center; */
     text-align: center;
-    background-color: rgb(196, 255, 255);
-    border-color:rgb(196, 255, 255) ;
+    background-color: white;
+    border-color:#2BB0A2 ;
     border-radius: 4px;
     height: 2rem;
     margin-top: 20px;   
@@ -54,9 +54,9 @@
 .class-form-control-1 {
     width: 100%;
     border-radius: 4px;
-    background-color: rgb(196, 255, 255);
-    border-color:rgb(196, 255, 255) ;
-    border-style: groove;
+    background-color: white;
+    border-color:#2BB0A2 ;
+    /* border-style: groove; */
     height: 10rem;
 }
 
