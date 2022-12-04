@@ -82,7 +82,7 @@ function UploadStudyMaterialSem1() {
       <div className="uploadassignmentcontent">
         {UnmeshShukla && (
           <div>
-            <label className="form-label mt-2">Select Subject</label>
+            
 
             <select
               type="text"
@@ -101,7 +101,7 @@ function UploadStudyMaterialSem1() {
         )}
         {NitishaAgg && (
           <div>
-            <label className="form-label mt-2">Select Subject</label>
+            
             <select
               type="text"
               className="form-control"

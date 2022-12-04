@@ -105,7 +105,7 @@ const Sem_3 = () => {
           </select>
         </div>}
         {UnmeshShukla && <div className=" mb-3">
-          <label className="form-label">Select Subject</label>
+          
           <select
             type="text"
             className="form-control"
@@ -118,7 +118,7 @@ const Sem_3 = () => {
           </select>
         </div>}
         {MKDas && <div className=" mb-3">
-          <label className="form-label">Select Subject</label>
+          
           <select
             type="text"
             className="form-control"
@@ -131,7 +131,7 @@ const Sem_3 = () => {
           </select>
         </div>}
         {Manish && <div className=" mb-3">
-          <label className="form-label">Select Subject</label>
+          
           <select
             type="text"
             className="form-control"

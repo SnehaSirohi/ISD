@@ -82,7 +82,7 @@ function UploadStudyMaterialSem3() {
         <div className=" mb-3">
           {NitishaAgg && (
             <div>
-              <label className="form-label">Select Subject</label>
+             
               <select
                 type="text"
                 className="form-control"
@@ -99,7 +99,7 @@ function UploadStudyMaterialSem3() {
           )}
           {UnmeshShukla && (
             <div>
-              <label className="form-label">Select Subject</label>
+             
               <select
                 type="text"
                 className="form-control"
@@ -114,7 +114,7 @@ function UploadStudyMaterialSem3() {
           )}
           {MKDas && (
             <div>
-              <label className="form-label">Select Subject</label>
+             
               <select
                 type="text"
                 className="form-control"
@@ -131,7 +131,7 @@ function UploadStudyMaterialSem3() {
           )}
           {Manish && (
             <div>
-              <label className="form-label">Select Subject</label>
+             
               <select
                 type="text"
                 className="form-control"
