@@ -121,9 +121,8 @@ const Attendancereport = () => {
   return (
     <>
     <Navbar />
-    {<h1>{string}</h1>}
-      {sem1 && <div>
-  <form onSubmit={subjectupdate}>
+      {sem1 && <div className='classrepcontainer' id='sem-23'>
+  <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
                 className="form-control"
@@ -147,12 +146,12 @@ const Attendancereport = () => {
                   Computer System Architecture
                 </option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
+             Search
             </button>
     </form>
   </div>}
-  {sem2 && <div>
+  {sem2 && <div className='classrepcontainer'>
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
@@ -170,12 +169,12 @@ const Attendancereport = () => {
                 <option value="Applied Machine Learning">Applied Machine Learning</option>
                 <option value="Open Elective-1">Open Elective-1</option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
+             Search
             </button>
     </form>
   </div>}
-  {sem3 && <div>
+  {sem3 && <div className='classrepcontainer'>
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
@@ -192,12 +191,12 @@ const Attendancereport = () => {
                 <option value="Software Engineering">Software Engineering</option>
                 <option value="IT Planning and Management">IT Planning and Management</option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
+              Search
             </button>
     </form>
   </div>}
-  {sem4 && <div>
+  {sem4 && <div className='classrepcontainer'>
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
@@ -213,14 +212,14 @@ const Attendancereport = () => {
                 <option value="Health Informatics">Health Informatics</option>
                 <option value="Research Methods in Informatics">Research Methods in Informatics</option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
+              Search
             </button>
     </form>
   </div>}
-
-      <div className='table-2'>
-        <table className='table table-striped' id='mytable2'>
+    {<h3 className='text-center' id='string-12'>{string}</h3>}
+      <div className='main'>
+        <table className='table table-striped' id='mytable-2'>
           <thead className='heading-2'>
             <tr>
                 <th>subject</th>
@@ -234,8 +233,10 @@ const Attendancereport = () => {
         </table>
       </div>
 
-      <button onClick={exporttoexcelhandler}>Download in excel</button>
-      <button onClick={exporttopdfhandler}>Download in pdf</button>
+      <div className='text-center'>
+   <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
+   <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
+   </div>
     </>
   )
 }

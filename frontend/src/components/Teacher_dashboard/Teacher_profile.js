@@ -4,6 +4,7 @@ import "./Teacher_profile.css"
 import Navbar from './Navbar'
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
+import logo from './image.png'
 
 const Teacher_Profile = () => {
 
@@ -56,15 +57,16 @@ const Teacher_Profile = () => {
                     <div className='profileContent'>
                         <div className='profileenroll'>
                             {/* <img src={logo} alt="" class="avatar mt-1"></img> */}
-                            <div class="mt-2">
+                            <div class="mt-3">
                                 <h3>{name}</h3>
                                 <h3>Professor ID: {teacher_id || 'ish'}</h3>
+                                <div><img src={logo} alt="..." class="profilephoto"></img></div>
                             </div>
                         </div>
-                        <div class="row mb-2 mr-0 detailblock">
-                            <div class="col-md-6 p-0 mb-2 detailcontent">
+                        <div class="mb-2 detailblock">
+                            <div class="p-0 mb-2 detailcontent">
                                 <div class="col d-flex flex-column position-static details">
-                                    <h3 class="mb-0">Personal Details</h3>
+                                    <h3 class="mb-3 ">Personal Details</h3>
                                     <h6>Contact no. - {contactNum}</h6>
                                     <h6>Mobile no - xxxxxxxxxx </h6>
                                     <h6>D.O.B - 17/11/2000 </h6>
@@ -77,7 +79,7 @@ const Teacher_Profile = () => {
                                 localStorage.removeItem('token')
                                 navigate("/")
                             }}>Logout</button>
-                            <button><Link to="/Teacherdashboard/changepassword"><div className="button">Reset Password</div></Link></button>
+                            <button className="resetpass"><Link to="/Teacherdashboard/changepassword"><div>Reset Password</div></Link></button>
                         </div>
 
                     </div>
