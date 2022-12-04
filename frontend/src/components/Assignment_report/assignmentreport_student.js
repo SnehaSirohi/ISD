@@ -12,7 +12,7 @@ import Navbar from "../Student_dashboard/Navbar";
 
 var XLSX = require("xlsx");
 
-const Attendancereport = () => {
+const Assignmentreport = () => {
   const navigate = useNavigate();
   const [assignments, setAssignments] = useState([]);
 
@@ -86,4 +86,4 @@ const Attendancereport = () => {
   )
 }
 
-export default Attendancereport
+export default Assignmentreport
