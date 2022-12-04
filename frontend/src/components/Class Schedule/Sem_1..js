@@ -154,7 +154,7 @@ const Sem_1 = () => {
 
           <div className=" mb-3">
 
-            <h1 className="class-1">Class Schedule</h1>
+            <h1 className="class-1 mt-3 mb-3">Class Schedule</h1>
             {UnmeshShukla && <div className="selectsubjectcontainer">
 
               <select
@@ -228,6 +228,7 @@ const Sem_1 = () => {
                 onChange={(e) => setdate(e.target.value)}
               />
             </div >
+            <br/>
             <div className="time-div">
               <label htmlFor="time" className="time-form-label " id="time">
                 Time:  

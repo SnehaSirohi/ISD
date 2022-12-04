@@ -53,6 +53,7 @@ import UploadStudyMaterialSem1 from './components/Study Material/UploadStudyMate
 import UploadStudyMaterialSem2 from './components/Study Material/UploadStudyMaterialSem2';
 import UploadStudyMaterialSem3 from './components/Study Material/UploadStudyMaterialSem3';
 import UploadStudyMaterialSem4 from './components/Study Material/UploadStudyMaterialSem4';
+import Teacherprofile2 from './components/Teacher_dashboard/Teacherprofile2';
 function App() {
   useEffect(() => {
     window.process = {
@@ -100,7 +101,7 @@ function App() {
           <Route path='/scheduledtests' element={<Testreport_semester />} />
           <Route path='/assignments' element={<Assignmentreport_semester />} />
           <Route path='/studymaterial' element={<Studymaterial_student />} />
-          <Route path='/attendancereport' element={<Attendancereport_student/>}/>
+          <Route path='/attendancereport' element={<Attendancereport_student />} />
           <Route path='/Teacherdashboard/studymaterial' element={<Studymaterial_teacher />} />
           <Route path='/Teacherdashboard/sem1/assignment' element={<UploadAssignmentsem1 />} />
           <Route path='/Teacherdashboard/sem2/assignment' element={<UploadAssignmentsem2 />} />
@@ -111,10 +112,11 @@ function App() {
           <Route path='/Teacherdashboard/sem3/studymaterial' element={<UploadStudyMaterialSem3 />} />
           <Route path='/Teacherdashboard/sem4/studymaterial' element={<UploadStudyMaterialSem4 />} />
           <Route path='/Notifications' element={<Notifications />} />
-          <Route path="/Teacherdashboard/filters/sem1" element={<Sem1filters/>} />
-          <Route path="/Teacherdashboard/filters/sem2" element={<Sem2filters/>} />
-          <Route path="/Teacherdashboard/filters/sem3" element={<Sem3filters/>} />
-          <Route path="/Teacherdashboard/filters/sem4" element={<Sem4filters/>} />
+          <Route path="/Teacherdashboard/filters/sem1" element={<Sem1filters />} />
+          <Route path="/Teacherdashboard/filters/sem2" element={<Sem2filters />} />
+          <Route path="/Teacherdashboard/filters/sem3" element={<Sem3filters />} />
+          <Route path="/Teacherdashboard/filters/sem4" element={<Sem4filters />} />
+          <Route path="/Teacherdashboard/profile2" element={<Teacherprofile2 />} />
         </Routes>
       </BrowserRouter>
     </div>
