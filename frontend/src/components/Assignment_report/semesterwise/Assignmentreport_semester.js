@@ -5,11 +5,12 @@ import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
-import List from '../list';
+import "../../Scheduled_Class_List/Scheduledcommon.css";
+import List from './list';
 import Navbar from "../../Student_dashboard/Navbar";
 
 var XLSX = require("xlsx");
-
+let user;
 const Assignmentreport = () => {
     const navigate = useNavigate();
     const [assignments,setAssignments]=useState([]);
@@ -19,7 +20,8 @@ const Assignmentreport = () => {
     const [sem3, setSem3] = useState(false)
     const [sem4, setSem4] = useState(false)
     const [report, setReport] = useState({})
-
+    const[file,setfile]=useState("")
+    
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/assignmentreportstudent", {
             method: "GET",
@@ -29,14 +31,13 @@ const Assignmentreport = () => {
                 'x-access-token': localStorage.getItem('token'), //
             }})
             const json = await response.json()
+           
             setReport(json)
 
       }
-
+      
       async function subjectupdate(e) {
         e.preventDefault();
-        console.log(subject)
-        console.log(report)
 
         let data = report.data.filter((data) => {
           if(data.subject == subject)
@@ -80,8 +81,7 @@ const Assignmentreport = () => {
       useEffect(() => {
         const token = localStorage.getItem('token')
         if (token) {
-          const user = jwt.decode(token)
-          console.log(user)
+           user = jwt.decode(token)
           if (!user) {
             localStorage.removeItem('token')
             navigate("/dashboard");
@@ -90,6 +90,21 @@ const Assignmentreport = () => {
           }
         }
       }, [])
+      const AssignmentSubmit=async()=>{
+        console.log("this is user",user);
+        await fetch("http://localhost:4000/assignmentsubmit", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body:JSON.stringify({
+            file,
+            enrollNum:user.enrollNum,
+            subject
+          })
+        })
+    }
   
   const exporttoexcelhandler= () =>{
      var wb = XLSX.utils.book_new(),
@@ -107,9 +122,9 @@ const Assignmentreport = () => {
   return (
    <>
 <Navbar />
- {<h1>Assignments Posted </h1>}
- {sem1 && <div>
-  <form onSubmit={subjectupdate}>
+ {<h1 className='text-center-1'>Assignments Posted </h1>}
+ {sem1 && <div className='classrepcontainer'>
+  <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
                 className="form-control"
@@ -132,12 +147,12 @@ const Assignmentreport = () => {
                   Computer System Architecture
                 </option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn " id='btn-12' >
+              Search
             </button>
     </form>
   </div>}
-  {sem2 && <div>
+  {sem2 && <div className='classrepcontainer'>
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
@@ -154,12 +169,12 @@ const Assignmentreport = () => {
                 <option value="Applied Machine Learning">Applied Machine Learning</option>
                 <option value="Open Elective-1">Open Elective-1</option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
+              Search
             </button>
     </form>
   </div>}
-  {sem3 && <div>
+  {sem3 && <div className='classrepcontainer'>
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
@@ -175,12 +190,12 @@ const Assignmentreport = () => {
                 <option value="Software Engineering">Software Engineering</option>
                 <option value="IT Planning and Management">IT Planning and Management</option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn"id='btn-12' >
+              Search
             </button>
     </form>
   </div>}
-  {sem4 && <div>
+  {sem4 && <div className='classrepcontainer'>
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
@@ -195,30 +210,33 @@ const Assignmentreport = () => {
                 <option value="Health Informatics">Health Informatics</option>
                 <option value="Research Methods in Informatics">Research Methods in Informatics</option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
+              Search
             </button>
     </form>
   </div>}
   <div classname="main">
-    <table classname="table table-bordered" id='mytable'>
-      <thead>
+    <table className='table table-striped' id='mytable-1'>
+      <thead className='heading_1'>
         <tr>
           <th>Date</th>
             <th>Professor</th>
             <th>Subject</th>
             <th>Deadline</th>
             <th>Assignment</th>
+            <th>Upload</th>
         </tr>
       </thead>
       <tbody>
-      <List assignments={assignments} />
+      <List assignments={assignments} file={file} setfile={setfile} AssignmentSubmit={AssignmentSubmit} />
       </tbody>
     </table>
   </div>
 
-   <button onClick={exporttoexcelhandler}>Download in excel</button>
-   <button onClick={exporttopdfhandler}>Download in pdf</button>
+  <div className='text-center'>
+   <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
+   <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
+   </div>
    </>
   )
 }

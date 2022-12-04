@@ -6,6 +6,7 @@ import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from '../list.js';
+import "../../Scheduled_Class_List/Scheduledcommon.css";
 import Navbar from "../../Student_dashboard/Navbar";
 var XLSX = require("xlsx");
 
@@ -117,9 +118,10 @@ const Testreport = () => {
   return (
    <>
 <Navbar />
- {<h1>Scheduled Tests </h1>}
- {sem1 && <div>
-  <form onSubmit={subjectupdate}>
+ {<h1 className='text-center-1'>Scheduled Tests </h1>}
+ <div className='rep_1 '>
+ {sem1 && <div className='classrepcontainer'>
+  <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
                 className="form-control"
@@ -142,12 +144,12 @@ const Testreport = () => {
                   Computer System Architecture
                 </option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12' >
+              Search
             </button>
     </form>
   </div>}
-  {sem2 && <div>
+  {sem2 && <div className='classrepcontainer'>
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
@@ -164,12 +166,12 @@ const Testreport = () => {
                 <option value="Applied Machine Learning">Applied Machine Learning</option>
                 <option value="Open Elective-1">Open Elective-1</option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12' >
+              Search
             </button>
     </form>
   </div>}
-  {sem3 && <div>
+  {sem3 && <div className='classrepcontainer'>
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
@@ -185,12 +187,12 @@ const Testreport = () => {
                 <option value="Software Engineering">Software Engineering</option>
                 <option value="IT Planning and Management">IT Planning and Management</option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12' >
+              Search
             </button>
     </form>
   </div>}
-  {sem4 && <div>
+  {sem4 && <div className='classrepcontainer'>
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
@@ -205,14 +207,15 @@ const Testreport = () => {
                 <option value="Health Informatics">Health Informatics</option>
                 <option value="Research Methods in Informatics">Research Methods in Informatics</option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12' >
+              Search
             </button>
     </form>
   </div>}
+  </div>
   <div classname="main">
-    <table classname="table table-bordered" id='mytable'>
-      <thead>
+    <table className='table table-striped' id='mytable-1'>
+      <thead className='heading_1'>
         <tr>
           <th>Professor</th>
           <th>Subject</th>
@@ -226,8 +229,10 @@ const Testreport = () => {
     </table>
   </div>
 
-   <button onClick={exporttoexcelhandler}>Download in excel</button>
-   <button onClick={exporttopdfhandler}>Download in pdf</button>
+  <div className='text-center'>
+   <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
+   <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
+   </div>
    </>
   )
 }

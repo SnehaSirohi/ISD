@@ -122,8 +122,9 @@ const Classreport = () => {
    <>
 <Navbar />
  {<h1 className='text-center-1'>Scheduled Classes </h1>}
- {sem1 && <div>
-  <form onSubmit={subjectupdate}>
+ <div className='rep_1 '>
+ {sem1 && <div className='classrepcontainer'>
+  <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
                 className="form-control"
@@ -146,12 +147,13 @@ const Classreport = () => {
                   Computer System Architecture
                 </option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12' >
+              Search
             </button>
     </form>
+  
   </div>}
-  {sem2 && <div>
+  {sem2 && <div className='classrepcontainer'>
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
@@ -168,12 +170,12 @@ const Classreport = () => {
                 <option value="Applied Machine Learning">Applied Machine Learning</option>
                 <option value="Open Elective-1">Open Elective-1</option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
+             Search
             </button>
     </form>
   </div>}
-  {sem3 && <div>
+  {sem3 && <div className='classrepcontainer'>
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
@@ -189,12 +191,12 @@ const Classreport = () => {
                 <option value="Software Engineering">Software Engineering</option>
                 <option value="IT Planning and Management">IT Planning and Management</option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12' >
+              Search
             </button>
     </form>
   </div>}
-  {sem4 && <div>
+  {sem4 && <div className='classrepcontainer'>
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
@@ -209,11 +211,12 @@ const Classreport = () => {
                 <option value="Health Informatics">Health Informatics</option>
                 <option value="Research Methods in Informatics">Research Methods in Informatics</option>
               </select>
-              <button type="submit" className="btn btn-primary submit-btn" >
-              Submit
+              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
+              Search
             </button>
     </form>
   </div>}
+  </div>
   <div classname="main">
     <table className='table table-striped' id='mytable-1'>
       <thead className='heading_1'>
