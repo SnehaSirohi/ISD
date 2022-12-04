@@ -249,7 +249,7 @@ const Assignmentreport = () => {
     <table className='table table-striped' id='mytable-1'>
       <thead className='heading_1'>
         <tr>
-          <th>Date</th>
+            <th>Date</th>
             <th>Professor</th>
             <th>Subject</th>
             <th>Deadline</th>
