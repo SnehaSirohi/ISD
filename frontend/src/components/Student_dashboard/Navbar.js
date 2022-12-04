@@ -91,23 +91,23 @@ function Navbar() {
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaRegCalendarCheck color='rgb(0, 104, 74)'/>
-                            <Link to='/scheduledclass'><p>Scheduled Classes</p></Link>
+                            <span><Link to='/scheduledclass'><p>Scheduled Classes</p></Link></span>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaBookReader color='rgb(0, 104, 74)'/>
-                            <Link to='/scheduledtests'><p>Scheduled Tests</p></Link>
+                            <span><Link to='/scheduledtests'><p>Scheduled Tests</p></Link></span>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaRegListAlt color='rgb(0, 104, 74)' />
-                            <Link to='/assignments'><p>Assignments</p></Link>
+                            <span><Link to='/assignments'><p>Assignments</p></Link></span>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaBook color='rgb(0, 104, 74)'/>
-                            <Link to='/studymaterial'><p>Study Material</p></Link>
+                            <span><Link to='/studymaterial'><p>Study Material</p></Link></span>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaBook color='rgb(0, 104, 74)'/>
-                            <Link to='/attendancereport'><p>Attendance Report</p></Link>
+                            <span><Link to='/attendancereport'><p>Attendance Report</p></Link></span>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaSignInAlt color='rgb(0, 104, 74)' />

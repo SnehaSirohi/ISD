@@ -1,23 +1,27 @@
 .class-1 {
     text-align: center;
-    background-color: rgb(196, 255, 255);
+    /* background-color: rgb(196, 255, 255); */
     margin-bottom: 0;
     padding-top: 5px;
     padding-bottom: 5px;
 }
 
 .class-form-label {
-    margin-right: 20px;
+    /* margin-right: 20px; */
     font-weight: bold;
+}
+.form-control-a {
+    background-color: white;
 }
 
 .abc-1 {
-    text-align: center;
+    display: flex;
+    /* justify-content: center; */
 }
 
 .class-form-control {
-    width: 10rem;
-    align-items: center;
+    width: 70%;
+    /* align-items: center; */
     text-align: center;
     background-color: rgb(196, 255, 255);
     border-color:rgb(196, 255, 255) ;
@@ -28,11 +32,23 @@
 
 .time-form-label {
     font-weight: bold;
-    margin-right: 1rem;
+    /* margin-right: 1rem; */
+}
+
+.class-div {
+    margin-left: 20%;
+   
+}
+
+.time-div {
+    position: absolute;
+  right: 20%;
+    
 }
 
 .form-label {
     font-weight: bold;
+    margin-top: 20px;
 }
 
 .class-form-control-1 {
@@ -60,3 +76,16 @@
 .messagecontent{
     margin : 0 20%
 }
+
+#date-1 {
+    margin-right: 4%;
+}
+
+/* #time-1 {
+   margin-left: 4%;
+} */
+
+ /* #time-12 {
+    margin-right: 20%;
+     text-align: right; 
+}  */
