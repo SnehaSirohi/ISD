@@ -1,12 +1,54 @@
 const express = require("express");
 const {
-    loginteacher, GetTeacherdashboard, GetTeacherProfile, PostTeacherProfile, GetTeacherChangePassword, PatchTeacherChangePassword, RegisterTeacher, GetScheduleclass, GetScheduletest,GetAttendance, sem1Attendance, sem2Attendance, sem3Attendance, sem4Attendance,
-    Sem1AttendanceReport, Sem2AttendanceReport, Sem3AttendanceReport, Sem4AttendanceReport, ScheduledClassReport, ScheduledTestReport, Getuploadassignment, Assignment_Schedule_teacher, GetStudyMaterial,StudyMaterial_Posted
-} = require("../controllers/teachercontrol")
+  loginteacher,
+  GetTeacherdashboard,
+  GetTeacherProfile,
+  PostTeacherProfile,
+  GetTeacherChangePassword,
+  PatchTeacherChangePassword,
+  RegisterTeacher,
+  GetScheduleclass,
+  GetScheduletest,
+  GetAttendance,
+  sem1Attendance,
+  sem2Attendance,
+  sem3Attendance,
+  sem4Attendance,
+  Sem1AttendanceReport,
+  Sem2AttendanceReport,
+  Sem3AttendanceReport,
+  Sem4AttendanceReport,
+  ScheduledClassReport,
+  ScheduledTestReport,
+  Getuploadassignment,
+  Assignment_Schedule_teacher,
+  GetStudyMaterial,
+  StudyMaterial_Posted,
+} = require("../controllers/teachercontrol");
 
-const {login, Getdashboard, Getprofile, Postprofile, Getchangepassword, PatchChangepassword, register, Test_Scheduled, Classes_Scheduled,Assignment_Schedule_student, GetAssignments, classnotification, StudyMaterial_Posted_Students } = require("../controllers/studentscontrol")
+const {
+  login,
+  Getdashboard,
+  Getprofile,
+  Postprofile,
+  Getchangepassword,
+  PatchChangepassword,
+  register,
+  Test_Scheduled,
+  Classes_Scheduled,
+  Assignment_Schedule_student,
+  GetAssignments,
+  classnotification,
+  StudyMaterial_Posted_Students,
+  AssignmentSubmitt
+} = require("../controllers/studentscontrol");
 
-const { Postscheduleclass, PostscheduleTest,PostUploadassignment, PostStudyMaterial } = require("../controllers/emailcontrol")
+const {
+  Postscheduleclass,
+  PostscheduleTest,
+  PostUploadassignment,
+  PostStudyMaterial,
+} = require("../controllers/emailcontrol");
 
 const { json } = require("body-parser");
 const StudyMaterial = require("../models/StudyMaterial");
@@ -24,10 +66,10 @@ router.get("/dashboard/profile", Getprofile);
 router.post("/dashboard/profile", Postprofile);
 
 //student
-router.get('/dashboard/changepassword', Getchangepassword)
+router.get("/dashboard/changepassword", Getchangepassword);
 
 //student-change password
-router.patch('/dashboard/changepassword', PatchChangepassword);
+router.patch("/dashboard/changepassword", PatchChangepassword);
 
 //student register
 router.post("/register", register);
@@ -45,10 +87,10 @@ router.get("/Teacherdashboard/profile", GetTeacherProfile);
 router.post("/Teacherdashboard/profile", PostTeacherProfile);
 
 //Teacher
-router.get('/Teacherdashboard/changepassword', GetTeacherChangePassword)
+router.get("/Teacherdashboard/changepassword", GetTeacherChangePassword);
 
 //student-change password
-router.patch('/Teacherdashboard/changepassword', PatchTeacherChangePassword);
+router.patch("/Teacherdashboard/changepassword", PatchTeacherChangePassword);
 
 //register teacher
 router.post("/registerteacher", RegisterTeacher);
@@ -69,17 +111,17 @@ router.get("/attendancereport/sem3", Sem3AttendanceReport);
 router.get("/attendancereport/sem4", Sem4AttendanceReport);
 router.get("/scheduledclassreport", ScheduledClassReport);
 router.get("/scheduledtestreport", ScheduledTestReport);
-router.get("/upload/assignment", Getuploadassignment)
-router.post("/upload/assignment", PostUploadassignment)
-router.get("/upload/studymaterial", GetStudyMaterial)
-router.post("/upload/studymaterial", PostStudyMaterial)
+router.get("/upload/assignment", Getuploadassignment);
+router.post("/upload/assignment", PostUploadassignment);
+router.get("/upload/studymaterial", GetStudyMaterial);
+router.post("/upload/studymaterial", PostStudyMaterial);
 router.get("/classschedule", Classes_Scheduled);
 router.get("/testschedule", Test_Scheduled);
-router.get("/assignmentreportstudent", Assignment_Schedule_student)
-router.get("/assignmentreportteacher", Assignment_Schedule_teacher)
-router.get("/studymaterial_teacher", StudyMaterial_Posted)
-router.get("/studymaterial_student", StudyMaterial_Posted_Students)
-router.get("/notifications/assignment", GetAssignments)
-router.get("/notifications/classes", classnotification)
-
+router.get("/assignmentreportstudent", Assignment_Schedule_student);
+router.get("/assignmentreportteacher", Assignment_Schedule_teacher);
+router.get("/studymaterial_teacher", StudyMaterial_Posted);
+router.get("/studymaterial_student", StudyMaterial_Posted_Students);
+router.get("/notifications/assignment", GetAssignments);
+router.get("/notifications/classes", classnotification);
+router.post("/assignmentsubmit",AssignmentSubmitt)
 module.exports = router;

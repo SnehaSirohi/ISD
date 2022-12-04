@@ -9,11 +9,14 @@ import './assignment_report.css'
 import List from './list';
 import Navbar from "../Student_dashboard/Navbar";
 
+
 var XLSX = require("xlsx");
 
 const Attendancereport = () => {
   const navigate = useNavigate();
   const [assignments, setAssignments] = useState([]);
+
+  
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/assignmentreportstudent", {
       method: "GET",
@@ -26,6 +29,7 @@ const Attendancereport = () => {
     const json = await response.json()
         setAssignments(json.data.reverse())
   }
+
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
@@ -71,7 +75,7 @@ const Attendancereport = () => {
             </tr>
           </thead>
           <tbody>
-            <List assignments={assignments} />
+            <List assignments={assignments}  />
           </tbody>
         </table>
       </div>

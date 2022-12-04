@@ -5,11 +5,11 @@ import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
-import List from '../list';
+import List from './list';
 import Navbar from "../../Student_dashboard/Navbar";
 
 var XLSX = require("xlsx");
-
+let user;
 const Assignmentreport = () => {
     const navigate = useNavigate();
     const [assignments,setAssignments]=useState([]);
@@ -19,7 +19,8 @@ const Assignmentreport = () => {
     const [sem3, setSem3] = useState(false)
     const [sem4, setSem4] = useState(false)
     const [report, setReport] = useState({})
-
+    const[file,setfile]=useState("")
+    
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/assignmentreportstudent", {
             method: "GET",
@@ -29,14 +30,13 @@ const Assignmentreport = () => {
                 'x-access-token': localStorage.getItem('token'), //
             }})
             const json = await response.json()
+           
             setReport(json)
 
       }
-
+      
       async function subjectupdate(e) {
         e.preventDefault();
-        console.log(subject)
-        console.log(report)
 
         let data = report.data.filter((data) => {
           if(data.subject == subject)
@@ -80,8 +80,7 @@ const Assignmentreport = () => {
       useEffect(() => {
         const token = localStorage.getItem('token')
         if (token) {
-          const user = jwt.decode(token)
-          console.log(user)
+           user = jwt.decode(token)
           if (!user) {
             localStorage.removeItem('token')
             navigate("/dashboard");
@@ -90,6 +89,21 @@ const Assignmentreport = () => {
           }
         }
       }, [])
+      const AssignmentSubmit=async()=>{
+        console.log("this is user",user);
+        await fetch("http://localhost:4000/assignmentsubmit", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body:JSON.stringify({
+            file,
+            enrollNum:user.enrollNum,
+            subject
+          })
+        })
+    }
   
   const exporttoexcelhandler= () =>{
      var wb = XLSX.utils.book_new(),
@@ -209,10 +223,11 @@ const Assignmentreport = () => {
             <th>Subject</th>
             <th>Deadline</th>
             <th>Assignment</th>
+            <th>Upload</th>
         </tr>
       </thead>
       <tbody>
-      <List assignments={assignments} />
+      <List assignments={assignments} file={file} setfile={setfile} AssignmentSubmit={AssignmentSubmit} />
       </tbody>
     </table>
   </div>
