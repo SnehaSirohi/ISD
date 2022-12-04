@@ -89,3 +89,9 @@ a {
 .resetpass{
     margin-left: 1rem;
 }
+
+.profilephoto{
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+}

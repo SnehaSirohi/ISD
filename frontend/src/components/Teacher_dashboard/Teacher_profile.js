@@ -4,6 +4,7 @@ import "./Teacher_profile.css"
 import Navbar from './Navbar'
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
+import logo from './image.png'
 
 const Teacher_Profile = () => {
 
@@ -59,6 +60,7 @@ const Teacher_Profile = () => {
                             <div class="mt-3">
                                 <h3>{name}</h3>
                                 <h3>Professor ID: {teacher_id || 'ish'}</h3>
+                                <div><img src={logo} alt="..." class="profilephoto"></img></div>
                             </div>
                         </div>
                         <div class="mb-2 detailblock">
@@ -73,7 +75,7 @@ const Teacher_Profile = () => {
                             </div>
                         </div>
                         <div className='buttons'>
-                            <button  onClick={() => {
+                            <button onClick={() => {
                                 localStorage.removeItem('token')
                                 navigate("/")
                             }}>Logout</button>
