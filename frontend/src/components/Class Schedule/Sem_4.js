@@ -95,7 +95,7 @@ const Sem_4 = () => {
         <div className=" mb-3">
         <h1>Class Schedule</h1>
         {NitishaAgg && <div>
-          <label className="form-label">Select Subject</label>
+
           <select
             type="text"
             className="form-control"
@@ -110,7 +110,7 @@ const Sem_4 = () => {
           </select>
           </div>}
         {UnmeshShukla && <div>
-          <label className="form-label">Select Subject</label>
+
           <select
             type="text"
             className="form-control"
@@ -123,7 +123,7 @@ const Sem_4 = () => {
           </select>
           </div>}
         {Sanjeev && <div>
-          <label className="form-label">Select Subject</label>
+
           <select
             type="text"
             className="form-control"
@@ -136,7 +136,7 @@ const Sem_4 = () => {
           </select>
           </div>}
         {MKDas && <div>
-          <label className="form-label">Select Subject</label>
+
           <select
             type="text"
             className="form-control"

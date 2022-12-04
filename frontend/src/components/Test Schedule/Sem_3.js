@@ -11,39 +11,35 @@ const Sem_3 = () => {
   const [time, settime] = useState("");
   const [message, setmessage] = useState("");
   const [warning, setwarning] = useState("");
-   const [UnmeshShukla,setUnmeshShukla]=useState(false)
-  const [NitishaAgg,setNitishaAgg]=useState(false)
-  const [MKDas,setMKDas]=useState(false)
-  const [Manish,setManish]=useState(false)
-  const [teacher,setTeacher]=useState("")
+  const [UnmeshShukla, setUnmeshShukla] = useState(false)
+  const [NitishaAgg, setNitishaAgg] = useState(false)
+  const [MKDas, setMKDas] = useState(false)
+  const [Manish, setManish] = useState(false)
+  const [teacher, setTeacher] = useState("")
   const sem = "Sem-3";
-   //-----------
- async function populate(e){
-  const req = await fetch('http://localhost:4000/scheduletest',{
-    headers: {
-      'x-access-token': localStorage.getItem('token'), //
-    },
-  })
-  const data = await req.json();
-   setTeacher(data.name)
-  console.log(data)
-   if(data.name=="Unmesh Shukla")
-    {
+  //-----------
+  async function populate(e) {
+    const req = await fetch('http://localhost:4000/scheduletest', {
+      headers: {
+        'x-access-token': localStorage.getItem('token'), //
+      },
+    })
+    const data = await req.json();
+    setTeacher(data.name)
+    console.log(data)
+    if (data.name == "Unmesh Shukla") {
       setUnmeshShukla(true)
     }
-    if(data.name=="Nitisha Aggarwal")
-    {
+    if (data.name == "Nitisha Aggarwal") {
       setNitishaAgg(true)
     }
-    if(data.name=="M.K Das")
-    {
+    if (data.name == "M.K Das") {
       setMKDas(true)
     }
-    if(data.name=="Manish")
-    {
+    if (data.name == "Manish") {
       setManish(true)
     }
-}
+  }
 
 
   async function schedule(e) {
@@ -53,8 +49,8 @@ const Sem_3 = () => {
       method: "POST",
       headers: {
         Accept: "application/json",//
-      "Content-Type": "application/json", //
-      'x-access-token': localStorage.getItem('token'),
+        "Content-Type": "application/json", //
+        'x-access-token': localStorage.getItem('token'),
       },
       body: JSON.stringify({
         subject,
@@ -64,91 +60,91 @@ const Sem_3 = () => {
         message,
         teacher
       }),
-    }).then(async(response) => {
-    let data = await response.json();
-    console.log(data);
-    setwarning(data.warning)
-});
+    }).then(async (response) => {
+      let data = await response.json();
+      console.log(data);
+      setwarning(data.warning)
+    });
   }
   //--------------------
-  useEffect(() =>{
+  useEffect(() => {
     const token = localStorage.getItem('token')
-    if (token){
-        const user = jwt.decode(token)
-        console.log(user)
-        if(!user){
-            localStorage.removeItem('token')
-            navigate("/Teacherdashboard");
-        } else {
-             populate()
-        }
+    if (token) {
+      const user = jwt.decode(token)
+      console.log(user)
+      if (!user) {
+        localStorage.removeItem('token')
+        navigate("/Teacherdashboard");
+      } else {
+        populate()
+      }
     }
-}, [])
+  }, [])
 
   return (
     <>
       <form onSubmit={schedule}>
-          <div className=" mb-3">
-        <h1>Class Schedule</h1>
-        {NitishaAgg && <div>
-          <label className="form-label">Select Subject</label>
-          <select
-            type="text"
-            className="form-control"
-            id="subject"
-            name="subject"
-            value={subject}
-            onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
-            <option value="Information System Design">
-              Information System Design
-            </option>
-          </select>
+        <div className=" mb-3">
+          <h1>Class Schedule</h1>
+          {NitishaAgg && <div>
+            
+            <select
+              type="text"
+              className="form-control"
+              id="subject"
+              name="subject"
+              value={subject}
+              onChange={(e) => setsubject(e.target.value)}>
+              <option>Select Subject</option>
+              <option value="Information System Design">
+                Information System Design
+              </option>
+            </select>
           </div>}
-        {UnmeshShukla && <div>
-          <label className="form-label">Select Subject</label>
-          <select
-            type="text"
-            className="form-control"
-            id="subject"
-            name="subject"
-            value={subject}
-            onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
-            <option value="Cloud Computing">Cloud Computing</option>
-          </select>
+          {UnmeshShukla && <div>
+            
+            <select
+              type="text"
+              className="form-control"
+              id="subject"
+              name="subject"
+              value={subject}
+              onChange={(e) => setsubject(e.target.value)}>
+              <option>Select Subject</option>
+              <option value="Cloud Computing">Cloud Computing</option>
+            </select>
           </div>}
-        {MKDas && <div>
-          <label className="form-label">Select Subject</label>
-          <select
-            type="text"
-            className="form-control"
-            id="subject"
-            name="subject"
-            value={subject}
-            onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
-            <option value="Software Engineering">Software Engineering</option>
-          </select>
+          {MKDas && <div>
+            
+            <select
+              type="text"
+              className="form-control"
+              id="subject"
+              name="subject"
+              value={subject}
+              onChange={(e) => setsubject(e.target.value)}>
+              <option>Select Subject</option>
+              <option value="Software Engineering">Software Engineering</option>
+            </select>
           </div>}
-        {Manish && <div>
-          <label className="form-label">Select Subject</label>
-          <select
-            type="text"
-            className="form-control"
-            id="subject"
-            name="subject"
-            value={subject}
-            onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
-            <option value="IT Planning and Management">
-              IT Planning and Management
-            </option>
-          </select>
+          {Manish && <div>
+            
+            <select
+              type="text"
+              className="form-control"
+              id="subject"
+              name="subject"
+              value={subject}
+              onChange={(e) => setsubject(e.target.value)}>
+              <option>Select Subject</option>
+              <option value="IT Planning and Management">
+                IT Planning and Management
+              </option>
+            </select>
           </div>}
-          
+
         </div>
-        <div className="mb-3">
+        <div className="mb-3 text-center">
           <label htmlFor="date" className="form-label">
             Date
           </label>
@@ -161,7 +157,7 @@ const Sem_3 = () => {
             onChange={(e) => setdate(e.target.value)}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-3 text-center">
           <label htmlFor="time" className="form-label">
             time
           </label>
@@ -189,10 +185,10 @@ const Sem_3 = () => {
         <button type="submit" className="btn btn-primary">
           Schedule Test
         </button>
-        {warning &&  <div className="container warning">
-            <h3>{warning}</h3>
-            <button onClick={(e)=>setwarning(false)}>Ok</button>
-      </div>}
+        {warning && <div className="container warning">
+          <h3>{warning}</h3>
+          <button onClick={(e) => setwarning(false)}>Ok</button>
+        </div>}
       </form>
     </>
   );

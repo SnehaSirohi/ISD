@@ -96,7 +96,7 @@ const Sem_2 = () => {
         <div className=" mb-3">
         <h1 className="class-1">Class Schedule</h1>
         {NitishaAgg && <div>
-          <label className="form-label">Select Subject</label>
+          
           <select
             type="text"
             className="form-control"
@@ -112,7 +112,7 @@ const Sem_2 = () => {
           </select></div>}
           
         {UnmeshShukla && <div>
-          <label className="form-label">Select Subject</label>
+          
           <select
             type="text"
             className="form-control"
@@ -125,7 +125,7 @@ const Sem_2 = () => {
           </select></div>}
           
         {MKDas && <div>
-          <label className="form-label">Select Subject</label>
+          
           <select
             type="text"
             className="form-control"
@@ -140,7 +140,7 @@ const Sem_2 = () => {
           </select></div>}
           
         {Sanjeev && <div>
-          <label className="form-label">Select Subject</label>
+          
           <select
             type="text"
             className="form-control"
@@ -155,6 +155,7 @@ const Sem_2 = () => {
         </div>
 
         <div className="abc-1">
+        <div className="class-div">
           <label htmlFor="date" className="class-form-label">
             Date:
           </label>
@@ -166,9 +167,9 @@ const Sem_2 = () => {
             value={date}
             onChange={(e) => setdate(e.target.value)}
           />
-       
+        </div>
         
-        <div >
+        <div className="time-div">
           <label htmlFor="time" className="time-form-label">
             Time:
           </label>
@@ -181,12 +182,12 @@ const Sem_2 = () => {
           />
         </div>
         </div>
-        <div>
-        <div class="msg-1">
+       
+        <div class="messagecontent">
           <label for="exampleFormControlTextarea1" class="form-label">
             Message:
           </label>
-          </div>
+          <br />
           <textarea
             type="text"
             class="class-form-control-1"

@@ -226,7 +226,7 @@ return (
         </select>
       </div>
 </form>}
-{subject && NitishaAgg ?  <form>
+{subject && NitishaAgg &&  <form>
   <div className=" mb-3">
         <label className="form-label">Select Subject</label>
         <select
@@ -236,15 +236,14 @@ return (
           name="subject"
           value={subjectval}
           onChange={(e) => setsubjectval(e.target.value)}>
-          <option required>Select Subject</option>
-          
+        <option required>Select Subject</option>
               <option value="Software Design & Programming">
                 Software Design & Programming
               </option>
-          
         </select>
       </div>
-</form> : UnmeshShukla? <form>
+</form>} 
+{subject && UnmeshShukla && <form>
   <div className=" mb-3">
         <label className="form-label">Select Subject</label>
         <select
@@ -260,7 +259,8 @@ return (
               </option>
         </select> 
       </div>
-</form>:MKDas? <form>
+</form>}
+{subject && MKDas && <form>
   <div className=" mb-3">
         <label className="form-label">Select Subject</label>
         <select
@@ -278,7 +278,8 @@ return (
             
         </select>
       </div>
-</form>:SunilKumar&& <form>
+</form>}
+{subject && SunilKumar&& <form>
   <div className=" mb-3">
         <label className="form-label">Select Subject</label>
         <select

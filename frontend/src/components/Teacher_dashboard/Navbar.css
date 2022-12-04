@@ -79,12 +79,6 @@
     color: rgb(0, 104, 74);
 }
 
-.nav-text span:hover {
-    font-size: 20px;
-    font-weight: 501;
-    color: rgb(7, 109, 112);
-}
-
 
 
 .semester {
@@ -116,7 +110,7 @@ p {
 }
 
 .semester>a:hover {
-    background-color: grey;
+    background-color: #ccdddd;
 }
 
 .nav-text:hover {

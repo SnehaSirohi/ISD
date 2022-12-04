@@ -61,10 +61,10 @@ const Teacher_Profile = () => {
                                 <h3>Professor ID: {teacher_id || 'ish'}</h3>
                             </div>
                         </div>
-                        <div class="row mb-2 mr-0 detailblock">
-                            <div class="col-md-6 p-0 mb-2 detailcontent">
+                        <div class="mb-2 mr-0 detailblock">
+                            <div class="p-0 mb-2 detailcontent">
                                 <div class="col d-flex flex-column position-static details">
-                                    <h3 class="mb-0">Personal Details</h3>
+                                    <h3 class="mb-2">Personal Details</h3>
                                     <h6>Contact no. - {contactNum}</h6>
                                     <h6>Mobile no - xxxxxxxxxx </h6>
                                     <h6>D.O.B - 17/11/2000 </h6>
@@ -73,11 +73,11 @@ const Teacher_Profile = () => {
                             </div>
                         </div>
                         <div className='buttons'>
-                            <button onClick={() => {
+                            <button  onClick={() => {
                                 localStorage.removeItem('token')
                                 navigate("/")
                             }}>Logout</button>
-                            <button><Link to="/Teacherdashboard/changepassword"><div className="button">Reset Password</div></Link></button>
+                            <button className="resetpass"><Link to="/Teacherdashboard/changepassword"><div>Reset Password</div></Link></button>
                         </div>
 
                     </div>

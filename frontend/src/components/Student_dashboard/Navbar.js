@@ -83,27 +83,27 @@ function Navbar() {
                         </li>
                         <li className="nav-text">
                             <AiIcons.AiFillHome color='rgb(0, 104, 74)' />
-                            <span><Link to="/dashboard">Home</Link></span>
+                            <Link to="/dashboard"><span>Home</span></Link>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaUserCircle color='rgb(0, 104, 74)' />
-                            <span><Link to="/dashboard/profile">Profile</Link></span>
+                            <Link to="/dashboard/profile"><span>Profile</span></Link>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaRegCalendarCheck color='rgb(0, 104, 74)'/>
-                            <Link to='/scheduledclass'><p>Scheduled Classes</p></Link>
+                            <Link to='/scheduledclass'><span><p>Scheduled Classes</p></span></Link>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaBookReader color='rgb(0, 104, 74)'/>
-                            <Link to='/scheduledtests'><p>Scheduled Tests</p></Link>
+                            <Link to='/scheduledtests'><span><p>Scheduled Tests</p></span></Link>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaRegListAlt color='rgb(0, 104, 74)' />
-                            <Link to='/assignments'><p>Assignments</p></Link>
+                            <Link to='/assignments'><span><p>Assignments</p></span></Link>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaBook color='rgb(0, 104, 74)'/>
-                            <Link to='/studymaterial'><p>Study Material</p></Link>
+                            <Link to='/studymaterial'><span><p>Study Material</p></span></Link>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaUserCheck color='rgb(0, 104, 74)'/>

@@ -225,7 +225,7 @@ return (
         </select>
       </div>
 </form>}
-{subject && NitishaAgg ?  <form>
+{subject && NitishaAgg &&  <form>
   <div className=" mb-3">
         <label className="form-label">Select Subject</label>
         <select
@@ -243,7 +243,8 @@ return (
           
         </select>
       </div>
-</form> : UnmeshShukla? <form>
+</form> }
+{subject && UnmeshShukla && <form>
   <div className=" mb-3">
         <label className="form-label">Select Subject</label>
         <select
@@ -257,7 +258,8 @@ return (
             <option value="Cloud Computing">Cloud Computing</option>
         </select>
       </div>
-</form>:MKDas? <form>
+</form>}
+{subject && MKDas && <form>
   <div className=" mb-3">
         <label className="form-label">Select Subject</label>
         <select
@@ -272,7 +274,8 @@ return (
             
         </select>
       </div>
-</form>:Manish&& <form>
+</form>}
+{subject && Manish&& <form>
   <div className=" mb-3">
         <label className="form-label">Select Subject</label>
         <select
