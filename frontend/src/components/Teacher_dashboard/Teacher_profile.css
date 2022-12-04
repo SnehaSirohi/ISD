@@ -16,10 +16,10 @@ a {
 }
 
 .profilebody {
-    background-size: 70rem;
-    background-position: center;
-    background: rgb(248, 246, 246);
-    height: 35rem;
+    display: flex;
+    background: violet;
+    justify-content: center;
+    height: 100vh;
 }
 
 .profilebody>h2 {
@@ -27,11 +27,9 @@ a {
     align-items: center;
     justify-content: center;
     height: 3rem;
-    background: #D9D9D9;
 }
 
 .profileenroll {
-    margin-inline: 2rem;
     height: 10rem;
     text-align: center;
 }
@@ -45,13 +43,11 @@ a {
 }
 
 .details {
-    background: #949292;
     padding: 0;
 }
 
 .details>* {
-    margin-left: 2rem;
-    color: white;
+    color: black;
 }
 
 .details>h3 {
@@ -61,29 +57,25 @@ a {
 
 .detailcontent {
     text-align: -webkit-center;
-    width: 31rem;
 }
 
-.detailblock {
-    justify-content: space-evenly;
-    margin-top: 3rem;
-}
+
 
 .profileContent {
     margin-top: 2rem;
-    background: #D9D9D9;
-
+    background: greenyellow;
+    margin-bottom: 2rem;
+    border-radius: 16px;
 }
 
 .buttons {
-
     margin-top: 1rem;
     text-align: center;
-    margin-left: 2rem;
+    padding: 0 2rem;
 }
 
 .buttons>button {
-    margin-right: 2rem;
+    margin-right: 0;
     background: #2BB0A8;
     height: 3rem;
     width: 8rem;
@@ -92,4 +84,8 @@ a {
     border: none;
     border-radius: 10%;
     margin-bottom: 2vh;
+}
+
+.resetpass{
+    margin-left: 1rem;
 }
