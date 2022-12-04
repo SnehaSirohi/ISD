@@ -90,7 +90,7 @@ const Sem_4 = () => {
       <div className="attendencebody">
         <Navbar/>
         <h1 className="atte1">Sem 4 attendance</h1>
-        {NitishaAgg && <div className=" mb-3">
+        {NitishaAgg && <div className="mb-3 selectsubjectcontainer ">
           <select
             type="text"
             className="form-control"
@@ -104,7 +104,7 @@ const Sem_4 = () => {
             </option>
           </select>
         </div>}
-        {UnmeshShukla && <div className=" mb-3">
+        {UnmeshShukla && <div className="mb-3 selectsubjectcontainer ">
             
           <select
             type="text"
@@ -117,7 +117,7 @@ const Sem_4 = () => {
             <option value="Health Informatics">Health Informatics</option>
           </select>
         </div>}
-        {Sanjeev && <div className=" mb-3">
+        {Sanjeev && <div className="mb-3 selectsubjectcontainer ">
             
           <select
             type="text"
@@ -130,7 +130,7 @@ const Sem_4 = () => {
             <option value="Dissertation Project">Dissertation Project</option>
           </select>
         </div>}
-        {MKDas && <div className=" mb-3">
+        {MKDas && <div className="mb-3 selectsubjectcontainer">
             
           <select
             type="text"
