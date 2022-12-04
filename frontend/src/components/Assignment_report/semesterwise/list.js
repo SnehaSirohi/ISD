@@ -1,7 +1,7 @@
 import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CSVLink } from 'react-csv'
-const List = ({ assignments,AssignmentSubmit,file,setfile }) => {
+const List = ({ assignments,AssignmentSubmit,files,setfile }) => {
   return (
     <>
       {assignments.map((teach) => {
@@ -25,8 +25,9 @@ const List = ({ assignments,AssignmentSubmit,file,setfile }) => {
               </td>
               <td>
                 <form>
-                <input type="file" value={file} onChange={(e)=>setfile(e.target.value)} required />
-                <button type='submit' onClick={AssignmentSubmit}>Submit</button>
+
+                <input type="file" value={files} onChange={(e)=>setfile(e.target.value)} />
+                <button  onClick={AssignmentSubmit}>Submit</button>
                 </form>
               </td>
             </tr>

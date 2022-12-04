@@ -20,7 +20,7 @@ const Assignmentreport = () => {
     const [sem3, setSem3] = useState(false)
     const [sem4, setSem4] = useState(false)
     const [report, setReport] = useState({})
-    const[file,setfile]=useState("")
+    const[files,setfile]=useState("")
     
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/assignmentreportstudent", {
@@ -99,7 +99,7 @@ const Assignmentreport = () => {
             "Content-Type": "application/json",
           },
           body:JSON.stringify({
-            file,
+            files,
             enrollNum:user.enrollNum,
             subject
           })
@@ -228,7 +228,7 @@ const Assignmentreport = () => {
         </tr>
       </thead>
       <tbody>
-      <List assignments={assignments} file={file} setfile={setfile} AssignmentSubmit={AssignmentSubmit} />
+      <List assignments={assignments} files={files} setfile={setfile} AssignmentSubmit={AssignmentSubmit} />
       </tbody>
     </table>
   </div>

@@ -354,7 +354,7 @@ const StudyMaterial_Posted_Students = async (req, res) => {
   }
 };
 
-const AssignmentSubmitt = async (req, res) => {
+const PostAssignmentSubmitt = async (req, res) => {
   const {file,enrollNum,subject}=req.body
   const student = await Students.findOne({enrollNum:enrollNum})
   const name=student.name;
@@ -384,6 +384,8 @@ const AssignmentSubmitt = async (req, res) => {
   }
   
 };
+
+
 module.exports = {
   login,
   Getdashboard,
@@ -398,5 +400,6 @@ module.exports = {
   GetAssignments,
   classnotification,
   StudyMaterial_Posted_Students,
-  AssignmentSubmitt
+  PostAssignmentSubmitt,
+  
 };
