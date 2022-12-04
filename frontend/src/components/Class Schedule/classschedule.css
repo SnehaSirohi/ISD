@@ -56,9 +56,13 @@
 .class-form-control-1 {
     width: 100%;
     border-radius: 4px;
+
     background-color: rgb(196, 255, 255);
     border-color: rgb(196, 255, 255);
     border-style: groove;
+    /* background-color: white;
+    border-color:#2BB0A2 ; */
+    /* border-style: groove; */
     height: 10rem;
 }
 
