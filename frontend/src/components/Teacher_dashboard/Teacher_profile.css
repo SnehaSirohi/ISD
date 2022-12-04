@@ -17,7 +17,7 @@ a {
 
 .profilebody {
     display: flex;
-    background: violet;
+    background: white;
     justify-content: center;
     height: 100vh;
 }
