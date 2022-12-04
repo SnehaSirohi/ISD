@@ -23,7 +23,7 @@ function Teacherprofile2() {
                                 </h6>
                             </div>
                         </div>
-                        <div class="row teacherInfo">
+                        <div class="teacherInfo">
                             <div class="col-md-8">
                                 <div class="tab-content profile-tab" id="myTabContent">
                                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
