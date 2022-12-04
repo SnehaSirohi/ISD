@@ -138,6 +138,7 @@ html{
     justify-content: center;
     width: 66vw;
     background: #D9D9D9;
+    
 }
 
 .classinfoval>* {
@@ -153,6 +154,10 @@ html{
 
 .display-4 {
     margin-bottom: 0px;
+}
+.dashblocks>a {
+    width: fit-content;
+    color: black;
 }
 
 #bootstrap-overrides .row>* {
