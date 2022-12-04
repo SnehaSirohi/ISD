@@ -5,9 +5,9 @@ import "./classschedule.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "../Teacher_dashboard/Navbar";
 import { useNavigate } from "react-router-dom"
+import './CS.css'
 
 const Sem_2 = () => {
-  //
   const navigate = useNavigate();
   const [subject, setsubject] = useState("");
   const [date, setdate] = useState("");
@@ -18,7 +18,7 @@ const Sem_2 = () => {
   const [NitishaAgg,setNitishaAgg]=useState(false)
   const [MKDas,setMKDas]=useState(false)
   const [Sanjeev,setSanjeev]=useState(false)
-   const [teacher,setTeacher] = useState("")
+  const [teacher,setTeacher] = useState("")
   const sem = "Sem-2";
 
   //-----------
@@ -95,7 +95,7 @@ const Sem_2 = () => {
       <form onSubmit={schedule}>
         <div className=" mb-3">
         <h1 className="class-1">Class Schedule</h1>
-        {NitishaAgg && <div>
+        {NitishaAgg && <div className="selectsubjectcontainer">
           
           <select
             type="text"
@@ -111,7 +111,7 @@ const Sem_2 = () => {
             <option value="Operating Systems">Operating Systems</option>
           </select></div>}
           
-        {UnmeshShukla && <div>
+        {UnmeshShukla && <div className="selectsubjectcontainer">
           
           <select
             type="text"
@@ -124,7 +124,7 @@ const Sem_2 = () => {
             <option value="Database Systems">Database Systems</option>
           </select></div>}
           
-        {MKDas && <div>
+        {MKDas && <div className="selectsubjectcontainer">
           
           <select
             type="text"
@@ -139,7 +139,7 @@ const Sem_2 = () => {
             </option>
           </select></div>}
           
-        {Sanjeev && <div>
+        {Sanjeev && <div className="selectsubjectcontainer">
           
           <select
             type="text"
