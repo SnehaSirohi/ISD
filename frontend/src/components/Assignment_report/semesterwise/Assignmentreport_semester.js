@@ -21,7 +21,7 @@ const Assignmentreport = () => {
     const [sem4, setSem4] = useState(false)
     const [report, setReport] = useState({})
     const[files,setfile]=useState("")
-    
+
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/assignmentreportstudent", {
             method: "GET",

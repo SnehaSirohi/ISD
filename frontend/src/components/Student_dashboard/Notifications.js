@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './notifications.css'
+import Navbar from './Navbar'
 const Notifications = () => {
     const [assignmentnotifications,setassignmentnotifications]=useState([])
     const [classnotifications,setclassnotifications]=useState([])
@@ -38,7 +39,8 @@ const Notifications = () => {
         },[])
   return (
     <>
-    <h1>Notifications</h1>
+    <Navbar/>
+    <div className='"container notification"'>
      {assignmentnotifications.map((notification)=>{
         const {teacher,subject,date} = notification
          return(
@@ -61,6 +63,8 @@ const Notifications = () => {
             </>
          )
      })}
+    </div>
+    
     </>
   )
 }
