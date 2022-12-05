@@ -107,7 +107,7 @@ const Sem_1 = () => {
           </option>
         </select></div>}
       {NitishaAgg && <div className="mb-3 selectsubjectcontainer">
-        <label className="form-label">Select Subject</label>
+        
         <select
           type="text"
           className="form-control"
@@ -122,7 +122,7 @@ const Sem_1 = () => {
           </option>
         </select></div>}
       {MKDas && <div className="mb-3 selectsubjectcontainer">
-        <label className="form-label">Select Subject</label>
+        
         <select
           type="text"
           className="form-control"
@@ -137,7 +137,7 @@ const Sem_1 = () => {
           </option>
         </select></div>}
       {SunilKumar && <div className="mb-3 selectsubjectcontainer">
-        <label className="form-label">Select Subject</label>
+        
         <select
           type="text"
           className="form-control"

@@ -24,51 +24,35 @@ function Teacherprofile2() {
                             </div>
                         </div>
                         <div class="teacherInfo">
-                            <div class="col-md-8">
-                                <div class="tab-content profile-tab" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>User Id</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Kshiti123</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Name</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Kshiti Ghelani</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>kshitighelani@gmail.com</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>123 456 7890</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Profession</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Web Developer and Designer</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div className='keys'>
+                                <div>
+                                    <label>User Id: </label>
                                 </div>
+                                <div>
+                                    <label>Name: </label>
+                                </div>
+                                <div>
+                                    <label>Email: </label>
+                                </div>
+                                <div>
+                                    <label>Phone: </label>
+                                </div>
+                            </div>
+                            <div className='values'>
+                                <div>
+                                    <p>Kshiti Ghelani</p>
+                                </div>
+                                <div>
+                                    <p>kshitighelani@gmail.com</p>
+                                </div>
+                                <div>
+                                    <p>123 456 7890</p>
+                                </div>
+
+                                <div>
+                                    <p>Web Developer and Designer</p>
+                                </div>
+
                             </div>
                         </div>
                         <div className='profilebuttons'>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import List from './List'
+import Navbar from './Navbar'
 const Notifications = () => {
     const[notification,setnotification]=useState("")
     console.log(notification)
@@ -22,8 +23,10 @@ const Notifications = () => {
         
   return (
     <>
-      <h1> Notifications</h1>
+    <Navbar/>
+    <div className="container notification">
      {notification && <List notification={notification} />} 
+     </div>
     </>
   )
 }

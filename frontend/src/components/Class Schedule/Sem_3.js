@@ -4,6 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import jwt from 'jsonwebtoken'
 import Navbar from "../Teacher_dashboard/Navbar";
 import { useNavigate } from "react-router-dom"
+import './CS.css'
+import "./classschedule.css";
+
 const Sem_3 = () => {
   //
   const navigate = useNavigate();
@@ -94,7 +97,7 @@ const Sem_3 = () => {
       <form onSubmit={schedule}>
         <div className=" mb-3">
         <h1 className="class-1">Class Schedule</h1>
-        {NitishaAgg && <div>
+        {NitishaAgg && <div className="selectsubjectcontainer">
          
           <select
             type="text"
@@ -109,7 +112,7 @@ const Sem_3 = () => {
             </option>
           </select>
           </div>}
-        {UnmeshShukla && <div>
+        {UnmeshShukla && <div className="selectsubjectcontainer">
          
           <select
             type="text"
@@ -122,7 +125,7 @@ const Sem_3 = () => {
             <option value="Cloud Computing">Cloud Computing</option>
           </select>
           </div>}
-        {MKDas && <div>
+        {MKDas && <div className="selectsubjectcontainer">
          
           <select
             type="text"
@@ -135,7 +138,7 @@ const Sem_3 = () => {
             <option value="Software Engineering">Software Engineering</option>
           </select>
           </div>}
-        {Manish && <div>
+        {Manish && <div className="selectsubjectcontainer">
          
           <select
             type="text"
@@ -153,6 +156,7 @@ const Sem_3 = () => {
           
         </div>
         <div className="abc-1">
+        <div className="class-div">
           <label htmlFor="date" className="class-form-label">
             Date:
           </label>
@@ -164,8 +168,8 @@ const Sem_3 = () => {
             value={date}
             onChange={(e) => setdate(e.target.value)}
           />
-       
-        <div className="mb-3">
+       </div>
+        <div className="time-div">
           <label htmlFor="time" className="time-form-label">
             Time:
           </label>
@@ -178,12 +182,10 @@ const Sem_3 = () => {
           />
         </div>
         </div>
-        <div>
-        <div class="msg-1">
+        <div class="messagecontent">
           <label for="exampleFormControlTextarea1" class="form-label">
             Message:
           </label>
-          </div>
           <textarea
             type="text"
             class="class-form-control-1"
