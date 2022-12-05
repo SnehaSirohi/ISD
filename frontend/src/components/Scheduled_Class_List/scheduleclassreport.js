@@ -13,6 +13,8 @@ var XLSX = require("xlsx");
 const Classreport = () => {
     const navigate = useNavigate();
     const [classes, setClasses]=useState([]);
+    const [visible, setVisible] = useState(false)
+    const [string, setString] = useState("")
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/scheduledclassreport", {
             method: "GET",
@@ -23,6 +25,14 @@ const Classreport = () => {
             }})
             const json = await response.json()
                 setClasses(json.data.reverse())
+                if(json.data.length != 0)
+                {
+                  setVisible(true)
+                  setString("Overall Scheduled Classes ")
+                }else {
+                  setString("No Classes Scheduled !")
+                }
+
 
       }
       useEffect(() => {
@@ -56,9 +66,9 @@ const Classreport = () => {
   return (
    <>
 <Navbar />
- {<h1 className='text-center pt-3'>Overall Scheduled Classes </h1>}
+ {<h1 className='text-center pt-3'>{string}</h1>}
  
-  <div className='tableblock'>
+ {visible && <div className='tableblock'>
     <table className='table table-striped' id='mytable'>
       <thead className='heading-2'>
         <tr>
@@ -72,11 +82,11 @@ const Classreport = () => {
       <List classes={classes} />
       </tbody>
     </table>
-  </div>
-  <div className='text-center'>
+  </div>}
+  {visible && <div className='text-center'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
-   </div>
+   </div>}
    </>
   )
 }
