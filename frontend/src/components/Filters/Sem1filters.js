@@ -165,7 +165,7 @@ const Sem1filters = () => {
 
 return (
   <>
-   <div className=" mb-3">
+   <div className=" mb-3" >
     <Navbar/>
         {/* <label className="form-label">Select Filter</label> */}
         <select
@@ -190,7 +190,7 @@ return (
         </select>
       </div>
       {date && <form>
-<div className="mb-3" id='date_block1'>
+<div className="mb-3" id='date_block1' >
   {/* <label className="form-label">Enter Date</label> */}
   <input type="date" className="form-control-12" value={dateval} onChange={(e)=>setdateval(e.target.value)} />
 </div>
@@ -247,7 +247,7 @@ return (
 </form>} 
 {subject && UnmeshShukla && <form>
   <div className="selectsubjectcontainer">
-        <label className="form-label">Select Subject</label>
+        {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
           className="form-control"
@@ -264,7 +264,7 @@ return (
 </form>}
 {subject && MKDas && <form>
   <div className="selectsubjectcontainer">
-        <label className="form-label">Select Subject</label>
+        {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
           className="form-control"
@@ -283,7 +283,7 @@ return (
 </form>}
 {subject && SunilKumar&& <form>
   <div className="selectsubjectcontainer">
-        <label className="form-label">Select Subject</label>
+        {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
           className="form-control"
@@ -314,7 +314,7 @@ return (
             </tr>
           </thead>
           <tbody>
-            {/* <List student={student} /> */}
+            <List student={student} />
           </tbody>
         </table>
       </div>
