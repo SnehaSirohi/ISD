@@ -130,7 +130,7 @@ const Assignmentreport = () => {
   return (
    <>
 <Navbar />
- {<h1 className='text-center-1'>Assignments Posted </h1>}
+ {<h1 classNcame='text-center-1'>Assignments Posted </h1>}
  {sem1 && <div className='classrepcontainer'>
     <form className='repform1' onSubmit={subjectupdate}>
     <select
