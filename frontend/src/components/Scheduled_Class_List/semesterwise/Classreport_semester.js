@@ -154,7 +154,7 @@ const Classreport = () => {
   
   </div>}
   {sem2 && <div className='classrepcontainer'>
-    <form onSubmit={subjectupdate}>
+    <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
                 className="form-control"
@@ -176,7 +176,7 @@ const Classreport = () => {
     </form>
   </div>}
   {sem3 && <div className='classrepcontainer'>
-    <form onSubmit={subjectupdate}>
+    <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
                 className="form-control"
@@ -197,7 +197,7 @@ const Classreport = () => {
     </form>
   </div>}
   {sem4 && <div className='classrepcontainer'>
-    <form onSubmit={subjectupdate}>
+    <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
                 className="form-control"
