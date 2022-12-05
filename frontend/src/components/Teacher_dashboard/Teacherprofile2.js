@@ -56,7 +56,7 @@ function Teacherprofile2() {
 
                             </div>
                         </div>
-                        <div className='text-center pt-4'>
+                        <div className='text-center pt-5'>
                                  <button id='butn' class="btn btn-primary" >Logout</button>
                                  <button id='butn' class="btn btn-primary-1" >Reset Password</button>
                          </div>
