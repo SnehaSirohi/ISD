@@ -164,8 +164,7 @@ else
 
 
           <div className=" mb-3">
-
-            <h1 className="class-1 mt-3 mb-3">Class Schedule</h1>
+            <h1 className="class-1 mb-1">Class Schedule</h1>
             {UnmeshShukla && <div className="selectsubjectcontainer">
 
               <select
