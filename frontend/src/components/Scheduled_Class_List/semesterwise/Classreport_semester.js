@@ -23,6 +23,8 @@ const Classreport = () => {
     const [sem3, setSem3] = useState(false)
     const [sem4, setSem4] = useState(false)
     const [report, setReport] = useState({})
+    const [visible, setVisible] = useState(false)
+    const [string, setString] = useState("")
     
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/classschedule", {
@@ -37,6 +39,8 @@ const Classreport = () => {
       }
 
       async function subjectupdate(e) {
+        setVisible(false)
+        setString("")
         e.preventDefault();
     
         console.log(subject)
@@ -59,6 +63,14 @@ const Classreport = () => {
           }
         })
         console.log(data2)
+        if(data2.length!=0)
+        {
+          setVisible(true)
+        }
+        else{
+          setString("No Classes are scheduled !")
+
+        }
 
             setClasses(data2.reverse())    
       }
@@ -217,7 +229,8 @@ const Classreport = () => {
     </form>
   </div>}
   </div>
-  <div classname="main">
+  <div>{string}</div>
+  {visible && <div classname="main">
     <table className='table table-striped' id='mytable-1'>
       <thead className='heading_1'>
         <tr>
@@ -231,7 +244,7 @@ const Classreport = () => {
       <List classes={classes} />
       </tbody>
     </table>
-  </div>
+  </div>}
   <div className='text-center'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>

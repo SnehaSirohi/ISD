@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
-import "../Teacher_dashboard/Navbar";
+import Navbar from "../Teacher_dashboard/Navbar";
 import autoTable from 'jspdf-autotable';
 import '../Scheduled_Class_List/scheduledclass.css'
 import jwt from 'jsonwebtoken'
@@ -13,6 +13,8 @@ var XLSX = require("xlsx");
 const Studymaterial_report = () => {
     const navigate = useNavigate();
     const [material,setMaterial]=useState([]);
+    const [visible, setVisible] = useState(false)
+    const [string, setString] = useState("")
     console.log(material);
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/studymaterial_teacher", {
@@ -25,6 +27,12 @@ const Studymaterial_report = () => {
             const json = await response.json()
                 setMaterial(json.data)
                 console.log(json)
+                if (json.data.length != 0) {
+                  setVisible(true)
+                  setString("Study Material Posted ")
+                }else{
+                  setString("No Study Material Posted !")
+                }
 
       }
       useEffect(() => {
@@ -57,9 +65,9 @@ const Studymaterial_report = () => {
   };
   return (
    <>
-  {/* <Navbar /> */}
- {<h1 className='text-center pt-3'>Overall Tests Scheduled </h1>}
-  <div classname='tableblock'>
+  <Navbar />
+ {<h1 className='text-center pt-3'>{string} </h1>}
+  {visible && <div classname='tableblock'>
     <table className='table table-striped' id='mytable-5'>
       <thead className='heading-2'>
         <tr>
@@ -73,12 +81,12 @@ const Studymaterial_report = () => {
       <List material={material} />
       </tbody>
     </table>
-  </div>
+  </div>}
 
-  <div className='text-center'>
+  {visible && <div className='text-center'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
-   </div>
+   </div>}
    </>
   )
 }

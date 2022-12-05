@@ -14,6 +14,8 @@ var XLSX = require("xlsx");
 const Attendancereport = () => {
   const navigate = useNavigate();
   const [assignments, setAssignments] = useState([]);
+  const [visible, setVisible] = useState(false)
+  const [string, setString] = useState("")
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/assignmentreportteacher", {
       method: "GET",
@@ -25,7 +27,12 @@ const Attendancereport = () => {
     })
     const json = await response.json()
     setAssignments(json.data)
-
+    if (json.data.length != 0) {
+      setVisible(true)
+      setString("Assignments Posted ")
+    }else{
+      setString("No Assignments Posted !")
+    }
   }
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -57,9 +64,9 @@ const Attendancereport = () => {
   return (
     <>
   <Navbar />
-      {<h1 className='text-center pt-3'>Overall Assignments Posted </h1>}
+      {<h1 className='text-center pt-3'>{string}</h1>}
 
-      <div className='tableblock'>
+    {visible && <div className='tableblock'>
         <table className='table table-striped' id='mytable'>
           <thead className='heading-2'>
             <tr>
@@ -74,11 +81,11 @@ const Attendancereport = () => {
             <List assignments={assignments} />
           </tbody>
         </table>
-      </div>
-      <div className='text-center'>
+      </div>}
+      {visible && <div className='text-center'>
         <button type="button" class="btn btn-primary" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttoexcelhandler}>Download in excel</button>
         <button type="button" class="btn btn-primary-1" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttopdfhandler}>Download in pdf</button>
-      </div>
+      </div>}
     </>
   )
 }

@@ -14,6 +14,8 @@ var XLSX = require("xlsx");
 const Testreport = () => {
   const navigate = useNavigate();
   const [tests, setTests] = useState([]);
+  const [visible, setVisible] = useState(false)
+  const [string, setString] = useState("")
   console.log(tests);
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/scheduledtestreport", {
@@ -26,6 +28,12 @@ const Testreport = () => {
     })
     const json = await response.json()
     setTests(json.data)
+    if (json.data.length != 0) {
+      setVisible(true)
+      setString("Overall Scheduled Tests ")
+    }else{
+      setString("No Tests Scheduled !")
+    }
 
   }
   useEffect(() => {
@@ -58,10 +66,10 @@ const Testreport = () => {
   };
   return (
     <>
-<Navbar />
-      {<h1 className='text-center'>Overall Tests Scheduled </h1>}
+      <Navbar />
+      {<h1 className='text-center'>{string}</h1>}
 
-      <div className='tableblock'>
+     {visible && <div className='tableblock'>
         <table className='table table-striped' id='mytable'>
           <thead className='heading-2'>
             <tr>
@@ -79,7 +87,7 @@ const Testreport = () => {
           <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
           <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
         </div>
-      </div>
+      </div>}
     </>
   )
 }

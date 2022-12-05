@@ -20,6 +20,8 @@ const Assignmentreport = () => {
     const [sem3, setSem3] = useState(false)
     const [sem4, setSem4] = useState(false)
     const [report, setReport] = useState({})
+    const [visible, setVisible] = useState(false)
+    const [string, setString] = useState("")
     const newdate = new Date()
     const monthval = newdate.getMonth()+1;
     const day = newdate.getDate()
@@ -42,6 +44,8 @@ const Assignmentreport = () => {
       }
       
       async function subjectupdate(e) {
+        setVisible(false)
+        setString("")
         e.preventDefault();
 
         let data = report.data.filter((data)=>{
@@ -55,6 +59,14 @@ const Assignmentreport = () => {
         console.log(data)
 
             setAssignments(data.reverse())
+            if(data.length != 0)
+            {
+              setVisible(true)
+            }
+            else{
+              setString("No Assignments Posted !")
+
+            }
     
       }
 
@@ -223,7 +235,8 @@ const Assignmentreport = () => {
             </button>
     </form>
   </div>}
-  <div classname="main">
+  <div>{string}</div>
+  {visible && <div classname="main">
     <table className='table table-striped' id='mytable-1'>
       <thead className='heading_1'>
         <tr>
@@ -239,7 +252,7 @@ const Assignmentreport = () => {
       <List key={assignments.id} assignments={assignments} files={files} setfile={setfile} AssignmentSubmit={AssignmentSubmit} />
       </tbody>
     </table>
-  </div>
+  </div>}
 
   <div className='text-center'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>

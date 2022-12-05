@@ -19,6 +19,8 @@ const Classreport = () => {
     const [sem3, setSem3] = useState(false)
     const [sem4, setSem4] = useState(false)
     const [study, setStudy] = useState({})
+    const [visible, setVisible] = useState(false)
+    const [string, setString] = useState("")
     
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/studymaterial_student", {
@@ -36,6 +38,8 @@ const Classreport = () => {
       console.log(sem1)
       console.log(study)
       async function subjectupdate(e) {
+        setVisible(false)
+        setString("")
         e.preventDefault();
         console.log(study)
         let data = study.data.filter((data) => {
@@ -47,6 +51,15 @@ const Classreport = () => {
         console.log(data)
 
             setMaterial(data.reverse())
+
+            if(data.length != 0)
+            {
+              setVisible(true)
+            }
+            else{
+              setString("No Study Material Posted !")
+
+            }
     
       }
 
@@ -204,7 +217,8 @@ const Classreport = () => {
             </button>
     </form>
   </div>}
-  <div classname="main">
+  <div>{string}</div>
+  {visible && <div classname="main">
     <table className='table table-striped' id='mytable-1'>
       <thead className='heading_1'>
         <tr>
@@ -218,7 +232,7 @@ const Classreport = () => {
       <List material={material} />
       </tbody>
     </table>
-  </div>
+  </div>}
 
   
   <div className='text-center'>
