@@ -39,24 +39,36 @@ function UploadStudyMaterialSem4() {
   }
 
   async function Upload() {
-    const response = await fetch("http://localhost:4000/upload/studymaterial", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "x-access-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        file,
-        subject,
-        semester: "Sem-4",
-        teacher,
-        description,
-      }),
-    });
+    if(!subject)
+    {
+      alert("Please select the subject")
+    }
+    else if(!file)
+    {
+      alert("Please upload a file")
+    }
+    else
+    {
 
-    const data = await response.json();
-    console.log(data)
+      const response = await fetch("http://localhost:4000/upload/studymaterial", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "x-access-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify({
+          file,
+          subject,
+          semester: "Sem-4",
+          teacher,
+          description,
+        }),
+      });
+  
+      const data = await response.json();
+    }
+   
   }
 
   //--------------------

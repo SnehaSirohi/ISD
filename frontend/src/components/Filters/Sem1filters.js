@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from './List'
 import jsPDF from "jspdf";
-import '../Teacher_dashboard/Navbar';
+import Navbar from '../Teacher_dashboard/Navbar';
 import autoTable from 'jspdf-autotable';
 import './filters.css'
 
@@ -166,7 +166,7 @@ const Sem1filters = () => {
 return (
   <>
    <div className=" mb-3">
-    {/* <Navbar/> */}
+    <Navbar/>
         {/* <label className="form-label">Select Filter</label> */}
         <select
           type="text"
@@ -190,18 +190,18 @@ return (
         </select>
       </div>
       {date && <form>
-<div className="mb-3">
-  <label className="form-label">Enter Date</label>
-  <input type="date" className="form-control" value={dateval} onChange={(e)=>setdateval(e.target.value)} />
+<div className="mb-3" id='date_block1'>
+  {/* <label className="form-label">Enter Date</label> */}
+  <input type="date" className="form-control-12" value={dateval} onChange={(e)=>setdateval(e.target.value)} />
 </div>
 
 </form>}
 {month &&    <form>
-  <div className=" mb-3">
-        <label className="form-label">Select Month</label>
+  <div className=" mb-3" id='date_block1'>
+        {/* <label className="form-label">Select Month</label> */}
         <select
           type="text"
-          className="form-control"
+          className="form-control-12"
           id="month"
           name="month"
           value={monthval}
@@ -229,8 +229,8 @@ return (
       </div>
 </form>}
 {subject && NitishaAgg &&  <form>
-  <div className=" mb-3">
-        <label className="form-label">Select Subject</label>
+  <div className="selectsubjectcontainer">
+        {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
           className="form-control"
@@ -246,7 +246,7 @@ return (
       </div>
 </form>} 
 {subject && UnmeshShukla && <form>
-  <div className=" mb-3">
+  <div className="selectsubjectcontainer">
         <label className="form-label">Select Subject</label>
         <select
           type="text"
@@ -263,7 +263,7 @@ return (
       </div>
 </form>}
 {subject && MKDas && <form>
-  <div className=" mb-3">
+  <div className="selectsubjectcontainer">
         <label className="form-label">Select Subject</label>
         <select
           type="text"
@@ -282,7 +282,7 @@ return (
       </div>
 </form>}
 {subject && SunilKumar&& <form>
-  <div className=" mb-3">
+  <div className="selectsubjectcontainer">
         <label className="form-label">Select Subject</label>
         <select
           type="text"
@@ -299,11 +299,12 @@ return (
       </div>
 </form>}
  
-  
-{button &&  <button type="submit" className="btn btn-primary" onClick={Print}  >Print Attendance</button>}
-{report?<h1>Attendance Report Of {val}</h1>:<h1>Overall Attendance Report</h1>}
-<div className='table-2'>
-        <table className='table table-striped' id='mytable'>
+<div className='text-center'>
+{button &&  <button type="submit" className="btn btn-primary" id='button_block5' onClick={Print}  >Print Attendance</button>}
+</div>
+{report?<h3 className='overall-1'>Attendance Report Of {val}</h3>:<h3 className='overall-1'>Overall Attendance Report</h3>}
+<div className='table-24'>
+        <table className='table table-striped' >
           <thead className='heading-2'>
             <tr>
               <th>Student</th>
@@ -313,13 +314,13 @@ return (
             </tr>
           </thead>
           <tbody>
-            <List student={student} />
+            {/* <List student={student} /> */}
           </tbody>
         </table>
       </div>
       <div className='text-center'>
           <button type="button" class="btn btn-primary" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttoexcelhandler}>Download in excel</button>
-          <button type="button" class="btn btn-primary" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttopdfhandler}>Download in pdf</button>
+          <button type="button" class="btn btn-primary-1" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttopdfhandler}>Download in pdf</button>
         </div>
   </>
 )
