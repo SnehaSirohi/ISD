@@ -1,62 +1,55 @@
-main
-{   
-    
-    background-color: rebeccapurple;
-}
-.header
-{   
-    background-color: red;
+.header {
+
     display: flex;
     justify-content: space-evenly;
 }
-.profile
-{
-    background-color: yellow;
+
+.profile {
+
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
-.profilephoto
-{
-    background-color: aqua;
+
+.profilephoto {
+
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.section
-{   
+
+.section {
     margin-top: 40px;
     display: flex;
     justify-content: space-evenly;
 }
-.sec
-{
-    background-color: aqua;
+
+.sec {
+
     width: 120px;
     text-align: start;
 }
-.section1
-{   
+
+.section1 {
     width: 25%;
-    background-color: gray;
+
     display: flex;
     justify-content: flex-end;
 }
-.section2
-{   
+
+.section2 {
     width: 25%;
-    background-color: gray;
+
     text-align: start;
 }
-.bottom
-{   
 
-    background-color: wheat;
+.bottom {
+
     display: flex;
     justify-content: space-evenly;
 
 }
 
-.btn-primary{
+.btn-primary {
     margin: -1;
 }

@@ -3,24 +3,20 @@ import "./profile.css"
 
 function Profile() {
     return (
-        <main>
+        <>
             <div class="header">
                 <div class="profilephoto">
                     <img src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp" class="rounded-circle shadow-4"
                         style="width: 150px;" alt="Avatar" />
-
                 </div>
                 <div class="profile">
                     <h6>Name</h6>
                     <h6>teacherID/enrollmentNum</h6>
-
                 </div>
             </div>
             <div class="section">
-
                 <div class="section1">
                     <div class="sec">
-
                         <h6>Mail ID</h6>
                         <h6>Contact No</h6>
                         <h6>Roll No</h6>
@@ -46,7 +42,7 @@ function Profile() {
                     Reset Password
                 </div>
             </div>
-        </main>
+        </>
     )
 }
 
