@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
-import "../Teacher_dashboard/Navbar";
+import Navbar from "../Teacher_dashboard/Navbar";
 import autoTable from 'jspdf-autotable';
 import '../Scheduled_Class_List/scheduledclass.css'
 import jwt from 'jsonwebtoken'
@@ -57,7 +57,7 @@ const Studymaterial_report = () => {
   };
   return (
    <>
-  {/* <Navbar /> */}
+  <Navbar />
  {<h1 className='text-center pt-3'>Overall Tests Scheduled </h1>}
   <div classname='tableblock'>
     <table className='table table-striped' id='mytable-5'>
