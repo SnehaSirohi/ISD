@@ -22,6 +22,8 @@ const Testreport = () => {
     const [sem3, setSem3] = useState(false)
     const [sem4, setSem4] = useState(false)
     const [report, setReport] = useState({})
+    const [visible, setVisible] = useState(false)
+    const [string, setString] = useState("")
 
     const fetchdata=async()=>{
         const response=await fetch("http://localhost:4000/testschedule", {
@@ -36,6 +38,8 @@ const Testreport = () => {
       }
 
       async function subjectupdate(e) {
+        setVisible(false)
+        setString("")
         e.preventDefault();
         console.log(report)
         let data = report.data.filter((data)=>{
@@ -57,6 +61,14 @@ const Testreport = () => {
         console.log(data2)
 
             setTests(data2.reverse())
+            if(data2.length != 0)
+            {
+              setVisible(true)
+            }
+            else{
+              setString("No Tests are scheduled !")
+
+            }
     
       }
 
@@ -213,7 +225,8 @@ const Testreport = () => {
     </form>
   </div>}
   </div>
-  <div classname="main">
+  <div>{string}</div>
+ {visible && <div classname="main">
     <table className='table table-striped' id='mytable-1'>
       <thead className='heading_1'>
         <tr>
@@ -227,7 +240,7 @@ const Testreport = () => {
       <List tests={tests} />
       </tbody>
     </table>
-  </div>
+  </div>}
 
   <div className='text-center'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
