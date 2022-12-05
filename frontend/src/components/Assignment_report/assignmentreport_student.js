@@ -5,6 +5,7 @@ import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
+import '../Scheduled_Class_List/Scheduledcommon.css';
 import './assignment_report.css'
 import List from './list';
 import Navbar from "../Student_dashboard/Navbar";
@@ -59,11 +60,11 @@ const Assignmentreport = () => {
   return (
     <>
 <Navbar />
-      {<h1>Overall Assignments Posted </h1>}
+      {<h1 className='text-center-1'>Overall Assignments Posted </h1>}
 
       <div classname="main">
-        <table className='table table-striped' id='mytable'>
-          <thead>
+        <table className='table table-striped' id='mytable-5'>
+          <thead className='heading_1'>
             <tr>
               <th>Date</th>
               <th>Professor</th>
@@ -78,8 +79,10 @@ const Assignmentreport = () => {
         </table>
       </div>
 
-      <button onClick={exporttoexcelhandler}>Download in excel</button>
-      <button onClick={exporttopdfhandler}>Download in pdf</button>
+      <div className='text-center'>
+   <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
+   <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
+   </div>
     </>
   )
 }
