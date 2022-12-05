@@ -60,7 +60,7 @@ const Teacher_Profile = () => {
                             <div class="mt-3">
                                 <h3>{name}</h3>
                                 <h3>Professor ID: {teacher_id || 'ish'}</h3>
-                                <div><img src={logo} alt="..." class="profilephoto"></img></div>
+                                <img src={logo} alt="..." class="profilepicture"></img>
                             </div>
                         </div>
                         <div class="mb-2 detailblock">

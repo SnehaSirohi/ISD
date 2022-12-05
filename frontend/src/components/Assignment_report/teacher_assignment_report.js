@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect, useRef, useReactToPrint } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
-import "./assignment_report.css";
+import "../Scheduled_Class_List/scheduledclass.css";
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
@@ -59,9 +59,9 @@ const Attendancereport = () => {
   <Navbar />
       {<h1 className='text-center pt-3'>Overall Assignments Posted </h1>}
 
-      <div className='table-2'>
+      <div className='tableblock'>
         <table className='table table-striped' id='mytable'>
-          <thead>
+          <thead className='heading-2'>
             <tr>
               <th>Date</th>
               <th>Professor</th>
@@ -77,7 +77,7 @@ const Attendancereport = () => {
       </div>
       <div className='text-center'>
         <button type="button" class="btn btn-primary" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttoexcelhandler}>Download in excel</button>
-        <button type="button" class="btn btn-primary" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttopdfhandler}>Download in pdf</button>
+        <button type="button" class="btn btn-primary-1" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttopdfhandler}>Download in pdf</button>
       </div>
     </>
   )

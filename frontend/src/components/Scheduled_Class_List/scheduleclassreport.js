@@ -56,7 +56,7 @@ const Classreport = () => {
   return (
    <>
 <Navbar />
- {<h1 className='text-center'>Overall Scheduled Classes </h1>}
+ {<h1 className='text-center pt-3'>Overall Scheduled Classes </h1>}
  
   <div className='tableblock'>
     <table className='table table-striped' id='mytable'>
