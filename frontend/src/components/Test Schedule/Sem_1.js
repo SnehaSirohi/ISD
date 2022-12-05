@@ -154,7 +154,7 @@ const Sem_1 = () => {
           </div>
           <div className="abc-1">
             <div className="class-div">
-              <label htmlFor="date" id="date-1" className="test-form-label">
+              <label htmlFor="date" id="date-1" className="class-form-label">
                 Date:
               </label>
               <input
@@ -167,7 +167,7 @@ const Sem_1 = () => {
               />
             </div>
             <div className="time-div">
-              <label htmlFor="time" id="time" className="test-form-label">
+              <label htmlFor="time" id="time" className="time-form-label">
                 Time:
               </label>
               <input
