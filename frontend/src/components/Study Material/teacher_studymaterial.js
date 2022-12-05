@@ -2,7 +2,9 @@ import React from 'react'
 import { useState, useEffect} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
+import "../Teacher_dashboard/Navbar";
 import autoTable from 'jspdf-autotable';
+import '../Scheduled_Class_List/scheduledclass.css'
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from './list';
@@ -55,12 +57,11 @@ const Studymaterial_report = () => {
   };
   return (
    <>
-
- {<h1>Overall Tests Scheduled </h1>}
- 
-  <div classname="main">
-    <table classname="table table-bordered" id='mytable'>
-      <thead>
+  {/* <Navbar /> */}
+ {<h1 className='text-center pt-3'>Overall Tests Scheduled </h1>}
+  <div classname='tableblock'>
+    <table className='table table-striped' id='mytable-5'>
+      <thead className='heading-2'>
         <tr>
           <th>Professor</th>
           <th>Subject</th>
@@ -74,8 +75,10 @@ const Studymaterial_report = () => {
     </table>
   </div>
 
-   <button onClick={exporttoexcelhandler}>Download in excel</button>
-   <button onClick={exporttopdfhandler}>Download in pdf</button>
+  <div className='text-center'>
+   <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
+   <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
+   </div>
    </>
   )
 }
