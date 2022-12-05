@@ -45,29 +45,38 @@ const Sem_3 = () => {
   }
 
 
+
   async function schedule(e) {
     e.preventDefault();
+    if(subject && time && date)
+    {
+  
+      const response = await fetch("http://localhost:4000/scheduletest", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",//
+          "Content-Type": "application/json", //
+          'x-access-token': localStorage.getItem('token'),
+        },
+        body: JSON.stringify({
+          subject,
+          sem,
+          date,
+          time,
+          message,
+          teacher
+        }),
+      }).then(async (response) => {
+        let data = await response.json();
+        console.log(data);
+        setwarning(data.warning)
+      });
+    }
+    else
+    {
+      alert("Please fill all the neccessary fields!")
+    }
 
-    const response = await fetch("http://localhost:4000/scheduletest", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",//
-        "Content-Type": "application/json", //
-        'x-access-token': localStorage.getItem('token'),
-      },
-      body: JSON.stringify({
-        subject,
-        sem,
-        date,
-        time,
-        message,
-        teacher
-      }),
-    }).then(async (response) => {
-      let data = await response.json();
-      console.log(data);
-      setwarning(data.warning)
-    });
   }
   //--------------------
   useEffect(() => {
@@ -89,7 +98,7 @@ const Sem_3 = () => {
           <Navbar />
       <form onSubmit={schedule}>
         <div className=" mb-3">
-        <h1 className="test-1">Test Schedule</h1>
+        <h1 className="class-1">Test Schedule</h1>
           <div className=" mb-3">
           {NitishaAgg && <div className="selectsubjectcontainer">
             
@@ -148,49 +157,44 @@ const Sem_3 = () => {
             </select>
           </div>}
         </div>
-        <div className="abc-1">
-        <div className="mb-3 text-center">
-          <label htmlFor="date" className="test-form-label">
-            Date
-          </label>
-          <input
-            type="date"
-            className="test-form-control"
-            id="date"
-            aria-describedby="date"
-            value={date}
-            onChange={(e) => setdate(e.target.value)}
-          />
-        </div>
-        <div className="mb-3 text-center">
-          <label htmlFor="time" className="test-form-label">
-            time
-          </label>
-          <input
-            type="time"
-            className="test-form-control"
-            id="time"
-            value={time}
-            onChange={(e) => settime(e.target.value)}
-          />
-        </div>
-        </div>
-        <div class="mb-3">
-          <div class="test-msg">
-          <label for="exampleFormControlTextarea1" class="test-form-label-1">
-            Message
-          </label>
+          <div className="abc-1">
+            <div className="class-div">
+              <label htmlFor="date" id="date-1" className="class-form-label">
+                Date:
+              </label>
+              <input
+                type="date"
+                className="class-form-control"
+                id="date"
+                aria-describedby="date"
+                value={date}
+                onChange={(e) => setdate(e.target.value)}
+              />
+            </div>
+            <div className="time-div">
+              <label htmlFor="time" id="time" className="time-form-label">
+                Time:
+              </label>
+              <input
+                type="time"
+                className="class-form-control"
+                id="time-1"
+                value={time}
+                onChange={(e) => settime(e.target.value)}
+              />
+            </div>
           </div>
-          <textarea
-            type="text"
-            class="test-form-control-3"
-            id="exampleFormControlTextarea1"
-            rows="3"
-            placeholder="Optional"
-            value={message}
-            onChange={(e) => setmessage(e.target.value)}></textarea>
-        </div>
-        <div className="btn-test">
+          <div class="messagecontent">
+            <label for="exampleFormControlTextarea1" class="form-label">
+              Message:
+            </label>
+            <textarea type="text" class="class-form-control-1" id="exampleFormControlTextarea1"
+              rows="3"
+              placeholder="Optional"
+              value={message}
+              onChange={(e) => setmessage(e.target.value)}></textarea>
+          </div>
+        <div className="btn-class">
         <button type="submit" className="btn btn-primary">
           Schedule Test
         </button>

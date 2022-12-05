@@ -65,25 +65,29 @@ const Sem_3 = () => {
   }, []);
 
   async function Submit(e) {
-    e.preventDefault();
-    const response = await fetch("http://localhost:4000/attendance/sem3", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        'x-access-token': localStorage.getItem('token'), //
+    if (!subject) {
+      alert("Please select the subject ")
+    }
+    else {
+      const response = await fetch("http://localhost:4000/attendance/sem3", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          'x-access-token': localStorage.getItem('token'), //
+        },
+        body: JSON.stringify({
+          subject,
+          status,
+        }),
+      }).then(async (response) => {
+        let dataa = await response.json();
+        console.log(dataa);
+      });
+    }
 
-      },
-      body: JSON.stringify({
-        subject,
-        status,
-      }),
-    }).then(async (response) => {
-      let dataa = await response.json();
-      console.log(dataa);
-    });
-    
   }
+
 
   return (
     <>

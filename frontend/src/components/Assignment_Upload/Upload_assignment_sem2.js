@@ -40,26 +40,37 @@ function UploadAssignmentsem2() {
   }
 
   async function Upload() {
-    const response = await fetch("http://localhost:4000/upload/assignment", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "x-access-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        file,
-        subject,
-        deadline,
-        semester: "Sem-2",
-        teacher,
-        description,
-      }),
-    });
-
-    const data = await response.json();
+    if(!subject)
+    {
+      alert("Please select the subject")
+    }
+    else if(!file)
+    {
+      alert("Please upload a file")
+    }
+    else
+    {
+      const response = await fetch("http://localhost:4000/upload/assignment", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "x-access-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify({
+          file,
+          subject,
+          deadline,
+          semester: "Sem-2",
+          teacher,
+          description,
+        }),
+      });
+  
+      const data = await response.json();
+    }
+   
   }
-
   //--------------------
   useEffect(() => {
     const token = localStorage.getItem("token");
