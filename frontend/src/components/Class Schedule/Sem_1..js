@@ -58,28 +58,39 @@ const Sem_1 = () => {
   }
 
   async function schedule(e) {
+    
     e.preventDefault();
-
+   if(subject && time && date)
+   { 
+   
     const req = await fetch("http://localhost:4000/scheduleclass", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        'x-access-token': localStorage.getItem('token'),
-      },
-      body: JSON.stringify({
-        subject,
-        sem,
-        date,
-        time,
-        message,
-        teacher
-      }),
-    }).then(async (response) => {
-      let data = await response.json();
-      console.log(data);
-      setwarning(data.warning)
-    });
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      'x-access-token': localStorage.getItem('token'),
+    },
+    body: JSON.stringify({
+      subject,
+      sem,
+      date,
+      time,
+      message,
+      teacher
+    }),
+  }).then(async (response) => {
+    let data = await response.json();
+    console.log(data);
+    setwarning(data.warning)
+  });
+       
+}
+else
+{ 
+
+  alert("Please fill all the neccessary fields")
+    
+   }
 
   }
 
@@ -163,23 +174,24 @@ const Sem_1 = () => {
                 id="subject"
                 name="subject"
                 value={subject}
-                required
+               
                 onChange={(e) => setsubject(e.target.value)}>
-                <option required>Select Subject</option>
+                <option>Select Subject</option>
                 <option value="Algorithms And Data Structure">
                   Algorithms and Data Structure
                 </option>
               </select></div>}
             {NitishaAgg && <div className="selectsubjectcontainer">
+              
               <select
                 type="text"
                 className="form-control"
                 id="subject"
                 name="subject"
                 value={subject}
-                required
+               
                 onChange={(e) => setsubject(e.target.value)}>
-                <option required>Select Subject</option>
+                <option>Select Subject</option>
                 <option value="Software Design & Programming">
                   Software Design & Programming
                 </option>
@@ -191,9 +203,9 @@ const Sem_1 = () => {
                 id="subject"
                 name="subject"
                 value={subject}
-                required
+               
                 onChange={(e) => setsubject(e.target.value)}>
-                <option required>Select Subject</option>
+                <option>Select Subject</option>
                 <option value="Mathematical Foundation Of Computing">
                   Mathematical Foundation of Computing
                 </option>
@@ -205,9 +217,9 @@ const Sem_1 = () => {
                 id="subject"
                 name="subject"
                 value={subject}
-                required
+               
                 onChange={(e) => setsubject(e.target.value)}>
-                <option required>Select Subject</option>
+                <option>Select Subject</option>
                 <option value="Computer System Architecture">
                   Computer System Architecture
                 </option>
@@ -224,7 +236,7 @@ const Sem_1 = () => {
                 id="date"
                 aria-describedby="date"
                 value={date}
-                required
+               
                 onChange={(e) => setdate(e.target.value)}
               />
             </div >
@@ -238,7 +250,7 @@ const Sem_1 = () => {
                 className="class-form-control"
                 id="time-1"
                 value={time}
-                required
+               
                 onChange={(e) => settime(e.target.value)}
               />
             </div>

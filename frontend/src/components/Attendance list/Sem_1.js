@@ -66,7 +66,7 @@ const Sem_1 = () => {
 
   async function Submit(e) {
     if (!subject) {
-      alert("Please fill all the fields ")
+      alert("Please select the subject ")
     }
     else {
       const response = await fetch("http://localhost:4000/attendance/sem1", {

@@ -48,27 +48,35 @@ const Sem_1 = () => {
 
   async function schedule(e) {
     e.preventDefault();
+    if(subject && time && date)
+    {
+  
+      const response = await fetch("http://localhost:4000/scheduletest", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",//
+          "Content-Type": "application/json", //
+          'x-access-token': localStorage.getItem('token'),
+        },
+        body: JSON.stringify({
+          subject,
+          sem,
+          date,
+          time,
+          message,
+          teacher
+        }),
+      }).then(async (response) => {
+        let data = await response.json();
+        console.log(data);
+        setwarning(data.warning)
+      });
+    }
+    else
+    {
+      alert("Please fill all the neccessary fields!")
+    }
 
-    const response = await fetch("http://localhost:4000/scheduletest", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",//
-        "Content-Type": "application/json", //
-        'x-access-token': localStorage.getItem('token'),
-      },
-      body: JSON.stringify({
-        subject,
-        sem,
-        date,
-        time,
-        message,
-        teacher
-      }),
-    }).then(async (response) => {
-      let data = await response.json();
-      console.log(data);
-      setwarning(data.warning)
-    });
   }
 
   //--------------------
