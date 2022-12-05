@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from './List'
 import jsPDF from "jspdf";
-import '../Teacher_dashboard/Navbar';
+import Navbar from '../Teacher_dashboard/Navbar';
 import autoTable from 'jspdf-autotable';
 import './filters.css'
 
@@ -166,7 +166,7 @@ const Sem1filters = () => {
 return (
   <>
    <div className=" mb-3">
-    {/* <Navbar/> */}
+    <Navbar/>
         {/* <label className="form-label">Select Filter</label> */}
         <select
           type="text"
