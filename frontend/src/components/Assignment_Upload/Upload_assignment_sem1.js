@@ -85,7 +85,7 @@ function UploadAssignmentsem1() {
       <div className="uploadassignmentcontent">
         {UnmeshShukla && (
           <div>
-            <label className="form-label mt-2">Select Subject</label>
+          
 
             <select
               type="text"
@@ -104,7 +104,7 @@ function UploadAssignmentsem1() {
         )}
         {NitishaAgg && (
           <div>
-            <label className="form-label mt-2">Select Subject</label>
+          
             <select
               type="text"
               className="form-control"
@@ -122,7 +122,7 @@ function UploadAssignmentsem1() {
         )}
         {MKDas && (
           <div>
-            <label className="form-label">Select Subject</label>
+           
             <select
               type="text"
               className="form-control mt-2"
@@ -140,7 +140,7 @@ function UploadAssignmentsem1() {
         )}
         {SunilKumar && (
           <div>
-            <label className="form-label">Select Subject</label>
+           
             <select
               type="text"
               className="form-control mt-2"

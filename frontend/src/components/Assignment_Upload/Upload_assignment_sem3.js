@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Navbar from "../Student_dashboard/Navbar";
+import Navbar from "../Teacher_dashboard/Navbar";
 import "./upload_assignment.css";
 import jwt from "jsonwebtoken";
 import { useNavigate } from "react-router-dom";
@@ -95,7 +95,7 @@ function UploadAssignmentsem3() {
         <div className=" mb-3">
           {NitishaAgg && (
             <div>
-              <label className="form-label">Select Subject</label>
+            
               <select
                 type="text"
                 className="form-control"
@@ -112,7 +112,7 @@ function UploadAssignmentsem3() {
           )}
           {UnmeshShukla && (
             <div>
-              <label className="form-label">Select Subject</label>
+            
               <select
                 type="text"
                 className="form-control"
@@ -127,7 +127,7 @@ function UploadAssignmentsem3() {
           )}
           {MKDas && (
             <div>
-              <label className="form-label">Select Subject</label>
+            
               <select
                 type="text"
                 className="form-control"
@@ -144,7 +144,7 @@ function UploadAssignmentsem3() {
           )}
           {Manish && (
             <div>
-              <label className="form-label">Select Subject</label>
+            
               <select
                 type="text"
                 className="form-control"

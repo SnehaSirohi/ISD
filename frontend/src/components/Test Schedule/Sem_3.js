@@ -1,7 +1,10 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState, useEffect } from "react";
+import "./testschedule.css";
+import Navbar from "../Teacher_dashboard/Navbar";
+import { useEffect, useState } from "react";
 import jwt from 'jsonwebtoken'
+import './TS.css'
 import { useNavigate } from "react-router-dom"
 const Sem_3 = () => {
   //
@@ -83,10 +86,12 @@ const Sem_3 = () => {
 
   return (
     <>
+          <Navbar />
       <form onSubmit={schedule}>
         <div className=" mb-3">
-          <h1>Class Schedule</h1>
-          {NitishaAgg && <div>
+        <h1 className="test-1">Test Schedule</h1>
+          <div className=" mb-3">
+          {NitishaAgg && <div className="selectsubjectcontainer">
             
             <select
               type="text"
@@ -101,7 +106,7 @@ const Sem_3 = () => {
               </option>
             </select>
           </div>}
-          {UnmeshShukla && <div>
+          {UnmeshShukla && <div className="selectsubjectcontainer">
             
             <select
               type="text"
@@ -114,7 +119,7 @@ const Sem_3 = () => {
               <option value="Cloud Computing">Cloud Computing</option>
             </select>
           </div>}
-          {MKDas && <div>
+          {MKDas && <div className="selectsubjectcontainer">
             
             <select
               type="text"
@@ -127,7 +132,7 @@ const Sem_3 = () => {
               <option value="Software Engineering">Software Engineering</option>
             </select>
           </div>}
-          {Manish && <div>
+          {Manish && <div className="selectsubjectcontainer">
             
             <select
               type="text"
@@ -142,15 +147,15 @@ const Sem_3 = () => {
               </option>
             </select>
           </div>}
-
         </div>
+        <div className="abc-1">
         <div className="mb-3 text-center">
-          <label htmlFor="date" className="form-label">
+          <label htmlFor="date" className="test-form-label">
             Date
           </label>
           <input
             type="date"
-            className="form-control"
+            className="test-form-control"
             id="date"
             aria-describedby="date"
             value={date}
@@ -158,37 +163,43 @@ const Sem_3 = () => {
           />
         </div>
         <div className="mb-3 text-center">
-          <label htmlFor="time" className="form-label">
+          <label htmlFor="time" className="test-form-label">
             time
           </label>
           <input
             type="time"
-            className="form-control"
+            className="test-form-control"
             id="time"
             value={time}
             onChange={(e) => settime(e.target.value)}
           />
         </div>
+        </div>
         <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">
+          <div class="test-msg">
+          <label for="exampleFormControlTextarea1" class="test-form-label-1">
             Message
           </label>
+          </div>
           <textarea
             type="text"
-            class="form-control"
+            class="test-form-control-3"
             id="exampleFormControlTextarea1"
             rows="3"
             placeholder="Optional"
             value={message}
             onChange={(e) => setmessage(e.target.value)}></textarea>
         </div>
+        <div className="btn-test">
         <button type="submit" className="btn btn-primary">
           Schedule Test
         </button>
+        </div>
         {warning && <div className="container warning">
           <h3>{warning}</h3>
           <button onClick={(e) => setwarning(false)}>Ok</button>
         </div>}
+        </div>
       </form>
     </>
   );
