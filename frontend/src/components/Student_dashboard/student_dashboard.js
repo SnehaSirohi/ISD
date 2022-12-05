@@ -27,7 +27,7 @@ const Dashboard = (props) => {
         const json = await req.json()
 
         // console.log(json)
-        if(json.status === 'ok'){
+        if (json.status === 'ok') {
             setName(json.name)
             setEmail(json.email)
             setTotalclassesheld(json.Classes_held)
@@ -37,19 +37,19 @@ const Dashboard = (props) => {
             setAssignments(json.Assignment_posted)
 
         }
-        else{
+        else {
             // alert(data.error)
         }
     }
 
-    attendancepercentage = (totalClasstaken/totalclassesheld)*100
+    attendancepercentage = (totalClasstaken / totalclassesheld) * 100
     // console.log(attendancepercentage)
 
-    useEffect(() =>{
+    useEffect(() => {
         const token = localStorage.getItem('token')
-        if (token){
+        if (token) {
             const user = jwt.decode(token)
-            if(!user){
+            if (!user) {
                 localStorage.removeItem('token')
                 navigate("/");
             } else {
@@ -58,65 +58,62 @@ const Dashboard = (props) => {
         }
     }, [name], [email])
 
-    return(
+    return (
         <>
             <Navbar />
             <div>
                 <div className="flex dashboardcontent">
-                <div class="col main pt-5  dashboardbackground">
-                
-            <div class=" mb-3 dashblocks">
-            <a href='/classschedule'>
-                <div class="col-xl-3 col-sm-6 blockcolour" >                   
-                    <div>
-                        <h5 class="text-uppercase">CLASSES SCHEDULED</h5>
-                        <h1 class="display-4">{totalClassScheduled}</h1>
-                    </div>
-                    
-                </div>
-                </a>          
+                    <div class="col main pt-5  dashboardbackground">
 
-                <div class="col-xl-3 col-sm-6 blockcolour">
-                <Link to='/testschedule'>
-                    <div>
-                    <h5 class="text-uppercase">TESTS SCHEDULED</h5>
-                        <h1 class="display-4">{totalTestScheduled}</h1>
-                    </div>
-                </Link>
-                </div>
-               
+                        <div class=" mb-3 dashblocks">
+                            <a href='/classschedule'>
+                                <div class="col-xl-3 col-sm-6 blockcolour" >
+                                    <div>
+                                        <h5 class="text-uppercase  pt-3">CLASSES SCHEDULED</h5>
+                                        <h1 class="display-4">{totalClassScheduled}</h1>
+                                    </div>
 
-            
-                <div class="col-xl-3 col-sm-6 blockcolour">
-                <Link to='/assignmentreportstudent'>
-                    <div>
-                    <h5 class="text-uppercase">ASSIGNMENTS</h5>
-                        <h1 class="display-4">{assignments}</h1>
-                    </div>
-                </Link>
-                </div>
-    
-            </div>
+                                </div>
+                            </a>
+                            <Link to='/testschedule'>
+                                <div class="col-xl-3 col-sm-6 blockcolour">
+                                    <div>
+                                        <h5 class="text-uppercase  pt-3">TESTS SCHEDULED</h5>
+                                        <h1 class="display-4">{totalTestScheduled}</h1>
+                                    </div>
+                                </div>
+                            </Link>
 
-            <div class="row overviewdatacontent">
-                <div class="col-lg-7 col-md-6 col-sm-12 datacontent flex">
-                    <div class="classinfo">
-                        <h5>Total classes Held</h5>
-                        <h5>Total classes Taken</h5>
-                        <h5>Total Tests</h5>
-                        <h5>Assignments submitted</h5>
-                        <h5>Attendance %</h5>
+
+                            <Link to='/assignmentreportstudent'>
+                                <div class="col-xl-3 col-sm-6 blockcolour">
+                                    <div>
+                                        <h5 class="text-uppercase  pt-3">ASSIGNMENTS</h5>
+                                        <h1 class="display-4">{assignments}</h1>
+                                    </div>
+                                </div>
+                            </Link>
+                        </div>
+
+                        <div class="row overviewdatacontent">
+                            <div class="col-lg-7 col-md-6 col-sm-12 datacontent flex">
+                                <div class="classinfo">
+                                    <h5>Total classes Held</h5>
+                                    <h5>Total classes Taken</h5>
+                                    <h5>Total Tests</h5>
+                                    <h5>Assignments submitted</h5>
+                                    <h5>Attendance %</h5>
+                                </div>
+                                <div class="classinfoval">
+                                    <h5>{totalclassesheld}</h5>
+                                    <h5>{totalClasstaken}</h5>
+                                    <h5>{totalTestScheduled}</h5>
+                                    <h5>{assignments}</h5>
+                                    <h5>{attendancepercentage} %</h5>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="classinfoval">
-                        <h5>{totalclassesheld}</h5>
-                        <h5>{totalClasstaken}</h5>
-                        <h5>{totalTestScheduled}</h5>
-                        <h5>{assignments}</h5>
-                        <h5>{attendancepercentage} %</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
                     <div className="profilecontent"
                         style={{
                             display: props.show ? "block" : "none"
@@ -128,7 +125,7 @@ const Dashboard = (props) => {
             </div >
         </>
     );
-    
+
 }
 
 export default Dashboard

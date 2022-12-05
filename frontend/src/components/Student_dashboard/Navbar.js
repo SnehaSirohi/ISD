@@ -90,11 +90,11 @@ function Navbar() {
                             <Link to="/dashboard/profile"><span>Profile</span></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaRegCalendarCheck color='rgb(0, 104, 74)'/>
+                            <FaIcons.FaRegCalendarCheck color='rgb(0, 104, 74)' />
                             <Link to='/scheduledclass'><span><p>Scheduled Classes</p></span></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaBookReader color='rgb(0, 104, 74)'/>
+                            <FaIcons.FaBookReader color='rgb(0, 104, 74)' />
                             <Link to='/scheduledtests'><span><p>Scheduled Tests</p></span></Link>
                         </li>
                         <li className="nav-text">
@@ -102,12 +102,12 @@ function Navbar() {
                             <Link to='/assignments'><span><p>Assignments</p></span></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaBook color='rgb(0, 104, 74)'/>
+                            <FaIcons.FaBook color='rgb(0, 104, 74)' />
                             <Link to='/studymaterial'><span><p>Study Material</p></span></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaUserCheck color='rgb(0, 104, 74)'/>
-                            <Link to='/attendancereport'><p>Attendance Report</p></Link>
+                            <FaIcons.FaUserCheck color='rgb(0, 104, 74)' />
+                            <Link to='/attendancereport'><span><p>Attendance Report</p></span></Link>
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaSignInAlt color='rgb(0, 104, 74)' />
