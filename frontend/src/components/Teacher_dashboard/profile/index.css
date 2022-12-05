@@ -1,0 +1,62 @@
+main
+{   
+    
+    background-color: rebeccapurple;
+}
+.header
+{   
+    background-color: red;
+    display: flex;
+    justify-content: space-evenly;
+}
+.profile
+{
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.profilephoto
+{
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.section
+{   
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.sec
+{
+    background-color: aqua;
+    width: 120px;
+    text-align: start;
+}
+.section1
+{   
+    width: 25%;
+    background-color: gray;
+    display: flex;
+    justify-content: flex-end;
+}
+.section2
+{   
+    width: 25%;
+    background-color: gray;
+    text-align: start;
+}
+.bottom
+{   
+
+    background-color: wheat;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.btn-primary{
+    margin: -1;
+}
