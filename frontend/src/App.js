@@ -121,7 +121,7 @@ function App() {
           <Route path="/Teacherdashboard/filters/sem4" element={<Sem4filters />} />
           <Route path="/Teacherdashboard/profile2" element={<Teacherprofile2 />} />
           <Route path="/teacherNotifications" element={<TeacherNotifications />} />
-          <Route path="/Teacherdashboard/profile3" element={<Profile />} />
+          <Route path="/profile3" element={<Profile />} />
 
 
         </Routes>
