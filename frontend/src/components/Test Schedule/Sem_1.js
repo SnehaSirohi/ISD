@@ -91,7 +91,7 @@ const Sem_1 = () => {
       <Navbar />
       <form onSubmit={schedule}>
         <div className=" mb-3">
-          <h1 className="test-1">Test Schedule</h1>
+          <h1 className="class-1">Test Schedule</h1>
           <div className=" mb-3">
             {UnmeshShukla && <div className="selectsubjectcontainer">
 
@@ -153,48 +153,44 @@ const Sem_1 = () => {
 
           </div>
           <div className="abc-1">
-          <div className="mb-3 text-center">
-            <label htmlFor="date" className="test-form-label">
-              Date:
-            </label>
-            <input
-              type="date"
-              className="test-form-control"
-              id="date"
-              aria-describedby="date"
-              value={date}
-              onChange={(e) => setdate(e.target.value)}
-            />
-          </div>
-          <div className="mb-3 text-center">
-            <label htmlFor="time" className="test-form-label">
-              Time:
-            </label>
-            <input
-              type="time"
-              className="test-form-control"
-              id="time"
-              value={time}
-              onChange={(e) => settime(e.target.value)}
-            />
-          </div>
-          </div>
-          <div class="mb-3">
-            <div class="test-msg">
-              <label for="exampleFormControlTextarea1" class="test-form-label-1">
-                Message:
+            <div className="class-div">
+              <label htmlFor="date" id="date-1" className="test-form-label">
+                Date:
               </label>
+              <input
+                type="date"
+                className="class-form-control"
+                id="date"
+                aria-describedby="date"
+                value={date}
+                onChange={(e) => setdate(e.target.value)}
+              />
             </div>
-            <textarea
-              type="text"
-              class="test-form-control-3"
-              id="exampleFormControlTextarea1"
+            <div className="time-div">
+              <label htmlFor="time" id="time" className="test-form-label">
+                Time:
+              </label>
+              <input
+                type="time"
+                className="class-form-control"
+                id="time-1"
+                value={time}
+                onChange={(e) => settime(e.target.value)}
+              />
+            </div>
+          </div>
+          <div class="messagecontent">
+            <label for="exampleFormControlTextarea1" class="form-label">
+              Message:
+            </label>
+            <textarea type="text" class="class-form-control-1" id="exampleFormControlTextarea1"
               rows="3"
               placeholder="Optional"
               value={message}
               onChange={(e) => setmessage(e.target.value)}></textarea>
           </div>
-          <div className="btn-test">
+
+          <div className="btn-class">
             <button type="submit" className="btn btn-primary">
               Schedule Test
             </button>
@@ -204,10 +200,10 @@ const Sem_1 = () => {
             <h3>{warning}</h3>
             <button onClick={(e) => setwarning(false)}>Ok</button>
           </div>}
-        </div>
+          </div>
       </form>
     </>
-  );
-};
+    )
+  };
 
 export default Sem_1;

@@ -153,7 +153,6 @@ const Sem_1 = () => {
 
 
           <div className=" mb-3">
-
             <h1 className="class-1 mb-1">Class Schedule</h1>
             {UnmeshShukla && <div className="selectsubjectcontainer">
 
