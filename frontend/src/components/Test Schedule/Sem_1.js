@@ -105,7 +105,7 @@ const Sem_1 = () => {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -119,7 +119,7 @@ const Sem_1 = () => {
             {NitishaAgg && <div className="selectsubjectcontainer">
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -133,7 +133,7 @@ const Sem_1 = () => {
             {MKDas && <div className="selectsubjectcontainer">
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -147,7 +147,7 @@ const Sem_1 = () => {
             {SunilKumar && <div className="selectsubjectcontainer">
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
