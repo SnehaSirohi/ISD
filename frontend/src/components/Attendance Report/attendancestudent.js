@@ -218,6 +218,7 @@ const Attendancereport = () => {
     </form>
   </div>}
     {<h3 className='text-center' id='string-12'>{string}</h3>}
+    
       <div className='main'>
         <table className='table table-striped' id='mytable-2'>
           <thead className='heading-2'>
