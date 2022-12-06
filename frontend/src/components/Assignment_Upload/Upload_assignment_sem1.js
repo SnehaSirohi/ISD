@@ -40,16 +40,13 @@ function UploadAssignmentsem1() {
   }
 
   async function Upload() {
-    if(!subject)
-    {
+    if (!subject) {
       alert("Please select the subject")
     }
-    else if(!file)
-    {
+    else if (!file) {
       alert("Please upload a file")
     }
-    else
-    {
+    else {
       const response = await fetch("http://localhost:4000/upload/assignment", {
         method: "POST",
         headers: {
@@ -66,10 +63,10 @@ function UploadAssignmentsem1() {
           description,
         }),
       });
-  
+
       const data = await response.json();
     }
-   
+
   }
 
   //--------------------
@@ -96,11 +93,11 @@ function UploadAssignmentsem1() {
       <div className="uploadassignmentcontent">
         {UnmeshShukla && (
           <div>
-          
+
 
             <select
               type="text"
-              className="form-control"
+              className="form-control shadow-none"
               id="subject"
               name="subject"
               value={subject}
@@ -115,10 +112,10 @@ function UploadAssignmentsem1() {
         )}
         {NitishaAgg && (
           <div>
-          
+
             <select
               type="text"
-              className="form-control"
+              className="form-control shadow-none"
               id="subject"
               name="subject"
               value={subject}
@@ -133,10 +130,10 @@ function UploadAssignmentsem1() {
         )}
         {MKDas && (
           <div>
-           
+
             <select
               type="text"
-              className="form-control mt-2"
+              className="form-control mt-2 shadow-none"
               id="subject"
               name="subject"
               value={subject}
@@ -151,10 +148,10 @@ function UploadAssignmentsem1() {
         )}
         {SunilKumar && (
           <div>
-           
+
             <select
               type="text"
-              className="form-control mt-2"
+              className="form-control mt-2 shadow-none"
               id="subject"
               name="subject"
               value={subject}
@@ -169,12 +166,12 @@ function UploadAssignmentsem1() {
         )}
 
         <div className="mb-3 mt-3" id="deadline_block">
-                  <label className="form-label deadline">Deadline</label>
-                  <input
-                    type="date"
-                    className="time_block12"
-                    value={deadline}
-                    onChange={(e) => setdeadline(e.target.value)}
+          <label className="form-label deadline">Deadline</label>
+          <input
+            type="date"
+            className="time_block12"
+            value={deadline}
+            onChange={(e) => setdeadline(e.target.value)}
           />
         </div>
         {/* upload file */}
@@ -190,7 +187,7 @@ function UploadAssignmentsem1() {
           </div>
         </div>
 
-      
+
         {/* text box */}
 
         <div class="mb-3 mt-4 descriptionbody">

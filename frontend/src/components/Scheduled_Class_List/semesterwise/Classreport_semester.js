@@ -245,10 +245,10 @@ const Classreport = () => {
       </tbody>
     </table>
   </div>}
-  <div className='text-center'>
+  {visible && <div className='text-center'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
-   </div>
+   </div>}
    </>
   )
 }

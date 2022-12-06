@@ -107,7 +107,7 @@ else {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -122,7 +122,7 @@ else {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -135,7 +135,7 @@ else {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -148,7 +148,7 @@ else {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -169,7 +169,7 @@ else {
               </label>
               <input
                 type="date"
-                className="class-form-control"
+                className="class-form-control "
                 id="date"
                 aria-describedby="date"
                 value={date}

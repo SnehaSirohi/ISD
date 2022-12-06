@@ -26,9 +26,13 @@ const Sem2filters = () => {
   const [NitishaAgg, setNitishaAgg] = useState(false)
   const [MKDas, setMKDas] = useState(false)
   const [Sanjeev, setSanjeev] = useState(false)
+  const [visible, setVisible] = useState(false)
+  const [string, setString] = useState("")
+  const [heading, setHeading] = useState("Overall Attendance Report")
+  
   console.log("subject value :",subject);
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/attendancereport/sem2", {
+      const response = await fetch("http://localhost:4000/attendancereport/sem2", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -50,6 +54,14 @@ const Sem2filters = () => {
       setSanjeev(true)
     }
     setstudent(json.data)
+    
+    if(json.data.length != 0)
+    {
+      setVisible(true)
+    }
+    else{
+      setString("No Attendance Report Available !")
+    }
     if (monthval) {
       let data1 = json.data.filter((data) => data.date.slice(5, 7) == monthval)
       setstudent(data1)
@@ -82,6 +94,7 @@ const Sem2filters = () => {
     fetchdata()
   },[])
   function handlechange(e){
+    
       var val=e.target.value
       setfilter(val)
       
@@ -131,6 +144,25 @@ const Sem2filters = () => {
   }
   function Print()
   {
+    setHeading("")
+  if(overall)
+  {
+    setHeading("Overall Attendance Report")
+  }
+  else if(subject)
+  {
+    setHeading("Attendance Report of "+ subjectval)
+  }
+  else if(date)
+  {
+    setHeading("Attendance Report of " + dateval)
+  }
+  else if(month)
+  {
+    setHeading("Attendance Report of " + val)
+  }
+
+
     setreport(true)
     const token = localStorage.getItem('token')
     if (token) {
@@ -230,7 +262,7 @@ return (
         {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
-          className="form-control"
+          className="form-control shadow-none"
           id="subject"
           name="subject"
           value={subjectval}
@@ -249,7 +281,7 @@ return (
         {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
-          className="form-control"
+          className="form-control shadow-none"
           id="subject"
           name="subject"
           value={subjectval}
@@ -264,7 +296,7 @@ return (
         {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
-          className="form-control"
+          className="form-control shadow-none"
           id="subject"
           name="subject"
           value={subjectval}
@@ -282,7 +314,7 @@ return (
         {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
-          className="form-control"
+          className="form-control shadow-none"
           id="subject"
           name="subject"
           value={subjectval}
@@ -297,8 +329,11 @@ return (
 <div className='text-center'> 
 {button &&  <button type="submit" className="btn btn-primary" id='button_block5' onClick={Print}  >Print Attendance</button>}
 </div>
-{report?<h3 className='overall-1'>Attendance Report Of {val}</h3>:<h3 className='overall-1'>Overall Attendance Report</h3>}
-<div className='table-24'>
+{visible && <div>
+  <h3 className='overall-1'>{heading}</h3>
+  </div>}
+<div>{string}</div>
+{visible && <div className='table-24'>
         <table className='table table-striped'>
           <thead className='heading-2'>
             <tr>
@@ -312,11 +347,11 @@ return (
             <List student={student} />
           </tbody>
         </table>
-      </div>
-      <div className='text-center'>
+      </div>}
+     {visible && <div className='text-center'>
           <button type="button" class="btn btn-primary" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttoexcelhandler}>Download in excel</button>
           <button type="button" class="btn btn-primary-1" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttopdfhandler}>Download in pdf</button>
-        </div>
+        </div>}
   </>
 )
 }
