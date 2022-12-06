@@ -222,6 +222,7 @@ const Attendancereport = () => {
         <table className='table table-striped' id='mytable-2'>
           <thead className='heading-2'>
             <tr>
+                    
                 <th>subject</th>
                 <th>Date</th>
                 <th>Attendance Status</th>
