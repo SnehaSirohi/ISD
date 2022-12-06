@@ -60,3 +60,10 @@ rep-1 {
     display: flex;
     /* margin: 0 20%; */
 }
+
+.nothing_block {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+    color: #9a0b01;
+}
