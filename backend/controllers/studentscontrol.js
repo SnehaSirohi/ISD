@@ -12,7 +12,11 @@ const StudyMaterial = require("../models/StudyMaterial");
 const SubmittedAssignment = require("../models/SubmittedAssignment")
 const jwt = require("jsonwebtoken");
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
+var newDate = new Date();
+      var year=newDate.getFullYear()
+      var getMonth = String(newDate.getMonth() + 1).padStart(2, '0');
+      var getDate = String(newDate.getDate() ).padStart(2, '0');
+      var date = [year,getMonth,getDate].join("-");
 const login = (req, res) => {
   const { enrollNum, password } = req.body;
   Students.findOne({ enrollNum: enrollNum }, (err, student) => {
@@ -359,15 +363,8 @@ const PostAssignmentSubmitt = async (req, res) => {
   const student = await Students.findOne({enrollNum:enrollNum})
   const name=student.name;
   const semester=student.semester;
-  let newdate= new Date()
-  var nowDate = new Date();
-  
-  var date =
-    nowDate.getFullYear() +
-    "-" +
-    (nowDate.getMonth() + 1) +
-    "-" +
-    nowDate.getDate();
+
+
   try {
    
     const assignment = await SubmittedAssignment.create({

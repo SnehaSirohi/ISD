@@ -19,6 +19,7 @@ const Sem_2 = () => {
   const [MKDas,setMKDas]=useState(false)
   const [Sanjeev,setSanjeev]=useState(false)
   const [teacher,setTeacher] = useState("")
+   const[success,setsuccess] = useState(false)
   const sem = "Sem-2";
 
   //-----------
@@ -51,7 +52,7 @@ const Sem_2 = () => {
 
   async function schedule(e) {
     
-    e.preventDefault();
+  
    if(subject && time && date)
    { 
    
@@ -72,17 +73,15 @@ const Sem_2 = () => {
     }),
   }).then(async (response) => {
     let data = await response.json();
-    console.log(data);
-    setwarning(data.warning)
+   setwarning(data.warning)
+        setsuccess(data.success)
   });
        
 }
-else
-{ 
+else {
+       alert("Please fill all the neccessary fields")  
 
-  alert("Please fill all the neccessary fields")
-    
-   }
+    }
 
   }
   //--------------------
@@ -168,7 +167,7 @@ else
 
         <div className="abc-1">
         <div className="class-div">
-          <label htmlFor="date" className="class-form-label">
+          <label htmlFor="date" className="class-form-label" id ="date">
             Date:
           </label>
           <input

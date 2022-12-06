@@ -19,6 +19,7 @@ const Sem_1 = () => {
   const [MKDas, setMKDas] = useState(false)
   const [SunilKumar, setSunilKumar] = useState(false)
   const [teacher, setTeacher] = useState("")
+   const[success,setsuccess] = useState(false)
   const sem = "Sem-1";
 
   //-----------
@@ -68,8 +69,8 @@ const Sem_1 = () => {
         }),
       }).then(async (response) => {
         let data = await response.json();
-        console.log(data);
         setwarning(data.warning)
+        setsuccess(data.success)
       });
     }
     else

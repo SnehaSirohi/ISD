@@ -23,14 +23,15 @@ const Sem_1 = () => {
   const [teacher, setTeacher] = useState("")
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [isdot, setIsdotVisible] = useState(false);
-
-  const handleButtonClick = () => {
-    setIsdotVisible(true);
-    setTimeout(() => {
-      setIsdotVisible(false);
-      setIsAlertVisible(true);
-    }, 2000);
-  }
+  const[success,setsuccess] = useState(false)
+  console.log("warning : ",warning,"Success :",success);
+  // const handleButtonClick = () => {
+  //   setIsdotVisible(true);
+  //   setTimeout(() => {
+  //     setIsdotVisible(false);
+  //     setIsAlertVisible(true);
+  //   }, 2000);
+  // }
 
   const sem = "Sem-1";
 
@@ -59,9 +60,9 @@ const Sem_1 = () => {
 
   async function schedule(e) {
 
-    e.preventDefault();
+    
     if (subject && time && date) {
-
+       e.preventDefault()
       const req = await fetch("http://localhost:4000/scheduleclass", {
         method: "POST",
         headers: {
@@ -79,14 +80,13 @@ const Sem_1 = () => {
         }),
       }).then(async (response) => {
         let data = await response.json();
-        console.log(data);
         setwarning(data.warning)
+        setsuccess(data.success)
       });
 
     }
     else {
-
-      alert("Please fill all the neccessary fields")
+   alert("Please fill all the neccessary fields")
 
     }
 
@@ -111,7 +111,7 @@ const Sem_1 = () => {
   return (
     <>
 
-      <div>
+      {/* <div>
         {isdot && <div class="loader"  >
           <div class="pair p1">
             <div class="dot dot-1 ">
@@ -131,7 +131,7 @@ const Sem_1 = () => {
             </div>
           </div>
         </div>}
-      </div>
+      </div> */}
       <Navbar />
       <form onSubmit={schedule}>
         <div>
@@ -264,7 +264,7 @@ const Sem_1 = () => {
           </div>
 
           <div className="btn-class">
-            <button type="submit" className="btn btn-primary submit-btn" onClick={handleButtonClick} >
+            <button type="submit" className="btn btn-primary submit-btn"  >
               Schedule Class
             </button>
           </div>
@@ -274,6 +274,7 @@ const Sem_1 = () => {
           </div>}
         </div>
       </form>
+
 
     </>
   )

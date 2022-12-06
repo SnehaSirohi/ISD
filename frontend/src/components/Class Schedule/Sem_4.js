@@ -22,6 +22,7 @@ const Sem_4 = () => {
   const [MKDas, setMKDas] = useState(false)
   const [Sanjeev, setSanjeev] = useState(false)
   const [teacher, setTeacher] = useState("")
+   const[success,setsuccess] = useState(false)
   const sem = "Sem-4";
   //-----------
   async function populate(e) {
@@ -49,7 +50,6 @@ const Sem_4 = () => {
 
   async function schedule(e) {
 
-    e.preventDefault();
     if (subject && time && date) {
 
       const req = await fetch("http://localhost:4000/scheduleclass", {
@@ -69,15 +69,14 @@ const Sem_4 = () => {
         }),
       }).then(async (response) => {
         let data = await response.json();
-        console.log(data);
         setwarning(data.warning)
+        setsuccess(data.success)
       });
 
     }
-    else {
-
-      alert("Please fill all the neccessary fields")
-
+else {
+    
+ alert("Please fill all the neccessary fields")
     }
 
   }

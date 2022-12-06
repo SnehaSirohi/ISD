@@ -20,6 +20,7 @@ const Sem_2 = () => {
   const [MKDas, setMKDas] = useState(false)
   const [Sanjeev, setSanjeev] = useState(false)
   const [teacher, setTeacher] = useState("")
+   const[success,setsuccess] = useState(false)
   const sem = "Sem-2";
   //-----------
   async function populate(e) {
@@ -67,8 +68,8 @@ const Sem_2 = () => {
         }),
       }).then(async (response) => {
         let data = await response.json();
-        console.log(data);
         setwarning(data.warning)
+        setsuccess(data.success)
       });
     }
     else
