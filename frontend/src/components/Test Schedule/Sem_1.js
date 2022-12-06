@@ -110,6 +110,7 @@ const Sem_1 = () => {
                 name="subject"
                 value={subject}
                 required
+                
                 onChange={(e) => setsubject(e.target.value)}>
                 <option required>Select Subject</option>
                 <option value="Algorithms And Data Structure">

@@ -225,7 +225,7 @@ const Testreport = () => {
     </form>
   </div>}
   </div>
-  <div>{string}</div>
+  <div  className='nothing_block'>{string}</div>
  {visible && <div classname="main">
     <table className='table table-striped' id='mytable-1'>
       <thead className='heading_1'>
