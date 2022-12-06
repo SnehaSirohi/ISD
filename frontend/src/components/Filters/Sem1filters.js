@@ -267,7 +267,7 @@ return (
         {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
-          className="form-control"
+          className="form-control shadow-none"
           id="subject"
           name="subject"
           value={subjectval}
@@ -284,7 +284,7 @@ return (
         {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
-          className="form-control"
+          className="form-control shadow-none"
           id="subject"
           name="subject"
           value={subjectval}
@@ -301,7 +301,7 @@ return (
         {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
-          className="form-control"
+          className="form-control shadow-none"
           id="subject"
           name="subject"
           value={subjectval}
@@ -320,7 +320,7 @@ return (
         {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
-          className="form-control"
+          className="form-control shadow-none"
           id="subject"
           name="subject"
           value={subjectval}

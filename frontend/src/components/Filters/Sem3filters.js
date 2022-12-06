@@ -233,7 +233,7 @@ return (
         {/* <label className="form-label">Select Month</label> */}
         <select
           type="text"
-          className="form-control-12"
+          className="form-control-12 shadow-none"
           id="month"
           name="month"
           value={monthval}
@@ -265,7 +265,7 @@ return (
         {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
-          className="form-control"
+          className="form-control shadow-none"
           id="subject"
           name="subject"
           value={subjectval}
@@ -284,7 +284,7 @@ return (
         {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
-          className="form-control"
+          className="form-control shadow-none"
           id="subject"
           name="subject"
           value={subjectval}
@@ -299,7 +299,7 @@ return (
         {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
-          className="form-control"
+          className="form-control shadow-none"
           id="subject"
           name="subject"
           value={subjectval}
@@ -315,7 +315,7 @@ return (
         {/* <label className="form-label">Select Subject</label> */}
         <select
           type="text"
-          className="form-control"
+          className="form-control shadow-none"
           id="subject"
           name="subject"
           value={subjectval}
