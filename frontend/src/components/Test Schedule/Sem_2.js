@@ -104,7 +104,7 @@ const Sem_2 = () => {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -120,7 +120,7 @@ const Sem_2 = () => {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -133,7 +133,7 @@ const Sem_2 = () => {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -148,7 +148,7 @@ const Sem_2 = () => {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}

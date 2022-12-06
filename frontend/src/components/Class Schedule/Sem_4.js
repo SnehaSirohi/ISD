@@ -108,7 +108,7 @@ const Sem_4 = () => {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -123,7 +123,7 @@ const Sem_4 = () => {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -136,7 +136,7 @@ const Sem_4 = () => {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -149,7 +149,7 @@ const Sem_4 = () => {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -170,7 +170,7 @@ const Sem_4 = () => {
               </label>
               <input
                 type="date"
-                className="class-form-control"
+                className="class-form-control "
                 id="date"
                 aria-describedby="date"
                 value={date}
