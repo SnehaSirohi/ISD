@@ -24,6 +24,7 @@ const Sem_1 = () => {
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [isdot, setIsdotVisible] = useState(false);
   const[success,setsuccess] = useState(false)
+  const [empty,setempty]=useState(false)
   console.log("warning : ",warning,"Success :",success);
   // const handleButtonClick = () => {
   //   setIsdotVisible(true);
@@ -62,7 +63,7 @@ const Sem_1 = () => {
 
     
     if (subject && time && date) {
-       e.preventDefault()
+       
       const req = await fetch("http://localhost:4000/scheduleclass", {
         method: "POST",
         headers: {
@@ -86,7 +87,27 @@ const Sem_1 = () => {
 
     }
     else {
-   alert("Please fill all the neccessary fields")
+      e.preventDefault()
+    //    if(!date)
+    //    {
+    //     document.getElementById("date-1").style.color="red"
+    //     document.getElementById("date").style.borderColor="red"
+    //     setempty(true)
+
+    //    }
+    //    if(!time)
+    //    {
+    //     document.getElementById("time").style.color="red"
+    //     document.getElementById("time-1").style.border="solid red"
+    //     document.getElementById("time-1").style.backgroundColor="pink"
+    //     setempty(true)
+    //    }
+    //    if(!subject)
+    //    {
+  
+    //     document.getElementById("subject").style.border="solid red"
+    //     setempty(true)
+    //    }
 
     }
 
@@ -171,9 +192,9 @@ const Sem_1 = () => {
                 id="subject"
                 name="subject"
                 value={subject}
-
+                required
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="" select>Select Subject</option>
                 <option value="Algorithms And Data Structure">
                   Algorithms and Data Structure
                 </option>
@@ -271,6 +292,10 @@ const Sem_1 = () => {
           {warning && <div className="container warning">
             <h3>{warning}</h3>
             <button onClick={(e) => setwarning(false)}>Ok</button>
+          </div>}
+          {empty && <div className="container warning">
+            <h3>Please Fill all the mandatory fields</h3>
+            <button onClick={(e) => setempty(false)}>Ok</button>
           </div>}
         </div>
       </form>
