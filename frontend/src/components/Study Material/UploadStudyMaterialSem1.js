@@ -99,7 +99,7 @@ function UploadStudyMaterialSem1() {
 
             <select
               type="text"
-              className="form-control"
+              className="form-control shadow-none"
               id="subject"
               name="subject"
               value={subject}
@@ -117,7 +117,7 @@ function UploadStudyMaterialSem1() {
             
             <select
               type="text"
-              className="form-control"
+              className="form-control shadow-none"
               id="subject"
               name="subject"
               value={subject}
@@ -135,7 +135,7 @@ function UploadStudyMaterialSem1() {
             <label className="form-label">Select Subject</label>
             <select
               type="text"
-              className="form-control mt-2"
+              className="form-control mt-2 shadow-none"
               id="subject"
               name="subject"
               value={subject}
@@ -153,7 +153,7 @@ function UploadStudyMaterialSem1() {
             <label className="form-label">Select Subject</label>
             <select
               type="text"
-              className="form-control mt-2"
+              className="form-control mt-2 shadow-none"
               id="subject"
               name="subject"
               value={subject}
