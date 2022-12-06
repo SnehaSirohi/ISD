@@ -340,6 +340,12 @@ const classnotification = async (req, res) => {
     data: await ScheduledClass.find({}),
   });
 };
+const testnotification = async (req, res) => {
+  return res.status(200).json({
+    success: true,
+    data: await ScheduledTest.find({}),
+  });
+};
 
 const StudyMaterial_Posted_Students = async (req, res) => {
   const token = req.headers["x-access-token"];
@@ -397,5 +403,5 @@ module.exports = {
   classnotification,
   StudyMaterial_Posted_Students,
   PostAssignmentSubmitt,
-  
+  testnotification
 };
