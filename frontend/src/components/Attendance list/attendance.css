@@ -50,8 +50,10 @@ tr {
 
 #subject{
   margin: auto;
-  background-color: #2bb0a8;
+  border: 2px solid #2BB0A8;
+
 }
+
 
  option{
   text-align: center;

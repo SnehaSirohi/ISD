@@ -110,6 +110,7 @@ const Sem_1 = () => {
                 name="subject"
                 value={subject}
                 required
+                
                 onChange={(e) => setsubject(e.target.value)}>
                 <option required>Select Subject</option>
                 <option value="Algorithms And Data Structure">
@@ -119,7 +120,7 @@ const Sem_1 = () => {
             {NitishaAgg && <div className="selectsubjectcontainer">
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
