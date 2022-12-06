@@ -1,6 +1,5 @@
 .class-1 {
     text-align: center;
-    /* background-color: rgb(196, 255, 255); */
     margin-bottom: 0;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -89,3 +88,10 @@
     margin-right: 20%;
      text-align: right; 
 }  */
+
+.scheduledcontainer {
+    flex-direction: column;
+    height: calc(87vh);
+    display: flex;
+    justify-content: center;
+}

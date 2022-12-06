@@ -90,7 +90,7 @@ function UploadStudyMaterialSem1() {
     <div className="uploadassignmentbody">
       <Navbar />
       <div className="uploadheading">
-        <h2>Upload Studymaterial</h2>
+        <h1>Upload Studymaterial</h1>
       </div>
       <div className="uploadassignmentcontent">
         {UnmeshShukla && (
@@ -204,9 +204,11 @@ function UploadStudyMaterialSem1() {
 
         {/* submit button */}
 
-        <button className="submitbutton" onClick={Upload}>
-          Submit
-        </button>
+        <div className="text-center">
+          <button className="submitbutton mt-3 " onClick={Upload}>
+            Submit
+          </button>
+        </div>
       </div>
     </div>
   );

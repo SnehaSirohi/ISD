@@ -98,18 +98,19 @@ const Sem_1 = () => {
     <>
       <Navbar />
       <form onSubmit={schedule}>
-        <div className=" mb-3">
+        <div className=" mb-3 scheduledcontainer">
           <h1 className="class-1">Test Schedule</h1>
           <div className=" mb-3">
             {UnmeshShukla && <div className="selectsubjectcontainer">
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
                 required
+                
                 onChange={(e) => setsubject(e.target.value)}>
                 <option required>Select Subject</option>
                 <option value="Algorithms And Data Structure">
@@ -119,7 +120,7 @@ const Sem_1 = () => {
             {NitishaAgg && <div className="selectsubjectcontainer">
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -133,7 +134,7 @@ const Sem_1 = () => {
             {MKDas && <div className="selectsubjectcontainer">
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -147,7 +148,7 @@ const Sem_1 = () => {
             {SunilKumar && <div className="selectsubjectcontainer">
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}

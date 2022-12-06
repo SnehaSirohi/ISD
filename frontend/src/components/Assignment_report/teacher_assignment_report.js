@@ -82,10 +82,10 @@ const Attendancereport = () => {
           </tbody>
         </table>
       </div>}
-      {visible && <div className='text-center'>
+      {/* {visible && <div className='text-center'>
         <button type="button" class="btn btn-primary" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttoexcelhandler}>Download in excel</button>
         <button type="button" class="btn btn-primary-1" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttopdfhandler}>Download in pdf</button>
-      </div>}
+      </div>} */}
     </>
   )
 }
