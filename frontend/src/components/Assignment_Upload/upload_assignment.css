@@ -17,7 +17,14 @@
     min-height: 230px;
 }
 
+.time_block12 {
+    border-radius: 5px;
+    text-align: center;
+}
 
+#deadline_block {
+    text-align: center;
+}
 .file-inputs {
     position: relative;
     margin-bottom: 1.5em;

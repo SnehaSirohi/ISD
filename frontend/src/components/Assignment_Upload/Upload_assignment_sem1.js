@@ -90,7 +90,7 @@ function UploadAssignmentsem1() {
     <div className="uploadassignmentbody">
       <Navbar />
       <div className="uploadheading">
-        <h2>Upload Assignment</h2>
+        <h1>Upload Assignment</h1>
       </div>
 
       <div className="uploadassignmentcontent">
@@ -168,6 +168,15 @@ function UploadAssignmentsem1() {
           </div>
         )}
 
+        <div className="mb-3 mt-3" id="deadline_block">
+                  <label className="form-label deadline">Deadline</label>
+                  <input
+                    type="date"
+                    className="time_block12"
+                    value={deadline}
+                    onChange={(e) => setdeadline(e.target.value)}
+          />
+        </div>
         {/* upload file */}
 
         <div className="file-card">
@@ -181,14 +190,7 @@ function UploadAssignmentsem1() {
           </div>
         </div>
 
-        <div className="mb-3 mt-3">
-          <label className="form-label deadline">Deadline</label>
-          <input
-            type="date"
-            value={deadline}
-            onChange={(e) => setdeadline(e.target.value)}
-          />
-        </div>
+      
         {/* text box */}
 
         <div class="mb-3 mt-4 descriptionbody">
