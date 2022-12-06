@@ -100,7 +100,7 @@ function UploadAssignmentsem3() {
             
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -117,7 +117,7 @@ function UploadAssignmentsem3() {
             
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -132,7 +132,7 @@ function UploadAssignmentsem3() {
             
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -149,7 +149,7 @@ function UploadAssignmentsem3() {
             
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
