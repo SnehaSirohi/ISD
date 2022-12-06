@@ -89,3 +89,10 @@
     margin-right: 20%;
      text-align: right; 
 }  */
+
+.scheduledcontainer {
+    flex-direction: column;
+    height: calc(87vh);
+    display: flex;
+    justify-content: center;
+}

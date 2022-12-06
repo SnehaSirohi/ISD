@@ -58,39 +58,37 @@ const Sem_1 = () => {
   }
 
   async function schedule(e) {
-    
-    e.preventDefault();
-   if(subject && time && date)
-   { 
-   
-    const req = await fetch("http://localhost:4000/scheduleclass", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      'x-access-token': localStorage.getItem('token'),
-    },
-    body: JSON.stringify({
-      subject,
-      sem,
-      date,
-      time,
-      message,
-      teacher
-    }),
-  }).then(async (response) => {
-    let data = await response.json();
-    console.log(data);
-    setwarning(data.warning)
-  });
-       
-}
-else
-{ 
 
-  alert("Please fill all the neccessary fields")
-    
-   }
+    e.preventDefault();
+    if (subject && time && date) {
+
+      const req = await fetch("http://localhost:4000/scheduleclass", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          'x-access-token': localStorage.getItem('token'),
+        },
+        body: JSON.stringify({
+          subject,
+          sem,
+          date,
+          time,
+          message,
+          teacher
+        }),
+      }).then(async (response) => {
+        let data = await response.json();
+        console.log(data);
+        setwarning(data.warning)
+      });
+
+    }
+    else {
+
+      alert("Please fill all the neccessary fields")
+
+    }
 
   }
 
@@ -160,7 +158,7 @@ else
 
 
 
-        <div className="mb-3" style={{ filter: isAlertVisible || isdot ? "blur(3px)" : "none", background: isAlertVisible ? "#f1ebeb" : "none" }} >
+        <div className="mb-3 scheduledcontainer" style={{ filter: isAlertVisible || isdot ? "blur(3px)" : "none", background: isAlertVisible ? "#f1ebeb" : "none" }} >
 
 
           <div className=" mb-3">
@@ -173,7 +171,7 @@ else
                 id="subject"
                 name="subject"
                 value={subject}
-               
+
                 onChange={(e) => setsubject(e.target.value)}>
                 <option>Select Subject</option>
                 <option value="Algorithms And Data Structure">
@@ -181,14 +179,14 @@ else
                 </option>
               </select></div>}
             {NitishaAgg && <div className="selectsubjectcontainer">
-              
+
               <select
                 type="text"
                 className="form-control"
                 id="subject"
                 name="subject"
                 value={subject}
-               
+
                 onChange={(e) => setsubject(e.target.value)}>
                 <option>Select Subject</option>
                 <option value="Software Design & Programming">
@@ -202,7 +200,7 @@ else
                 id="subject"
                 name="subject"
                 value={subject}
-               
+
                 onChange={(e) => setsubject(e.target.value)}>
                 <option>Select Subject</option>
                 <option value="Mathematical Foundation Of Computing">
@@ -216,7 +214,7 @@ else
                 id="subject"
                 name="subject"
                 value={subject}
-               
+
                 onChange={(e) => setsubject(e.target.value)}>
                 <option>Select Subject</option>
                 <option value="Computer System Architecture">
@@ -235,21 +233,21 @@ else
                 id="date"
                 aria-describedby="date"
                 value={date}
-               
+
                 onChange={(e) => setdate(e.target.value)}
               />
             </div >
-            <br/>
+            <br />
             <div className="time-div">
               <label htmlFor="time" className="time-form-label " id="time">
-                Time:  
+                Time:
               </label>
               <input
                 type="time"
                 className="class-form-control"
                 id="time-1"
                 value={time}
-               
+
                 onChange={(e) => settime(e.target.value)}
               />
             </div>

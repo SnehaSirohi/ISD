@@ -104,7 +104,8 @@ else
     <>
     <Navbar/>
       <form onSubmit={schedule}>
-        <div className=" mb-3">
+        <div className=" mb-3 scheduledcontainer">
+        <div className="mb-3">
         <h1 className="class-1">Class Schedule</h1>
         {NitishaAgg && <div className="selectsubjectcontainer">
           
@@ -218,6 +219,7 @@ else
             <h3>{warning}</h3>
             <button onClick={(e)=>setwarning(false)}>Ok</button>
       </div>}
+      </div>
     </form>
       
     </>

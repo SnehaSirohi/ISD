@@ -98,7 +98,7 @@ const Sem_1 = () => {
     <>
       <Navbar />
       <form onSubmit={schedule}>
-        <div className=" mb-3">
+        <div className=" mb-3 scheduledcontainer">
           <h1 className="class-1">Test Schedule</h1>
           <div className=" mb-3">
             {UnmeshShukla && <div className="selectsubjectcontainer">
