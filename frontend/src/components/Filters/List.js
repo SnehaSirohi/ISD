@@ -9,10 +9,11 @@ const List = ({student}) => {
         return(
             <>
                <tr>
-            <td>{name}
-            </td>
-              {subject}
             <td>
+              {name}
+            </td>
+            <td>
+              {subject}
             </td>
             <td>
               {date}
