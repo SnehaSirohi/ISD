@@ -27,6 +27,10 @@ const Sem4filters = () => {
   const [NitishaAgg,setNitishaAgg]=useState(false)
   const [MKDas,setMKDas]=useState(false)
   const [Sanjeev,setSanjeev]=useState(false)
+  const [visible, setVisible] = useState(false)
+  const [string, setString] = useState("")
+  const [heading, setHeading] = useState("Overall Attendance Report")
+
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/attendancereport/sem4", {
       method: "GET",
@@ -54,6 +58,14 @@ const Sem4filters = () => {
       setSanjeev(true)
     }
     setstudent(json.data)
+    if(json.data.length != 0)
+    {
+      setVisible(true)
+    }
+    else{
+      setString("No Attendance Report Available !")
+    }
+
     if (monthval) {
       let data1 = json.data.filter((data) => data.date.slice(5, 7) == monthval)
       setstudent(data1)
@@ -135,6 +147,24 @@ const Sem4filters = () => {
   }
   function Print()
   {
+    setHeading("")
+  if(overall)
+  {
+    setHeading("Overall Attendance Report")
+  }
+  else if(subject)
+  {
+    setHeading("Attendance Report of "+ subjectval)
+  }
+  else if(date)
+  {
+    setHeading("Attendance Report of " + dateval)
+  }
+  else if(month)
+  {
+    setHeading("Attendance Report of " + val)
+  }
+
     setreport(true)
     const token = localStorage.getItem('token')
     if (token) {
@@ -297,7 +327,9 @@ return (
  <div className='text-center'> 
 {button &&  <button type="submit" className="btn btn-primary" id='button_block5' onClick={Print}  >Print Attendance</button>}
 </div>
-{report?<h3 className='overall-1'>Attendance Report Of {val}</h3>:<h3 className='overall-1'>Overall Attendance Report</h3>}
+<div>{string}</div>
+{visible && <>
+ <h3 className='overall-1'>{heading}</h3>
 <div className='table-24'>
         <table className='table table-striped'>
           <thead className='heading-2'>
@@ -317,6 +349,7 @@ return (
           <button type="button" class="btn btn-primary" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttoexcelhandler}>Download in excel</button>
           <button type="button" class="btn btn-primary-1" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttopdfhandler}>Download in pdf</button>
         </div>
+</>}
   </>
 )
 }
