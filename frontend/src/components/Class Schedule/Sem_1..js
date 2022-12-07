@@ -63,7 +63,7 @@ const Sem_1 = () => {
 
     
     if (subject && time && date) {
-       
+       e.preventDefault()
       const req = await fetch("http://localhost:4000/scheduleclass", {
         method: "POST",
         headers: {
@@ -84,7 +84,9 @@ const Sem_1 = () => {
         setwarning(data.warning)
         setsuccess(data.success)
       });
-
+      setTimeout(() => {
+        setsuccess(false)
+      }, 2300);
     }
     else {
       e.preventDefault()
@@ -316,19 +318,14 @@ const Sem_1 = () => {
         </div>
       </form>
 
-      <div className="container-fluid blacky">
+{success && <div className="container-fluid blacky">
      <div className="success">
-  <input type="checkbox" id="check" class="inputcheck" />
-  <label htmlFor="check" class="tick">
-    <div className="check-icon" >
-    </div>
-  </label>
- <h4>
-  Class Scheduled successfully
- </h4>
+     <div className="wrapper"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none" /> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+  </svg>
 </div>
-
-      </div>
+<h4><strong>Class scheduled successfully</strong></h4>
+</div>
+      </div>}
     </>
   )
 };
