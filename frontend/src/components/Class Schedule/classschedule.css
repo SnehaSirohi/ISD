@@ -113,9 +113,11 @@
 
 #time {
     animation: shake 700ms;
+} */
+
+.shaking {
+  animation: shake 700ms;
 }
-
-
 
 @keyframes shake {
 
