@@ -199,7 +199,7 @@ const Sem_3 = () => {
           </div>
           <div className="abc-1">
             <div className="class-div">
-              <label htmlFor="date" className="class-form-label" id = "time">
+              <label htmlFor="date" className="class-form-label" id = "date">
                 Date:
               </label>
               <input
@@ -216,9 +216,9 @@ const Sem_3 = () => {
                 Time:
               </label>
               <input
-                type="time-1"
+                type="time"
                 className="class-form-control"
-                id="time"
+                id="time-1"
                 value={time}
                 onChange={(e) => settime(e.target.value)}
               />
