@@ -23,7 +23,7 @@ const classScheduleMail = (
       from: process.env.EMAIL,
       to: recieverEmail,
       subject: `${subject}'s class`,
-      html: `Hello ${name} <br> ${teacher} has scheduled ${subject}'s class on ${date} at ${time} <br> ${message} `,
+      html: `Hello ${name} <br> ${teacher} has scheduled the class of ${subject} on ${date} at ${time} <br> ${message} `,
     })
     .catch((err) => console.log(err));
 };
@@ -41,7 +41,7 @@ const testScheduleMail = (
       from: process.env.EMAIL,
       to: recieverEmail,
       subject: `${subject}'s Test`,
-      html: `Hello ${name} <br> ${teacher} has scheduled ${subject}'s test on ${date} at ${time} <br> ${message}`,
+      html: `Hello ${name} <br> ${teacher} has scheduled the test of ${subject} on ${date} at ${time} <br> ${message}`,
     })
     .catch((err) => console.log(err));
 };

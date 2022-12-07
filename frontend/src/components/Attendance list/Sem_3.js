@@ -16,7 +16,7 @@ const Sem_3 = () => {
   const [NitishaAgg,setNitishaAgg]=useState(false)
   const [MKDas,setMKDas]=useState(false)
   const [Manish,setManish]=useState(false)
-
+  const[success,setsuccess]= useState(false)
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/attendance", {
       method: "GET",
@@ -69,6 +69,7 @@ const Sem_3 = () => {
       alert("Please select the subject ")
     }
     else {
+      e.preventDefault()
       const response = await fetch("http://localhost:4000/attendance/sem3", {
         method: "POST",
         headers: {
@@ -82,8 +83,11 @@ const Sem_3 = () => {
         }),
       }).then(async (response) => {
         let dataa = await response.json();
-        console.log(dataa);
+        setsuccess(dataa.success)
       });
+      setTimeout(() => {
+         setsuccess(false)
+      }, 2500);
     }
 
   }
@@ -167,6 +171,14 @@ const Sem_3 = () => {
         <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onClick={Submit}>Submit</button>
       </div> 
     </div>
+    {success && <div className="container-fluid attendanceblacky">
+    <div className="success">
+   <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none"/> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+</svg>
+</div>
+<h4>Attendance Saved</h4>
+</div>
+      </div>}
     </>
   );
 };
