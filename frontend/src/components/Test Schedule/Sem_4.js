@@ -72,8 +72,52 @@ const Sem_4 = () => {
       });
     }
     else {
-      alert("Please fill all the neccessary fields!")
-    }
+      e.preventDefault()
+       if(!date)
+       {
+        document.getElementById("date").style.color="red"
+        document.getElementById("date-1").style.borderColor="red"
+        document.getElementById("date-1").style.backgroundColor = "pink"
+        
+
+       }
+      else
+      {
+        document.getElementById("date").style.color="black"
+        document.getElementById("date-1").style.borderColor="black"
+        document.getElementById("date-1").style.backgroundColor= "white"
+      }
+      
+       if(!time)
+       {
+        document.getElementById("time").style.color="red"
+        document.getElementById("time-1").style.borderColor="red"
+        document.getElementById("time-1").style.backgroundColor="pink"
+       }
+       else
+      {
+        document.getElementById("time").style.color="black"
+        document.getElementById("time-1").style.borderColor="black"
+        document.getElementById("time-1").style.backgroundColor= "white"
+      }
+       
+      if (!subject )
+       {
+  
+        document.getElementById("subject").style.borderColor="red"
+        document.getElementById("subject").style.backgroundColor = "pink"
+        
+       }
+       else
+      {
+        // document.getElementById("subject").style.color="black"
+        document.getElementById("subject").style.borderColor="black"
+        document.getElementById("subject").style.backgroundColor= "white"
+      }
+
+    
+
+  }
 
   }
 
@@ -108,7 +152,7 @@ const Sem_4 = () => {
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value= "">Select Subject</option>
                 <option value="Internet of Things Systems, Security and Cloud">
                   Internet of Things Systems, Security and Cloud
                 </option>
@@ -123,7 +167,7 @@ const Sem_4 = () => {
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value= "">Select Subject</option>
                 <option value="Health Informatics">Health Informatics</option>
               </select>
             </div>}
@@ -136,7 +180,7 @@ const Sem_4 = () => {
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value= "">Select Subject</option>
                 <option value="Dissertation Project">Dissertation Project</option>
               </select>
             </div>}
@@ -149,7 +193,7 @@ const Sem_4 = () => {
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value= "">Select Subject</option>
                 <option value="Research Methods in Informatics">
                   Research Methods in Informatics
                 </option>
@@ -158,13 +202,13 @@ const Sem_4 = () => {
           </div>
           <div className="abc-1">
             <div className="class-div">
-              <label htmlFor="date" id="date-1" className="class-form-label">
+              <label htmlFor="date" id="date" className="class-form-label">
                 Date:
               </label>
               <input
                 type="date"
                 className="class-form-control"
-                id="date"
+                id="date-1"
                 aria-describedby="date"
                 value={date}
                 onChange={(e) => setdate(e.target.value)}

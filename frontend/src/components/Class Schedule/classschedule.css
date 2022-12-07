@@ -101,7 +101,7 @@
     animation: shake 600ms;
 }
 
-@keyframes shake {
+/* @keyframes shake {
 
     0%,
     100% {
@@ -121,4 +121,4 @@
     80% {
         transform: translateX(10px);
     }
-}
+} */
