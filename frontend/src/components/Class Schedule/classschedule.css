@@ -95,25 +95,7 @@
     justify-content: center;
 }
 
-#subject {
-    animation: shake 700ms;
-}
 
-#date-1 {
-    animation: shake 700ms;
-}
-
-#date {
-    animation: shake 700ms;
-}
-
-#time-1 {
-    animation: shake 700ms;
-}
-
-#time {
-    animation: shake 700ms;
-} */
 
 .shaking {
   animation: shake 700ms;
