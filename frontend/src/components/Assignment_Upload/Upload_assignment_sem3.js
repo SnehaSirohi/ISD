@@ -185,6 +185,7 @@ function UploadAssignmentsem3() {
             />
             <button>Upload</button>
           </div>
+          {file && <div className="fileuploaddisplay">{file}</div>}
           <div className="infocontent">
             <p className="main">Supported files</p>
             <p className="info">PDF,Doc, JPG, PNG</p>

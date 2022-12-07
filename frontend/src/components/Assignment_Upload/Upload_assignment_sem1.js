@@ -188,6 +188,7 @@ function UploadAssignmentsem1() {
             <input type="file" value={file} onChange={(e) => setFile(e.target.value)} />
             <button>Select File</button>
           </div>
+          {file && <div className="fileuploaddisplay">{file}</div>}
           <div className="infocontent">
             <p className="main">Supported files</p>
             <p className="info">PDF,Doc, JPG, PNG</p>
