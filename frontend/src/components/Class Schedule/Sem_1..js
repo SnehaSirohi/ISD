@@ -148,7 +148,7 @@ const Sem_1 = () => {
 
   return (
     <>
-
+     
       {/* <div>
         {isdot && <div class="loader"  >
           <div class="pair p1">
@@ -316,7 +316,19 @@ const Sem_1 = () => {
         </div>
       </form>
 
+      <div className="container-fluid blacky">
+     <div className="success">
+  <input type="checkbox" id="check" class="inputcheck" />
+  <label htmlFor="check" class="tick">
+    <div className="check-icon" >
+    </div>
+  </label>
+ <h4>
+  Class Scheduled successfully
+ </h4>
+</div>
 
+      </div>
     </>
   )
 };
