@@ -96,7 +96,7 @@
     justify-content: center;
 }
 
-#subject
+/* #subject
 {
     animation: shake 700ms;
 }
@@ -116,9 +116,11 @@
 #time
 {
     animation: shake 700ms;
+} */
+
+.shaking {
+  animation: shake 700ms;
 }
-
-
 
 @keyframes shake {
 

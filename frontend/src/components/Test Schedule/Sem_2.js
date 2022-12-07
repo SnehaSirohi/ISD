@@ -79,6 +79,8 @@ const Sem_2 = () => {
         document.getElementById("date").style.color="red"
         document.getElementById("date-1").style.borderColor="red"
         document.getElementById("date-1").style.backgroundColor = "pink"
+        document.getElementById("date-1").classList.add("shaking")
+        document.getElementById("date").classList.add("shaking")
         
 
        }
@@ -87,6 +89,7 @@ const Sem_2 = () => {
         document.getElementById("date").style.color="black"
         document.getElementById("date-1").style.borderColor="black"
         document.getElementById("date-1").style.backgroundColor= "white"
+        
       }
       
        if(!time)
@@ -94,6 +97,8 @@ const Sem_2 = () => {
         document.getElementById("time").style.color="red"
         document.getElementById("time-1").style.borderColor="red"
         document.getElementById("time-1").style.backgroundColor="pink"
+        document.getElementById("time-1").classList.add("shaking")
+        document.getElementById("time").classList.add("shaking")
        }
        else
       {
@@ -107,6 +112,7 @@ const Sem_2 = () => {
   
         document.getElementById("subject").style.borderColor="red"
         document.getElementById("subject").style.backgroundColor = "pink"
+        document.getElementById("subject").classList.add("shaking")
         
        }
        else
