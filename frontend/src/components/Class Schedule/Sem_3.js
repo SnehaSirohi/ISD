@@ -131,7 +131,7 @@ else {
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Information System Design">
                   Information System Design
                 </option>
@@ -146,7 +146,7 @@ else {
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Cloud Computing">Cloud Computing</option>
               </select>
             </div>}
@@ -172,7 +172,7 @@ else {
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="IT Planning and Management">
                   IT Planning and Management
                 </option>

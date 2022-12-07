@@ -129,7 +129,7 @@ return (
               name="subject"
               value={subject}
               onChange={(e) => setsubject(e.target.value)}>
-              <option>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Computer Communication and Networks">
                 Computer Communication and Networks
               </option>
@@ -145,7 +145,7 @@ return (
               name="subject"
               value={subject}
               onChange={(e) => setsubject(e.target.value)}>
-              <option>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Database Systems">Database Systems</option>
             </select></div>}
 
@@ -158,7 +158,7 @@ return (
               name="subject"
               value={subject}
               onChange={(e) => setsubject(e.target.value)}>
-              <option>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Applied Machine Learning">
                 Applied Machine Learning
               </option>
@@ -173,7 +173,7 @@ return (
               name="subject"
               value={subject}
               onChange={(e) => setsubject(e.target.value)}>
-              <option>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Open Elective-1">Open Elective-1</option>
             </select></div>}
 

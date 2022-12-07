@@ -210,7 +210,7 @@ const Sem_1 = () => {
                 value={subject}
 
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Software Design & Programming">
                   Software Design & Programming
                 </option>
@@ -224,7 +224,7 @@ const Sem_1 = () => {
                 value={subject}
 
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Mathematical Foundation Of Computing">
                   Mathematical Foundation of Computing
                 </option>
@@ -238,7 +238,7 @@ const Sem_1 = () => {
                 value={subject}
 
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Computer System Architecture">
                   Computer System Architecture
                 </option>
