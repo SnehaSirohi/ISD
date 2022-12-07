@@ -88,28 +88,43 @@ const Sem_1 = () => {
     }
     else {
       e.preventDefault()
-       if(!date)
-       {
-        document.getElementById("date").style.color="red"
-        document.getElementById("date-1").style.borderColor="red"
+      if (!date) {
+        document.getElementById("date").style.color = "red"
+        document.getElementById("date-1").style.borderColor = "red"
         document.getElementById("date-1").style.backgroundColor = "pink"
-        setempty(true)
 
-       }
-       if(!time)
-       {
-        document.getElementById("time").style.color="red"
-        document.getElementById("time-1").style.borderColor="red"
-        document.getElementById("time-1").style.backgroundColor="pink"
-        setempty(true)
-       }
-      if (!subject || subject == "Select Subject")
-       {
-  
-        document.getElementById("subject").style.borderColor="red"
+
+      }
+      else {
+        document.getElementById("date").style.color = "black"
+        document.getElementById("date-1").style.borderColor = "black"
+        document.getElementById("date-1").style.backgroundColor = "white"
+      }
+
+      if (!time) {
+        document.getElementById("time").style.color = "red"
+        document.getElementById("time-1").style.borderColor = "red"
+        document.getElementById("time-1").style.backgroundColor = "pink"
+      }
+      else {
+        document.getElementById("time").style.color = "black"
+        document.getElementById("time-1").style.borderColor = "black"
+        document.getElementById("time-1").style.backgroundColor = "white"
+      }
+
+      if (!subject) {
+
+        document.getElementById("subject").style.borderColor = "red"
         document.getElementById("subject").style.backgroundColor = "pink"
-        setempty(true)
-       }
+
+      }
+      else {
+        // document.getElementById("subject").style.color="black"
+        document.getElementById("subject").style.borderColor = "black"
+        document.getElementById("subject").style.backgroundColor = "white"
+      }
+
+
 
     }
 
