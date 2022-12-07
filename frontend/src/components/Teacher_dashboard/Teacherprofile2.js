@@ -56,14 +56,16 @@ function Teacherprofile2() {
 
                             </div>
                         </div>
-                        <div className='text-center pt-5'>
+                        
+                    </form>
+                </div>
+            </div>
+
+            
+            <div className='text-center pt-5'  id='prof_block'>
                                  <button id='butn' class="btn btn-primary" >Logout</button>
                                  <button id='butn' class="btn btn-primary-1" >Reset Password</button>
                          </div>
-                    </form>
-                </div>
-
-            </div>
         </>
     )
 }

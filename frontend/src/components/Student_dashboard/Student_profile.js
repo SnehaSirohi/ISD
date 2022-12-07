@@ -50,45 +50,77 @@ const Profile = () => {
         }
     }, [name], [email])
 
-    return(
+    return (
         <>
-         <div >
-         <Navbar />
-            <div className='profilebody'>
-                 <br /><br />
-                 <h2>{name}'s Profile</h2>
-                 <div className='profileenroll'>
-                     {/* <img src={logo} alt="Avatar" class="avatar"></img> */}
-                    <div>
-                         <h1>{name}</h1>
-                         <h1>ENROLLMENT N0: {enrollNum || 'ish'}</h1>
-                     </div>
-                 </div>
-                 <div className='personaldetails'>
-                     <div className='detailone'>
-                         <h2>Personal Details :</h2>
-                         <h4>Mail ID :{email}</h4>
-                         <h4>Mobile no - {contactNum} </h4>
-                     </div>
-                     <div>
-                         <h2>Course Detail</h2>
-                         <h4>Semester - III </h4>
-                         <h4>Session - 2021 - 2023 </h4>
-                         <h4>Class roll no - {rollNum} </h4>
-                         <h4>Exam Rollno - xxxxxxxxxx </h4>
-                     </div>
-                     <div className='buttons'>
-                    <button onClick={() => {
-                        localStorage.removeItem('token')
-                        navigate("/")
-                        }}>Logout</button>
-                        <button><Link to="/dashboard/changepassword"><div className="button">Reset Password</div></Link></button> 
-                    </div>
-                 </div>
-             </div>
-         </div>
+        <Navbar/>
+            <h1 className='Teacherheading'>Student Profile</h1>
+            <div class="emp-profile">
+                <div>
+                    <form method="post">
+                        <div className='photo_block'>
+                                <div class="profile-img">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
+                                </div>
+                            <div class="profile-head">
+                                <h2>
+                                    Abhishek Tyagi
+                                </h2>
+                                <h4>
+                                   Enroll. no.
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="teacherInfo">
+                            <div className='keys'>
+                                <div>
+                                    <label>User Id: </label>
+                                </div>
+                                <div>
+                                    <label>DOB </label>
+                                </div>
+                                <div>
+                                    <label>Email: </label>
+                                </div>
+                                <div>
+                                    <label>Phone: </label>
+                                </div>
+                                <div>
+                                    <label>Semester: </label>
+                                </div>
+                            </div>
+                            <div className='values'>
+                                <div>
+                                    <p>Abhishek_tyagi</p>
+                                </div>
+                                <div>
+                                    <p>17/11/2000</p>
+                                </div>
+                                <div>
+                                    <p>tyagiabhi@gmail.com</p>
+                                </div>
+
+                                <div>
+                                    <p>123 756 7890</p>
+                                </div>
+                                <div>
+                                    <p>3rd</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+
+            </div>
+
+            
+            <div className='text-center pt-5' id='prof_block'>
+                                 <button id='butn' class="btn btn-primary" >Logout</button>
+                                 <button id='butn' class="btn btn-primary-1" >Reset Password</button>
+                         </div>
         </>
-    );
+    )
     
 }
 

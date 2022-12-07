@@ -112,7 +112,7 @@ const Sem_1 = () => {
        }
        else
       {
-        // document.getElementById("subject").style.color="black"
+        document.getElementById("subject").style.color="black"
         document.getElementById("subject").style.borderColor="black"
         document.getElementById("subject").style.backgroundColor= "white"
       }

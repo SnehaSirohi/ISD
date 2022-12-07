@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
+import "./change_teach_password.css"
 
 
 const ChangeTeacherPassword = () => {
@@ -70,8 +71,8 @@ const ChangeTeacherPassword = () => {
 
   return (
     <>
-      <section className="wrapper">
-        <div className="container">
+      <section className="wrapper ">
+        <div className="container pt-10">
           <div className="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center">
             <form className="rounded bg-white shadow p-5" >
               <h3 className="text-dark fw-bolder fs-4 mb-2">Change Password</h3>
