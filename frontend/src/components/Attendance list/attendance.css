@@ -43,7 +43,6 @@ tr {
 
 .atte1 {
   text-align: center;
-  background-color: rgb(196, 255, 255);
   margin-bottom: 0;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -51,8 +50,10 @@ tr {
 
 #subject{
   margin: auto;
-  background-color: #2bb0a8;
+  border: 2px solid #2BB0A8;
+
 }
+
 
  option{
   text-align: center;

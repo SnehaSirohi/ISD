@@ -225,7 +225,7 @@ const Testreport = () => {
     </form>
   </div>}
   </div>
-  <div>{string}</div>
+  <div  className='nothing_block'>{string}</div>
  {visible && <div classname="main">
     <table className='table table-striped' id='mytable-1'>
       <thead className='heading_1'>
@@ -242,10 +242,10 @@ const Testreport = () => {
     </table>
   </div>}
 
-  <div className='text-center'>
+{visible &&  <div className='text-center'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
-   </div>
+   </div>}
    </>
   )
 }

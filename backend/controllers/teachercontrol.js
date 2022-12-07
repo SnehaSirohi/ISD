@@ -12,7 +12,11 @@ const StudyMaterial = require("../models/StudyMaterial");
 const SubmittedAssignment = require("../models/SubmittedAssignment")
 const jwt = require("jsonwebtoken");
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
+var newDate = new Date();
+      var year=newDate.getFullYear()
+      var getMonth = String(newDate.getMonth() + 1).padStart(2, '0');
+      var getDate = String(newDate.getDate() ).padStart(2, '0');
+      var date = [year,getMonth,getDate].join("-");
 const loginteacher = (req, res) => {
   const { Teacher_id, password } = req.body;
   Teacher.findOne({ Teacher_id: Teacher_id }, (err, teacher) => {
@@ -255,23 +259,17 @@ const GetAttendance = async (req, res) => {
 const sem1Attendance = async (req, res) => {
   const token = req.headers["x-access-token"];
   const semester = "Sem-1";
+  
   const subject = req.body.subject;
   let teachername;
-  console.log(subject);
-  var nowDate = new Date();
   const time =
-    nowDate.getHours() +
+    newDate.getHours() +
     ":" +
-    nowDate.getMinutes() +
+    newDate.getMinutes() +
     ":" +
-    nowDate.getSeconds();
-  const date =
-    nowDate.getFullYear() +
-    "-" +
-    (nowDate.getMonth() + 1) +
-    "-" +
-    nowDate.getDate();
-
+    newDate.getSeconds();
+  
+console.log("date = ",date)
   try {
     const decoded = jwt.verify(token, "secret1234");
     const Teacher_id = decoded.Teacher_id;
@@ -306,6 +304,7 @@ const sem1Attendance = async (req, res) => {
     }
 
     try {
+      console.log("date inside try : ",date);
       await Sem1Attendance.create({
         teacher: teachername,
         date,
@@ -327,19 +326,14 @@ const sem2Attendance = async (req, res) => {
   const subject = req.body.subject;
   let teachername;
   console.log(subject);
-  var nowDate = new Date();
+  var newDate = new Date();
   const time =
-    nowDate.getHours() +
+    newDate.getHours() +
     ":" +
-    nowDate.getMinutes() +
+    newDate.getMinutes() +
     ":" +
-    nowDate.getSeconds();
-  const date =
-    nowDate.getFullYear() +
-    "-" +
-    (nowDate.getMonth() + 1) +
-    "-" +
-    nowDate.getDate();
+    newDate.getSeconds();
+ 
 
   try {
     const decoded = jwt.verify(token, "secret1234");
@@ -394,19 +388,19 @@ const sem3Attendance = async (req, res) => {
   const subject = req.body.subject;
   let teachername;
   console.log(subject);
-  var nowDate = new Date();
+  var newDate = new Date();
   const time =
-    nowDate.getHours() +
+    newDate.getHours() +
     ":" +
-    nowDate.getMinutes() +
+    newDate.getMinutes() +
     ":" +
-    nowDate.getSeconds();
+    newDate.getSeconds();
   const date =
-    nowDate.getFullYear() +
+    newDate.getFullYear() +
     "-" +
-    (nowDate.getMonth() + 1) +
+    (newDate.getMonth() + 1) +
     "-" +
-    nowDate.getDate();
+    newDate.getDate();
 
   try {
     const decoded = jwt.verify(token, "secret1234");
@@ -461,19 +455,14 @@ const sem4Attendance = async (req, res) => {
   const subject = req.body.subject;
   let teachername;
   console.log(subject);
-  var nowDate = new Date();
+  var newDate = new Date();
   const time =
-    nowDate.getHours() +
+    newDate.getHours() +
     ":" +
-    nowDate.getMinutes() +
+    newDate.getMinutes() +
     ":" +
-    nowDate.getSeconds();
-  const date =
-    nowDate.getFullYear() +
-    "-" +
-    (nowDate.getMonth() + 1) +
-    "-" +
-    nowDate.getDate();
+    newDate.getSeconds();
+  
 
   try {
     const decoded = jwt.verify(token, "secret1234");
@@ -709,6 +698,8 @@ const GetAssignmentSubmitt = async (req, res) => {
     data: await SubmittedAssignment.find({}),
   });
 };
+
+
 module.exports = {
   loginteacher,
   GetTeacherdashboard,

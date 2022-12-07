@@ -90,7 +90,7 @@ function UploadStudyMaterialSem1() {
     <div className="uploadassignmentbody">
       <Navbar />
       <div className="uploadheading">
-        <h2>Upload Studymaterial</h2>
+        <h1>Upload Studymaterial</h1>
       </div>
       <div className="uploadassignmentcontent">
         {UnmeshShukla && (
@@ -99,7 +99,7 @@ function UploadStudyMaterialSem1() {
 
             <select
               type="text"
-              className="form-control"
+              className="form-control shadow-none"
               id="subject"
               name="subject"
               value={subject}
@@ -117,7 +117,7 @@ function UploadStudyMaterialSem1() {
             
             <select
               type="text"
-              className="form-control"
+              className="form-control shadow-none"
               id="subject"
               name="subject"
               value={subject}
@@ -135,7 +135,7 @@ function UploadStudyMaterialSem1() {
             <label className="form-label">Select Subject</label>
             <select
               type="text"
-              className="form-control mt-2"
+              className="form-control mt-2 shadow-none"
               id="subject"
               name="subject"
               value={subject}
@@ -153,7 +153,7 @@ function UploadStudyMaterialSem1() {
             <label className="form-label">Select Subject</label>
             <select
               type="text"
-              className="form-control mt-2"
+              className="form-control mt-2 shadow-none"
               id="subject"
               name="subject"
               value={subject}
@@ -204,9 +204,11 @@ function UploadStudyMaterialSem1() {
 
         {/* submit button */}
 
-        <button className="submitbutton" onClick={Upload}>
-          Submit
-        </button>
+        <div className="text-center">
+          <button className="submitbutton mt-3 " onClick={Upload}>
+            Submit
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 .class-1 {
     text-align: center;
-    /* background-color: rgb(196, 255, 255); */
     margin-bottom: 0;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -89,3 +88,37 @@
     margin-right: 20%;
      text-align: right; 
 }  */
+
+.scheduledcontainer {
+    flex-direction: column;
+    height: calc(87vh);
+    display: flex;
+    justify-content: center;
+}
+
+.btn-class
+{
+    animation: shake 600ms;
+}
+
+/* @keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,90%{
+        transform: translateX(-10px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(10px);
+    }
+} */

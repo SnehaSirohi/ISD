@@ -142,7 +142,7 @@ const Assignmentreport = () => {
   return (
    <>
 <Navbar />
- {<h1 classNcame='text-center-1'>Assignments Posted </h1>}
+ {<h1 className='text-center-1'>Assignments Posted </h1>}
  {sem1 && <div className='classrepcontainer'>
     <form className='repform1' onSubmit={subjectupdate}>
     <select
@@ -235,7 +235,7 @@ const Assignmentreport = () => {
             </button>
     </form>
   </div>}
-  <div>{string}</div>
+  <div  className='nothing_block'>{string}</div>
   {visible && <div classname="main">
     <table className='table table-striped' id='mytable-1'>
       <thead className='heading_1'>
@@ -254,10 +254,10 @@ const Assignmentreport = () => {
     </table>
   </div>}
 
-  <div className='text-center'>
+  {visible && <div className='text-center'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
-   </div>
+   </div>}
    </>
   )
 }

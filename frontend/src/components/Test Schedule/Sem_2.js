@@ -20,6 +20,7 @@ const Sem_2 = () => {
   const [MKDas, setMKDas] = useState(false)
   const [Sanjeev, setSanjeev] = useState(false)
   const [teacher, setTeacher] = useState("")
+   const[success,setsuccess] = useState(false)
   const sem = "Sem-2";
   //-----------
   async function populate(e) {
@@ -67,14 +68,57 @@ const Sem_2 = () => {
         }),
       }).then(async (response) => {
         let data = await response.json();
-        console.log(data);
         setwarning(data.warning)
+        setsuccess(data.success)
       });
     }
-    else
-    {
-      alert("Please fill all the neccessary fields!")
-    }
+    else {
+      e.preventDefault()
+       if(!date)
+       {
+        document.getElementById("date").style.color="red"
+        document.getElementById("date-1").style.borderColor="red"
+        document.getElementById("date-1").style.backgroundColor = "pink"
+        
+
+       }
+      else
+      {
+        document.getElementById("date").style.color="black"
+        document.getElementById("date-1").style.borderColor="black"
+        document.getElementById("date-1").style.backgroundColor= "white"
+      }
+      
+       if(!time)
+       {
+        document.getElementById("time").style.color="red"
+        document.getElementById("time-1").style.borderColor="red"
+        document.getElementById("time-1").style.backgroundColor="pink"
+       }
+       else
+      {
+        document.getElementById("time").style.color="black"
+        document.getElementById("time-1").style.borderColor="black"
+        document.getElementById("time-1").style.backgroundColor= "white"
+      }
+       
+      if (!subject )
+       {
+  
+        document.getElementById("subject").style.borderColor="red"
+        document.getElementById("subject").style.backgroundColor = "pink"
+        
+       }
+       else
+      {
+        // document.getElementById("subject").style.color="black"
+        document.getElementById("subject").style.borderColor="black"
+        document.getElementById("subject").style.backgroundColor= "white"
+      }
+
+    
+
+  }
 
   }
 
@@ -97,19 +141,19 @@ const Sem_2 = () => {
     <>
       <Navbar />
       <form onSubmit={schedule}>
-        <div className=" mb-3">
+        <div className=" mb-3 scheduledcontainer">
           <h1 className="class-1">Test Schedule</h1>
           <div className=" mb-3">
             {NitishaAgg && <div className="selectsubjectcontainer">
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value= "">Select Subject</option>
                 <option value="Computer Communication and Networks">
                   Computer Communication and Networks
                 </option>
@@ -120,12 +164,12 @@ const Sem_2 = () => {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value= "">Select Subject</option>
                 <option value="Database Systems">Database Systems</option>
               </select></div>}
 
@@ -133,12 +177,12 @@ const Sem_2 = () => {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value= "">Select Subject</option>
                 <option value="Applied Machine Learning">
                   Applied Machine Learning
                 </option>
@@ -148,25 +192,25 @@ const Sem_2 = () => {
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value= "">Select Subject</option>
                 <option value="Open Elective-1">Open Elective-1</option>
               </select></div>}
 
           </div>
           <div className="abc-1">
             <div className="class-div">
-              <label htmlFor="date" id="date-1" className="class-form-label">
+              <label htmlFor="date" id="date" className="class-form-label">
                 Date:
               </label>
               <input
                 type="date"
                 className="class-form-control"
-                id="date"
+                id="date-1"
                 aria-describedby="date"
                 value={date}
                 onChange={(e) => setdate(e.target.value)}

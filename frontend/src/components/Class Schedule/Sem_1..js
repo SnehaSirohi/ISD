@@ -23,14 +23,16 @@ const Sem_1 = () => {
   const [teacher, setTeacher] = useState("")
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [isdot, setIsdotVisible] = useState(false);
-
-  const handleButtonClick = () => {
-    setIsdotVisible(true);
-    setTimeout(() => {
-      setIsdotVisible(false);
-      setIsAlertVisible(true);
-    }, 2000);
-  }
+  const[success,setsuccess] = useState(false)
+  const [empty,setempty]=useState(false)
+  console.log("warning : ",warning,"Success :",success);
+  // const handleButtonClick = () => {
+  //   setIsdotVisible(true);
+  //   setTimeout(() => {
+  //     setIsdotVisible(false);
+  //     setIsAlertVisible(true);
+  //   }, 2000);
+  // }
 
   const sem = "Sem-1";
 
@@ -58,39 +60,58 @@ const Sem_1 = () => {
   }
 
   async function schedule(e) {
-    
-    e.preventDefault();
-   if(subject && time && date)
-   { 
-   
-    const req = await fetch("http://localhost:4000/scheduleclass", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      'x-access-token': localStorage.getItem('token'),
-    },
-    body: JSON.stringify({
-      subject,
-      sem,
-      date,
-      time,
-      message,
-      teacher
-    }),
-  }).then(async (response) => {
-    let data = await response.json();
-    console.log(data);
-    setwarning(data.warning)
-  });
-       
-}
-else
-{ 
 
-  alert("Please fill all the neccessary fields")
     
-   }
+    if (subject && time && date) {
+       
+      const req = await fetch("http://localhost:4000/scheduleclass", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          'x-access-token': localStorage.getItem('token'),
+        },
+        body: JSON.stringify({
+          subject,
+          sem,
+          date,
+          time,
+          message,
+          teacher
+        }),
+      }).then(async (response) => {
+        let data = await response.json();
+        setwarning(data.warning)
+        setsuccess(data.success)
+      });
+
+    }
+    else {
+      e.preventDefault()
+       if(!date)
+       {
+        document.getElementById("date").style.color="red"
+        document.getElementById("date-1").style.borderColor="red"
+        document.getElementById("date-1").style.backgroundColor = "pink"
+        setempty(true)
+
+       }
+       if(!time)
+       {
+        document.getElementById("time").style.color="red"
+        document.getElementById("time-1").style.borderColor="red"
+        document.getElementById("time-1").style.backgroundColor="pink"
+        setempty(true)
+       }
+      if (!subject || subject == "Select Subject")
+       {
+  
+        document.getElementById("subject").style.borderColor="red"
+        document.getElementById("subject").style.backgroundColor = "pink"
+        setempty(true)
+       }
+
+    }
 
   }
 
@@ -113,7 +134,7 @@ else
   return (
     <>
 
-      <div>
+      {/* <div>
         {isdot && <div class="loader"  >
           <div class="pair p1">
             <div class="dot dot-1 ">
@@ -133,7 +154,7 @@ else
             </div>
           </div>
         </div>}
-      </div>
+      </div> */}
       <Navbar />
       <form onSubmit={schedule}>
         <div>
@@ -160,7 +181,7 @@ else
 
 
 
-        <div className="mb-3" style={{ filter: isAlertVisible || isdot ? "blur(3px)" : "none", background: isAlertVisible ? "#f1ebeb" : "none" }} >
+        <div className="mb-3 scheduledcontainer" style={{ filter: isAlertVisible || isdot ? "blur(3px)" : "none", background: isAlertVisible ? "#f1ebeb" : "none" }} >
 
 
           <div className=" mb-3">
@@ -169,28 +190,27 @@ else
 
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
-               
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Algorithms And Data Structure">
                   Algorithms and Data Structure
                 </option>
               </select></div>}
             {NitishaAgg && <div className="selectsubjectcontainer">
-              
+
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
-               
+
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Software Design & Programming">
                   Software Design & Programming
                 </option>
@@ -198,13 +218,13 @@ else
             {MKDas && <div className="selectsubjectcontainer">
               <select
                 type="text"
-                className="form-control mt-2"
+                className="form-control mt-2 shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
-               
+
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Mathematical Foundation Of Computing">
                   Mathematical Foundation of Computing
                 </option>
@@ -212,13 +232,13 @@ else
             {SunilKumar && <div className="selectsubjectcontainer">
               <select
                 type="text"
-                className="form-control mt-2"
+                className="form-control mt-2 shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
-               
+
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Computer System Architecture">
                   Computer System Architecture
                 </option>
@@ -228,28 +248,28 @@ else
 
           <div className="abc-1">
             <div className="class-div">
-              <label htmlFor="date" className="class-form-label" id="date-1">Date:</label>
+              <label htmlFor="date" className="class-form-label" id="date">Date:</label>
               <input
                 type="date"
                 className="class-form-control"
-                id="date"
+                id="date-1"
                 aria-describedby="date"
                 value={date}
-               
+
                 onChange={(e) => setdate(e.target.value)}
               />
             </div >
-            <br/>
+            <br />
             <div className="time-div">
               <label htmlFor="time" className="time-form-label " id="time">
-                Time:  
+                Time:
               </label>
               <input
                 type="time"
                 className="class-form-control"
                 id="time-1"
                 value={time}
-               
+
                 onChange={(e) => settime(e.target.value)}
               />
             </div>
@@ -266,7 +286,7 @@ else
           </div>
 
           <div className="btn-class">
-            <button type="submit" className="btn btn-primary submit-btn" onClick={handleButtonClick} >
+            <button type="submit" className="btn btn-primary submit-btn"  >
               Schedule Class
             </button>
           </div>
@@ -274,8 +294,13 @@ else
             <h3>{warning}</h3>
             <button onClick={(e) => setwarning(false)}>Ok</button>
           </div>}
+          {empty && <div className="container warning">
+            <h3>Please Fill all the mandatory fields</h3>
+            <button onClick={(e) => setempty(false)}>Ok</button>
+          </div>}
         </div>
       </form>
+
 
     </>
   )

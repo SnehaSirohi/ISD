@@ -89,18 +89,9 @@ function UploadAssignmentsem2() {
     <div className="uploadassignmentbody">
       <Navbar />
       <div className="uploadheading">
-        <h2>Upload Assignment</h2>
+        <h1>Upload Assignment</h1>
       </div>
-      <div className="uploadassignmentcontent">
-        <div className=" mb-3">
-          <label htmlFor="form-label">Deadline</label>
-          <input
-            type="date"
-            value={deadline}
-            onChange={(e) => setdeadline(e.target.value)}
-          />
-        </div>
-      </div>
+    
       <div className="uploadassignmentcontent">
         <div className=" mb-3">
           {NitishaAgg && (
@@ -108,7 +99,7 @@ function UploadAssignmentsem2() {
               
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -127,7 +118,7 @@ function UploadAssignmentsem2() {
               
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -143,7 +134,7 @@ function UploadAssignmentsem2() {
               
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -161,7 +152,7 @@ function UploadAssignmentsem2() {
               
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -174,6 +165,18 @@ function UploadAssignmentsem2() {
         </div>
 
         {/* upload file */}
+
+        <div className="uploadassignmentcontent" id="deadline_block">
+        <div className=" mb-3">
+          <label htmlFor="form-label">Deadline:</label>
+          <input
+            type="date"
+            className="time_block12"
+            value={deadline}
+            onChange={(e) => setdeadline(e.target.value)}
+          />
+        </div>
+      </div>
 
         <div className="file-card">
           <div className="file-inputs">
@@ -207,9 +210,11 @@ function UploadAssignmentsem2() {
 
         {/* submit button */}
 
-        <button className="submitbutton" onClick={Upload}>
-          Submit
-        </button>
+        <div className="text-center">
+          <button className="submitbutton mt-3 " onClick={Upload}>
+            Submit
+          </button>
+        </div>
       </div>
     </div>
   );

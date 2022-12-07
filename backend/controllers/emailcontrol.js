@@ -11,6 +11,11 @@ const AssignmentsPosted = require("../models/Assignment")
 const StudyMaterial = require("../models/StudyMaterial")
 const jwt = require("jsonwebtoken");
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+var newDate = new Date();
+      var year=newDate.getFullYear()
+      var getMonth = String(newDate.getMonth() + 1).padStart(2, '0');
+      var getDate = String(newDate.getDate() ).padStart(2, '0');
+      var date = [year,getMonth,getDate].join("-");
 const { classScheduleMail, testScheduleMail, AssignmentMail,StudyMaterialMail, MonthlyMail,WarningMail } = require("../utils/mail");
 
 const Postscheduleclass = async (req, res) => {
@@ -109,14 +114,7 @@ const PostscheduleTest = async (req, res) => {
   }
 
   const PostUploadassignment = async (req, res) => {
-    var nowDate = new Date();
-  
-    var date =
-      nowDate.getFullYear() +
-      "-" +
-      (nowDate.getMonth() + 1) +
-      "-" +
-      nowDate.getDate();
+    
   
     const {subject,teacher,file,semester,deadline,description} = req.body
     try {
@@ -146,14 +144,6 @@ const PostscheduleTest = async (req, res) => {
 
   const PostStudyMaterial = async (req, res) => {
     const token = req.headers["x-access-token"];
-    var nowDate = new Date();
-  
-    var date =
-      nowDate.getFullYear() +
-      "-" +
-      (nowDate.getMonth() + 1) +
-      "-" +
-      nowDate.getDate();
   
     const {subject,teacher,file,semester,description} = req.body
     try {

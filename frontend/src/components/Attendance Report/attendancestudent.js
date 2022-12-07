@@ -22,6 +22,8 @@ const Attendancereport = () => {
   const [sem4, setSem4] = useState(false)
   const [subject, setSubject] = useState("")
   const [semester, setSemester] = useState("")
+  const [visible, setVisible] = useState(false)
+
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/dashboard", {
       method: "GET",
@@ -40,6 +42,7 @@ const Attendancereport = () => {
 
   async function subjectupdate(e) {
     e.preventDefault();
+    setVisible(false)
     console.log(student)
     if(subject != "overall")
       setString("Subject-wise Attendance Report : "+ subject)
@@ -53,10 +56,16 @@ const Attendancereport = () => {
     console.log(data)
 
     setAttendmaterial(data)
-
+    if(data.length!=0)
+    {
+      setVisible(true)
+    }else{
+      setString("No Attendance Report Available")
+    }
     if(subject == "overall")
     {
       setAttendmaterial(student)
+      setVisible(true)
       setString("Overall Attendance Report")
     }
 
@@ -125,7 +134,7 @@ const Attendancereport = () => {
   <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+            className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -155,7 +164,7 @@ const Attendancereport = () => {
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+            className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -178,7 +187,7 @@ const Attendancereport = () => {
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+            className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -200,7 +209,7 @@ const Attendancereport = () => {
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+            className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -218,7 +227,8 @@ const Attendancereport = () => {
     </form>
   </div>}
     {<h3 className='text-center' id='string-12'>{string}</h3>}
-      <div className='main'>
+    
+     {visible && <div className='main'>
         <table className='table table-striped' id='mytable-2'>
           <thead className='heading-2'>
             <tr>
@@ -232,12 +242,12 @@ const Attendancereport = () => {
             <List attendmaterial={attendmaterial} />
           </tbody>
         </table>
-      </div>
+      </div>}
 
-      <div className='text-center'>
+    {visible && <div className='text-center'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
-   </div>
+   </div>}
     </>
   )
 }

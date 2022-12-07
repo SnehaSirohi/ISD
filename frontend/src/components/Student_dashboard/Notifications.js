@@ -4,6 +4,8 @@ import Navbar from './Navbar'
 const Notifications = () => {
     const [assignmentnotifications,setassignmentnotifications]=useState([])
     const [classnotifications,setclassnotifications]=useState([])
+    const [testnotifications,settestnotifications]=useState([])
+    const [studymaterial,setstudymaterial]=useState([])
 
     // const [testnotifications,settestnotifications]=useState([])
     const fetchdata=async()=>{
@@ -26,13 +28,15 @@ const Notifications = () => {
             console.log(json2);
               const array2= json2.data.reverse();
             setclassnotifications(array2)
-        // const response3=await fetch("http://localhost:4000/", {
-        //     method: "GET",
-        //     headers: {
-        //         Accept: "application/json",
-        //         "Content-Type": "application/json",
-        //     }})
-        //     const json = await response1.json()
+        const response3=await fetch("http://localhost:4000/notifications/tests", {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            }})
+            const json3 = await response3.json()
+            const array3= json3.data.reverse();
+            settestnotifications(array3)
         }
         useEffect(()=>{
             fetchdata()
@@ -58,6 +62,17 @@ const Notifications = () => {
             <>
             <div className='container noti'>
                 <h4>{name} has scheduled a class of {subject} on {date}</h4>
+                <p>{date}</p>
+            </div>
+            </>
+         )
+     })}
+     {testnotifications.map((notification)=>{
+        const {name,subject,date} = notification
+         return(
+            <>
+            <div className='container noti'>
+                <h4>{name} has scheduled a test of {subject} on {date}</h4>
                 <p>{date}</p>
             </div>
             </>

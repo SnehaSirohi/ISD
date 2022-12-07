@@ -89,7 +89,7 @@ function UploadStudyMaterialSem2() {
     <div className="uploadassignmentbody">
       <Navbar />
       <div className="uploadheading">
-        <h2>Upload Studymaterial</h2>
+        <h1>Upload Studymaterial</h1>
       </div>
       <div className="uploadassignmentcontent">
         <div className=" mb-3">
@@ -98,7 +98,7 @@ function UploadStudyMaterialSem2() {
               
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -117,7 +117,7 @@ function UploadStudyMaterialSem2() {
               
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -133,7 +133,7 @@ function UploadStudyMaterialSem2() {
               
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -151,7 +151,7 @@ function UploadStudyMaterialSem2() {
               
               <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -198,9 +198,11 @@ function UploadStudyMaterialSem2() {
 
         {/* submit button */}
 
-        <button className="submitbutton" onClick={Upload}>
-          Submit
-        </button>
+        <div className="text-center">
+          <button className="submitbutton mt-3 " onClick={Upload}>
+            Submit
+          </button>
+        </div>
       </div>
     </div>
   );

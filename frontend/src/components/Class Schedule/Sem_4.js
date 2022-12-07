@@ -17,14 +17,15 @@ const Sem_4 = () => {
   const [time, settime] = useState("");
   const [message, setmessage] = useState("");
   const [warning, setwarning] = useState("");
-  const [UnmeshShukla,setUnmeshShukla]=useState(false)
-  const [NitishaAgg,setNitishaAgg]=useState(false)
-  const [MKDas,setMKDas]=useState(false)
-  const [Sanjeev,setSanjeev]=useState(false)
-   const [teacher,setTeacher] = useState("")
+  const [UnmeshShukla, setUnmeshShukla] = useState(false)
+  const [NitishaAgg, setNitishaAgg] = useState(false)
+  const [MKDas, setMKDas] = useState(false)
+  const [Sanjeev, setSanjeev] = useState(false)
+  const [teacher, setTeacher] = useState("")
+   const[success,setsuccess] = useState(false)
   const sem = "Sem-4";
-   //-----------
-   async function populate(e) {
+  //-----------
+  async function populate(e) {
     const req = await fetch('http://localhost:4000/scheduleclass', {
       headers: {
         'x-access-token': localStorage.getItem('token'), //
@@ -32,62 +33,73 @@ const Sem_4 = () => {
     })
     const data = await req.json();
     setTeacher(data.name)
-     if(data.name=="Unmesh Shukla")
-    {
+    if (data.name == "Unmesh Shukla") {
       setUnmeshShukla(true)
     }
-    if(data.name=="Nitisha Aggarwal")
-    {
+    if (data.name == "Nitisha Aggarwal") {
       setNitishaAgg(true)
     }
-    if(data.name=="M.K Das")
-    {
+    if (data.name == "M.K Das") {
       setMKDas(true)
     }
-    if(data.name=="Sanjeev")
-    {
+    if (data.name == "Sanjeev") {
       setSanjeev(true)
     }
 
   }
 
   async function schedule(e) {
-    
-    e.preventDefault();
-   if(subject && time && date)
-   { 
-   
-    const req = await fetch("http://localhost:4000/scheduleclass", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      'x-access-token': localStorage.getItem('token'),
-    },
-    body: JSON.stringify({
-      subject,
-      sem,
-      date,
-      time,
-      message,
-      teacher
-    }),
-  }).then(async (response) => {
-    let data = await response.json();
-    console.log(data);
-    setwarning(data.warning)
-  });
-       
-}
-else
-{ 
 
-  alert("Please fill all the neccessary fields")
+    if (subject && time && date) {
+
+      const req = await fetch("http://localhost:4000/scheduleclass", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          'x-access-token': localStorage.getItem('token'),
+        },
+        body: JSON.stringify({
+          subject,
+          sem,
+          date,
+          time,
+          message,
+          teacher
+        }),
+      }).then(async (response) => {
+        let data = await response.json();
+        setwarning(data.warning)
+        setsuccess(data.success)
+      });
+
+    }
+else {
     
-   }
+      e.preventDefault()
+      if (!date) {
+        document.getElementById("date").style.color = "red"
+        document.getElementById("date-1").style.borderColor = "red"
+        document.getElementById("date-1").style.backgroundColor = "pink"
+        // setempty(true)
+
+      }
+      if (!time) {
+        document.getElementById("time").style.color = "red"
+        document.getElementById("time-1").style.border = "solid red"
+        document.getElementById("time-1").style.backgroundColor = "pink"
+        // setempty(true)
+      }
+      if (!subject) {
+
+        document.getElementById("subject").style.border = "solid red"
+        document.getElementById("subject").style.backgroundColor = "pink"
+        // setempty(true)
+      }
+
+    }
 
   }
-
   //--------------------
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -100,124 +112,126 @@ else
       } else {
         populate()
 
-      } 
+      }
     }
   }, [])
   return (
     <>
-        <Navbar/>
+      <Navbar />
       <form onSubmit={schedule}>
-        <div className=" mb-3">
-        <h1 className="class-1">Class Schedule</h1>
-        {NitishaAgg && <div className="selectsubjectcontainer">
+        <div className=" mb-3 scheduledcontainer">
+          <div className=" mb-3">
+            <h1 className="class-1">Class Schedule</h1>
+            {NitishaAgg && <div className="selectsubjectcontainer">
 
-          <select
-            type="text"
-            className="form-control"
-            id="subject"
-            name="subject"
-            value={subject}
-            onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
-            <option value="Internet of Things Systems, Security and Cloud">
-              Internet of Things Systems, Security and Cloud
-            </option>
-          </select>
-          </div>}
-        {UnmeshShukla && <div className="selectsubjectcontainer">
+              <select
+                type="text"
+                className="form-control shadow-none"
+                id="subject"
+                name="subject"
+                value={subject}
+                onChange={(e) => setsubject(e.target.value)}>
+                <option value="">Select Subject</option>
+                <option value="Internet of Things Systems, Security and Cloud">
+                  Internet of Things Systems, Security and Cloud
+                </option>
+              </select>
+            </div>}
+            {UnmeshShukla && <div className="selectsubjectcontainer">
 
-          <select
-            type="text"
-            className="form-control"
-            id="subject"
-            name="subject"
-            value={subject}
-            onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
-            <option value="Health Informatics">Health Informatics</option>
-          </select>
-          </div>}
-        {Sanjeev && <div className="selectsubjectcontainer">
+              <select
+                type="text"
+                className="form-control shadow-none"
+                id="subject"
+                name="subject"
+                value={subject}
+                onChange={(e) => setsubject(e.target.value)}>
+                <option value="">Select Subject</option>
+                <option value="Health Informatics">Health Informatics</option>
+              </select>
+            </div>}
+            {Sanjeev && <div className="selectsubjectcontainer">
 
-          <select
-            type="text"
-            className="form-control"
-            id="subject"
-            name="subject"
-            value={subject}
-            onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
-            <option value="Dissertation Project">Dissertation Project</option>
-          </select>
-          </div>}
-        {MKDas && <div className="selectsubjectcontainer">
+              <select
+                type="text"
+                className="form-control shadow-none"
+                id="subject"
+                name="subject"
+                value={subject}
+                onChange={(e) => setsubject(e.target.value)}>
+                <option value="">Select Subject</option>
+                <option value="Dissertation Project">Dissertation Project</option>
+              </select>
+            </div>}
+            {MKDas && <div className="selectsubjectcontainer">
 
-          <select
-            type="text"
-            className="form-control"
-            id="subject"
-            name="subject"
-            value={subject}
-            onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
-            <option value="Research Methods in Informatics">
-              Research Methods in Informatics
-            </option>
-          </select>
-          </div>}
-          
-        </div>
+              <select
+                type="text"
+                className="form-control shadow-none"
+                id="subject"
+                name="subject"
+                value={subject}
+                onChange={(e) => setsubject(e.target.value)}>
+                <option value="">Select Subject</option>
+                <option value="Research Methods in Informatics">
+                  Research Methods in Informatics
+                </option>
+              </select>
+            </div>}
 
-        <div className="abc-1">
-        <div className="class-div">
-          <label htmlFor="date" className="class-form-label">
-            Date
-          </label>
-          <input
-            type="date"
-            className="class-form-control"
-            id="date"
-            aria-describedby="date"
-            value={date}
-            onChange={(e) => setdate(e.target.value)}
-          />
-        </div>
-        <div className="time-div">
-          <label htmlFor="time" className="time-form-label">
-            time
-          </label>
-          <input
-            type="time"
-            className="class-form-control"
-            id="time"
-            value={time}
-            onChange={(e) => settime(e.target.value)}
-          />
-        </div>
-        </div>
-        <div class="messagecontent">
-          <label for="exampleFormControlTextarea1" class="form-label">
-            Message:
-          </label>
-          <textarea
-            type="text"
-            class="class-form-control-1"
-            id="exampleFormControlTextarea1"
-            rows="3"
-            placeholder="Optional"
-            value={message}
-            onChange={(e) => setmessage(e.target.value)}></textarea>
-        </div>
-        <div className="btn-class">
-        <button type="submit" className="btn btn-primary">
-          Schedule Class
-        </button>
-        </div>
-        
-         {warning &&  <div className="container warning">
+          </div>
+
+          <div className="abc-1">
+            <div className="class-div">
+              <label htmlFor="date" className="class-form-label" id = "date">
+                Date
+              </label>
+              <input
+                type="date"
+                className="class-form-control "
+                id="date-1"
+                aria-describedby="date"
+                value={date}
+                onChange={(e) => setdate(e.target.value)}
+              />
+            </div>
+            <div className="time-div">
+              <label htmlFor="time" className="time-form-label" id = "time">
+                time
+              </label>
+              <input
+                type="time"
+                className="class-form-control"
+                id="time-1"
+                value={time}
+                onChange={(e) => settime(e.target.value)}
+              />
+            </div>
+          </div>
+          <div class="messagecontent">
+            <label for="exampleFormControlTextarea1" class="form-label">
+              Message:
+            </label>
+            <textarea
+              type="text"
+              class="class-form-control-1"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              placeholder="Optional"
+              value={message}
+              onChange={(e) => setmessage(e.target.value)}></textarea>
+          </div>
+          <div className="btn-class">
+            <button type="submit" className="btn btn-primary">
+              Schedule Class
+            </button>
+          </div>
+
+          {warning && <div className="container warning">
             <h3>{warning}</h3>
-            <button onClick={(e)=>setwarning(false)}>Ok</button>
-      </div>}
+            <button onClick={(e) => setwarning(false)}>Ok</button>
+          </div>}
+        </div>
       </form>
     </>
   );
