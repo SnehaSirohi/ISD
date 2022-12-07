@@ -144,100 +144,81 @@
     }
 }
 
-/* .blacky
-{
-    background-color: black;
-    height: 89.5vh;
-    width: 100%;
-    opacity: 0.7;
-    transform: translateY(-99.8%);
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center
-} */
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+.blacky {
+  background-color: black;
+  height: 89.5vh;
+  width: 100%;
+  opacity: 0.7;
+  transform: translateY(-99.8%);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.tick{
-  position: relative;
-  height: 125px;
-  width: 125px;
-  display: inline-block;
-  border: 5px solid rgba(255,255,255,0.2);
+.wrapper {
+ 
+  height: 10% !important;
+
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #7ac142;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
+}
+
+.checkmark {
+  width: 56%;
+  height: 56%;
   border-radius: 50%;
-  border-left-color: #5cb85c;
-  animation: rotate 1s linear infinite;
-}
-@keyframes rotate {
-  50%{
-    border-left-color: #9b59b6;
-  }
-  75%{
-    border-left-color: #e67e22;
-  }
-  100%{
-    transform: rotate(360deg);
-  }
-}
-.tick .check-icon{
-  display: none;
-}
-.tick .check-icon:after{
-  position: absolute;
-  content: "";
-  top: 50%;
-  left: 28px;
-  transform: scaleX(-1) rotate(135deg);
-  height: 56px;
-  width: 28px;
-  border-top: 4px solid #05d005;
-  border-right: 4px solid #05d005;
-  transform-origin: left top;
-  animation: check-icon 0.8s ease;
-}
-@keyframes check-icon {
-  0%{
-    height: 0;
-    width: 0;
-    opacity: 1;
-  }
-  20%{
-    height: 0;
-    width: 28px;
-    opacity: 1;
-  }
-  40%{
-    height: 56px;
-    width: 28px;
-    opacity: 1;
-  }
-  100%{
-    height: 56px;
-    width: 28px;
-    opacity: 1;
-  }
-}
-.inputcheck{
-  display: none; 
-}
-.inputcheck:checked ~ .tick .check-icon{
   display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 10% auto;
+  box-shadow: inset 0px 0px 0px #7ac142;
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
 }
-.inputcheck:checked ~ .tick{
-  animation: none;
-  border-color: #05d005;
-  transition: border 0.5s ease-out;
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
 }
-.success
-{
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+@keyframes stroke {
+  100% {
+      stroke-dashoffset: 0
+  }
+}
+
+@keyframes scale {
+
+  0%,
+  100% {
+      transform: none
+  }
+
+  50% {
+      transform: scale3d(1.1, 1.1, 1)
+  }
+}
+
+@keyframes fill {
+  100% {
+      box-shadow: inset 0px 0px 0px 100px #7ac142
+  }
+}
+
+.success {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
