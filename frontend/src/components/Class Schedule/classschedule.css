@@ -15,7 +15,6 @@
 }
 
 .abc-1 {
-
     margin: 0 20%;
     display: flex;
     align-items: stretch;
@@ -73,7 +72,7 @@
 }
 
 .messagecontent {
-    margin: 0 20%
+    margin: 0 20%;
 }
 
 #date-1 {
@@ -96,9 +95,28 @@
     justify-content: center;
 }
 
-.btn-class
-{
-    animation: shake 600ms;
+#subject {
+    animation: shake 700ms;
+}
+
+#date-1 {
+    animation: shake 700ms;
+}
+
+#date {
+    animation: shake 700ms;
+}
+
+#time-1 {
+    animation: shake 700ms;
+}
+
+#time {
+    animation: shake 700ms;
+} */
+
+.shaking {
+  animation: shake 700ms;
 }
 
 @keyframes shake {
@@ -111,14 +129,94 @@
     10%,
     30%,
     50%,
-    70%,90%{
-        transform: translateX(-10px);
+    70%,
+    90% {
+        transform: translateX(-5px);
     }
 
     20%,
     40%,
     60%,
     80% {
-        transform: translateX(10px);
+        transform: translateX(5px);
     }
+}
+
+.blacky {
+  background-color: black;
+  height: 89.5vh;
+  width: 100%;
+  opacity: 0.7;
+  transform: translateY(-99.8%);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+ 
+  height: 10% !important;
+
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #7ac142;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
+}
+
+.checkmark {
+  width: 56%;
+  height: 56%;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 10% auto;
+  box-shadow: inset 0px 0px 0px #7ac142;
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+}
+
+@keyframes stroke {
+  100% {
+      stroke-dashoffset: 0
+  }
+}
+
+@keyframes scale {
+
+  0%,
+  100% {
+      transform: none
+  }
+
+  50% {
+      transform: scale3d(1.1, 1.1, 1)
+  }
+}
+
+@keyframes fill {
+  100% {
+      box-shadow: inset 0px 0px 0px 100px #7ac142
+  }
+}
+
+.success {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -74,13 +74,52 @@ const Sem_4 = () => {
       });
 
     }
-else {
-    
- alert("Please fill all the neccessary fields")
+    else {
+      e.preventDefault()
+      if (!date) {
+        document.getElementById("date").style.color = "red"
+        document.getElementById("date-1").style.borderColor = "red"
+        document.getElementById("date-1").style.backgroundColor = "pink"
+        document.getElementById("date-1").classList.add("shaking")
+        document.getElementById("date").classList.add("shaking")
+
+
+      }
+      else {
+        document.getElementById("date").style.color = "black"
+        document.getElementById("date-1").style.borderColor = "black"
+        document.getElementById("date-1").style.backgroundColor = "white"
+      }
+
+      if (!time) {
+        document.getElementById("time").style.color = "red"
+        document.getElementById("time-1").style.borderColor = "red"
+        document.getElementById("time-1").style.backgroundColor = "pink"
+        document.getElementById("time-1").classList.add("shaking")
+        document.getElementById("time").classList.add("shaking")
+      }
+      else {
+        document.getElementById("time").style.color = "black"
+        document.getElementById("time-1").style.borderColor = "black"
+        document.getElementById("time-1").style.backgroundColor = "white"
+      }
+
+      if (!subject) {
+
+        document.getElementById("subject").style.borderColor = "red"
+        document.getElementById("subject").style.backgroundColor = "pink"
+        document.getElementById("subject").classList.add("shaking")
+       
+
+      }
+      else {
+        // document.getElementById("subject").style.color="black"
+        document.getElementById("subject").style.borderColor = "black"
+        document.getElementById("subject").style.backgroundColor = "white"
+      }
     }
 
   }
-
   //--------------------
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -112,7 +151,7 @@ else {
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Internet of Things Systems, Security and Cloud">
                   Internet of Things Systems, Security and Cloud
                 </option>
@@ -127,7 +166,7 @@ else {
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Health Informatics">Health Informatics</option>
               </select>
             </div>}
@@ -140,7 +179,7 @@ else {
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Dissertation Project">Dissertation Project</option>
               </select>
             </div>}
@@ -153,7 +192,7 @@ else {
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Research Methods in Informatics">
                   Research Methods in Informatics
                 </option>
@@ -164,26 +203,26 @@ else {
 
           <div className="abc-1">
             <div className="class-div">
-              <label htmlFor="date" className="class-form-label">
+              <label htmlFor="date" className="class-form-label" id = "date">
                 Date
               </label>
               <input
                 type="date"
                 className="class-form-control "
-                id="date"
+                id="date-1"
                 aria-describedby="date"
                 value={date}
                 onChange={(e) => setdate(e.target.value)}
               />
             </div>
             <div className="time-div">
-              <label htmlFor="time" className="time-form-label">
+              <label htmlFor="time" className="time-form-label" id = "time">
                 time
               </label>
               <input
                 type="time"
                 className="class-form-control"
-                id="time"
+                id="time-1"
                 value={time}
                 onChange={(e) => settime(e.target.value)}
               />

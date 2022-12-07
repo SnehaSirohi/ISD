@@ -63,7 +63,7 @@ const Sem_1 = () => {
 
     
     if (subject && time && date) {
-       
+      e.preventDefault() 
       const req = await fetch("http://localhost:4000/scheduleclass", {
         method: "POST",
         headers: {
@@ -83,31 +83,58 @@ const Sem_1 = () => {
         let data = await response.json();
         setwarning(data.warning)
         setsuccess(data.success)
+        
       });
+      setTimeout(() => {
+        setsuccess(false)
+      }, 2500);
 
     }
     else {
       e.preventDefault()
-    //    if(!date)
-    //    {
-    //     document.getElementById("date-1").style.color="red"
-    //     document.getElementById("date").style.borderColor="red"
-    //     setempty(true)
+      if (!date) {
+        document.getElementById("date").style.color = "red"
+        document.getElementById("date-1").style.borderColor = "red"
+        document.getElementById("date-1").style.backgroundColor = "pink"
+        document.getElementById("date-1").classList.add("shaking")
+        document.getElementById("date").classList.add("shaking")
 
-    //    }
-    //    if(!time)
-    //    {
-    //     document.getElementById("time").style.color="red"
-    //     document.getElementById("time-1").style.border="solid red"
-    //     document.getElementById("time-1").style.backgroundColor="pink"
-    //     setempty(true)
-    //    }
-    //    if(!subject)
-    //    {
-  
-    //     document.getElementById("subject").style.border="solid red"
-    //     setempty(true)
-    //    }
+
+      }
+      else {
+        document.getElementById("date").style.color = "black"
+        document.getElementById("date-1").style.borderColor = "black"
+        document.getElementById("date-1").style.backgroundColor = "white"
+        
+      }
+
+      if (!time) {
+        document.getElementById("time").style.color = "red"
+        document.getElementById("time-1").style.borderColor = "red"
+        document.getElementById("time-1").style.backgroundColor = "pink"
+        document.getElementById("time-1").classList.add("shaking")
+        document.getElementById("time").classList.add("shaking")
+      }
+      else {
+        document.getElementById("time").style.color = "black"
+        document.getElementById("time-1").style.borderColor = "black"
+        document.getElementById("time-1").style.backgroundColor = "white"
+      }
+
+      if (!subject) {
+
+        document.getElementById("subject").style.borderColor = "red"
+        document.getElementById("subject").style.backgroundColor = "pink"
+        document.getElementById("subject").classList.add("shaking")
+
+      }
+      else {
+        // document.getElementById("subject").style.color="black"
+        document.getElementById("subject").style.borderColor = "black"
+        document.getElementById("subject").style.backgroundColor = "white"
+      }
+
+
 
     }
 
@@ -131,7 +158,7 @@ const Sem_1 = () => {
 
   return (
     <>
-
+     
       {/* <div>
         {isdot && <div class="loader"  >
           <div class="pair p1">
@@ -192,9 +219,8 @@ const Sem_1 = () => {
                 id="subject"
                 name="subject"
                 value={subject}
-                required
                 onChange={(e) => setsubject(e.target.value)}>
-                <option value="" select>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Algorithms And Data Structure">
                   Algorithms and Data Structure
                 </option>
@@ -209,7 +235,7 @@ const Sem_1 = () => {
                 value={subject}
 
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Software Design & Programming">
                   Software Design & Programming
                 </option>
@@ -223,7 +249,7 @@ const Sem_1 = () => {
                 value={subject}
 
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Mathematical Foundation Of Computing">
                   Mathematical Foundation of Computing
                 </option>
@@ -237,7 +263,7 @@ const Sem_1 = () => {
                 value={subject}
 
                 onChange={(e) => setsubject(e.target.value)}>
-                <option>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Computer System Architecture">
                   Computer System Architecture
                 </option>
@@ -247,11 +273,11 @@ const Sem_1 = () => {
 
           <div className="abc-1">
             <div className="class-div">
-              <label htmlFor="date" className="class-form-label" id="date-1">Date:</label>
+              <label htmlFor="date" className="class-form-label" id="date">Date:</label>
               <input
                 type="date"
                 className="class-form-control"
-                id="date"
+                id="date-1"
                 aria-describedby="date"
                 value={date}
 
@@ -300,7 +326,14 @@ const Sem_1 = () => {
         </div>
       </form>
 
-
+      {success &&  <div className="container-fluid blacky">
+     <div className="success">
+     <div className="wrapper"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark_circle" cx={26} cy={26} r={25} fill="none" /> <path className="checkmark_check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+  </svg>
+</div>
+<h4><strong>Class scheduled successfully</strong></h4>
+</div>
+      </div>}
     </>
   )
 };

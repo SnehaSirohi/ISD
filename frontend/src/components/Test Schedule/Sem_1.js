@@ -73,10 +73,56 @@ const Sem_1 = () => {
         setsuccess(data.success)
       });
     }
-    else
-    {
-      alert("Please fill all the neccessary fields!")
-    }
+    else {
+      e.preventDefault()
+       if(!date)
+       {
+        document.getElementById("date").style.color="red"
+        document.getElementById("date-1").style.borderColor="red"
+        document.getElementById("date-1").style.backgroundColor = "pink"
+        document.getElementById("date-1").classList.add("shaking")
+        document.getElementById("date").classList.add("shaking")
+       }
+      else
+      {
+        document.getElementById("date").style.color="black"
+        document.getElementById("date-1").style.borderColor="black"
+        document.getElementById("date-1").style.backgroundColor= "white"
+      }
+      
+       if(!time)
+       {
+        document.getElementById("time").style.color="red"
+        document.getElementById("time-1").style.borderColor="red"
+        document.getElementById("time-1").style.backgroundColor="pink"
+        document.getElementById("time-1").classList.add("shaking")
+        document.getElementById("time").classList.add("shaking")
+       }
+       else
+      {
+        document.getElementById("time").style.color="black"
+        document.getElementById("time-1").style.borderColor="black"
+        document.getElementById("time-1").style.backgroundColor= "white"
+      }
+       
+      if (!subject )
+       {
+  
+        document.getElementById("subject").style.borderColor="red"
+        document.getElementById("subject").style.backgroundColor = "pink"
+        document.getElementById("subject").classList.add("shaking")
+        
+       }
+       else
+      {
+        document.getElementById("subject").style.color="black"
+        document.getElementById("subject").style.borderColor="black"
+        document.getElementById("subject").style.backgroundColor= "white"
+      }
+
+    
+
+  }
 
   }
 
@@ -113,7 +159,7 @@ const Sem_1 = () => {
                 required
                 
                 onChange={(e) => setsubject(e.target.value)}>
-                <option required>Select Subject</option>
+                <option value= "">Select Subject</option>
                 <option value="Algorithms And Data Structure">
                   Algorithms and Data Structure
                 </option>
@@ -127,7 +173,7 @@ const Sem_1 = () => {
                 value={subject}
                 required
                 onChange={(e) => setsubject(e.target.value)}>
-                <option required>Select Subject</option>
+                <option value= "">Select Subject</option>
                 <option value="Software Design & Programming">
                   Software Design & Programming
                 </option>
@@ -141,7 +187,7 @@ const Sem_1 = () => {
                 value={subject}
                 required
                 onChange={(e) => setsubject(e.target.value)}>
-                <option required>Select Subject</option>
+                <option value= "">Select Subject</option>
                 <option value="Mathematical Foundation Of Computing">
                   Mathematical Foundation of Computing
                 </option>
@@ -155,7 +201,7 @@ const Sem_1 = () => {
                 value={subject}
                 required
                 onChange={(e) => setsubject(e.target.value)}>
-                <option required>Select Subject</option>
+                <option value= "">Select Subject</option>
                 <option value="Computer System Architecture">
                   Computer System Architecture
                 </option>
@@ -164,13 +210,13 @@ const Sem_1 = () => {
           </div>
           <div className="abc-1">
             <div className="class-div">
-              <label htmlFor="date" id="date-1" className="class-form-label">
+              <label htmlFor="date" id="date" className="class-form-label">
                 Date:
               </label>
               <input
                 type="date"
                 className="class-form-control"
-                id="date"
+                id="date-1"
                 aria-describedby="date"
                 value={date}
                 onChange={(e) => setdate(e.target.value)}
