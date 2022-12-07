@@ -1,82 +1,82 @@
 .class-1 {
-  text-align: center;
-  margin-bottom: 0;
-  padding-top: 5px;
-  padding-bottom: 5px;
+    text-align: center;
+    margin-bottom: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .class-form-label {
-  margin-right: 1rem;
-  font-weight: bold;
+    margin-right: 1rem;
+    font-weight: bold;
 }
 
 .form-control-a {
-  background-color: white;
+    background-color: white;
 }
 
 .abc-1 {
-  margin: 0 20%;
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
+    margin: 0 20%;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
 }
 
 .class-form-control {
-  width: 70%;
-  /* align-items: center; */
-  text-align: center;
-  border-radius: 4px;
-  height: 2rem;
-  margin-top: 10px;
+    width: 70%;
+    /* align-items: center; */
+    text-align: center;
+    border-radius: 4px;
+    height: 2rem;
+    margin-top: 10px;
 }
 
 .time-form-label {
-  font-weight: bold;
-  margin-right: 1rem;
+    font-weight: bold;
+    margin-right: 1rem;
 }
 
 .class-div {
-  width: 50%;
+    width: 50%;
 }
 
 .time-div {
-  width: 50%;
-  text-align: end;
+    width: 50%;
+    text-align: end;
 }
 
 .form-label {
-  font-weight: bold;
-  margin-top: 20px;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
 .class-form-control-1 {
-  width: 100%;
-  border-radius: 4px;
-  border-style: groove;
-  background-color: white;
-  border-style: groove;
-  height: 10rem;
+    width: 100%;
+    border-radius: 4px;
+    border-style: groove;
+    background-color: white;
+    border-style: groove;
+    height: 10rem;
 }
 
 .btn-class {
-  text-align: center;
-  margin-top: 40px;
+    text-align: center;
+    margin-top: 40px;
 }
 
 .submit-btn {
-  width: 9rem;
+    width: 9rem;
 }
 
 .selectsubjectcontainer {
-  margin: 0 20%;
+    margin: 0 20%;
 }
 
 .messagecontent {
-  margin: 0 20%;
+    margin: 0 20%;
 }
 
 #date-1 {
-  margin-right: 1rem;
+    margin-right: 1rem;
 }
 
 /* #time-1 {
@@ -89,35 +89,35 @@
 }  */
 
 .scheduledcontainer {
-  flex-direction: column;
-  height: calc(87vh);
-  display: flex;
-  justify-content: center;
+    flex-direction: column;
+    height: calc(87vh);
+    display: flex;
+    justify-content: center;
 }
 
-/* #subject
-{
-    animation: shake 700ms;
-}
-#date-1 
-{
-    animation: shake 700ms;
-}
-#date
-{
-    animation: shake 700ms;
-}
-#time-1
-{
+#subject {
     animation: shake 700ms;
 }
 
-#time
-{
+#date-1 {
     animation: shake 700ms;
-} */
+}
 
-/* @keyframes shake {
+#date {
+    animation: shake 700ms;
+}
+
+#time-1 {
+    animation: shake 700ms;
+}
+
+#time {
+    animation: shake 700ms;
+}
+
+
+
+@keyframes shake {
 
     0%,
     100% {
@@ -127,7 +127,8 @@
     10%,
     30%,
     50%,
-    70%,90%{
+    70%,
+    90% {
         transform: translateX(-5px);
     }
 
@@ -137,72 +138,83 @@
     80% {
         transform: translateX(5px);
     }
-} */
+}
 
 .blacky {
-  background-color: black;
-  height: 89.5vh;
-  width: 100%;
-  opacity: 0.7;
-  transform: translateY(-99.8%);
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    background-color: black;
+    height: 89.5vh;
+    width: 100%;
+    opacity: 0.7;
+    transform: translateY(-99.8%);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.wrapper {
+   
+    height: 10% !important;
+
+}
 
 .checkmark__circle {
-   
-  stroke-dasharray: 166;
-  stroke-dashoffset: 166;
-  stroke-width: 2;
-  stroke-miterlimit: 10;
-  stroke: green;
-  fill: none;
-  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #7ac142;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
 }
+
 .checkmark {
-  width: 56%;
-  height: 56%;
-  border-radius: 50%;
-  display: block;
-  stroke-width: 2;
-  stroke: #fff;
-  stroke-miterlimit: 10;
-  margin: 10% auto;
-  box-shadow: inset 0px 0px 0px green;
-  animation: fill 0.4s ease-in-out 0.4s forwards,
-    scale 0.3s ease-in-out 0.9s both;
+    width: 56%;
+    height: 56%;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    margin: 10% auto;
+    box-shadow: inset 0px 0px 0px #7ac142;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
 }
+
 .checkmark__check {
-  transform-origin: 50% 50%;
-  stroke-dasharray: 48;
-  stroke-dashoffset: 48;
-  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
 }
+
 @keyframes stroke {
-  100% {
-    stroke-dashoffset: 0;
-  }
+    100% {
+        stroke-dashoffset: 0
+    }
 }
+
 @keyframes scale {
-  0%,
-  100% {
-    transform: none;
-  }
-  50% {
-    transform: scale3d(1.1, 1.1, 1);
-  }
+
+    0%,
+    100% {
+        transform: none
+    }
+
+    50% {
+        transform: scale3d(1.1, 1.1, 1)
+    }
 }
+
 @keyframes fill {
-  100% {
-    box-shadow: inset 0px 0px 0px 100px green;
-  }
+    100% {
+        box-shadow: inset 0px 0px 0px 100px #7ac142
+    }
 }
+
 .success {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

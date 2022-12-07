@@ -86,7 +86,7 @@ const Sem_1 = () => {
       });
       setTimeout(() => {
         setsuccess(false)
-      }, 2300);
+      }, 2500);
     }
     else {
       e.preventDefault()
@@ -94,6 +94,8 @@ const Sem_1 = () => {
         document.getElementById("date").style.color = "red"
         document.getElementById("date-1").style.borderColor = "red"
         document.getElementById("date-1").style.backgroundColor = "pink"
+        document.getElementById("date-1").classList.add("shaking")
+        document.getElementById("date").classList.add("shaking")
 
 
       }
@@ -101,12 +103,15 @@ const Sem_1 = () => {
         document.getElementById("date").style.color = "black"
         document.getElementById("date-1").style.borderColor = "black"
         document.getElementById("date-1").style.backgroundColor = "white"
+        
       }
 
       if (!time) {
         document.getElementById("time").style.color = "red"
         document.getElementById("time-1").style.borderColor = "red"
         document.getElementById("time-1").style.backgroundColor = "pink"
+        document.getElementById("time-1").classList.add("shaking")
+        document.getElementById("time").classList.add("shaking")
       }
       else {
         document.getElementById("time").style.color = "black"
@@ -118,6 +123,7 @@ const Sem_1 = () => {
 
         document.getElementById("subject").style.borderColor = "red"
         document.getElementById("subject").style.backgroundColor = "pink"
+        document.getElementById("subject").classList.add("shaking")
 
       }
       else {
@@ -318,7 +324,7 @@ const Sem_1 = () => {
         </div>
       </form>
 
-{success && <div className="container-fluid blacky">
+{success &&  <div className="container-fluid blacky">
      <div className="success">
      <div className="wrapper"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none" /> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
   </svg>
