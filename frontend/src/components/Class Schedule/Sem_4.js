@@ -76,11 +76,30 @@ const Sem_4 = () => {
     }
 else {
     
- alert("Please fill all the neccessary fields")
+      e.preventDefault()
+      if (!date) {
+        document.getElementById("date").style.color = "red"
+        document.getElementById("date-1").style.borderColor = "red"
+        document.getElementById("date-1").style.backgroundColor = "pink"
+        // setempty(true)
+
+      }
+      if (!time) {
+        document.getElementById("time").style.color = "red"
+        document.getElementById("time-1").style.border = "solid red"
+        document.getElementById("time-1").style.backgroundColor = "pink"
+        // setempty(true)
+      }
+      if (!subject) {
+
+        document.getElementById("subject").style.border = "solid red"
+        document.getElementById("subject").style.backgroundColor = "pink"
+        // setempty(true)
+      }
+
     }
 
   }
-
   //--------------------
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -164,26 +183,26 @@ else {
 
           <div className="abc-1">
             <div className="class-div">
-              <label htmlFor="date" className="class-form-label">
+              <label htmlFor="date" className="class-form-label" id = "date">
                 Date
               </label>
               <input
                 type="date"
                 className="class-form-control "
-                id="date"
+                id="date-1"
                 aria-describedby="date"
                 value={date}
                 onChange={(e) => setdate(e.target.value)}
               />
             </div>
             <div className="time-div">
-              <label htmlFor="time" className="time-form-label">
+              <label htmlFor="time" className="time-form-label" id = "time">
                 time
               </label>
               <input
                 type="time"
                 className="class-form-control"
-                id="time"
+                id="time-1"
                 value={time}
                 onChange={(e) => settime(e.target.value)}
               />

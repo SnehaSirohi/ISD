@@ -74,7 +74,27 @@ const Sem_3 = () => {
 
     }
 else {
-        alert("Please fill all the neccessary fields")
+       
+      e.preventDefault()
+      if (!date) {
+        document.getElementById("date").style.color = "red"
+        document.getElementById("date-1").style.borderColor = "red"
+        document.getElementById("date-1").style.backgroundColor = "pink"
+        // setempty(true)
+
+      }
+      if (!time) {
+        document.getElementById("time").style.color = "red"
+        document.getElementById("time-1").style.border = "solid red"
+        document.getElementById("time-1").style.backgroundColor = "pink"
+        // setempty(true)
+      }
+      if (!subject) {
+
+        document.getElementById("subject").style.border = "solid red"
+        document.getElementById("subject").style.backgroundColor = "pink"
+        // setempty(true)
+      }
 
     }
 
@@ -162,24 +182,24 @@ else {
           </div>
           <div className="abc-1">
             <div className="class-div">
-              <label htmlFor="date" className="class-form-label">
+              <label htmlFor="date" className="class-form-label" id = "time">
                 Date:
               </label>
               <input
                 type="date"
                 className="class-form-control"
-                id="date"
+                id="date-1"
                 aria-describedby="date"
                 value={date}
                 onChange={(e) => setdate(e.target.value)}
               />
             </div>
             <div className="time-div">
-              <label htmlFor="time" className="time-form-label">
+              <label htmlFor="time" className="time-form-label" id = "time">
                 Time:
               </label>
               <input
-                type="time"
+                type="time-1"
                 className="class-form-control"
                 id="time"
                 value={time}

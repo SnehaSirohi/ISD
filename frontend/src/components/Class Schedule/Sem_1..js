@@ -88,26 +88,28 @@ const Sem_1 = () => {
     }
     else {
       e.preventDefault()
-    //    if(!date)
-    //    {
-    //     document.getElementById("date-1").style.color="red"
-    //     document.getElementById("date").style.borderColor="red"
-    //     setempty(true)
+       if(!date)
+       {
+        document.getElementById("date").style.color="red"
+        document.getElementById("date-1").style.borderColor="red"
+        document.getElementById("date-1").style.backgroundColor = "pink"
+        setempty(true)
 
-    //    }
-    //    if(!time)
-    //    {
-    //     document.getElementById("time").style.color="red"
-    //     document.getElementById("time-1").style.border="solid red"
-    //     document.getElementById("time-1").style.backgroundColor="pink"
-    //     setempty(true)
-    //    }
-    //    if(!subject)
-    //    {
+       }
+       if(!time)
+       {
+        document.getElementById("time").style.color="red"
+        document.getElementById("time-1").style.borderColor="red"
+        document.getElementById("time-1").style.backgroundColor="pink"
+        setempty(true)
+       }
+      if (!subject || subject == "Select Subject")
+       {
   
-    //     document.getElementById("subject").style.border="solid red"
-    //     setempty(true)
-    //    }
+        document.getElementById("subject").style.borderColor="red"
+        document.getElementById("subject").style.backgroundColor = "pink"
+        setempty(true)
+       }
 
     }
 
@@ -192,9 +194,8 @@ const Sem_1 = () => {
                 id="subject"
                 name="subject"
                 value={subject}
-                required
                 onChange={(e) => setsubject(e.target.value)}>
-                <option value="" select>Select Subject</option>
+                <option value="">Select Subject</option>
                 <option value="Algorithms And Data Structure">
                   Algorithms and Data Structure
                 </option>
@@ -247,11 +248,11 @@ const Sem_1 = () => {
 
           <div className="abc-1">
             <div className="class-div">
-              <label htmlFor="date" className="class-form-label" id="date-1">Date:</label>
+              <label htmlFor="date" className="class-form-label" id="date">Date:</label>
               <input
                 type="date"
                 className="class-form-control"
-                id="date"
+                id="date-1"
                 aria-describedby="date"
                 value={date}
 
