@@ -85,7 +85,11 @@ const Sem_1 = () => {
         document.getElementById("date-1").style.backgroundColor = "pink"
         document.getElementById("date-1").classList.add("shaking")
         document.getElementById("date").classList.add("shaking")
-       }
+        setTimeout(() => {
+          document.getElementById("date-1").classList.remove("shaking")
+          document.getElementById("date").classList.remove("shaking")
+        }, 1000); 
+      }
       else
       {
         document.getElementById("date").style.color="black"
@@ -100,7 +104,11 @@ const Sem_1 = () => {
         document.getElementById("time-1").style.backgroundColor="pink"
         document.getElementById("time-1").classList.add("shaking")
         document.getElementById("time").classList.add("shaking")
-       }
+        setTimeout(() => {
+          document.getElementById("time-1").classList.remove("shaking")
+          document.getElementById("time").classList.remove("shaking")
+        }, 1000); 
+      }
        else
       {
         document.getElementById("time").style.color="black"
@@ -114,7 +122,9 @@ const Sem_1 = () => {
         document.getElementById("subject").style.borderColor="red"
         document.getElementById("subject").style.backgroundColor = "pink"
         document.getElementById("subject").classList.add("shaking")
-        
+        setTimeout(() => {
+          document.getElementById("subject").classList.remove("shaking")
+        }, 1000);
        }
        else
       {
@@ -159,7 +169,7 @@ const Sem_1 = () => {
                 id="subject"
                 name="subject"
                 value={subject}
-                required
+                
                 
                 onChange={(e) => setsubject(e.target.value)}>
                 <option value= "">Select Subject</option>
@@ -174,7 +184,7 @@ const Sem_1 = () => {
                 id="subject"
                 name="subject"
                 value={subject}
-                required
+              
                 onChange={(e) => setsubject(e.target.value)}>
                 <option value= "">Select Subject</option>
                 <option value="Software Design & Programming">
@@ -188,7 +198,7 @@ const Sem_1 = () => {
                 id="subject"
                 name="subject"
                 value={subject}
-                required
+               
                 onChange={(e) => setsubject(e.target.value)}>
                 <option value= "">Select Subject</option>
                 <option value="Mathematical Foundation Of Computing">
@@ -202,7 +212,7 @@ const Sem_1 = () => {
                 id="subject"
                 name="subject"
                 value={subject}
-                required
+              
                 onChange={(e) => setsubject(e.target.value)}>
                 <option value= "">Select Subject</option>
                 <option value="Computer System Architecture">
@@ -210,7 +220,8 @@ const Sem_1 = () => {
                 </option>
               </select></div>}
 
-          </div>
+         
+              </div>
           <div className="abc-1">
             <div className="class-div">
               <label htmlFor="date" id="date" className="class-form-label">
@@ -248,15 +259,13 @@ const Sem_1 = () => {
               value={message}
               onChange={(e) => setmessage(e.target.value)}></textarea>
           </div>
-
           <div className="btn-class">
             <button type="submit" className="btn btn-primary">
               Schedule Test
             </button>
+          </div>
 
-          </div>
-       
-          </div>
+        </div>
       </form>
       {success &&  <div className="container-fluid blacky">
     <div className="success">
@@ -266,7 +275,7 @@ const Sem_1 = () => {
 <h4>Test scheduled successfully</h4>
 </div>
       </div>}
-     {warning && <><div className="container-fluid blacky">
+      {warning && <><div className="container-fluid blacky">
  </div>
  <div className="warningmain" >
 
@@ -279,7 +288,8 @@ const Sem_1 = () => {
   </div>
  </div></>}
     </>
-    )
-  };
+  );
+};
+
 
 export default Sem_1;
