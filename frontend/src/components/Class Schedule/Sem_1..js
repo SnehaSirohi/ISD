@@ -5,8 +5,9 @@ import "./classschedule.css";
 import Navbar from "../Teacher_dashboard/Navbar";
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
-import './CS.css'
-import * as AiIcons from 'react-icons/ai';
+import * as FaIcons from 'react-icons/fa';
+
+
 
 const Sem_1 = () => {
   //
@@ -334,6 +335,15 @@ const Sem_1 = () => {
 <h4>Class scheduled successfully</h4>
 </div>
       </div>}
+<div className="container-fluid blacky">
+ </div>
+ <div className="warning">
+    <div className="exclamation">
+         <h1><FaIcons.FaExclamationTriangle size={70}  /></h1>
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis voluptas necessitatibus laborum porro, delectus rem nihil commodi nisi esse. Magnam, impedit voluptatibus. Officia modi eligendi doloremque nemo minus quo, ipsa deserunt repudiandae architecto. Aliquid architecto officia numquam ipsa, voluptate amet quibusdam ex suscipit eveniet distinctio quod nisi doloremque corrupti nesciunt recusandae soluta voluptatum delectus cumque nostrum quasi. Placeat maiores minima veniam vel dolore vitae iusto neque obcaecati quam explicabo labore aut qui autem quisquam alias et cupiditate, quia corrupti. Aliquam itaque quasi sapiente, ipsam, vitae distinctio soluta amet fugit eius, suscipit illum corrupti nam accusamus perferendis at odit corporis? Molestias. dgskhdb dwaksdgk</p>
+    <button className="okay" onClick={()=>setwarning(false)} >Okay</button>
+  </div>
    
       
     </>

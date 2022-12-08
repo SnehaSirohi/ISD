@@ -4,7 +4,7 @@ import "./testschedule.css";
 import Navbar from "../Teacher_dashboard/Navbar";
 import { useEffect, useState } from "react";
 import jwt from 'jsonwebtoken'
-import './TS.css'
+import * as FaIcons from 'react-icons/fa';
 import { useNavigate } from "react-router-dom"
 const Sem_3 = () => {
   //
@@ -265,6 +265,15 @@ const Sem_3 = () => {
 <h4>Test scheduled successfully</h4>
 </div>
       </div>}
+      {warning && <div className="container-fluid blacky">
+  <div className="warning">
+    <div className="exclamation">
+         <h1><FaIcons.FaExclamationTriangle size={70}  /></h1>
+    </div>
+    <p>{warning}</p>
+    <button className="okay" onClick={()=>setwarning(false)} >Okay</button>
+  </div>
+ </div>}
     </>
   );
 };

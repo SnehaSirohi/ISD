@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import Navbar from "../Teacher_dashboard/Navbar";
 import "./testschedule.css";
-import './TS.css'
+import * as FaIcons from 'react-icons/fa';
 
 const Sem_2 = () => {
   //
@@ -268,6 +268,15 @@ const Sem_2 = () => {
 <h4>Test scheduled successfully</h4>
 </div>
       </div>}
+      {warning && <div className="container-fluid blacky">
+  <div className="warning">
+    <div className="exclamation">
+         <h1><FaIcons.FaExclamationTriangle size={70}  /></h1>
+    </div>
+    <p>{warning}</p>
+    <button className="okay" onClick={()=>setwarning(false)} >Okay</button>
+  </div>
+ </div>}
     </>
   );
 };

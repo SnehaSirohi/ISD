@@ -4,9 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import jwt from 'jsonwebtoken'
 import Navbar from "../Teacher_dashboard/Navbar";
 import { useNavigate } from "react-router-dom"
-import './CS.css'
 import "./classschedule.css";
-
+import * as FaIcons from 'react-icons/fa';
 const Sem_3 = () => {
   //
   const navigate = useNavigate();
@@ -266,6 +265,15 @@ const Sem_3 = () => {
 <h4>Class scheduled successfully</h4>
 </div>
       </div>}
+      {warning && <div className="container-fluid blacky">
+  <div className="warning">
+    <div className="exclamation">
+         <h1><FaIcons.FaExclamationTriangle size={70}  /></h1>
+    </div>
+    <p>{warning}</p>
+    <button className="okay" onClick={()=>setwarning(false)} >Okay</button>
+  </div>
+ </div>}
     </>
   );
 };

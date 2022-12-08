@@ -129,7 +129,7 @@
   background-color: black;
   height: 100vh;
   width: 100%;
-  opacity: 0.9;
+  opacity: 0.8;
   left: 0;
   top: 0;
   z-index: 1;
@@ -193,7 +193,7 @@
 
 @keyframes fill {
   100% {
-      box-shadow: inset 0px 10px 0px 200px #7ac142;
+      box-shadow: inset 0px 0px 0px 10px #7ac142;
   }
 }
 
@@ -204,4 +204,32 @@
   flex-direction: column;
   align-items: center;
 }
+.warning
+{
+    position: absolute;
+    width: 40%;
+    height: 30%;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+   z-index: 2;
+}
+.exclamation
+{
+    color: rgba(245, 0, 0, 0.779);
+    z-index: 2;
+}
 
+.okay
+{
+    background-color: #22a082;
+    width: 80px;
+    border-radius: 10px ;
+    margin-top: 8px;
+   opacity: 100;
+}
