@@ -85,7 +85,10 @@ const Sem_3 = () => {
         document.getElementById("date-1").style.backgroundColor = "pink"
         document.getElementById("date-1").classList.add("shaking")
         document.getElementById("date").classList.add("shaking")
-        
+        setTimeout(() => {
+          document.getElementById("date-1").classList.remove("shaking")
+          document.getElementById("date").classList.remove("shaking")
+        }, 1000);
 
        }
       else
@@ -102,7 +105,12 @@ const Sem_3 = () => {
         document.getElementById("time-1").style.backgroundColor="pink"
         document.getElementById("time-1").classList.add("shaking")
         document.getElementById("time").classList.add("shaking")
-       }
+        setTimeout(() => {
+          document.getElementById("time-1").classList.remove("shaking")
+          document.getElementById("time").classList.remove("shaking")
+        }, 1000);
+
+      }
        else
       {
         document.getElementById("time").style.color="black"
@@ -116,7 +124,9 @@ const Sem_3 = () => {
         document.getElementById("subject").style.borderColor="red"
         document.getElementById("subject").style.backgroundColor = "pink"
         document.getElementById("subject").classList.add("shaking")
-        
+         setTimeout(() => {
+          document.getElementById("subject").classList.remove("shaking")
+        }, 1000);
        }
        else
       {
