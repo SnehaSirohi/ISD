@@ -22,7 +22,7 @@ const Sem_4 = () => {
   const [MKDas, setMKDas] = useState(false)
   const [Sanjeev, setSanjeev] = useState(false)
   const [teacher, setTeacher] = useState("")
-   const[success,setsuccess] = useState(false)
+  const [success, setsuccess] = useState(false)
   const sem = "Sem-4";
   //-----------
   async function populate(e) {
@@ -84,6 +84,10 @@ const Sem_4 = () => {
         document.getElementById("date-1").style.backgroundColor = "pink"
         document.getElementById("date-1").classList.add("shaking")
         document.getElementById("date").classList.add("shaking")
+        setTimeout(() => {
+          document.getElementById("date-1").classList.remove("shaking")
+          document.getElementById("date").classList.remove("shaking")
+        }, 1000);
 
 
       }
@@ -91,6 +95,7 @@ const Sem_4 = () => {
         document.getElementById("date").style.color = "black"
         document.getElementById("date-1").style.borderColor = "black"
         document.getElementById("date-1").style.backgroundColor = "white"
+
       }
 
       if (!time) {
@@ -99,19 +104,28 @@ const Sem_4 = () => {
         document.getElementById("time-1").style.backgroundColor = "pink"
         document.getElementById("time-1").classList.add("shaking")
         document.getElementById("time").classList.add("shaking")
+        setTimeout(() => {
+          document.getElementById("time-1").classList.remove("shaking")
+          document.getElementById("time").classList.remove("shaking")
+        }, 1000);
+
       }
+
       else {
         document.getElementById("time").style.color = "black"
         document.getElementById("time-1").style.borderColor = "black"
         document.getElementById("time-1").style.backgroundColor = "white"
       }
 
+
       if (!subject) {
 
         document.getElementById("subject").style.borderColor = "red"
         document.getElementById("subject").style.backgroundColor = "pink"
         document.getElementById("subject").classList.add("shaking")
-       
+        setTimeout(() => {
+          document.getElementById("subject").classList.remove("shaking")
+        }, 1000);
 
       }
       else {
@@ -205,7 +219,7 @@ const Sem_4 = () => {
 
           <div className="abc-1">
             <div className="class-div">
-              <label htmlFor="date" className="class-form-label" id = "date">
+              <label htmlFor="date" className="class-form-label" id="date">
                 Date
               </label>
               <input
@@ -218,7 +232,7 @@ const Sem_4 = () => {
               />
             </div>
             <div className="time-div">
-              <label htmlFor="time" className="time-form-label" id = "time">
+              <label htmlFor="time" className="time-form-label" id="time">
                 time
               </label>
               <input
@@ -251,26 +265,26 @@ const Sem_4 = () => {
 
         </div>
       </form>
-      {success &&  <div className="container-fluid blacky">
-    <div className="success">
-   <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none"/> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-</svg>
-</div>
-<h4>Class scheduled successfully</h4>
-</div>
+      {success && <div className="container-fluid blacky">
+        <div className="success">
+          <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none" /> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+          </svg>
+          </div>
+          <h4>Class scheduled successfully</h4>
+        </div>
       </div>}
-          {warning && <><div className="container-fluid blacky">
- </div>
- <div className="warningmain" >
+      {warning && <><div className="container-fluid blacky">
+      </div>
+        <div className="warningmain" >
 
- <div className="warning">
-    
-        <FaIcons.FaExclamationTriangle size={70}  color='red'  />
+          <div className="warning">
 
-    <p>{warning}</p>
-    <button className="okay" onClick={()=>setwarning(false)} >Okay</button>
-  </div>
- </div></>}
+            <FaIcons.FaExclamationTriangle size={70} color='red' />
+
+            <p>{warning}</p>
+            <button className="okay" onClick={() => setwarning(false)} >Okay</button>
+          </div>
+        </div></>}
     </>
   );
 };
