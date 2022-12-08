@@ -204,12 +204,12 @@
   flex-direction: column;
   align-items: center;
 }
-.warning
+.warningmain
 {
     position: absolute;
-    width: 40%;
-    height: 30%;
-    left: 0;
+    height: 100vh;
+    width: 100vw;
+    right: 0;
     top: 0;
     display: flex;
     justify-content: center;
@@ -218,11 +218,27 @@
     color: white;
     text-align: center;
    z-index: 2;
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
 }
+
 .exclamation
 {
     color: rgba(245, 0, 0, 0.779);
     z-index: 2;
+}
+
+.warning{
+    padding: 0 20px;
+}
+
+
+@media screen and (min-width:800px) {
+    .warning{
+         width: 600px;
+    }
 }
 
 .okay
@@ -230,6 +246,6 @@
     background-color: #22a082;
     width: 80px;
     border-radius: 10px ;
+    border: none;
     margin-top: 8px;
-   opacity: 100;
 }

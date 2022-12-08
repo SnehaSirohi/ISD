@@ -26,7 +26,7 @@ const Sem_1 = () => {
   const [isdot, setIsdotVisible] = useState(false);
   const[success,setsuccess] = useState(false)
   const [empty,setempty]=useState(false)
-  console.log("warning : ",warning,"Success :",success);
+
   // const handleButtonClick = () => {
   //   setIsdotVisible(true);
   //   setTimeout(() => {
@@ -316,14 +316,7 @@ const Sem_1 = () => {
               Schedule Class
             </button>
           </div>
-          {warning && <div className="container warning">
-            <h3>{warning}</h3>
-            <button onClick={(e) => setwarning(false)}>Ok</button>
-          </div>}
-          {empty && <div className="container warning">
-            <h3>Please Fill all the mandatory fields</h3>
-            <button onClick={(e) => setempty(false)}>Ok</button>
-          </div>}
+         
         </div>
       </form>
 
@@ -335,15 +328,18 @@ const Sem_1 = () => {
 <h4>Class scheduled successfully</h4>
 </div>
       </div>}
-<div className="container-fluid blacky">
+{warning && <><div className="container-fluid blacky">
  </div>
+ <div className="warningmain" >
+
  <div className="warning">
-    <div className="exclamation">
-         <h1><FaIcons.FaExclamationTriangle size={70}  /></h1>
-    </div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis voluptas necessitatibus laborum porro, delectus rem nihil commodi nisi esse. Magnam, impedit voluptatibus. Officia modi eligendi doloremque nemo minus quo, ipsa deserunt repudiandae architecto. Aliquid architecto officia numquam ipsa, voluptate amet quibusdam ex suscipit eveniet distinctio quod nisi doloremque corrupti nesciunt recusandae soluta voluptatum delectus cumque nostrum quasi. Placeat maiores minima veniam vel dolore vitae iusto neque obcaecati quam explicabo labore aut qui autem quisquam alias et cupiditate, quia corrupti. Aliquam itaque quasi sapiente, ipsam, vitae distinctio soluta amet fugit eius, suscipit illum corrupti nam accusamus perferendis at odit corporis? Molestias. dgskhdb dwaksdgk</p>
+    
+        <FaIcons.FaExclamationTriangle size={70}  color='red'  />
+
+    <p>{warning}</p>
     <button className="okay" onClick={()=>setwarning(false)} >Okay</button>
   </div>
+ </div></>}
    
       
     </>

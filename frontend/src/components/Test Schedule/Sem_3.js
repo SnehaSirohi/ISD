@@ -251,10 +251,7 @@ const Sem_3 = () => {
           Schedule Test
         </button>
         </div>
-        {warning && <div className="container warning">
-          <h3>{warning}</h3>
-          <button onClick={(e) => setwarning(false)}>Ok</button>
-        </div>}
+    
         </div>
       </form>
       {success &&  <div className="container-fluid blacky">
@@ -265,15 +262,18 @@ const Sem_3 = () => {
 <h4>Test scheduled successfully</h4>
 </div>
       </div>}
-      {warning && <div className="container-fluid blacky">
-  <div className="warning">
-    <div className="exclamation">
-         <h1><FaIcons.FaExclamationTriangle size={70}  /></h1>
-    </div>
+      {warning && <><div className="container-fluid blacky">
+ </div>
+ <div className="warningmain" >
+
+ <div className="warning">
+    
+        <FaIcons.FaExclamationTriangle size={70}  color='red'  />
+
     <p>{warning}</p>
     <button className="okay" onClick={()=>setwarning(false)} >Okay</button>
   </div>
- </div>}
+ </div></>}
     </>
   );
 };
