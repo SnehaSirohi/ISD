@@ -65,35 +65,23 @@ const Dashboard = (props) => {
                 <div className="flex dashboardcontent">
                     <div class="col main pt-5  dashboardbackground">
 
-                        <div class=" mb-3 dashblocks">
-                            <a href='/classschedule'>
-                                <div class="col-xl-3 col-sm-6 blockcolour" >
-                                    <div>
-                                        <h5 class="text-uppercase  pt-3">CLASSES SCHEDULED</h5>
-                                        <h1 class="display-4">{totalClassScheduled}</h1>
-                                    </div>
-
-                                </div>
-                            </a>
-                            <Link to='/testschedule'>
-                                <div class="col-xl-3 col-sm-6 blockcolour">
-                                    <div>
-                                        <h5 class="text-uppercase  pt-3">TESTS SCHEDULED</h5>
-                                        <h1 class="display-4">{totalTestScheduled}</h1>
-                                    </div>
-                                </div>
-                            </Link>
-
-
-                            <Link to='/assignmentreportstudent'>
-                                <div class="col-xl-3 col-sm-6 blockcolour">
-                                    <div>
-                                        <h5 class="text-uppercase  pt-3">ASSIGNMENTS</h5>
-                                        <h1 class="display-4">{assignments}</h1>
-                                    </div>
-                                </div>
-                            </Link>
+                    <div class="row mb-3 dashblocks">
+                            <Link to='/classschedule'><div class="col-xl-3 col-sm-6 blockcolour">
+                                <h5 class="text-uppercase pt-3">CLASS SCHEDULED</h5>
+                                <h1 class="display-4">{totalClassScheduled}</h1>
+                            </div></Link>
+                            <Link to='/testschedule'><div class="col-xl-3 col-sm-6 blockcolour">
+                            <h5 class="text-uppercase pt-3">TEST SCHEDULED</h5>
+                                <h1 class="display-4">{totalTestScheduled}</h1>
+                            </div></Link>
+                            <Link to='/assignmentreportstudent'><div class="col-xl-3 col-sm-6 blockcolour">
+                               <h5 class="text-uppercase pt-3">ASSIGNMENTS</h5>
+                                <h1 class="display-4">{assignments}</h1>
+                            </div></Link>
                         </div>
+
+
+                    
 
                         <div class="row overviewdatacontent">
                             <div class="col-lg-7 col-md-6 col-sm-12 datacontent flex">
