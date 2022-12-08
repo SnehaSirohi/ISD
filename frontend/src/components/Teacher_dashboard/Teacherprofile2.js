@@ -6,21 +6,21 @@ import './teacherprofile2.css'
 function Teacherprofile2() {
     return (
         <>
-        <Navbar/>
+            <Navbar />
             <h1 className='Teacherheading'>Teacher Profile</h1>
             <div class="emp-profile">
-                <div>
+                <div className='pblock'>
                     <form method="post">
                         <div className='photo_block'>
-                                <div class="profile-img">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
-                                </div>
+                            <div class="profile-img">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
+                            </div>
                             <div class="profile-head">
                                 <h2>
                                     Kshiti Ghelani
                                 </h2>
                                 <h4>
-                                   Asst. Lecturer
+                                    Asst. Lecturer
                                 </h4>
                             </div>
                         </div>
@@ -56,16 +56,14 @@ function Teacherprofile2() {
 
                             </div>
                         </div>
-                        
+
                     </form>
                 </div>
+                <div className='text-center' id='prof_block'>
+                    <button id='butn' class="btn btn-primary" >Logout</button>
+                    <button id='butn' class="btn btn-primary-1" >Reset Password</button>
+                </div>
             </div>
-
-            
-            <div className='text-center pt-5'  id='prof_block'>
-                                 <button id='butn' class="btn btn-primary" >Logout</button>
-                                 <button id='butn' class="btn btn-primary-1" >Reset Password</button>
-                         </div>
         </>
     )
 }
