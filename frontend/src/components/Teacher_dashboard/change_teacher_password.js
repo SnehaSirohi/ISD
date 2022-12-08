@@ -27,7 +27,16 @@ const ChangeTeacherPassword = () => {
 
   async function updatepassword(e) {
     e.preventDefault()
+
     if (allpasswords.oldpassword === allpasswords.newpassword) {
+//       return(
+//         <div class="alert alert-danger d-flex align-items-center" role="alert">
+//   <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+//   <div>
+//     An example danger alert with an icon
+//   </div>
+// </div>
+//       )
       setErrmsg("Old password and New password cannot be same");
     } else if (allpasswords.newpassword !== allpasswords.confirmpassword) {
       setErrmsg("Confirm password and new password must be same");
