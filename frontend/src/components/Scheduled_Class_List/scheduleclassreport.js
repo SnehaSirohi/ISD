@@ -64,7 +64,7 @@ const Classreport = () => {
     doc.save('table.pdf')
   };
   return (
-   <>
+   <div className='height100vh'>
 <Navbar />
  {<h1 className='text-center pt-3'>{string}</h1>}
  
@@ -87,7 +87,7 @@ const Classreport = () => {
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
    </div>}
-   </>
+   </div>
   )
 }
 
