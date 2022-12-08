@@ -4,7 +4,7 @@ import "./testschedule.css";
 import Navbar from "../Teacher_dashboard/Navbar";
 import { useEffect, useState } from "react";
 import jwt from 'jsonwebtoken'
-import './TS.css'
+import * as FaIcons from 'react-icons/fa';
 import { useNavigate } from "react-router-dom"
 const Sem_1 = () => {
   //
@@ -72,6 +72,9 @@ const Sem_1 = () => {
         setwarning(data.warning)
         setsuccess(data.success)
       });
+      setTimeout(() => {
+        setsuccess(false)
+      }, 2500);
     }
     else {
       e.preventDefault()
@@ -252,12 +255,29 @@ const Sem_1 = () => {
             </button>
 
           </div>
-          {warning && <div className="container warning">
-            <h3>{warning}</h3>
-            <button onClick={(e) => setwarning(false)}>Ok</button>
-          </div>}
+       
           </div>
       </form>
+      {success &&  <div className="container-fluid blacky">
+    <div className="success">
+   <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none"/> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+</svg>
+</div>
+<h4>Test scheduled successfully</h4>
+</div>
+      </div>}
+     {warning && <><div className="container-fluid blacky">
+ </div>
+ <div className="warningmain" >
+
+ <div className="warning">
+    
+        <FaIcons.FaExclamationTriangle size={70}  color='red'  />
+
+    <p>{warning}</p>
+    <button className="okay" onClick={()=>setwarning(false)} >Okay</button>
+  </div>
+ </div></>}
     </>
     )
   };

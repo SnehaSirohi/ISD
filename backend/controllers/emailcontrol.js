@@ -123,7 +123,8 @@ const PostscheduleTest = async (req, res) => {
       });
   
    
-      res.status(200).json(assignments);
+      res.status(200).json({assignments,
+        success:true});
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
@@ -151,7 +152,8 @@ const PostscheduleTest = async (req, res) => {
         date,subject,teacher,file,semester,description
       });
    
-      res.status(200).json(assignments);
+      res.status(200).json({assignments,
+        success:true});
     } catch (error) {
       res.status(400).json({ error: error.message });
     }

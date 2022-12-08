@@ -5,8 +5,9 @@ import "./classschedule.css";
 import Navbar from "../Teacher_dashboard/Navbar";
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
-import './CS.css'
-import * as AiIcons from 'react-icons/ai';
+import * as FaIcons from 'react-icons/fa';
+
+
 
 const Sem_1 = () => {
   //
@@ -25,7 +26,7 @@ const Sem_1 = () => {
   const [isdot, setIsdotVisible] = useState(false);
   const[success,setsuccess] = useState(false)
   const [empty,setempty]=useState(false)
-  console.log("warning : ",warning,"Success :",success);
+
   // const handleButtonClick = () => {
   //   setIsdotVisible(true);
   //   setTimeout(() => {
@@ -315,25 +316,32 @@ const Sem_1 = () => {
               Schedule Class
             </button>
           </div>
-          {warning && <div className="container warning">
-            <h3>{warning}</h3>
-            <button onClick={(e) => setwarning(false)}>Ok</button>
-          </div>}
-          {empty && <div className="container warning">
-            <h3>Please Fill all the mandatory fields</h3>
-            <button onClick={(e) => setempty(false)}>Ok</button>
-          </div>}
+         
         </div>
       </form>
 
-      {success &&  <div className="container-fluid blacky">
-     <div className="success">
-     <div className="wrapper"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark_circle" cx={26} cy={26} r={25} fill="none" /> <path className="checkmark_check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-  </svg>
+  {success &&  <div className="container-fluid blacky">
+    <div className="success">
+   <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none"/> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+</svg>
 </div>
-<h4><strong>Class scheduled successfully</strong></h4>
+<h4>Class scheduled successfully</h4>
 </div>
       </div>}
+{warning && <><div className="container-fluid blacky">
+ </div>
+ <div className="warningmain" >
+
+ <div className="warning">
+    
+        <FaIcons.FaExclamationTriangle size={70}  color='red'  />
+
+    <p>{warning}</p>
+    <button className="okay" onClick={()=>setwarning(false)} >Okay</button>
+  </div>
+ </div></>}
+   
+      
     </>
   )
 };

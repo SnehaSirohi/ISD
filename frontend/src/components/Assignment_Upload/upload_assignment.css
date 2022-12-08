@@ -84,7 +84,19 @@
     margin: 0 20%;
 
 }
-
+/* .uploadblacky
+{
+    background-color: black;
+    height: 110vh;
+    width: 100%;
+    opacity: 0.9;
+    transform: translateY(-95%);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+} */
 .deadline {
     margin-right: 1rem;
 }

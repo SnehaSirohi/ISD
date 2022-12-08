@@ -125,22 +125,23 @@
 }
 
 .blacky {
+    position: absolute;
   background-color: black;
-  height: 89.5vh;
+  height: 100vh;
   width: 100%;
-  opacity: 0.7;
-  transform: translateY(-99.8%);
-  z-index: 100;
+  opacity: 0.8;
+  left: 0;
+  top: 0;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
-.wrapper {
- 
-  height: 10% !important;
 
-}
+.wrappertick{    height: 0vh;
+    display:flex;justify-content:center;align-items:center;}
 
 .checkmark__circle {
   stroke-dasharray: 166;
@@ -153,28 +154,28 @@
 }
 
 .checkmark {
-  width: 56%;
-  height: 56%;
+  width: 156px;
+  height: 156px;
   border-radius: 50%;
   display: block;
-  stroke-width: 2;
+  stroke-width:2;
   stroke: #fff;
   stroke-miterlimit: 10;
   margin: 10% auto;
   box-shadow: inset 0px 0px 0px #7ac142;
-  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
 }
 
 .checkmark__check {
   transform-origin: 50% 50%;
   stroke-dasharray: 48;
   stroke-dashoffset: 48;
-  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
 }
 
 @keyframes stroke {
   100% {
-      stroke-dashoffset: 0
+      stroke-dashoffset: 0;
   }
 }
 
@@ -186,19 +187,65 @@
   }
 
   50% {
-      transform: scale3d(1.1, 1.1, 1)
+      transform: scale3d(1.1, 1.1, 1);
   }
 }
 
 @keyframes fill {
   100% {
-      box-shadow: inset 0px 0px 0px 100px #7ac142
+      box-shadow: inset 0px 0px 0px 10px #7ac142;
   }
 }
 
-.success {
+
+.success{
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.warningmain
+{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+   z-index: 2;
+    display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+}
+
+.exclamation
+{
+    color: rgba(245, 0, 0, 0.779);
+    z-index: 2;
+}
+
+.warning{
+    padding: 0 20px;
+}
+
+
+@media screen and (min-width:800px) {
+    .warning{
+         width: 600px;
+    }
+}
+
+.okay
+{
+    background-color: #22a082;
+    width: 80px;
+    border-radius: 10px ;
+    border: none;
+    margin-top: 8px;
 }
