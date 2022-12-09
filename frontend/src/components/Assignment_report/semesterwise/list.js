@@ -2,13 +2,13 @@
 import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CSVLink } from 'react-csv'
-const List = ({ assignments,AssignmentSubmit,files,setfile,key }) => {
+const List = ({ assignments, AssignmentSubmit, files, setfile, key }) => {
   return (
     <>
-      {assignments.map((teach,index) => {
-        const {date, teacher, subject, deadline, file } = teach;
+      {assignments.map((teach, index) => {
+        const { date, teacher, subject, deadline, file } = teach;
         return (
-          
+
           <>
             <tr>
               <td>
@@ -26,9 +26,10 @@ const List = ({ assignments,AssignmentSubmit,files,setfile,key }) => {
                 {file}
               </td>
               <td>
-                <form>
-                <input type="file" value={files} onChange={(e)=>setfile(e.target.value)} key={teach.id} />
-                <button type='submit'  onClick={AssignmentSubmit}>Submit</button>
+                <form id="uploadandsubmitblock">
+                  <input type="file" id='inputfilechoose' value={files} onChange={(e) => setfile(e.target.value)} key={teach.id} />
+                  <button className='upload_button'>Upload</button>
+                  <button type='submit' onClick={AssignmentSubmit}>Submit</button>
                 </form>
               </td>
             </tr>
