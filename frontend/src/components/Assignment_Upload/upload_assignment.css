@@ -13,8 +13,8 @@
     align-items: center;
     border: 3px dashed #cbd5e0;
     background-color: #edf2f7;
-    height: 14rem;
-    min-height: 230px;
+    height: 11rem;
+    min-height: 157px;
 }
 
 .time_block12 {
@@ -22,9 +22,7 @@
     text-align: center;
 }
 
-#deadline_block {
-    text-align: center;
-}
+
 .file-inputs {
     position: relative;
     margin-bottom: 1.5em;
