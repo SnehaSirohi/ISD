@@ -23,3 +23,11 @@
     left: 0;
     position: absolute;
 }
+
+#mytableblock-1{
+    overflow-x: auto;
+}
+
+#mytable-1{
+    overflow-x: auto;
+}

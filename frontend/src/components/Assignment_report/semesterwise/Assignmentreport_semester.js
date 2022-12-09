@@ -236,7 +236,7 @@ const Assignmentreport = () => {
     </form>
   </div>}
   <div  className='nothing_block'>{string}</div>
-  {visible && <div classname="main">
+  {visible && <div classname="main" id = "mytableblock-1">
     <table className='table table-striped' id='mytable-1'>
       <thead className='heading_1'>
         <tr>
