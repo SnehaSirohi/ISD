@@ -7,6 +7,9 @@ import "./change_teach_password.css"
 
 const ChangeTeacherPassword = () => {
 
+  const [ifpasswordsame, setIfpasswordsame] = useState(false);
+  const [ifconfirmpassworddifferent, setIfconfirmpassworddifferent] = useState(false);
+
   const navigate = useNavigate();
   const [teacher_id, setTeacher_id] = useState([])
   const [allpasswords, setAllpasswords] = useState({
@@ -17,7 +20,7 @@ const ChangeTeacherPassword = () => {
   const [errmsg, setErrmsg] = useState("")
 
   const handleChange = (e) => {
-    const { name, value} = e.target
+    const { name, value } = e.target
     setAllpasswords({
       ...allpasswords,
       [name]: value
@@ -29,17 +32,13 @@ const ChangeTeacherPassword = () => {
     e.preventDefault()
 
     if (allpasswords.oldpassword === allpasswords.newpassword) {
-//       return(
-//         <div class="alert alert-danger d-flex align-items-center" role="alert">
-//   <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-//   <div>
-//     An example danger alert with an icon
-//   </div>
-// </div>
-//       )
-      setErrmsg("Old password and New password cannot be same");
+      setIfpasswordsame(true);
+      setIfconfirmpassworddifferent(false);
+      // setErrmsg("Old password and New password cannot be same");
     } else if (allpasswords.newpassword !== allpasswords.confirmpassword) {
-      setErrmsg("Confirm password and new password must be same");
+      // setErrmsg("Confirm password and new password must be same");
+      setIfpasswordsame(false);
+      setIfconfirmpassworddifferent(true);
     } else {
       const req = await fetch('http://localhost:4000/Teacherdashboard/changepassword', {
         method: "PATCH",
@@ -81,6 +80,13 @@ const ChangeTeacherPassword = () => {
   return (
     <>
       <section className="wrapper ">
+        {ifpasswordsame && < div class="alert alert-danger" role="alert">
+          Old password and New password cannot be same!
+        </div>}
+
+        {ifconfirmpassworddifferent && < div class="alert alert-danger" role="alert">
+          Confirm password and new password must be same
+        </div>}
         <div className="container pt-10">
           <div className="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center">
             <form className="rounded bg-white shadow p-5" >
@@ -107,7 +113,7 @@ const ChangeTeacherPassword = () => {
                   id="floatingPassword"
                   name="newpassword"
                   placeholder="New Password"
-                  value= {allpasswords.newpassword}
+                  value={allpasswords.newpassword}
                   onChange={handleChange}
                 />
               </div>
@@ -120,7 +126,7 @@ const ChangeTeacherPassword = () => {
                   id="floatingConfirmPassword"
                   name="confirmpassword"
                   placeholder="Confirm Password"
-                  value= {allpasswords.confirmpassword}
+                  value={allpasswords.confirmpassword}
                   onChange={handleChange}
 
                 />
