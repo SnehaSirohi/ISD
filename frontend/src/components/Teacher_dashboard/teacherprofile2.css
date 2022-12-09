@@ -1,4 +1,4 @@
-.Teacherheading{
+.Teacherheading {
     text-align: center;
     transform: translateY(2rem);
     font-weight: 600;
@@ -12,8 +12,8 @@
     padding-top: 1rem;
 }
 
-.pblock{
-    height: 25rem;
+.pblock {
+    padding-bottom: 2rem;
     background: lightgray;
     border-radius: 15px;
 }
@@ -105,7 +105,7 @@
     margin-left: 1rem;
 }
 
-.profile-head>h4{
+.profile-head>h4 {
     font-weight: 600;
 }
 
@@ -122,14 +122,14 @@
     border: none;
 }
 
-.keys{
+.keys {
     text-align: initial;
     transform: translateX(25%);
     font-weight: bold;
     font-size: 20px;
 }
 
-.values{
+.values {
     text-align: initial;
     transform: translateX(30%);
     color: #ffffff;
@@ -138,4 +138,26 @@
 
 #prof_block {
     margin-top: 20px;
+}
+
+.teacherinfo2 {
+    display: none;
+}
+
+@media screen and (max-width : 800px) {
+    .teacherinfo2 {
+        display: block;
+    }
+
+    .keys {
+        display: none;
+    }
+
+    .values {
+        display: none;
+    }
+
+    .emp-profile {
+        margin: 0;
+    }
 }
