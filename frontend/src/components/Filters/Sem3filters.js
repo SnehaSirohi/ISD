@@ -182,6 +182,7 @@ const Sem3filters = () => {
   };
   return (
     <>
+       <div className='height100vh'>
       <Navbar />
       <div className=" mb-3" >
 
@@ -342,6 +343,7 @@ const Sem3filters = () => {
           <button type="button" class="btn btn-primary-1" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttopdfhandler}>Download in pdf</button>
         </div>
       </>}
+      </div>
     </>
   )
 }

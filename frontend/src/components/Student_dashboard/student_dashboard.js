@@ -60,6 +60,7 @@ const Dashboard = (props) => {
 
     return (
         <>
+         <div className='height100vh'>
             <Navbar />
             <div>
                 <div className="flex dashboardcontent">
@@ -111,6 +112,7 @@ const Dashboard = (props) => {
                     </div>
                 </div>
             </div >
+            </div>
         </>
     );
 

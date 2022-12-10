@@ -181,6 +181,7 @@ const Sem4filters = () => {
   };
   return (
     <>
+       <div className='height100vh'>
       <Navbar />
       <div className=" mb-3" >
         {/* <label className="form-label">Select Filter</label> */}
@@ -336,6 +337,7 @@ const Sem4filters = () => {
           <button type="button" class="btn btn-primary-1" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttopdfhandler}>Download in pdf</button>
         </div>
       </>}
+      </div>
     </>
   )
 }

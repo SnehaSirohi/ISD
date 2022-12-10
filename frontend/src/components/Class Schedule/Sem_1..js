@@ -170,7 +170,7 @@ const Sem_1 = () => {
 
   return (
     <>
-     
+     <div className='height100vh'>
       {/* <div>
         {isdot && <div class="loader"  >
           <div class="pair p1">
@@ -351,7 +351,7 @@ const Sem_1 = () => {
     <button className="okay" onClick={()=>setwarning(false)} >Okay</button>
   </div>
  </div></>}
-   
+ </div>
       
     </>
   )

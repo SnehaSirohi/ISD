@@ -59,7 +59,7 @@ const Teacher_Dashboard = (props) => {
 
     return (
         <>
-            <div className='height100vh'>
+            <div className='height100percent'>
                 <Navbar />
                 <div>
                     <div className="flex dashboardcontent">

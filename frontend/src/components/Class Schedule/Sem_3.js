@@ -151,6 +151,7 @@ const Sem_3 = () => {
 
   return (
     <>
+     <div className='height100vh'>
       <Navbar />
       <form onSubmit={schedule}>
         <div className=" mb-3 scheduledcontainer">
@@ -282,7 +283,9 @@ const Sem_3 = () => {
     <button className="okay" onClick={()=>setwarning(false)} >Okay</button>
   </div>
  </div></>}
+ </div>
     </>
+    
   );
 };
 
