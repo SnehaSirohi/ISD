@@ -518,15 +518,28 @@ const Sem1AttendanceReport = async (req, res) => {
 
   try {
     const decoded = jwt.verify(token, "secret1234");
+    console.log(decoded.Teacher_id)
     const Teacher_id = decoded.Teacher_id;
+    const admin = decoded.name;
     const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
     console.log(Teacher_id);
-    return res.status(200).json({
-      success: true,
-      data: await Sem1Attendance.find({ teacher: teacher.name }),
-      data2: await Sem1Attendance.find({}),
-      name: teacher.name,
-    });
+    console.log(admin)
+    if(admin ){
+      return res.status(200).json({
+        success: true,
+        data2: await Sem1Attendance.find({}),
+        
+      });
+    }
+    else{
+      return res.status(200).json({
+        success: true,
+        data: await Sem1Attendance.find({ teacher: teacher.name }),
+        data2: await Sem1Attendance.find({}),
+        name: teacher.name,
+      });
+    }
+   
   } catch (error) {
     console.log(error);
     res.json({ status: "error", error: "invalid token" });

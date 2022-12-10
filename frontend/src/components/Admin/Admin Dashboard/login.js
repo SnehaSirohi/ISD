@@ -37,8 +37,8 @@ const Loginadmin = () => {
       let data = await response.json();
       console.log(data);
       if (data.admin) {
-        localStorage.setItem('token', data.name)
-        // navigate("/Teacherdashboard");
+        localStorage.setItem('token', data.admin)
+        navigate("/admindashboard");
         setLoginstatus(data.message);
       } else {
         setIfPasswordAndUserNameNotsame(true);

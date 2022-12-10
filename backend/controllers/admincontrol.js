@@ -26,7 +26,7 @@ const Adminregister = async (req, res) => {
           {
             name: admin.name,
           },
-          "secret12345"
+          "secret1234"
         );
   
         if (password === admin.password) {
