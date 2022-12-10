@@ -24,15 +24,10 @@ const Sem1Attendance = () => {
   const [val, setval] = useState("")
   const [student, setstudent] = useState([]);
   const[report,setreport]=useState(false)
-  const [UnmeshShukla, setUnmeshShukla] = useState(false)
-  const [NitishaAgg, setNitishaAgg] = useState(false)
-  const [MKDas, setMKDas] = useState(false)
-  const [SunilKumar, setSunilKumar] = useState(false)
   const [visible, setVisible] = useState(false)
   const [string, setString] = useState("")
   const [heading, setHeading] = useState("Overall Attendance Report")
 
-  console.log("subject status :",subject);
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/attendancereport/sem1", {
       method: "GET",
@@ -43,22 +38,10 @@ const Sem1Attendance = () => {
       }
     })
     const json = await response.json()
-    console.log(json.name);
-    if (json.name == "Unmesh Shukla") {
-      setUnmeshShukla(true)
-    }
-    if (json.name == "Nitisha Aggarwal") {
-      setNitishaAgg(true)
-    }
-    if (json.name == "M.K Das") {
-      setMKDas(true)
-    }
-    if (json.name == "Sunil Kumar") {
-      setSunilKumar(true)
-    }
-    setstudent(json.data)
+    
+    setstudent(json.data2)
 
-    if(json.data.length != 0)
+    if(json.data2.length != 0)
     {
       setVisible(true)
     }

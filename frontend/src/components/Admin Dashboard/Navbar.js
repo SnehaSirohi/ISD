@@ -45,12 +45,12 @@ function Navbar() {
                         </li>
 
                         <li className="nav-text">
-                            <FaIcons.FaBookReader color='rgb(0, 104, 74)' />
+                            <FaIcons.FaBook color='rgb(0, 104, 74)' />
                             <Link to="/admindashboard/attendancereport"><span>Attendance Report</span></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaBell color='rgb(0, 104, 74)' />
-                            <Link to="/teacherNotifications"><span>Notifications</span></Link>
+                            <FaIcons.FaPen color='rgb(0, 104, 74)' />
+                            <Link to="/admindashboard/classestaken"><span>Classes Taken</span></Link>
                         </li>
                         <li className="nav-text" onClick={() => {
                             localStorage.removeItem('token')

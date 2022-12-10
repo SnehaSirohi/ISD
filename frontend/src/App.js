@@ -63,6 +63,7 @@ import AdminSem1Attendance from './components/Admin Dashboard/Sem1Attendance';
 import AdminSem2Attendance from './components/Admin Dashboard/Sem2Attendance';
 import AdminSem3Attendance from './components/Admin Dashboard/Sem3Attendance';
 import AdminSem4Attendance from './components/Admin Dashboard/Sem4Attendance';
+import AdClasses_taken from './components/Admin Dashboard/Classes_taken';
 function App() {
   useEffect(() => {
     window.process = {
@@ -133,6 +134,7 @@ function App() {
           <Route path="/admindashboard/Sem2/attendance" element={<AdminSem2Attendance />} />
           <Route path="/admindashboard/Sem3/attendance" element={<AdminSem3Attendance />} />
           <Route path="/admindashboard/Sem4/attendance" element={<AdminSem4Attendance />} />
+          <Route path="/admindashboard/classestaken" element={<AdClasses_taken />} />
           <Route path="/admindashboard" element={<Navbar />} />
           <Route path="/profile3" element={<Profile />} />
 

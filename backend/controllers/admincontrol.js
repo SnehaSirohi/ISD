@@ -1,7 +1,7 @@
 const Admin = require("../models/admindata");
 const jwt = require("jsonwebtoken");
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
+const ClassesTaken = require("../models/classestaken");
 const Adminregister = async (req, res) => {
     const { name, password } =
       req.body;
@@ -39,5 +39,13 @@ const Adminregister = async (req, res) => {
       }
     });
   };
+
+
+  const AdClassesTaken =async(req,res)=>{
+    return res.status(200).json({
+      success:true,
+      data : await ClassesTaken.find({})
+    })
+  }
   
-  module.exports = {Adminregister, Adminlogin};
+  module.exports = {Adminregister, Adminlogin, AdClassesTaken};

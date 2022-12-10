@@ -1,5 +1,5 @@
 const express = require("express");
-const { Adminregister, Adminlogin} = require("../controllers/admincontrol")
+const { Adminregister, Adminlogin, AdClassesTaken} = require("../controllers/admincontrol")
 const {
   loginteacher,
   GetTeacherdashboard,
@@ -134,4 +134,5 @@ router.get("/notifications/classes", classnotification);
 router.get("/notifications/tests", testnotification);
 router.post("/assignmentsubmit",PostAssignmentSubmitt)
 router.get("/assignmentsubmit",GetAssignmentSubmitt)
+router.get('/classestaken',AdClassesTaken)
 module.exports = router;

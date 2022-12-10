@@ -20,13 +20,9 @@ const Sem4filters = () => {
   const [dateval, setdateval] = useState("")
   const[monthval,setmonthval]=useState("")
   const[overall,setoverall]=useState(false)
+  const[report,setreport]=useState(false)
   const [val, setval] = useState("")
   const [student, setstudent] = useState([]);
-  const[report,setreport]=useState(false)
-  const [UnmeshShukla,setUnmeshShukla]=useState(false)
-  const [NitishaAgg,setNitishaAgg]=useState(false)
-  const [MKDas,setMKDas]=useState(false)
-  const [Sanjeev,setSanjeev]=useState(false)
   const [visible, setVisible] = useState(false)
   const [string, setString] = useState("")
   const [heading, setHeading] = useState("Overall Attendance Report")
@@ -41,24 +37,8 @@ const Sem4filters = () => {
       }
     })
     const json = await response.json()
-    if(json.name=="Unmesh Shukla")
-    {
-      setUnmeshShukla(true)
-    }
-    if(json.name=="Nitisha Aggarwal")
-    {
-      setNitishaAgg(true)
-    }
-    if(json.name=="M.K Das")
-    {
-      setMKDas(true)
-    }
-    if(json.name=="Sanjeev")
-    {
-      setSanjeev(true)
-    }
-    setstudent(json.data)
-    if(json.data.length != 0)
+    setstudent(json.data2)
+    if(json.data2.length != 0)
     {
       setVisible(true)
     }

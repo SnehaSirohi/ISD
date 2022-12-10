@@ -22,10 +22,6 @@ const Sem3Attendance = () => {
   const [val, setval] = useState("")
   const [student, setstudent] = useState([]);
   const[report,setreport]=useState(false)
-  const [UnmeshShukla,setUnmeshShukla]=useState(false)
-  const [NitishaAgg,setNitishaAgg]=useState(false)
-  const [MKDas,setMKDas]=useState(false)
-  const [Manish,setManish]=useState(false)
   const [visible, setVisible] = useState(false)
   const [string, setString] = useState("")
   const [heading, setHeading] = useState("Overall Attendance Report")
@@ -40,25 +36,9 @@ const Sem3Attendance = () => {
       }
     })
     const json = await response.json()
-    if(json.name=="Unmesh Shukla")
-    {
-      setUnmeshShukla(true)
-    }
-    if(json.name=="Nitisha Aggarwal")
-    {
-      setNitishaAgg(true)
-    }
-    if(json.name=="M.K Das")
-    {
-      setMKDas(true)
-    }
-    if(json.name=="Manish")
-    {
-      setManish(true)
-    }
-    setstudent(json.data)
+    setstudent(json.data2)
 
-    if(json.data.length != 0)
+    if(json.data2.length != 0)
     {
       setVisible(true)
     }
@@ -68,7 +48,7 @@ const Sem3Attendance = () => {
     }
 
     if (monthval) {
-      let data1 = json.data.filter((data) => data.date.slice(5, 7) == monthval)
+      let data1 = json.data2.filter((data) => data.date.slice(5, 7) == monthval)
       setstudent(data1)
       const date = new Date();
       date.setMonth(monthval - 1);
@@ -80,18 +60,18 @@ const Sem3Attendance = () => {
     }
 
     else if (dateval) {
-      let data1 = json.data.filter((data) => data.date == dateval)
+      let data1 = json.data2.filter((data) => data.date == dateval)
       setstudent(data1)
       setval(dateval)
     }
      
     else if (subjectval) {
-      let data1 = json.data.filter((data) => data.subject == subjectval)
+      let data1 = json.data2.filter((data) => data.subject == subjectval)
       setstudent(data1)
       setval(subjectval)
     }
     else {
-      setstudent(json.data)
+      setstudent(json.data2)
     }
 
   }
