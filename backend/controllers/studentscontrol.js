@@ -13,10 +13,11 @@ const SubmittedAssignment = require("../models/SubmittedAssignment")
 const jwt = require("jsonwebtoken");
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 var newDate = new Date();
-      var year=newDate.getFullYear()
-      var getMonth = String(newDate.getMonth() + 1).padStart(2, '0');
-      var getDate = String(newDate.getDate() ).padStart(2, '0');
-      var date = [year,getMonth,getDate].join("-");
+var year = newDate.getFullYear()
+var getMonth = String(newDate.getMonth() + 1).padStart(2, '0');
+var getDate = String(newDate.getDate()).padStart(2, '0');
+var date = [year, getMonth, getDate].join("-");
+
 const login = (req, res) => {
   const { enrollNum, password } = req.body;
   Students.findOne({ enrollNum: enrollNum }, (err, student) => {
@@ -365,14 +366,14 @@ const StudyMaterial_Posted_Students = async (req, res) => {
 };
 
 const PostAssignmentSubmitt = async (req, res) => {
-  const {files,enrollNum,subject}=req.body
-  const student = await Students.findOne({enrollNum:enrollNum})
-  const name=student.name;
-  const semester=student.semester;
+  const { files, enrollNum, subject } = req.body
+  const student = await Students.findOne({ enrollNum: enrollNum })
+  const name = student.name;
+  const semester = student.semester;
 
 
   try {
-   
+
     const assignment = await SubmittedAssignment.create({
       name,
       subject,
@@ -384,7 +385,7 @@ const PostAssignmentSubmitt = async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
-  
+
 };
 
 

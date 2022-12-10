@@ -1,4 +1,5 @@
 const express = require("express");
+const { Adminregister, Adminlogin} = require("../controllers/admincontrol")
 const {
   loginteacher,
   GetTeacherdashboard,
@@ -55,6 +56,11 @@ const {
 const { json } = require("body-parser");
 const StudyMaterial = require("../models/StudyMaterial");
 const router = express.Router();
+
+//-----------admin--------------------
+router.post("/adminregister", Adminregister);
+router.post("/adminlogin", Adminlogin);
+
 //-----------login-student------------
 router.post("/login", login);
 
