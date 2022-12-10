@@ -27,3 +27,7 @@ code {
   height: 100vh;
 }
 
+.overflowxauto{
+  overflow-x: auto;
+}
+
