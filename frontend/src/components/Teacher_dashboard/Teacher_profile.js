@@ -100,7 +100,7 @@ const Teacher_Profile = () => {
                                 localStorage.removeItem('token')
                                 navigate("/")
                             }}>Logout</button>
-                    <button id='butn' class="btn btn-primary-1" >Reset Password</button>
+                     <Link to="/Teacherdashboard/changepassword"><button id='butn' class="btn btn-primary-1" >Reset Password</button></Link>
                 </div>
     </div>
                         {/* <div className='buttons'>

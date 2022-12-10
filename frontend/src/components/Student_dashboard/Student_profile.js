@@ -25,23 +25,23 @@ const Profile = () => {
         const json = await req.json()
 
         console.log(json)
-        if(json.status === 'ok'){
+        if (json.status === 'ok') {
             setName(json.name)
             setEmail(json.email)
             setEnrollNum(json.enrollNum)
             setRollNum(json.rollNum)
             setContactNum(json.contactNum)
         }
-        else{
+        else {
             // alert(data.error)
         }
     }
 
-    useEffect(() =>{
+    useEffect(() => {
         const token = localStorage.getItem('token')
-        if (token){
+        if (token) {
             const user = jwt.decode(token)
-            if(!user){
+            if (!user) {
                 localStorage.removeItem('token')
                 navigate("/");
             } else {
@@ -52,21 +52,21 @@ const Profile = () => {
 
     return (
         <>
-        <Navbar/>
+            <Navbar />
             <h1 className='Teacherheading'>Student Profile</h1>
             <div class="emp-profile">
                 <div>
                     <form method="post">
                         <div className='photo_block'>
-                                <div class="profile-img">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
-                                </div>
+                            <div class="profile-img">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
+                            </div>
                             <div class="profile-head">
                                 <h2>
                                     Abhishek Tyagi
                                 </h2>
                                 <h4>
-                                   Enroll. no.
+                                    Enroll. no.
                                 </h4>
                             </div>
                         </div>
@@ -108,20 +108,20 @@ const Profile = () => {
 
                             </div>
                         </div>
-                        
+
                     </form>
                 </div>
 
             </div>
 
-            
+
             <div className='text-center pt-5' id='prof_block'>
-                                 <button id='butn' class="btn btn-primary" >Logout</button>
-                                 <button id='butn' class="btn btn-primary-1" >Reset Password</button>
-                         </div>
+                <button id='butn' class="btn btn-primary" >Logout</button>
+                <button id='butn' class="btn btn-primary-1" >Reset Password</button>
+            </div>
         </>
     )
-    
+
 }
 
 export default Profile

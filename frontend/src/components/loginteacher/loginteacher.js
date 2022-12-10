@@ -51,9 +51,6 @@ const Loginteacher = () => {
   return (
     <>
       <section className="login2body">
-        {ifPasswordAndUserNameNotsame && < div class="alert alert-danger" role="alert">
-          please check your username and password!
-        </div>}
         <div className="screen">
           <div className="screen__content">
             <form className="login">
@@ -81,6 +78,9 @@ const Loginteacher = () => {
                   onChange={handleChange}
                 />
               </div>
+              {ifPasswordAndUserNameNotsame && < div class="alertmessage">
+                please check your username and password!
+              </div>}
               <button
                 type="submit"
                 className="button login__submit"
