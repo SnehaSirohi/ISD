@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import List from './/List'
+import Navbar from './Navbar'
 const Classes_taken = () => {
   const[classes,setclasses]=useState([])
   const[professor,setprofessor]=useState("")
@@ -47,6 +48,7 @@ useEffect(()=>{
 },[])
   return (
     <>
+    <Navbar/>
     <div className=" mb-3" >
         {/* <label className="form-label">Select Filter</label> */}
         <select
