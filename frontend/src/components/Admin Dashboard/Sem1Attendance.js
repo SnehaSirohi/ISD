@@ -1,16 +1,16 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from '../Filters/List'
 import jsPDF from "jspdf";
-// import Navbar from '../Teacher_dashboard/Navbar';
+import Navbar from '../Teacher_dashboard/Navbar';
 import autoTable from 'jspdf-autotable';
 // import './filters.css'
 
 var XLSX = require("xlsx");
-const Attendance_report = () => {
+const Sem1Attendance = () => {
   const navigate = useNavigate();
   const [subject,setsubject]=useState(false)
   const [date,setdate]=useState(false)
@@ -24,15 +24,10 @@ const Attendance_report = () => {
   const [val, setval] = useState("")
   const [student, setstudent] = useState([]);
   const[report,setreport]=useState(false)
-  const [UnmeshShukla, setUnmeshShukla] = useState(false)
-  const [NitishaAgg, setNitishaAgg] = useState(false)
-  const [MKDas, setMKDas] = useState(false)
-  const [SunilKumar, setSunilKumar] = useState(false)
   const [visible, setVisible] = useState(false)
   const [string, setString] = useState("")
   const [heading, setHeading] = useState("Overall Attendance Report")
 
- 
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/attendancereport/sem1", {
       method: "GET",
@@ -43,22 +38,10 @@ const Attendance_report = () => {
       }
     })
     const json = await response.json()
-    console.log(json.name);
-    if (json.name == "Unmesh Shukla") {
-      setUnmeshShukla(true)
-    }
-    if (json.name == "Nitisha Aggarwal") {
-      setNitishaAgg(true)
-    }
-    if (json.name == "M.K Das") {
-      setMKDas(true)
-    }
-    if (json.name == "Sunil Kumar") {
-      setSunilKumar(true)
-    }
-    setstudent(json.data)
+    
+    setstudent(json.data2)
 
-    if(json.data.length != 0)
+    if(json.data2.length != 0)
     {
       setVisible(true)
     }
@@ -67,7 +50,7 @@ const Attendance_report = () => {
     }
 
     if (monthval) {
-      let data1 = json.data.filter((data) => data.date.slice(5, 7) == monthval)
+      let data1 = json.data2.filter((data) => data.date.slice(5, 7) == monthval)
       setstudent(data1)
       const date = new Date();
       date.setMonth(monthval - 1);
@@ -79,18 +62,18 @@ const Attendance_report = () => {
     }
 
     else if (dateval) {
-      let data1 = json.data.filter((data) => data.date == dateval)
+      let data1 = json.data2.filter((data) => data.date == dateval)
       setstudent(data1)
       setval(dateval)
     }
      
     else if (subjectval) {
-      let data1 = json.data.filter((data) => data.subject == subjectval)
+      let data1 = json.data2.filter((data) => data.subject == subjectval)
       setstudent(data1)
       setval(subjectval)
     }
     else {
-      setstudent(json.data)
+      setstudent(json.data2)
     }
 
   }
@@ -200,7 +183,7 @@ const Attendance_report = () => {
 return (
   <>
    <div className=" mb-3" >
-    {/* <Navbar/> */}
+    <Navbar/>
         {/* <label className="form-label">Select Filter</label> */}
         <select
           type="text"
@@ -262,7 +245,7 @@ return (
         </select>
       </div>
 </form>}
-{subject && NitishaAgg &&  <form>
+{subject && <form>
   <div className="selectsubjectcontainer">
         {/* <label className="form-label">Select Subject</label> */}
         <select
@@ -276,62 +259,20 @@ return (
               <option value="Software Design & Programming">
                 Software Design & Programming
               </option>
-        </select>
-      </div>
-</form>} 
-{subject && UnmeshShukla && <form>
-  <div className="selectsubjectcontainer">
-        {/* <label className="form-label">Select Subject</label> */}
-        <select
-          type="text"
-          className="form-control shadow-none"
-          id="subject"
-          name="subject"
-          value={subjectval}
-          onChange={(e) => setsubjectval(e.target.value)}>
-          <option required>Select Subject</option>
-          <option value="Algorithms And Data Structure">
+              <option value="Algorithms And Data Structure">
                 Algorithms and Data Structure
               </option>
-        </select> 
-      </div>
-</form>}
-{subject && MKDas && <form>
-  <div className="selectsubjectcontainer">
-        {/* <label className="form-label">Select Subject</label> */}
-        <select
-          type="text"
-          className="form-control shadow-none"
-          id="subject"
-          name="subject"
-          value={subjectval}
-          onChange={(e) => setsubjectval(e.target.value)}>
-          <option required>Select Subject</option>
-          
               <option value="Mathematical Foundation Of Computing">
                 Mathematical Foundation of Computing
               </option>
-            
-        </select>
-      </div>
-</form>}
-{subject && SunilKumar&& <form>
-  <div className="selectsubjectcontainer">
-        {/* <label className="form-label">Select Subject</label> */}
-        <select
-          type="text"
-          className="form-control shadow-none"
-          id="subject"
-          name="subject"
-          value={subjectval}
-          onChange={(e) => setsubjectval(e.target.value)}>
-          <option required>Select Subject</option>
               <option value="Computer System Architecture">
                 Computer System Architecture
               </option>
         </select>
       </div>
-</form>}
+</form>} 
+
+
  
 <div className='text-center'>
 {button &&  <button type="submit" className="btn btn-primary" id='button_block5' onClick={Print}  >Print Attendance</button>}
@@ -366,4 +307,4 @@ return (
 )
 }
 
-export default Attendance_report
+export default Sem1Attendance
