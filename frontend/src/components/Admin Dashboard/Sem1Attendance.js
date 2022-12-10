@@ -78,8 +78,18 @@ const Sem1Attendance = () => {
 
   }
   useEffect(()=>{
-    fetchdata()
-  },[])
+    const token = localStorage.getItem('token')
+    if (token) {
+      const user = jwt.decode(token)
+      console.log(user)
+      if (!user) {
+        localStorage.removeItem('token')
+        navigate("/dashboard");
+      } else {
+        fetchdata()
+
+      }
+    }    },[])
   function handlechange(e){
        var val= e.target.value
       setfilter(val)
@@ -152,18 +162,7 @@ const Sem1Attendance = () => {
     setHeading("Attendance Report of " + val)
   }
 
-    const token = localStorage.getItem('token')
-    if (token) {
-      const user = jwt.decode(token)
-      console.log(user)
-      if (!user) {
-        localStorage.removeItem('token')
-        navigate("/dashboard");
-      } else {
-        fetchdata()
-
-      }
-    }  
+   
   }
   const exporttoexcelhandler = () => {
         var wb = XLSX.utils.book_new(),
