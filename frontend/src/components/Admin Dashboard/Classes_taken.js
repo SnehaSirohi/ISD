@@ -49,6 +49,7 @@ useEffect(()=>{
   return (
     <>
     <Navbar/>
+    {data2 && <h1>Total classes taken by {professor} : {data2.length}</h1>}
     <div className=" mb-3" >
         {/* <label className="form-label">Select Filter</label> */}
         <select
