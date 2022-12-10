@@ -147,7 +147,7 @@ const Assignmentreport = () => {
     <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+            className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -176,7 +176,7 @@ const Assignmentreport = () => {
     <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+            className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -198,7 +198,7 @@ const Assignmentreport = () => {
     <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+            className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -219,7 +219,7 @@ const Assignmentreport = () => {
     <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+            className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
