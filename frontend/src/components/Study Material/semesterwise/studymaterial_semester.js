@@ -218,7 +218,7 @@ const Classreport = () => {
     </form>
   </div>}
   <div  className='nothing_block'>{string}</div>
-  {visible && <div classname="main overflowxauto">
+  {visible && <div className='overflowxauto'>
     <table className='table table-striped overflowxauto' id='mytable-1'>
       <thead className='heading_1'>
         <tr>
