@@ -523,6 +523,7 @@ const Sem1AttendanceReport = async (req, res) => {
     return res.status(200).json({
       success: true,
       data: await Sem1Attendance.find({ teacher: teacher.name }),
+      data2: await Sem1Attendance.find({}),
       name: teacher.name,
     });
   } catch (error) {
@@ -542,6 +543,7 @@ const Sem2AttendanceReport = async (req, res) => {
     return res.status(200).json({
       success: true,
       data: await Sem2Attendance.find({ teacher: teacher.name }),
+      data2: await Sem2Attendance.find({}),
       name: teacher.name,
     });
   } catch (error) {
@@ -560,6 +562,7 @@ const Sem3AttendanceReport = async (req, res) => {
     return res.status(200).json({
       success: true,
       data: await Sem3Attendance.find({ teacher: teacher.name }),
+      data2: await Sem3Attendance.find({}),
       name: teacher.name,
     });
   } catch (error) {
@@ -578,6 +581,7 @@ const Sem4AttendanceReport = async (req, res) => {
     return res.status(200).json({
       success: true,
       data: await Sem4Attendance.find({ teacher: teacher.name }),
+      data2: await Sem4Attendance.find({}),
       name: teacher.name,
     });
   } catch (error) {

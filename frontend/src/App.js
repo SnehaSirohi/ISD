@@ -56,8 +56,12 @@ import UploadStudyMaterialSem4 from './components/Study Material/UploadStudyMate
 import Teacherprofile2 from './components/Teacher_dashboard/Teacherprofile2';
 import TeacherNotifications from './components/Teacher_dashboard/Notifications'
 import Profile from './components/Teacher_dashboard/Profile/Profile';
-import Attendance_report from './components/Admin/Attendance_report';
-
+import Attendance_report from './components/Admin Dashboard/Attendance_report';
+import Navbar from './components/Admin Dashboard/Navbar';
+import AdminSem1Attendance from './components/Admin Dashboard/Sem1Attendance';
+import AdminSem2Attendance from './components/Admin Dashboard/Sem2Attendance';
+import AdminSem3Attendance from './components/Admin Dashboard/Sem3Attendance';
+import AdminSem4Attendance from './components/Admin Dashboard/Sem4Attendance';
 function App() {
   useEffect(() => {
     window.process = {
@@ -123,6 +127,11 @@ function App() {
           <Route path="/Teacherdashboard/profile2" element={<Teacherprofile2 />} />
           <Route path="/teacherNotifications" element={<TeacherNotifications />} />
           <Route path="/admindashboard/attendancereport" element={<Attendance_report />} />
+          <Route path="/admindashboard/Sem1/attendance" element={<AdminSem1Attendance />} />
+          <Route path="/admindashboard/Sem2/attendance" element={<AdminSem2Attendance />} />
+          <Route path="/admindashboard/Sem3/attendance" element={<AdminSem3Attendance />} />
+          <Route path="/admindashboard/Sem4/attendance" element={<AdminSem4Attendance />} />
+          <Route path="/admindashboard" element={<Navbar />} />
           <Route path="/profile3" element={<Profile />} />
 
 

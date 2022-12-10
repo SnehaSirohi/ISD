@@ -1,16 +1,14 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from '../Filters/List'
 import jsPDF from "jspdf";
-// import Navbar from '../Teacher_dashboard/Navbar';
 import autoTable from 'jspdf-autotable';
-// import './filters.css'
-
+import Navbar from '../Teacher_dashboard/Navbar';
 var XLSX = require("xlsx");
-const Attendance_report = () => {
+const Sem3Attendance = () => {
   const navigate = useNavigate();
   const [subject,setsubject]=useState(false)
   const [date,setdate]=useState(false)
@@ -24,17 +22,16 @@ const Attendance_report = () => {
   const [val, setval] = useState("")
   const [student, setstudent] = useState([]);
   const[report,setreport]=useState(false)
-  const [UnmeshShukla, setUnmeshShukla] = useState(false)
-  const [NitishaAgg, setNitishaAgg] = useState(false)
-  const [MKDas, setMKDas] = useState(false)
-  const [SunilKumar, setSunilKumar] = useState(false)
+  const [UnmeshShukla,setUnmeshShukla]=useState(false)
+  const [NitishaAgg,setNitishaAgg]=useState(false)
+  const [MKDas,setMKDas]=useState(false)
+  const [Manish,setManish]=useState(false)
   const [visible, setVisible] = useState(false)
   const [string, setString] = useState("")
   const [heading, setHeading] = useState("Overall Attendance Report")
 
- 
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/attendancereport/sem1", {
+    const response = await fetch("http://localhost:4000/attendancereport/sem3", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -43,18 +40,21 @@ const Attendance_report = () => {
       }
     })
     const json = await response.json()
-    console.log(json.name);
-    if (json.name == "Unmesh Shukla") {
+    if(json.name=="Unmesh Shukla")
+    {
       setUnmeshShukla(true)
     }
-    if (json.name == "Nitisha Aggarwal") {
+    if(json.name=="Nitisha Aggarwal")
+    {
       setNitishaAgg(true)
     }
-    if (json.name == "M.K Das") {
+    if(json.name=="M.K Das")
+    {
       setMKDas(true)
     }
-    if (json.name == "Sunil Kumar") {
-      setSunilKumar(true)
+    if(json.name=="Manish")
+    {
+      setManish(true)
     }
     setstudent(json.data)
 
@@ -64,6 +64,7 @@ const Attendance_report = () => {
     }
     else{
       setString("No Attendance Report Available !")
+
     }
 
     if (monthval) {
@@ -98,7 +99,7 @@ const Attendance_report = () => {
     fetchdata()
   },[])
   function handlechange(e){
-       var val= e.target.value
+      var val=e.target.value
       setfilter(val)
       
       if(val=="overall")
@@ -120,7 +121,6 @@ const Attendance_report = () => {
           setmonth(false)
           setsubject(false)
           setbutton(true)
-          setreport(false)
           setoverall("")
           setmonthval("")
           setsubjectval("")
@@ -131,7 +131,6 @@ const Attendance_report = () => {
           setmonth(true)
           setsubject(false)
           setbutton(true)
-          setreport(false)
           setoverall("")
           setdateval("")
           setsubjectval("")
@@ -142,13 +141,11 @@ const Attendance_report = () => {
           setmonth(false)
           setsubject(true)
           setbutton(true)
-          setreport(false)
           setoverall("")
           setdateval("")
           setmonthval("")
       }
   }
-  
   function Print()
   {
     setHeading("")
@@ -169,6 +166,7 @@ const Attendance_report = () => {
     setHeading("Attendance Report of " + val)
   }
 
+    setreport(true)
     const token = localStorage.getItem('token')
     if (token) {
       const user = jwt.decode(token)
@@ -183,24 +181,24 @@ const Attendance_report = () => {
     }  
   }
   const exporttoexcelhandler = () => {
-        var wb = XLSX.utils.book_new(),
-          ws = XLSX.utils.json_to_sheet(student);
-        XLSX.utils.book_append_sheet(wb, ws, "MySheet1");
-        XLSX.writeFile(wb, "MyExcel.xlsx")
-      };
-    
-      const exporttopdfhandler = () => {
-        const doc = new jsPDF()
-        let heading = val ? "Attendance Report of " + val : "Overall Attendance Report of Semester1";
-        doc.text(heading, 20, 10)
-        autoTable(doc, { html: '#mytable' })
-        doc.save('table.pdf')
-      };
+    var wb = XLSX.utils.book_new(),
+      ws = XLSX.utils.json_to_sheet(student);
+    XLSX.utils.book_append_sheet(wb, ws, "MySheet1");
+    XLSX.writeFile(wb, "MyExcel.xlsx")
+  };
 
+  const exporttopdfhandler = () => {
+    const doc = new jsPDF()
+    let heading = val ? "Attendance Report of " + val : "Overall Attendance Report of Semester1";
+    doc.text(heading, 20, 10)
+    autoTable(doc, { html: '#mytable' })
+    doc.save('table.pdf')
+  };
 return (
   <>
+   <Navbar/>
    <div className=" mb-3" >
-    {/* <Navbar/> */}
+   
         {/* <label className="form-label">Select Filter</label> */}
         <select
           type="text"
@@ -224,9 +222,9 @@ return (
         </select>
       </div>
       {date && <form>
-<div className="mb-3" id='date_block1' >
+<div className="mb-3"  id='date_block1'>
   {/* <label className="form-label">Enter Date</label> */}
-  <input type="date" className="form-control-12" value={dateval} onChange={(e)=>setdateval(e.target.value)} />
+  <input type="date" className="form-control" value={dateval} onChange={(e)=>setdateval(e.target.value)} />
 </div>
 
 </form>}
@@ -235,7 +233,7 @@ return (
         {/* <label className="form-label">Select Month</label> */}
         <select
           type="text"
-          className="form-control-12"
+          className="form-control-12 shadow-none"
           id="month"
           name="month"
           value={monthval}
@@ -262,7 +260,7 @@ return (
         </select>
       </div>
 </form>}
-{subject && NitishaAgg &&  <form>
+{subject && <form>
   <div className="selectsubjectcontainer">
         {/* <label className="form-label">Select Subject</label> */}
         <select
@@ -272,78 +270,30 @@ return (
           name="subject"
           value={subjectval}
           onChange={(e) => setsubjectval(e.target.value)}>
-        <option required>Select Subject</option>
-              <option value="Software Design & Programming">
-                Software Design & Programming
-              </option>
+        <option>Select Subject</option>
+            <option value="Information System Design">
+              Information System Design
+            </option>
+             <option value="Cloud Computing">Cloud Computing</option>
+             <option value="Software Engineering">Software Engineering</option>
+              <option value="IT Planning and Management">
+              IT Planning and Management
+            </option>
         </select>
       </div>
-</form>} 
-{subject && UnmeshShukla && <form>
-  <div className="selectsubjectcontainer">
-        {/* <label className="form-label">Select Subject</label> */}
-        <select
-          type="text"
-          className="form-control shadow-none"
-          id="subject"
-          name="subject"
-          value={subjectval}
-          onChange={(e) => setsubjectval(e.target.value)}>
-          <option required>Select Subject</option>
-          <option value="Algorithms And Data Structure">
-                Algorithms and Data Structure
-              </option>
-        </select> 
-      </div>
-</form>}
-{subject && MKDas && <form>
-  <div className="selectsubjectcontainer">
-        {/* <label className="form-label">Select Subject</label> */}
-        <select
-          type="text"
-          className="form-control shadow-none"
-          id="subject"
-          name="subject"
-          value={subjectval}
-          onChange={(e) => setsubjectval(e.target.value)}>
-          <option required>Select Subject</option>
-          
-              <option value="Mathematical Foundation Of Computing">
-                Mathematical Foundation of Computing
-              </option>
-            
-        </select>
-      </div>
-</form>}
-{subject && SunilKumar&& <form>
-  <div className="selectsubjectcontainer">
-        {/* <label className="form-label">Select Subject</label> */}
-        <select
-          type="text"
-          className="form-control shadow-none"
-          id="subject"
-          name="subject"
-          value={subjectval}
-          onChange={(e) => setsubjectval(e.target.value)}>
-          <option required>Select Subject</option>
-              <option value="Computer System Architecture">
-                Computer System Architecture
-              </option>
-        </select>
-      </div>
-</form>}
+</form> }
+
  
 <div className='text-center'>
-{button &&  <button type="submit" className="btn btn-primary" id='button_block5' onClick={Print}  >Print Attendance</button>}
+{button &&  <button type="submit" className="btn btn-primary" id='button_block5'  onClick={Print}  >Print Attendance</button>}
 </div>
-{visible && <div>
-  <h3 className='overall-1'>{heading}</h3>
-
-  </div>}
-  <div>{string}</div>
+<div>{string}</div>
+{visible && <>
+ <h3 className='overall-1'>{heading}</h3>
+</>}
 {visible && <>
   <div className='table-24'>
-        <table className='table table-striped' >
+        <table className='table table-striped'>
           <thead className='heading-2'>
             <tr>
               <th>Student</th>
@@ -366,4 +316,4 @@ return (
 )
 }
 
-export default Attendance_report
+export default Sem3Attendance
