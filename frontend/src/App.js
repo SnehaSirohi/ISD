@@ -56,6 +56,7 @@ import UploadStudyMaterialSem4 from './components/Study Material/UploadStudyMate
 import Teacherprofile2 from './components/Teacher_dashboard/Teacherprofile2';
 import TeacherNotifications from './components/Teacher_dashboard/Notifications'
 import Profile from './components/Teacher_dashboard/Profile/Profile';
+import Attendance_report from './components/Admin/Attendance_report';
 
 function App() {
   useEffect(() => {
@@ -121,6 +122,7 @@ function App() {
           <Route path="/Teacherdashboard/filters/sem4" element={<Sem4filters />} />
           <Route path="/Teacherdashboard/profile2" element={<Teacherprofile2 />} />
           <Route path="/teacherNotifications" element={<TeacherNotifications />} />
+          <Route path="/admindashboard/attendancereport" element={<Attendance_report />} />
           <Route path="/profile3" element={<Profile />} />
 
 
