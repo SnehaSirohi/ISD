@@ -9,7 +9,7 @@ import Navbar from '../Teacher_dashboard/Navbar';
 import autoTable from 'jspdf-autotable';
 
 var XLSX = require("xlsx");
-const Sem4filters = () => {
+const Sem4Attendance = () => {
   const navigate = useNavigate();
   const [subject,setsubject]=useState(false)
   const [date,setdate]=useState(false)
@@ -75,7 +75,18 @@ const Sem4filters = () => {
 
   }
   useEffect(()=>{
-    fetchdata()
+    const token = localStorage.getItem('token')
+    if (token) {
+      const user = jwt.decode(token)
+      console.log(user)
+      if (!user) {
+        localStorage.removeItem('token')
+        navigate("/dashboard");
+      } else {
+        fetchdata()
+
+      }
+    } 
   },[])
   function handlechange(e){
       var val=e.target.value
@@ -127,6 +138,7 @@ const Sem4filters = () => {
   }
   function Print()
   {
+    fetchdata()
     setHeading("")
   if(overall)
   {
@@ -290,4 +302,4 @@ return (
 )
 }
 
-export default Sem4filters
+export default Sem4Attendance

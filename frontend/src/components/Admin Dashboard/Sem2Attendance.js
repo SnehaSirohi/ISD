@@ -73,8 +73,19 @@ const Sem2Attendance = () => {
     }
 
   }
-  useEffect(()=>{
-    fetchdata()
+ useEffect(()=>{
+    const token = localStorage.getItem('token')
+    if (token) {
+      const user = jwt.decode(token)
+      console.log(user)
+      if (!user) {
+        localStorage.removeItem('token')
+        navigate("/dashboard");
+      } else {
+        fetchdata()
+
+      }
+    } 
   },[])
   function handlechange(e){
     
@@ -127,6 +138,7 @@ const Sem2Attendance = () => {
   }
   function Print()
   {
+    fetchdata()
     setHeading("")
   if(overall)
   {

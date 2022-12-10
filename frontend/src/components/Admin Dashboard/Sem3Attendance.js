@@ -37,7 +37,7 @@ const Sem3Attendance = () => {
     })
     const json = await response.json()
     setstudent(json.data2)
-
+    console.log("student data : ",json.data2);
     if(json.data2.length != 0)
     {
       setVisible(true)
@@ -75,8 +75,19 @@ const Sem3Attendance = () => {
     }
 
   }
-  useEffect(()=>{
-    fetchdata()
+ useEffect(()=>{
+    const token = localStorage.getItem('token')
+    if (token) {
+      const user = jwt.decode(token)
+      console.log(user)
+      if (!user) {
+        localStorage.removeItem('token')
+        navigate("/dashboard");
+      } else {
+        fetchdata()
+
+      }
+    } 
   },[])
   function handlechange(e){
       var val=e.target.value
@@ -128,6 +139,7 @@ const Sem3Attendance = () => {
   }
   function Print()
   {
+    fetchdata()
     setHeading("")
   if(overall)
   {
