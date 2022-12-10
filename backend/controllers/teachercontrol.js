@@ -177,6 +177,7 @@ const PatchTeacherChangePassword = async (req, res) => {
 
 const RegisterTeacher = async (req, res) => {
   const { name, email, Teacher_id, contactNum, password } = req.body;
+  console.log(name)
 
   try {
     const teacher = await Teacher.create({
@@ -186,7 +187,7 @@ const RegisterTeacher = async (req, res) => {
       contactNum,
       password,
     });
-    res.status(200).json(teacher);
+    res.status(200).json({status: "ok",teacher});
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

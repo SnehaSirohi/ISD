@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Admin from './components/Admin/Admin Dashboard/login'
+import Admin from './components/Admin/Admin Dashboard/login';
+import Register_teacher from './components/Admin/Admin Dashboard/Register/registerteacher'
 import Login from './components/login/login';
 import Login2 from './components/login2/Login2';
 import LoginTeacher from './components/loginteacher/loginteacher';
@@ -71,6 +72,7 @@ function App() {
         <Routes>
           <Route path='/' exact element={<Homepage />} />
           <Route path = '/admin' element = {<Admin />} />
+          <Route path = '/registerTeacher' element = {<Register_teacher />} />
           <Route path='/login' element={<Login />} />
           <Route path='/login2' element={<Login2 />} />
           <Route path='/loginteacher' element={<LoginTeacher />} />
