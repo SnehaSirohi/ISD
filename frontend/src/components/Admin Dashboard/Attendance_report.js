@@ -29,7 +29,7 @@ function Attendance_report() {
                             </div>
                         </div>
                         </Link>
-                        <Link to="//admindashboard/Sem4/attendance">
+                        <Link to="/admindashboard/Sem4/attendance">
                             <div class="col">
                                 <div class="card-body">
                                     <h3>Sem 4</h3>
