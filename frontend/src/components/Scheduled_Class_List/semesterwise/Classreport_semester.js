@@ -139,7 +139,7 @@ const Classreport = () => {
   <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -169,7 +169,7 @@ const Classreport = () => {
     <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -191,7 +191,7 @@ const Classreport = () => {
     <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -212,7 +212,7 @@ const Classreport = () => {
     <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -245,7 +245,7 @@ const Classreport = () => {
       </tbody>
     </table>
   </div>}
-  {visible && <div className='text-center'>
+  {visible && <div className='text-center  button_block8'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
    </div>}

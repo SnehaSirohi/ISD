@@ -123,13 +123,14 @@ const Classreport = () => {
   };
   return (
    <>
+   <div className='height100vh'>
 <Navbar />
  {<h1 className='text-center-1'>Study Material Uploaded</h1>}
  {sem1 && <div className='classrepcontainer'>
   <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -158,7 +159,7 @@ const Classreport = () => {
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -180,7 +181,7 @@ const Classreport = () => {
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -201,7 +202,7 @@ const Classreport = () => {
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -235,10 +236,11 @@ const Classreport = () => {
   </div>}
 
   
-  {visible && <div className='text-center'>
-   {/* <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button> */}
+  {/* {visible && <div className='text-center  button_block8'>
+   <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
-   </div>}
+   </div>} */}
+   </div>
    </>
   )
 }

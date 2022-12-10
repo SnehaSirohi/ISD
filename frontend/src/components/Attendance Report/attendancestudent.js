@@ -129,6 +129,7 @@ const Attendancereport = () => {
 
   return (
     <>
+       <div className='height100vh'>
     <Navbar />
       {sem1 && <div className='classrepcontainer' id='sem-23'>
   <form className='repform1' onSubmit={subjectupdate}>
@@ -228,8 +229,8 @@ const Attendancereport = () => {
   </div>}
     {<h3 className='text-center' id='string-12'>{string}</h3>}
     
-     {visible && <div className='main'>
-        <table className='table table-striped' id='mytable-2'>
+     {visible && <div className='overflowxauto'>
+        <table className='table table-striped overflowxauto' id='mytable-2'>
           <thead className='heading-2'>
             <tr>
                     
@@ -244,10 +245,11 @@ const Attendancereport = () => {
         </table>
       </div>}
 
-    {visible && <div className='text-center'>
+    {visible && <div className='text-center  button_block8'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
    </div>}
+   </div>
     </>
   )
 }
