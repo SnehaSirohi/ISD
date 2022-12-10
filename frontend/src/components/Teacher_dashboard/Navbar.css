@@ -11,6 +11,11 @@
     background: none;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .heading {
     display: flex;
     margin-left: 2rem;

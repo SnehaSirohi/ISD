@@ -62,8 +62,8 @@ const Assignmentreport = () => {
 <Navbar />
       {<h1 className='text-center-1'>Overall Assignments Posted </h1>}
 
-      <div classname="main">
-        <table className='table table-striped' id='mytable-5'>
+      <div className='overflowxauto'>
+        <table className='table table-striped overflowxauto' id='mytable-5'>
           <thead className='heading_1'>
             <tr>
               <th>Date</th>

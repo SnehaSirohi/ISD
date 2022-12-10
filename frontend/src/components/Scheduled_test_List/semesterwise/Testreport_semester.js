@@ -129,6 +129,7 @@ const Testreport = () => {
   };
   return (
    <>
+    <div className='height100vh'>
 <Navbar />
  {<h1 className='text-center-1'>Scheduled Tests </h1>}
  <div className='rep_1 '>
@@ -136,7 +137,7 @@ const Testreport = () => {
   <form className='repform1' onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+                className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -165,7 +166,7 @@ const Testreport = () => {
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+              className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -187,7 +188,7 @@ const Testreport = () => {
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+              className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -208,7 +209,7 @@ const Testreport = () => {
     <form onSubmit={subjectupdate}>
     <select
                 type="text"
-                className="form-control"
+              className="form-control shadow-none"
                 id="subject"
                 name="subject"
                 value={subject}
@@ -226,8 +227,8 @@ const Testreport = () => {
   </div>}
   </div>
   <div  className='nothing_block'>{string}</div>
- {visible && <div classname="main">
-    <table className='table table-striped' id='mytable-1'>
+ {visible && <div className='main overflowxauto'>
+    <table className='table table-striped overflowxauto' id='mytable-1'>
       <thead className='heading_1'>
         <tr>
           <th>Professor</th>
@@ -242,10 +243,11 @@ const Testreport = () => {
     </table>
   </div>}
 
-{visible &&  <div className='text-center'>
+{visible &&  <div className='text-center button_block8'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
    </div>}
+   </div>
    </>
   )
 }

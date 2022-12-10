@@ -69,8 +69,8 @@ const Testreport = () => {
       <Navbar />
       {<h1 className='text-center'>{string}</h1>}
 
-     {visible && <div className='tableblock'>
-        <table className='table table-striped' id='mytable'>
+     {visible && <div className='tableblock overflowxauto'>
+        <table className='table table-striped overflowxauto' id='mytable'>
           <thead className='heading-2'>
             <tr>
               <th>Professor</th>

@@ -71,7 +71,7 @@ const Classreport = () => {
  {<h1 className='text-center'>Overall Scheduled Classes </h1>}
  
   <div className='tableblock'>
-    <table className='table table-striped' id='mytable'>
+    <table className='table table-striped overflowxauto' id='mytable'>
       <thead className='heading-2'>
         <tr>
           <th>Professor</th>

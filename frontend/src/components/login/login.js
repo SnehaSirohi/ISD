@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom"
 
 const Login = () => {
 
+  const [ifPasswordAndUserNameNotsame, setIfPasswordAndUserNameNotsame] = useState(false);
+
   const navigate = useNavigate();
-  
-  const [ user, setUser] = useState({
+
+  const [user, setUser] = useState({
     enrollNum: "",
     password: ""
   })
@@ -15,14 +17,14 @@ const Login = () => {
   const [loginstatus, setLoginstatus] = useState("")
 
   const handleChange = (e) => {
-    const { name, value} = e.target
+    const { name, value } = e.target
     setUser({
       ...user,
       [name]: value
     })
   }
 
-  const login = async(e) => {
+  const login = async (e) => {
     e.preventDefault();
     await fetch("http://localhost:4000/login", {
       method: "POST",
@@ -31,24 +33,23 @@ const Login = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
-    }).then(async(response) => {
+    }).then(async (response) => {
       let data = await response.json();
       console.log(data);
       if (data.student) {
         localStorage.setItem('token', data.student)
-        alert("login successful")
         navigate("/dashboard");
         setLoginstatus(data.message);
       } else {
-        alert("please check your username and password")
+        setIfPasswordAndUserNameNotsame(true);
         setLoginstatus(data.message);
       }
-  });
+    });
 
   }
 
- return (
-      <>
+  return (
+    <>
       <section className="login2body">
         <div className="screen">
           <div className="screen__content">
@@ -63,7 +64,7 @@ const Login = () => {
                   name="enrollNum"
                   placeholder="Enrollment Number"
                   value={user.enrollNum}
-                  onChange={ handleChange }
+                  onChange={handleChange}
                 />
               </div>
               <div className="form-floating mb-3">
@@ -74,9 +75,12 @@ const Login = () => {
                   name="password"
                   placeholder="Password"
                   value={user.password}
-                  onChange={ handleChange }
+                  onChange={handleChange}
                 />
               </div>
+              {ifPasswordAndUserNameNotsame && < div class="alertmessage">
+                please check your username and password!
+              </div>}
               <button
                 type="submit"
                 className="button login__submit"
@@ -87,15 +91,15 @@ const Login = () => {
             </form>
           </div>
           <div class="screen__background">
-                    <span class="screen__background__shape screen__background__shape4"></span>
-                    <span class="screen__background__shape screen__background__shape3"></span>
-                    <span class="screen__background__shape screen__background__shape2"></span>
-                    <span class="screen__background__shape screen__background__shape1"></span>
-                </div>
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
           </div>
+        </div>
       </section>
-        </>
-    );
+    </>
+  );
 };
 
 

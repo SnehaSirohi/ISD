@@ -27,3 +27,12 @@ code {
   height: 100vh;
 }
 
+.overflowxauto{
+  overflow-x: auto;
+}
+
+.height100percent{
+    height : 100%
+}
+
+
