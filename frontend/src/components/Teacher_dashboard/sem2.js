@@ -5,7 +5,7 @@ import "./sem.css"
 
 function Sem1() {
     return (
-        <div className='page'>
+        <div className='page height100vh'>
             <Navbar />
             <div class="album py-5 bg-light text-center">
                 <h1 className='container semheadline'>Semester 2nd</h1>
