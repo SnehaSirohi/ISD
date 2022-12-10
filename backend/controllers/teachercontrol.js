@@ -177,6 +177,7 @@ const PatchTeacherChangePassword = async (req, res) => {
 
 const RegisterTeacher = async (req, res) => {
   const { name, email, Teacher_id, contactNum, password } = req.body;
+  console.log(name)
 
   try {
     const teacher = await Teacher.create({
@@ -186,7 +187,7 @@ const RegisterTeacher = async (req, res) => {
       contactNum,
       password,
     });
-    res.status(200).json(teacher);
+    res.status(200).json({status: "ok",teacher});
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -517,14 +518,28 @@ const Sem1AttendanceReport = async (req, res) => {
 
   try {
     const decoded = jwt.verify(token, "secret1234");
+    console.log(decoded.Teacher_id)
     const Teacher_id = decoded.Teacher_id;
+    const admin = decoded.name;
     const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
     console.log(Teacher_id);
-    return res.status(200).json({
-      success: true,
-      data: await Sem1Attendance.find({ teacher: teacher.name }),
-      name: teacher.name,
-    });
+    console.log(admin)
+    if(admin ){
+      return res.status(200).json({
+        success: true,
+        data2: await Sem1Attendance.find({}),
+        
+      });
+    }
+    else{
+      return res.status(200).json({
+        success: true,
+        data: await Sem1Attendance.find({ teacher: teacher.name }),
+        data2: await Sem1Attendance.find({}),
+        name: teacher.name,
+      });
+    }
+   
   } catch (error) {
     console.log(error);
     res.json({ status: "error", error: "invalid token" });
@@ -542,6 +557,7 @@ const Sem2AttendanceReport = async (req, res) => {
     return res.status(200).json({
       success: true,
       data: await Sem2Attendance.find({ teacher: teacher.name }),
+      data2: await Sem2Attendance.find({}),
       name: teacher.name,
     });
   } catch (error) {
@@ -560,6 +576,7 @@ const Sem3AttendanceReport = async (req, res) => {
     return res.status(200).json({
       success: true,
       data: await Sem3Attendance.find({ teacher: teacher.name }),
+      data2: await Sem3Attendance.find({}),
       name: teacher.name,
     });
   } catch (error) {
@@ -578,6 +595,7 @@ const Sem4AttendanceReport = async (req, res) => {
     return res.status(200).json({
       success: true,
       data: await Sem4Attendance.find({ teacher: teacher.name }),
+      data2: await Sem4Attendance.find({}),
       name: teacher.name,
     });
   } catch (error) {

@@ -1,4 +1,5 @@
 const express = require("express");
+const { Adminregister, Adminlogin, AdClassesTaken} = require("../controllers/admincontrol")
 const {
   loginteacher,
   GetTeacherdashboard,
@@ -55,6 +56,11 @@ const {
 const { json } = require("body-parser");
 const StudyMaterial = require("../models/StudyMaterial");
 const router = express.Router();
+
+//-----------admin--------------------
+router.post("/adminregister", Adminregister);
+router.post("/adminlogin", Adminlogin);
+
 //-----------login-student------------
 router.post("/login", login);
 
@@ -128,4 +134,5 @@ router.get("/notifications/classes", classnotification);
 router.get("/notifications/tests", testnotification);
 router.post("/assignmentsubmit",PostAssignmentSubmitt)
 router.get("/assignmentsubmit",GetAssignmentSubmitt)
+router.get('/classestaken',AdClassesTaken)
 module.exports = router;

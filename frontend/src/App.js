@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Admin from './components/Admin/Admin Dashboard/login';
+import Register_teacher from './components/Admin/Admin Dashboard/Register/registerteacher'
 import Login from './components/login/login';
 import Login2 from './components/login2/Login2';
 import LoginTeacher from './components/loginteacher/loginteacher';
@@ -56,7 +58,13 @@ import UploadStudyMaterialSem4 from './components/Study Material/UploadStudyMate
 import Teacherprofile2 from './components/Teacher_dashboard/Teacherprofile2';
 import TeacherNotifications from './components/Teacher_dashboard/Notifications'
 import Profile from './components/Teacher_dashboard/Profile/Profile';
-
+import Attendance_report from './components/Admin Dashboard/Attendance_report';
+import Navbar from './components/Admin Dashboard/Navbar';
+import AdminSem1Attendance from './components/Admin Dashboard/Sem1Attendance';
+import AdminSem2Attendance from './components/Admin Dashboard/Sem2Attendance';
+import AdminSem3Attendance from './components/Admin Dashboard/Sem3Attendance';
+import AdminSem4Attendance from './components/Admin Dashboard/Sem4Attendance';
+import AdClasses_taken from './components/Admin Dashboard/Classes_taken';
 function App() {
   useEffect(() => {
     window.process = {
@@ -68,6 +76,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' exact element={<Homepage />} />
+          <Route path = '/admin' element = {<Admin />} />
+          <Route path = '/registerTeacher' element = {<Register_teacher />} />
           <Route path='/login' element={<Login />} />
           <Route path='/login2' element={<Login2 />} />
           <Route path='/loginteacher' element={<LoginTeacher />} />
@@ -121,6 +131,13 @@ function App() {
           <Route path="/Teacherdashboard/filters/sem4" element={<Sem4filters />} />
           <Route path="/Teacherdashboard/profile2" element={<Teacherprofile2 />} />
           <Route path="/teacherNotifications" element={<TeacherNotifications />} />
+          <Route path="/admindashboard/attendancereport" element={<Attendance_report />} />
+          <Route path="/admindashboard/Sem1/attendance" element={<AdminSem1Attendance />} />
+          <Route path="/admindashboard/Sem2/attendance" element={<AdminSem2Attendance />} />
+          <Route path="/admindashboard/Sem3/attendance" element={<AdminSem3Attendance />} />
+          <Route path="/admindashboard/Sem4/attendance" element={<AdminSem4Attendance />} />
+          <Route path="/admindashboard/classestaken" element={<AdClasses_taken />} />
+          <Route path="/admindashboard" element={<Navbar />} />
           <Route path="/profile3" element={<Profile />} />
 
 
