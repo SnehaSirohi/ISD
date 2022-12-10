@@ -226,8 +226,8 @@ const Testreport = () => {
   </div>}
   </div>
   <div  className='nothing_block'>{string}</div>
- {visible && <div classname="main">
-    <table className='table table-striped' id='mytable-1'>
+ {visible && <div className='main overflowxauto'>
+    <table className='table table-striped overflowxauto' id='mytable-1'>
       <thead className='heading_1'>
         <tr>
           <th>Professor</th>
