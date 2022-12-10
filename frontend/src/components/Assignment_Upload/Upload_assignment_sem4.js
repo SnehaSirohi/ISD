@@ -16,7 +16,7 @@ function UploadAssignmentsem4() {
   const [NitishaAgg, setNitishaAgg] = useState(false);
   const [MKDas, setMKDas] = useState(false);
   const [Sanjeev, setSanjeev] = useState(false);
-
+  const [success,setsuccess]=useState(false)
   async function populate(e) {
     const req = await fetch("http://localhost:4000/upload/assignment", {
       headers: {
@@ -68,6 +68,10 @@ function UploadAssignmentsem4() {
       });
   
       const data = await response.json();
+       setsuccess(data.success)
+      setTimeout(() => {
+        setsuccess(false)
+      }, 2500);
     }
    
   }
@@ -87,6 +91,7 @@ function UploadAssignmentsem4() {
     }
   }, []);
   return (
+    <>
     <div className="uploadassignmentbody">
       <Navbar />
       <div className="uploadheading">
@@ -216,6 +221,15 @@ function UploadAssignmentsem4() {
         </div>
       </div>
     </div>
+    {success &&  <div className="container-fluid blacky">
+    <div className="success">
+   <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none"/> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+</svg>
+</div>
+<h4>Assignment Posted</h4>
+</div>
+      </div>}
+      </>
   );
 }
 
