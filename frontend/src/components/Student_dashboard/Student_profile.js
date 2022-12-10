@@ -51,11 +51,11 @@ const Profile = () => {
     }, [name], [email])
 
     return (
-        <>
+        <div className='height100vh'>
             <Navbar />
             <h1 className='Teacherheading'>Student Profile</h1>
             <div class="emp-profile">
-                <div>
+                <div className='pblock'>
                     <form method="post">
                         <div className='photo_block'>
                             <div class="profile-img">
@@ -63,63 +63,44 @@ const Profile = () => {
                             </div>
                             <div class="profile-head">
                                 <h2>
-                                    Abhishek Tyagi
+                                    {name}
                                 </h2>
                                 <h4>
-                                    Enroll. no.
+                                    {enrollNum}
                                 </h4>
                             </div>
                         </div>
                         <div class="teacherInfo">
                             <div className='keys'>
-                                <div>
-                                    <label>User Id: </label>
-                                </div>
-                                <div>
-                                    <label>DOB </label>
-                                </div>
-                                <div>
-                                    <label>Email: </label>
-                                </div>
-                                <div>
-                                    <label>Phone: </label>
-                                </div>
-                                <div>
-                                    <label>Semester: </label>
-                                </div>
+                                <p>DOB </p>
+                                <p>Email: </p>
+                                <p>Phone: </p>
                             </div>
                             <div className='values'>
-                                <div>
-                                    <p>Abhishek_tyagi</p>
-                                </div>
-                                <div>
-                                    <p>17/11/2000</p>
-                                </div>
-                                <div>
-                                    <p>tyagiabhi@gmail.com</p>
-                                </div>
-
-                                <div>
-                                    <p>123 756 7890</p>
-                                </div>
-                                <div>
-                                    <p>3rd</p>
-                                </div>
-
+                                <p>28/11/2000</p>
+                                <p>{email}</p>
+                                <p>123 456 7890</p>
+                            </div>
+                            <div className='teacherinfo2'>
+                                <p>DOB </p>
+                                <h6>28/11/2000</h6>
+                                <p>Email: </p>
+                                <h6>{email}</h6>
+                                <p>Phone: </p>
+                                <h6>{contactNum}</h6>
                             </div>
                         </div>
-
                     </form>
                 </div>
-
+                <div className='text-center' id='prof_block'>
+                    <button id='butn' class="btn btn-primary" onClick={() => {
+                        localStorage.removeItem('token')
+                        navigate("/")
+                    }}>Logout</button>
+                    <Link to="/dashboard/changepassword"><button id='butn' class="btn btn-primary-1" >Reset Password</button></Link>
+                </div>
             </div>
-
-
-            <div className='text-center pt-5' id='prof_block'>
-                <button id='butn' class="btn btn-primary" >Logout</button>
-                <button id='butn' class="btn btn-primary-1" >Reset Password</button>
-            </div>
-        </>
+        </div>
     )
 
 }

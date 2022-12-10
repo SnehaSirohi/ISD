@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import jwt from 'jsonwebtoken'
-import "./Teacher_profile.css"
+import "./teacherprofile2.css"
 import Navbar from './Navbar'
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
