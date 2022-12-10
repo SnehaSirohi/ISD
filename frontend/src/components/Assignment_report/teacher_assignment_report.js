@@ -63,6 +63,7 @@ const Assignmentreport = () => {
   };
   return (
     <>
+    <div className='height100vh'>
   <Navbar />
       {<h1 className='text-center pt-3'>{string}</h1>}
 
@@ -86,6 +87,7 @@ const Assignmentreport = () => {
         <button type="button" class="btn btn-primary" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttoexcelhandler}>Download in excel</button>
         <button type="button" class="btn btn-primary-1" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttopdfhandler}>Download in pdf</button>
       </div>} */}
+      </div>
     </>
   )
 }
