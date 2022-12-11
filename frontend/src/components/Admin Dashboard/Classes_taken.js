@@ -37,11 +37,11 @@ const Classes_taken = () => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        'x-access-token': localStorage.getItem('token'), //
-      }
+               }
     })
     const json = await response.json()
     setclasses(json.data)
+    console.log(json.data);
 }
 useEffect(()=>{
    fetchdata()
@@ -49,7 +49,7 @@ useEffect(()=>{
   return (
     <>
     <Navbar/>
-    {data2 && <h1>Total classes taken by {professor} : {data2.length}</h1>}
+
     <div className=" mb-3" >
         {/* <label className="form-label">Select Filter</label> */}
         <select
@@ -81,7 +81,19 @@ useEffect(()=>{
           </option>
         </select>
       </div>
-      {data2 && <div classname="main">
+      {data2 && <> <div class="row overviewdatacontent" >
+                                <div class="col-lg-7 col-md-6 col-sm-12 datacontent flex" >
+
+                                    <div class="classinfo">
+                                        <h5>Total classes taken by {professor}</h5>
+                                      
+                                    </div>
+                                    <div class="classinfoval">
+                                        <h5>{data2.length}</h5>
+                                        
+                                    </div>
+                                </div>
+                            </div> <div classname="main">
         <table className='table table-striped' id='mytable-5'>
           <thead className='heading_1'>
             <tr>
@@ -95,7 +107,7 @@ useEffect(()=>{
             <List data2={data2}  />
           </tbody>
         </table>
-      </div> }
+      </div> </>}
     </>
   )
 }
