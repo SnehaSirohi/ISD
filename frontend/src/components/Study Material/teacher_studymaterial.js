@@ -67,29 +67,29 @@ const Studymaterial_report = () => {
   return (
     <>
       <div className='height100vh'>
-      <Navbar />
-      {<h1 className='text-center pt-3'>{string} </h1>}
-      {visible && <div classname='overflowxauto'>
-        <table className='table table-striped overflowxauto' id='mytable-5'>
-          <thead className='heading-2'>
-            <tr>
-              <th>Professor</th>
-              <th>Subject</th>
-              <th>Semester</th>
-              <th>File</th>
-            </tr>
-          </thead>
-          <tbody>
-            <List material={material} />
-          </tbody>
-        </table>
-      </div>}
+        <Navbar />
+        {<h1 className='text-center pt-3'>{string} </h1>}
+        {visible && <div className='overflowxauto'>
+          <table className='table table-striped overflowxauto' id='mytable-5'>
+            <thead className='heading-2'>
+              <tr>
+                <th>Professor</th>
+                <th>Subject</th>
+                <th>Semester</th>
+                <th>File</th>
+              </tr>
+            </thead>
+            <tbody>
+              <List material={material} />
+            </tbody>
+          </table>
+        </div>}
 
-      {/* {visible && <div className='text-center'>
+        {/* {visible && <div className='text-center'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
    </div>} */}
-   </div>
+      </div>
     </>
   )
 }

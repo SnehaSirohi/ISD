@@ -79,6 +79,7 @@ const Login = () => {
                 />
               </div>
               {ifPasswordAndUserNameNotsame && < div class="alertmessage">
+                <i class='fa fa-exclamation-circle'></i> &nbsp;
                 please check your username and password!
               </div>}
               <button

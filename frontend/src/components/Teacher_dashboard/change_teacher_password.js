@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
 import "./change_teach_password.css"
+import { FaIcons } from 'react-icons/fa';
 
 
 const ChangeTeacherPassword = () => {
@@ -80,7 +81,7 @@ const ChangeTeacherPassword = () => {
   return (
     <>
       <section className="wrapper ">
-      
+
         <div className="container pt-10">
           <div className="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center">
             <form className="rounded bg-white shadow p-5" >
@@ -129,11 +130,13 @@ const ChangeTeacherPassword = () => {
                 errmsg ? <h3 className='text-danger'>{errmsg}</h3> : ""
               }
 
-              {ifpasswordsame && < div class="alertmessage">
+              {ifpasswordsame && <div class="alertmessage">
+                <i class='fa fa-exclamation-circle'></i> &nbsp;
                 Old password and New password cannot be same!
               </div>}
 
               {ifconfirmpassworddifferent && < div class="alertmessage">
+                <i class='fa fa-exclamation-circle'></i> &nbsp;
                 Confirm password and new password must be same
               </div>}
 
