@@ -93,9 +93,7 @@ const Sem1filters = () => {
     }
 
   }
-  useEffect(() => {
-    fetchdata()
-  }, [])
+ 
   function handlechange(e) {
     var val = e.target.value
     setfilter(val)
@@ -144,33 +142,42 @@ const Sem1filters = () => {
     }
   }
 
-  function Print() {
-    setHeading("")
-    if (overall) {
-      setHeading("Overall Attendance Report")
-    }
-    else if (subject) {
-      setHeading("Attendance Report of " + subjectval)
-    }
-    else if (date) {
-      setHeading("Attendance Report of " + dateval)
-    }
-    else if (month) {
-      setHeading("Attendance Report of " + val)
-    }
-
+useEffect(()=>{
     const token = localStorage.getItem('token')
     if (token) {
       const user = jwt.decode(token)
-      console.log(user)
       if (!user) {
         localStorage.removeItem('token')
         navigate("/dashboard");
       } else {
         fetchdata()
-
       }
-    }
+    } 
+  },[])
+useEffect(()=>{
+  if(overall && val)
+  {
+    setHeading("Overall Attendance Report")
+  }
+  else if(subjectval&& val)
+  {
+    setHeading("Attendance Report of "+ val)
+  }
+  else if(dateval&& val)
+  {
+    setHeading("Attendance Report of " + val)
+  }
+  else if(monthval&& val)
+  {
+    setHeading("Attendance Report of " + val)
+  }
+
+},[Print])
+
+  function Print()
+  {
+    fetchdata()
+  
   }
   const exporttoexcelhandler = () => {
     var wb = XLSX.utils.book_new(),

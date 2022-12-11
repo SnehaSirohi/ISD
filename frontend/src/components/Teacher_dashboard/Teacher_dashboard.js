@@ -77,6 +77,11 @@ const Teacher_Dashboard = (props) => {
                                     <h5 class="text-uppercase pt-3">ASSIGNMENTS POSTED</h5>
                                     <h1 class="display-4">{totalAssignments}</h1>
                                 </div></Link>
+                                <Link to='/Teacherdashboard/assignmentreportteacher'><div class="col-xl-3 col-sm-6 blockcolour">
+                                    <h5 class="text-uppercase pt-3">STUDY MATERIAl POSTED</h5>
+                                    <h1 class="display-4">{totalAssignments}</h1>
+                                </div></Link>
+                                 
                             </div>
 
                             <div class="row overviewdatacontent">
