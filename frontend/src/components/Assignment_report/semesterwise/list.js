@@ -7,7 +7,8 @@ const List = ({ assignments, AssignmentSubmit, files, setfile, key }) => {
   return (
     <>
       {assignments.map((teach, index) => {
-        const { date, teacher, subject, deadline, file } = teach;
+        const { _id,date, teacher, subject, deadline, file} = teach;
+        localStorage.setItem(_id,false)
         return (
 
           <>
@@ -27,15 +28,16 @@ const List = ({ assignments, AssignmentSubmit, files, setfile, key }) => {
                 {file}    
               </td>
               <td>
-                <form id="uploadandsubmitblock">
+                {_id && <form id="uploadandsubmitblock">
                   <input type="file" id='inputfilechoose' value={""} onChange={(e) => {
                     setfile(e.target.value)
-             }} key={teach.id} />
+                     setfilename(e.target.value)
+                     }} />
                   <button className='upload_button'>Upload</button>
                   <span>{files}</span>
                   <button className='submit_button' type='submit' onClick={AssignmentSubmit}>Submit</button>
               
-                </form>
+                </form>}
               </td>
             </tr>
           </>
