@@ -88,6 +88,7 @@ const Sem_4 = () => {
       });
       setTimeout(() => {
          setsuccess(false)
+         navigate("/Teacherdashboard");
       }, 2500);
     }
 

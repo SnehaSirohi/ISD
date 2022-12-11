@@ -73,6 +73,7 @@ const Sem_2 = () => {
       });
       setTimeout(() => {
         setsuccess(false)
+        navigate("/Teacherdashboard");
       }, 2500);
     }
     else {
