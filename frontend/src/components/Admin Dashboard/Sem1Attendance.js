@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from '../Filters/List'
 import jsPDF from "jspdf";
-import Navbar from '../Teacher_dashboard/Navbar';
+import Navbar from './Navbar';
 import autoTable from 'jspdf-autotable';
 // import './filters.css'
 
@@ -27,7 +27,6 @@ const Sem1Attendance = () => {
   const [visible, setVisible] = useState(false)
   const [string, setString] = useState("")
   const [heading, setHeading] = useState("Overall Attendance Report")
-  console.log("value : ",val)
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/attendancereport/sem1", {
       method: "GET",

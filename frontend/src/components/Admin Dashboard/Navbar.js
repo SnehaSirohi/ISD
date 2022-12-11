@@ -37,13 +37,8 @@ function Navbar() {
                         </li>
                         <li className="nav-text">
                             <AiIcons.AiFillHome color='rgb(0, 104, 74)' />
-                            <Link to="/Teacherdashboard"><span>Home</span></Link>
+                            <Link to="/admindashboard"><span>Home</span></Link>
                         </li>
-                        <li className="nav-text">
-                            <FaIcons.FaUserCircle color='rgb(0, 104, 74)' />
-                            <Link to="/Teacherdashboard/profile"><span>Profile</span></Link>
-                        </li>
-
                         <li className="nav-text">
                             <FaIcons.FaBook color='rgb(0, 104, 74)' />
                             <Link to="/admindashboard/attendancereport"><span>Attendance Report</span></Link>

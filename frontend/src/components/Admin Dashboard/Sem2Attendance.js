@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 import List from '../Filters/List'
 import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
-import Navbar from '../Teacher_dashboard/Navbar';
+import Navbar from './Navbar';
 var XLSX = require("xlsx");
 const Sem2Attendance = () => {
   const navigate = useNavigate();

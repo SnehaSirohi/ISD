@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from '../Filters/List'
 import jsPDF from "jspdf";
-import Navbar from '../Teacher_dashboard/Navbar';
+import Navbar from './Navbar';
 import autoTable from 'jspdf-autotable';
 
 var XLSX = require("xlsx");
