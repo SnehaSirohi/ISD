@@ -100,7 +100,7 @@ const Assignmentreport = () => {
   const AssignmentSubmit = async (e) => {
     e.preventDefault()
     console.log("this is user", user);
-    await fetch("http://localhost:4000/assignmentsubmit", {
+    const response = await fetch("http://localhost:4000/assignmentsubmit", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -112,6 +112,12 @@ const Assignmentreport = () => {
         subject
       })
     })
+     const data = await response.json();
+     
+      setsuccess(data.success)
+      setTimeout(() => {
+        setsuccess(false)
+      }, 2500);
   }
 
   return (
@@ -230,6 +236,14 @@ const Assignmentreport = () => {
           </table>
         </div>}
       </div>
+      {success &&  <div className="container-fluid blacky">
+    <div className="success">
+   <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none"/> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+</svg>
+</div>
+<h4>Assignment Submitted</h4>
+</div>
+      </div>}
     </>
   )
 }
