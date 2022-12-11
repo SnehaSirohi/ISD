@@ -2,6 +2,9 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import List from './/List'
 import Navbar from './Navbar'
+import "../Admin/Admin Dashboard/Register/registermultiple.css"
+
+
 const Classes_taken = () => {
   const[classes,setclasses]=useState([])
   const[professor,setprofessor]=useState("")
@@ -48,6 +51,7 @@ useEffect(()=>{
 },[])
   return (
     <>
+     <div className='height100vh'>
     <Navbar/>
 
     <div className=" mb-3" >
@@ -108,6 +112,7 @@ useEffect(()=>{
           </tbody>
         </table>
       </div> </>}
+      </div>
     </>
   )
 }
