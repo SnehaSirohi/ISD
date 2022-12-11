@@ -153,6 +153,7 @@ useEffect(() => {
 
 return (
   <>
+   <div className='height100vh'>
     <Navbar />
     <form onSubmit={schedule}>
       <div className=" mb-3 scheduledcontainer">
@@ -288,6 +289,7 @@ return (
     <button className="okay" onClick={()=>setwarning(false)} >Okay</button>
   </div>
  </div></>}
+ </div>
   </>
 );
 };

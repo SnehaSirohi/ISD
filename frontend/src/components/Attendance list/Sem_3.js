@@ -95,6 +95,7 @@ const Sem_3 = () => {
 
   return (
     <>
+     <div className='height100vh'>
       <div className="attendencebody">
         <Navbar/>
         <h1 className="atte1">Sem-3 attendance</h1>
@@ -179,6 +180,7 @@ const Sem_3 = () => {
 <h4>Attendance Saved</h4>
 </div>
       </div>}
+      </div>
     </>
   );
 };

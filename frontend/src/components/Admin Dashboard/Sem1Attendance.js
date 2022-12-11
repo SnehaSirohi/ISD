@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from '../Filters/List'
 import jsPDF from "jspdf";
-import Navbar from '../Teacher_dashboard/Navbar';
+import Navbar from './Navbar';
 import autoTable from 'jspdf-autotable';
 // import './filters.css'
 
@@ -27,18 +27,16 @@ const Sem1Attendance = () => {
   const [visible, setVisible] = useState(false)
   const [string, setString] = useState("")
   const [heading, setHeading] = useState("Overall Attendance Report")
-
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/attendancereport/sem1", {
       method: "GET",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        'x-access-token': localStorage.getItem('token'), //
+        'x-access-token': localStorage.getItem('token'), 
       }
     })
     const json = await response.json()
-    
     setstudent(json.data2)
 
     if(json.data2.length != 0)
@@ -57,7 +55,7 @@ const Sem1Attendance = () => {
 
       var month = date.toLocaleString('en-US', {
         month: 'long',
-      });
+      })
       setval(month)
     }
 
@@ -68,6 +66,7 @@ const Sem1Attendance = () => {
     }
      
     else if (subjectval) {
+       console.log("subject value : ",subjectval)
       let data1 = json.data2.filter((data) => data.subject == subjectval)
       setstudent(data1)
       setval(subjectval)
@@ -89,7 +88,9 @@ const Sem1Attendance = () => {
         fetchdata()
 
       }
-    }    },[])
+    } 
+  },[])
+
   function handlechange(e){
        var val= e.target.value
       setfilter(val)
@@ -144,6 +145,8 @@ const Sem1Attendance = () => {
   
   function Print()
   {
+    console.log("value inside print : ",val);
+    fetchdata()
     setHeading("")
   if(overall)
   {
@@ -162,7 +165,7 @@ const Sem1Attendance = () => {
     setHeading("Attendance Report of " + val)
   }
 
-   
+  
   }
   const exporttoexcelhandler = () => {
         var wb = XLSX.utils.book_new(),
@@ -178,7 +181,6 @@ const Sem1Attendance = () => {
         autoTable(doc, { html: '#mytable' })
         doc.save('table.pdf')
       };
-
 return (
   <>
    <div className=" mb-3" >

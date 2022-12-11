@@ -102,6 +102,7 @@ router.patch("/Teacherdashboard/changepassword", PatchTeacherChangePassword);
 
 //register teacher
 router.post("/registerteacher", RegisterTeacher);
+
 router.get("/scheduleclass", GetScheduleclass);
 router.post("/scheduleclass", Postscheduleclass);
 router.get("/scheduletest", GetScheduletest);

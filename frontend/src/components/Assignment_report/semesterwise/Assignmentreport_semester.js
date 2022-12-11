@@ -141,6 +141,7 @@ const Assignmentreport = () => {
   };
   return (
    <>
+   <div className='height100vh'>
 <Navbar />
  {<h1 className='text-center-1'>Assignments Posted </h1>}
  {sem1 && <div className='classrepcontainer'>
@@ -258,6 +259,7 @@ const Assignmentreport = () => {
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
    </div>}
+   </div>
    </>
   )
 }

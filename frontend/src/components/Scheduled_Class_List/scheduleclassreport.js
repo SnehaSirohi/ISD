@@ -64,7 +64,7 @@ const Classreport = () => {
     doc.save('table.pdf')
   };
   return (
-   <div className='height100vh'>
+   <div className='height100percent'>
 <Navbar />
  {<h1 className='text-center pt-3'>{string}</h1>}
  
