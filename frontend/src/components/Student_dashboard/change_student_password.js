@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 
 const ChangePassword = () => {
 
+  const [ifpasswordsame, setIfpasswordsame] = useState(false);
+  const [ifconfirmpassworddifferent, setIfconfirmpassworddifferent] = useState(false);
+
   const navigate = useNavigate();
   const [enrollNum, setEnrollNum] = useState([])
   const [allpasswords, setAllpasswords] = useState({
@@ -19,7 +22,7 @@ const ChangePassword = () => {
   const [errmsg, setErrmsg] = useState("")
 
   const handleChange = (e) => {
-    const { name, value} = e.target
+    const { name, value } = e.target
     setAllpasswords({
       ...allpasswords,
       [name]: value
@@ -30,9 +33,11 @@ const ChangePassword = () => {
   async function updatepassword(e) {
     e.preventDefault()
     if (allpasswords.oldpassword === allpasswords.newpassword) {
-      setErrmsg("Old password and New password cannot be same");
+      setIfpasswordsame(true);
+      setIfconfirmpassworddifferent(false);
     } else if (allpasswords.newpassword !== allpasswords.confirmpassword) {
-      setErrmsg("Confirm password and new password must be same");
+      setIfpasswordsame(false);
+      setIfconfirmpassworddifferent(true);
     } else {
       const req = await fetch('http://localhost:4000/dashboard/changepassword', {
         method: "PATCH",
@@ -100,7 +105,7 @@ const ChangePassword = () => {
                   id="floatingPassword"
                   name="newpassword"
                   placeholder="New Password"
-                  value= {allpasswords.newpassword}
+                  value={allpasswords.newpassword}
                   onChange={handleChange}
                 />
               </div>
@@ -113,14 +118,24 @@ const ChangePassword = () => {
                   id="floatingConfirmPassword"
                   name="confirmpassword"
                   placeholder="Confirm Password"
-                  value= {allpasswords.confirmpassword}
+                  value={allpasswords.confirmpassword}
                   onChange={handleChange}
 
                 />
               </div>
-              {
+              {/* {
                 errmsg ? <h3 className='text-danger'>{errmsg}</h3> : ""
-              }
+              } */}
+
+              {ifpasswordsame && <div class="alertmessage">
+                <i class='fa fa-exclamation-circle'></i> &nbsp;
+                Old password and New password cannot be same!
+              </div>}
+
+              {ifconfirmpassworddifferent && < div class="alertmessage">
+                <i class='fa fa-exclamation-circle'></i> &nbsp;
+                Confirm password and new password must be same
+              </div>}
 
               <button
                 type="submit"
