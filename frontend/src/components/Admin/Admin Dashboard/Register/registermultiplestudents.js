@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from '../../../Admin Dashboard/Navbar'
+import "./registermultiple.css"
 import * as XLSX from 'xlsx'
 import List from './List'
 
@@ -44,7 +45,7 @@ function StudentRegister() {
     setTimeout(() => {
       setSuccess(false)
       navigate('/admindashboard')
-    },2500)
+    }, 2500)
     console.log(data)
     if (data.status === "ok") {
       setErrmsg("")
@@ -59,68 +60,68 @@ function StudentRegister() {
 
   return (
     <>
-      <Navbar />
-      <div className="text-center"> <h2 className="text-dark fw-bolder fs-2 mb-3">Register Multipe Students</h2></div>
-      <section>
-        <div className="file-card">
-          <div className="file-inputs">
-            <input
-              type="file"
-              onChange={(e) => handleFile(e)}
-            />
-            <button>Select File</button>
-          </div>
-          {filename && <div className="fileuploaddisplay">{filename}</div>}
-          <div className="infocontent">
-            <p className="main">Supported files</p>
-            <p className="info">xlsx</p>
-          </div>
-          {
-            errmsg ? <h3 className='text-danger'>{errmsg}</h3> : ""
-          }
-        </div>
-
-        {visible &&
-
-          <div className='overflowxauto'>
-            <table className='table table-striped '  >
-              <thead className='heading-2'>
-                <tr >
-                  <th>Name</th>
-                  <th>Semester</th>
-                  <th>Email</th>
-                  <th>Roll No.</th>
-                  <th>Contact No.</th>
-                  <th>Enrollment No.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <List jsonData={jsonData} />
-              </tbody>
-            </table>
-
-            <div className='text-center'>
-              <button
-                type="submit"
-                className="btn btn-primary  my-1"
-                onClick={RegisterAll}
-              >
-                Register All
-              </button>
+      <div className="height100vh">
+        <Navbar />
+        <div className="text-center"> <h2 className="text-dark fw-bolder fs-2 mb-3">Register Multipe Students</h2></div>
+        <section className="registermultiplebody">
+          <div className="file-card">
+            <div className="file-inputs">
+              <input
+                type="file"
+                onChange={(e) => handleFile(e)}
+              />
+              <button>Select File</button>
             </div>
-
-          </div>}
-      </section>
-
-      {success && <div className="container-fluid blacky">
-        <div className="success">
-          <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none" /> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-          </svg>
+            {filename && <div className="fileuploaddisplay">{filename}</div>}
+            <div className="infocontent">
+              <p className="main">Supported files</p>
+              <p className="info">xlsx</p>
+            </div>
+            {
+              errmsg ? <h3 className='text-danger'>{errmsg}</h3> : ""
+            }
           </div>
-          <h4>Students Registered succesfully</h4>
-        </div>
-      </div>}
 
+          {visible &&
+            <div className='overflowxauto mt-4'>
+              <table className='table table-striped'>
+                <thead className='heading-2'>
+                  <tr >
+                    <th>Name</th>
+                    <th>Semester</th>
+                    <th>Email</th>
+                    <th>Roll No.</th>
+                    <th>Contact No.</th>
+                    <th>Enrollment No.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <List jsonData={jsonData} />
+                </tbody>
+              </table>
+
+              <div className='text-center'>
+                <button
+                  type="submit"
+                  className="btn btn-primary  my-1"
+                  onClick={RegisterAll}
+                >
+                  Register All
+                </button>
+              </div>
+
+            </div>}
+        </section>
+
+        {success && <div className="container-fluid blacky">
+          <div className="success">
+            <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none" /> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+            </svg>
+            </div>
+            <h4>Students Registered succesfully</h4>
+          </div>
+        </div>}
+      </div>
     </>
   );
 }
