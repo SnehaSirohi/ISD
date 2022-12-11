@@ -270,7 +270,7 @@ const register = async (req, res) => {
       enrollNum,
       password,
     });
-    res.status(200).json(student);
+    res.status(200).json({status: "ok", student});
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

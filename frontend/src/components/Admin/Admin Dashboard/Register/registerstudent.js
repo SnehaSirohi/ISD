@@ -3,13 +3,15 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from '../../../Admin Dashboard/Navbar'
 
-function TeacherRegister() {
+function StudentRegister() {
   const navigate = useNavigate();
   const [user, setUser] = useState({
     name: "",
+    semester: "",
     email: "",
-    Teacher_id: "",
+    rollNum: "",
     contactNum: "",
+    enrollNum: "",
     password: ""
   })
 
@@ -25,7 +27,8 @@ function TeacherRegister() {
 
   async function Register(e) {
     e.preventDefault()
-      const response = await fetch("http://localhost:4000/registerteacher", {
+
+      const response = await fetch("http://localhost:4000/register", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -38,9 +41,8 @@ function TeacherRegister() {
       console.log(data)
       if (data.status === "ok") {
         setErrmsg("")
-        alert("Teacher Added succesfully")
-        navigate('/admindashboard ')
-
+        alert("New Student Added succesfully")
+        navigate('/admindashboard')
       }
       else{
         navigate('/admindashboard')
@@ -54,7 +56,7 @@ function TeacherRegister() {
         <div className="container pt-10">
           <div className="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center">
             <form className="rounded bg-white shadow p-5" >
-              <h3 className="text-dark fw-bolder fs-4 mb-2">Register new Teacher</h3>
+              <h3 className="text-dark fw-bolder fs-4 mb-2">Register new Student</h3>
 
               <label htmlFor="floatingInput">Name</label>
               <div className="form-floating mb-3">
@@ -65,6 +67,19 @@ function TeacherRegister() {
                   name="name"
                   placeholder="name"
                   value={user.name}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <label htmlFor="floatingInput">Semester</label>
+              <div className="form-floating mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  name="semester"
+                  placeholder="Semester"
+                  value={user.semester}
                   onChange={handleChange}
                 />
               </div>
@@ -82,15 +97,15 @@ function TeacherRegister() {
                 />
               </div>
 
-              <label htmlFor="floatingid">Teacher's ID</label>
+              <label htmlFor="floatingid">Roll Number</label>
               <div className="form-floating mb-3">
                 <input
                   type="text"
                   className="form-control"
                   id="floatingid"
-                  name="Teacher_id"
-                  placeholder="Teacher's ID"
-                  value={user.Teacher_id}
+                  name="rollNum"
+                  placeholder="Roll Number"
+                  value={user.rollNum}
                   onChange={handleChange}
                 />
               </div>
@@ -104,6 +119,19 @@ function TeacherRegister() {
                   name="contactNum"
                   placeholder="Contact Number"
                   value={user.contactNum}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <label htmlFor="floatingInput">Enrollment Number</label>
+              <div className="form-floating mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                  name="enrollNum"
+                  placeholder="Enrollment Number"
+                  value={user.enrollNum}
                   onChange={handleChange}
                 />
               </div>
@@ -140,4 +168,4 @@ function TeacherRegister() {
   );
 }
 
-export default TeacherRegister;
+export default StudentRegister;

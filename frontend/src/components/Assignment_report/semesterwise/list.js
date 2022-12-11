@@ -29,7 +29,7 @@ const List = ({ assignments, AssignmentSubmit, files, setfile, key }) => {
                 <form id="uploadandsubmitblock">
                   <input type="file" id='inputfilechoose' value={files} onChange={(e) => setfile(e.target.value)} key={teach.id} />
                   <button className='upload_button'>Upload</button>
-                  <button type='submit' onClick={AssignmentSubmit}>Submit</button>
+                  <button className='submit_button' type='submit' onClick={AssignmentSubmit}>Submit</button>
                 </form>
               </td>
             </tr>
