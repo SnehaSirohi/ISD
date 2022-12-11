@@ -8,7 +8,7 @@ const Home = () => {
             <Navbar />
             <div class="album py-5 bg-light text-center">
                 <div class="container">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
+                    <div class="row row-cols-1 row-cols-sm-3 row-cols-md-3 g-3">
                         <Link to='/registerTeacher'><div class="col">
                             <div class="card-body">
                                 <h3>Register Teacher</h3>
@@ -18,7 +18,14 @@ const Home = () => {
                         <Link to="/registerStudent"><div class="col">
 
                             <div class="card-body">
-                                <h3>Register Student</h3>
+                                <h3>Register a Single Student</h3>
+                            </div>
+                        </div>
+                        </Link>
+                        <Link to="/registerAllStudent"><div class="col">
+
+                            <div class="card-body">
+                                <h3>Register Multiple Students</h3>
                             </div>
                         </div>
                         </Link>

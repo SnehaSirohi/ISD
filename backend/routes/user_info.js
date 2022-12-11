@@ -36,6 +36,7 @@ const {
   Getchangepassword,
   PatchChangepassword,
   register,
+  registerall,
   Test_Scheduled,
   Classes_Scheduled,
   Assignment_Schedule_student,
@@ -81,6 +82,8 @@ router.patch("/dashboard/changepassword", PatchChangepassword);
 
 //student register
 router.post("/register", register);
+router.post("/registerall", registerall);
+
 
 //------------------Teacher Login-------------------
 router.post("/loginteacher", loginteacher);

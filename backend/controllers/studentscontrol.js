@@ -295,6 +295,32 @@ console.log(check)
   
 };
 
+const registerall = async (req, res) => {
+  // const { name, semester, email, rollNum, contactNum, enrollNum, password } =
+  //   req.body;
+    const jsonData = req.body;
+    console.log(jsonData)
+   try{
+    jsonData.map(async(x) => {
+      const { name, semester, email, rollNum, contactNum, enrollNum, password } = x;
+              const student = await Students.create({
+                name,
+                semester,
+                email,
+                rollNum,
+                contactNum,
+                enrollNum,
+                password,
+              });
+             
+    })
+    return res.status(200).json({status: "ok", success: true});
+   }catch (error) {
+    res.status(400).json({msg:"Something gone Wrong, Try Again!", error: error.message });
+  }
+
+};
+
 const Test_Scheduled = async (req, res) => {
   const token = req.headers["x-access-token"];
   try {
@@ -419,6 +445,7 @@ module.exports = {
   Getchangepassword,
   PatchChangepassword,
   register,
+  registerall,
   Test_Scheduled,
   Classes_Scheduled,
   Assignment_Schedule_student,

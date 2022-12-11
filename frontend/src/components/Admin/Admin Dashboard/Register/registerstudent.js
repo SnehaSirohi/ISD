@@ -51,8 +51,8 @@ function StudentRegister() {
       else{
         navigate('/admindashboard')
       }
-    }
-   
+    }  
+
   return (
     <>
     <Navbar />
