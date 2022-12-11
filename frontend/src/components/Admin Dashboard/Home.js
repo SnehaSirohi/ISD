@@ -15,7 +15,7 @@ const Home = () => {
                             </div>
                         </div>
                         </Link>
-                        <Link to="/admindashboard/Sem2/attendance"><div class="col">
+                        <Link to="/registerStudent"><div class="col">
 
                             <div class="card-body">
                                 <h3>Register Student</h3>
