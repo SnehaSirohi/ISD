@@ -18,7 +18,7 @@
     border-radius: 15px;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
@@ -99,8 +99,6 @@ a{
     background: gray;
     border-radius: 8px;
     padding: 25px;
-    /* width: 70%; */
-    /* transform: translateX(-89px); */
 }
 
 .profile-head {
