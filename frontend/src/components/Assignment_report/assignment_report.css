@@ -1,33 +1,33 @@
 #mytable-5 {
     margin-left: 20%;
-    margin-right: 20%; 
+    margin-right: 20%;
     margin-top: 0;
     width: 60%;
     margin-bottom: 20px;
 }
 
-#inputfilechoose{
+#inputfilechoose {
     width: 5rem;
     opacity: 0;
     position: relative;
     z-index: 1;
 }
 
-#uploadandsubmitblock{
+#uploadandsubmitblock {
     position: relative;
     display: flex;
 }
 
-.upload_button{
+.upload_button {
     width: 5rem;
     left: 0;
     color: white;
     height: 2rem;
     position: absolute;
-    background-color:#1E6A44;
+    background-color: #1E6A44;
 }
 
-.submit_button{
+.submit_button {
     color: white;
     width: 5rem;
     height: 2rem;
@@ -35,10 +35,14 @@
     background-color: #A80B01;
 }
 
-#mytableblock-1{
+.submit_button:active {
+    transform: translateY(1px);
+}
+
+#mytableblock-1 {
     overflow-x: auto;
 }
 
-#mytable-1{
+#mytable-1 {
     overflow-x: auto;
 }
