@@ -605,7 +605,7 @@ const Sem3AttendanceReport = async (req, res) => {
     if(admin ){
       return res.status(200).json({
         success: true,
-        data2: await Sem1Attendance.find({}),
+        data2: await Sem3Attendance.find({}),
         
       });
     }

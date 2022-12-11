@@ -89,9 +89,43 @@ const Sem4filters = () => {
     }
 
   }
-  useEffect(() => {
+useEffect(()=>{
+    const token = localStorage.getItem('token')
+    if (token) {
+      const user = jwt.decode(token)
+      if (!user) {
+        localStorage.removeItem('token')
+        navigate("/dashboard");
+      } else {
+        fetchdata()
+      }
+    } 
+  },[])
+useEffect(()=>{
+  if(overall && val)
+  {
+    setHeading("Overall Attendance Report")
+  }
+  else if(subjectval&& val)
+  {
+    setHeading("Attendance Report of "+ val)
+  }
+  else if(dateval&& val)
+  {
+    setHeading("Attendance Report of " + val)
+  }
+  else if(monthval&& val)
+  {
+    setHeading("Attendance Report of " + val)
+  }
+
+},[Print])
+
+  function Print()
+  {
     fetchdata()
-  }, [])
+  
+  }
   function handlechange(e) {
     var val = e.target.value
     setfilter(val)
@@ -101,7 +135,7 @@ const Sem4filters = () => {
       setdate(false)
       setmonth(false)
       setsubject(false)
-      setbutton(true)
+      
       setoverall(true)
       setreport(false)
       setdateval("")
@@ -136,35 +170,7 @@ const Sem4filters = () => {
       setmonthval("")
     }
   }
-  function Print() {
-    setHeading("")
-    if (overall) {
-      setHeading("Overall Attendance Report")
-    }
-    else if (subject) {
-      setHeading("Attendance Report of " + subjectval)
-    }
-    else if (date) {
-      setHeading("Attendance Report of " + dateval)
-    }
-    else if (month) {
-      setHeading("Attendance Report of " + val)
-    }
-
-    setreport(true)
-    const token = localStorage.getItem('token')
-    if (token) {
-      const user = jwt.decode(token)
-      console.log(user)
-      if (!user) {
-        localStorage.removeItem('token')
-        navigate("/dashboard");
-      } else {
-        fetchdata()
-
-      }
-    }
-  }
+ 
   const exporttoexcelhandler = () => {
     var wb = XLSX.utils.book_new(),
       ws = XLSX.utils.json_to_sheet(student);
