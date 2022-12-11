@@ -1,8 +1,6 @@
 import React from 'react'
 import { useState, useEffect, useRef, useReactToPrint } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import jsPDF from "jspdf";
-import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import "../../Scheduled_Class_List/Scheduledcommon.css";
@@ -22,6 +20,7 @@ const Assignmentreport = () => {
   const [report, setReport] = useState({})
   const [visible, setVisible] = useState(false)
   const [string, setString] = useState("")
+  const [success,setsuccess]=useState(false)
   const newdate = new Date()
   const monthval = newdate.getMonth() + 1;
   const day = newdate.getDate()
@@ -56,8 +55,6 @@ const Assignmentreport = () => {
 
     })
 
-    console.log(data)
-
     setAssignments(data.reverse())
     if (data.length != 0) {
       setVisible(true)
@@ -72,22 +69,18 @@ const Assignmentreport = () => {
   useEffect(() => {
     if (report.sem == 'Sem-1') {
       setSem1(true)
-      console.log("This is sem1", sem1)
 
     }
 
     else if (report.sem == "Sem-2") {
       setSem2(true)
-      console.log(sem2)
     }
     else if (report.sem == "Sem-3") {
       setSem3(true)
-      console.log(sem3)
     }
 
     else if (report.sem == "Sem-4") {
       setSem4(true)
-      console.log(sem4)
     }
 
   }, [report])
@@ -121,19 +114,6 @@ const Assignmentreport = () => {
     })
   }
 
-  const exporttoexcelhandler = () => {
-    var wb = XLSX.utils.book_new(),
-      ws = XLSX.utils.json_to_sheet(assignments);
-    XLSX.utils.book_append_sheet(wb, ws, "MySheet1");
-    XLSX.writeFile(wb, "MyExcel.xlsx")
-  };
-
-  const exporttopdfhandler = () => {
-    const doc = new jsPDF()
-    doc.text("Assignments Posted", 70, 10)
-    autoTable(doc, { html: '#mytable-1' })
-    doc.save('table.pdf')
-  };
   return (
     <>
       <div className='height100vh'>
@@ -248,11 +228,6 @@ const Assignmentreport = () => {
               <List key={assignments.id} assignments={assignments} files={files} setfile={setfile} AssignmentSubmit={AssignmentSubmit} />
             </tbody>
           </table>
-        </div>}
-
-        {visible && <div className='text-center  button_block8'>
-          <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
-          <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
         </div>}
       </div>
     </>
