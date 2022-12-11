@@ -16,7 +16,7 @@ function UploadAssignmentsem4() {
   const [NitishaAgg, setNitishaAgg] = useState(false);
   const [MKDas, setMKDas] = useState(false);
   const [Sanjeev, setSanjeev] = useState(false);
-  const [success,setsuccess]=useState(false)
+  const [success, setsuccess] = useState(false)
   async function populate(e) {
     const req = await fetch("http://localhost:4000/upload/assignment", {
       headers: {
@@ -40,16 +40,13 @@ function UploadAssignmentsem4() {
   }
 
   async function Upload() {
-    if(!subject)
-    {
+    if (!subject) {
       alert("Please select the subject")
     }
-    else if(!file)
-    {
+    else if (!file) {
       alert("Please upload a file")
     }
-    else
-    {
+    else {
       const response = await fetch("http://localhost:4000/upload/assignment", {
         method: "POST",
         headers: {
@@ -66,14 +63,14 @@ function UploadAssignmentsem4() {
           description,
         }),
       });
-  
+
       const data = await response.json();
-       setsuccess(data.success)
+      setsuccess(data.success)
       setTimeout(() => {
         setsuccess(false)
       }, 2500);
     }
-   
+
   }
 
   //--------------------
@@ -92,144 +89,142 @@ function UploadAssignmentsem4() {
   }, []);
   return (
     <>
-    <div className="uploadassignmentbody">
-      <Navbar />
-      <div className="uploadheading">
-        <h1>Upload Assignment</h1>
-      </div>
-      
-      <div className="uploadassignmentcontent">
-        <div className=" mb-3">
-          {NitishaAgg && (
-            <div>
-                
-              <select
-                type="text"
-                className="form-control shadow-none"
-                id="subject"
-                name="subject"
-                value={subject}
-                onChange={(e) => setsubject(e.target.value)}>
-                     <option>Select Subject</option>
-                <option value="Internet of Things Systems, Security and Cloud">
-                  Internet of Things Systems, Security and Cloud
-                </option>
-              </select>
-            </div>
-          )}
-          {UnmeshShukla && (
-            <div>
-                
-              <select
-                type="text"
-                className="form-control shadow-none"
-                id="subject"
-                name="subject"
-                value={subject}
-                onChange={(e) => setsubject(e.target.value)}>
-                     <option>Select Subject</option>
-                <option value="Health Informatics">Health Informatics</option>
-              </select>
-            </div>
-          )}
-          {Sanjeev && (
-            <div>
-                
-              <select
-                type="text"
-                className="form-control shadow-none"
-                id="subject"
-                name="subject"
-                value={subject}
-                onChange={(e) => setsubject(e.target.value)}>
-                     <option>Select Subject</option>
-                <option value="Dissertation Project">
-                  Dissertation Project
-                </option>
-              </select>
-            </div>
-          )}
-          {MKDas && (
-            <div>
-                
-              <select
-                type="text"
-                className="form-control shadow-none"
-                id="subject"
-                name="subject"
-                value={subject}
-                onChange={(e) => setsubject(e.target.value)}>
-                     <option>Select Subject</option>
-                <option value="Research Methods in Informatics">
-                  Research Methods in Informatics
-                </option>
-              </select>
-            </div>
-          )}
+      <div className="uploadassignmentbody">
+        <Navbar />
+        <div className="uploadheading">
+          <h1>Upload Assignment</h1>
         </div>
 
-        {/* upload file */}
-        <div className="uploadassignmentcontent"  id="deadline_block">
-        <div className=" mb-3">
-          <label htmlFor="form-label">Deadline:</label>
-          <input
-            type="date"
-            className="time_block12"
-            value={deadline}
-            onChange={(e) => setdeadline(e.target.value)}
-          />
-        </div>
-      </div>
+        <div className="uploadassignmentcontent">
+          <div className=" mb-3">
+            {NitishaAgg && (
+              <div>
 
-        <div className="file-card">
-          <div className="file-inputs">
+                <select
+                  type="text"
+                  className="form-control shadow-none"
+                  id="subject"
+                  name="subject"
+                  value={subject}
+                  onChange={(e) => setsubject(e.target.value)}>
+                  <option>Select Subject</option>
+                  <option value="Internet of Things Systems, Security and Cloud">
+                    Internet of Things Systems, Security and Cloud
+                  </option>
+                </select>
+              </div>
+            )}
+            {UnmeshShukla && (
+              <div>
+
+                <select
+                  type="text"
+                  className="form-control shadow-none"
+                  id="subject"
+                  name="subject"
+                  value={subject}
+                  onChange={(e) => setsubject(e.target.value)}>
+                  <option>Select Subject</option>
+                  <option value="Health Informatics">Health Informatics</option>
+                </select>
+              </div>
+            )}
+            {Sanjeev && (
+              <div>
+
+                <select
+                  type="text"
+                  className="form-control shadow-none"
+                  id="subject"
+                  name="subject"
+                  value={subject}
+                  onChange={(e) => setsubject(e.target.value)}>
+                  <option>Select Subject</option>
+                  <option value="Dissertation Project">
+                    Dissertation Project
+                  </option>
+                </select>
+              </div>
+            )}
+            {MKDas && (
+              <div>
+
+                <select
+                  type="text"
+                  className="form-control shadow-none"
+                  id="subject"
+                  name="subject"
+                  value={subject}
+                  onChange={(e) => setsubject(e.target.value)}>
+                  <option>Select Subject</option>
+                  <option value="Research Methods in Informatics">
+                    Research Methods in Informatics
+                  </option>
+                </select>
+              </div>
+            )}
+          </div>
+
+          {/* upload file */}
+          <div className="mb-3 mt-3" id="deadline_block">
+            <label className="form-label deadline">Deadline</label>
             <input
-              type="file"
-              value={file}
-              onChange={(e) => setFile(e.target.value)}
+              type="date"
+              className="time_block12"
+              value={deadline}
+              onChange={(e) => setdeadline(e.target.value)}
             />
-            <button>Upload</button>
           </div>
-          {file && <div className="fileuploaddisplay">{file}</div>}
-          <div className="infocontent">
-            <p className="main">Supported files</p>
-            <p className="info">PDF,Doc, JPG, PNG</p>
+
+          <div className="file-card">
+            <div className="file-inputs">
+              <input
+                type="file"
+                value={file}
+                onChange={(e) => setFile(e.target.value)}
+              />
+              <button>Upload</button>
+            </div>
+            {file && <div className="fileuploaddisplay">{file}</div>}
+            <div className="infocontent">
+              <p className="main">Supported files</p>
+              <p className="info">PDF,Doc, JPG, PNG</p>
+            </div>
           </div>
-        </div>
 
-        {/* text box */}
+          {/* text box */}
 
-        <div class="mb-3 mt-4">
-          <label for="exampleFormControlTextarea1" class="form-label">
-            Discription
-          </label>
-          <textarea
-            class="form-control"
-            placeholder="optional"
-            id="exampleFormControlTextarea1"
-            rows="3"
-            value={description}
-            onChange={(e) => setdescription(e.target.value)}></textarea>
-        </div>
+          <div class="mb-3 mt-4">
+            <label for="exampleFormControlTextarea1" class="form-label">
+              Discription
+            </label>
+            <textarea
+              class="form-control"
+              placeholder="optional"
+              id="exampleFormControlTextarea1"
+              rows="3"
+              value={description}
+              onChange={(e) => setdescription(e.target.value)}></textarea>
+          </div>
 
-        {/* submit button */}
+          {/* submit button */}
 
-        <div className="text-center">
-          <button className="submitbutton mt-3 " onClick={Upload}>
-            Submit
-          </button>
+          <div className="text-center">
+            <button className="submitbutton mt-3 " onClick={Upload}>
+              Submit
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-    {success &&  <div className="container-fluid blacky">
-    <div className="success">
-   <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none"/> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-</svg>
-</div>
-<h4>Assignment Posted</h4>
-</div>
+      {success && <div className="container-fluid blacky">
+        <div className="success">
+          <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none" /> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+          </svg>
+          </div>
+          <h4>Assignment Posted</h4>
+        </div>
       </div>}
-      </>
+    </>
   );
 }
 
