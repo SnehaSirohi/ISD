@@ -76,20 +76,7 @@ const Sem1Attendance = () => {
     }
 
   }
-  useEffect(()=>{
-    const token = localStorage.getItem('token')
-    if (token) {
-      const user = jwt.decode(token)
-      console.log(user)
-      if (!user) {
-        localStorage.removeItem('token')
-        navigate("/dashboard");
-      } else {
-        fetchdata()
-
-      }
-    } 
-  },[])
+  
 
   function handlechange(e){
        var val= e.target.value
@@ -142,29 +129,41 @@ const Sem1Attendance = () => {
           setmonthval("")
       }
   }
-  
-  function Print()
-  {
-    console.log("value inside print : ",val);
-    fetchdata()
-    setHeading("")
-  if(overall)
+useEffect(()=>{
+    const token = localStorage.getItem('token')
+    if (token) {
+      const user = jwt.decode(token)
+      if (!user) {
+        localStorage.removeItem('token')
+        navigate("/dashboard");
+      } else {
+        fetchdata()
+      }
+    } 
+  },[])
+useEffect(()=>{
+  if(overall && val)
   {
     setHeading("Overall Attendance Report")
   }
-  else if(subject)
+  else if(subjectval&& val)
   {
-    setHeading("Attendance Report of "+ subjectval)
+    setHeading("Attendance Report of "+ val)
   }
-  else if(date)
+  else if(dateval&& val)
   {
-    setHeading("Attendance Report of " + dateval)
+    setHeading("Attendance Report of " + val)
   }
-  else if(month)
+  else if(monthval&& val)
   {
     setHeading("Attendance Report of " + val)
   }
 
+},[Print])
+
+  function Print()
+  {
+    fetchdata()
   
   }
   const exporttoexcelhandler = () => {
