@@ -43,6 +43,10 @@ function StudentRegister() {
         setErrmsg("")
         alert("New Student Added succesfully")
         navigate('/admindashboard')
+        setErrmsg("")
+      }
+      else if(data.status === "notok"){
+        setErrmsg(data.msg)
       }
       else{
         navigate('/admindashboard')

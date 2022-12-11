@@ -259,21 +259,40 @@ const PatchChangepassword = async (req, res) => {
 const register = async (req, res) => {
   const { name, semester, email, rollNum, contactNum, enrollNum, password } =
     req.body;
+    const student = await Students.find({enrollNum: enrollNum}) 
+console.log(student)
 
-  try {
-    const student = await Students.create({
-      name,
-      semester,
-      email,
-      rollNum,
-      contactNum,
-      enrollNum,
-      password,
-    });
-    res.status(200).json({status: "ok", student});
-  } catch (error) {
-    res.status(400).json({ error: error.message });
+let check 
+ student.map((x) => {
+  if(x.enrollNum == enrollNum)
+  {
+    check = "true"
+    return
   }
+  else{
+    check = "false"
+  }
+})
+console.log(check)
+  if(check){
+    res.status(400).json({status: "notok", msg: "Another student already registered with this Enrollment Number"})
+  } else {
+    try {
+      const student = await Students.create({
+        name,
+        semester,
+        email,
+        rollNum,
+        contactNum,
+        enrollNum,
+        password,
+      });
+      res.status(200).json({status: "ok", student});
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+  
 };
 
 const Test_Scheduled = async (req, res) => {

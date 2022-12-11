@@ -40,7 +40,11 @@ function TeacherRegister() {
         setErrmsg("")
         alert("Teacher Added succesfully")
         navigate('/admindashboard ')
+        setErrmsg("")
 
+      }
+      else if(data.status === "notok"){
+        setErrmsg(data.msg)
       }
       else{
         navigate('/admindashboard')

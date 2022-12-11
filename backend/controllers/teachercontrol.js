@@ -178,7 +178,23 @@ const PatchTeacherChangePassword = async (req, res) => {
 const RegisterTeacher = async (req, res) => {
   const { name, email, Teacher_id, contactNum, password } = req.body;
   console.log(name)
+  const teacher = await Teacher.find({Teacher_id: Teacher_id}) 
+let check
+teacher.map((x) => {
+  if(x.Teacher_id == Teacher_id)
+  {
+    check = "true"
+    return
+  }
+  else {
+    check = "false"
+  }
+})
+console.log(check)
 
+if(check) {
+  res.status(400).json({status: "notok", msg: "Another Teacher already registered with this Teacher ID"})
+} else {
   try {
     const teacher = await Teacher.create({
       name,
@@ -191,6 +207,7 @@ const RegisterTeacher = async (req, res) => {
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
+}
 };
 
 const GetScheduleclass = async (req, res) => {
