@@ -13,6 +13,10 @@
     z-index: 1;
 }
 
+#inputfilechoose:active ~.upload_button {
+    transform: translateY(1px);
+}
+
 #uploadandsubmitblock {
     position: relative;
     display: flex;
@@ -22,6 +26,7 @@
     width: 5rem;
     left: 0;
     color: white;
+    border-radius: 5px;
     height: 2rem;
     position: absolute;
     background-color: #1E6A44;
@@ -31,6 +36,7 @@
     color: white;
     width: 5rem;
     height: 2rem;
+    border-radius: 5px;
     margin-left: 1rem;
     background-color: #A80B01;
 }
