@@ -3,7 +3,7 @@ import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CSVLink } from 'react-csv'
 const List = ({ assignments, AssignmentSubmit, files, setfile, key }) => {
-  const [filename, setfilename] = React.useState("")
+  // const [filename, setfilename] = React.useState("")
   return (
     <>
       {assignments.map((teach, index) => {
@@ -34,7 +34,7 @@ const List = ({ assignments, AssignmentSubmit, files, setfile, key }) => {
                      setfilename(e.target.value)
                      }} />
                   <button className='upload_button'>Upload</button>
-                  <span>{filename}</span>
+                  <span>{files}</span>
                   <button className='submit_button' type='submit' onClick={AssignmentSubmit}>Submit</button>
               
                 </form>}
