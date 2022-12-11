@@ -415,7 +415,7 @@ const PostAssignmentSubmitt = async (req, res) => {
   const student = await Students.findOne({ enrollNum: enrollNum })
   const name = student.name;
   const semester = student.semester;
-
+  console.log("date is the : ",date,files,enrollNum,subject)
 
   try {
 
