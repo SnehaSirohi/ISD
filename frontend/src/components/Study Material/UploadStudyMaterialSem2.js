@@ -70,6 +70,7 @@ function UploadStudyMaterialSem2() {
       setsuccess(data.success)
       setTimeout(() => {
         setsuccess(false)
+        navigate("/Teacherdashboard");
       },2500);
     }
    

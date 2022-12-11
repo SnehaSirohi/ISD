@@ -60,6 +60,7 @@ function StudentRegister() {
   return (
     <>
       <Navbar />
+      <div className="text-center"> <h2 className="text-dark fw-bolder fs-2 mb-3">Register Multipe Students</h2></div>
       <section>
         <div className="file-card">
           <div className="file-inputs">

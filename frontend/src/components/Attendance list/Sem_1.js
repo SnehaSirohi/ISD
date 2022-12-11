@@ -16,7 +16,7 @@ const Sem_1 = () => {
   const [NitishaAgg, setNitishaAgg] = useState(false)
   const [MKDas, setMKDas] = useState(false)
   const [SunilKumar, setSunilKumar] = useState(false)
-  const[success,setsuccess]= useState(false)
+  const [success, setsuccess] = useState(false)
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/attendance", {
       method: "GET",
@@ -84,8 +84,8 @@ const Sem_1 = () => {
         setsuccess(dataa.success)
       });
       setTimeout(() => {
-         setsuccess(false)
-         navigate("/Teacherdashboard");
+        setsuccess(false)
+        navigate("/Teacherdashboard");
       }, 2500);
     }
 
@@ -93,95 +93,95 @@ const Sem_1 = () => {
 
   return (
     <>
-     <div className='height100vh'>
-    <div className="attendencebody">
-      <Navbar />
-      <h1 className="atte1">Sem-1 Attendance</h1>
-      {UnmeshShukla && <div className="mb-3 selectsubjectcontainer ">
-        <select
-          type="text"
-          className="form-control"
-          id="subject"
-          name="subject"
-          value={subject}
-          required
-          onChange={(e) => setsubject(e.target.value)}>
-          <option required>Select Subject</option>
-          <option value="Algorithms And Data Structure">
-            Algorithms and Data Structure
-          </option>
-        </select></div>}
-      {NitishaAgg && <div className="mb-3 selectsubjectcontainer">
-        
-        <select
-          type="text"
-          className="form-control"
-          id="subject"
-          name="subject"
-          value={subject}
-          required
-          onChange={(e) => setsubject(e.target.value)}>
-          <option required>Select Subject</option>
-          <option value="Software Design & Programming">
-            Software Design & Programming
-          </option>
-        </select></div>}
-      {MKDas && <div className="mb-3 selectsubjectcontainer">
-        
-        <select
-          type="text"
-          className="form-control"
-          id="subject"
-          name="subject"
-          value={subject}
-          required
-          onChange={(e) => setsubject(e.target.value)}>
-          <option required>Select Subject</option>
-          <option value="Mathematical Foundation Of Computing">
-            Mathematical Foundation of Computing
-          </option>
-        </select></div>}
-      {SunilKumar && <div className="mb-3 selectsubjectcontainer">
-        
-        <select
-          type="text"
-          className="form-control"
-          id="subject"
-          name="subject"
-          value={subject}
-          required
-          onChange={(e) => setsubject(e.target.value)}>
-          <option required>Select Subject</option>
-          <option value="Computer System Architecture">
-            Computer System Architecture
-          </option>
-        </select></div>}
+      <div className='height100vh'>
+        <div className="attendencebody">
+          <Navbar />
+          <h1 className="atte1">Sem-1 Attendance</h1>
+          {UnmeshShukla && <div className="mb-3 selectsubjectcontainer ">
+            <select
+              type="text"
+              className="form-control"
+              id="subject"
+              name="subject"
+              value={subject}
+              required
+              onChange={(e) => setsubject(e.target.value)}>
+              <option required>Select Subject</option>
+              <option value="Algorithms And Data Structure">
+                Algorithms and Data Structure
+              </option>
+            </select></div>}
+          {NitishaAgg && <div className="mb-3 selectsubjectcontainer">
 
-      <div className="table-1">
-        <table className="table table-striped">
-          <thead className="heading-1">
-            <tr>
-              <th>Student</th>
-              <th>Present</th>
-            </tr>
-          </thead>
-          <tbody>
-            <List students={students} status={status} setstatus={setstatus} />
-          </tbody>
-        </table>
-      </div>
-      <div className="button-1">
-        <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onClick={Submit}>Submit</button>
-      </div>
-    </div>
-  <div className="container-fluid blacky">
-    <div className="success">
-   <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none"/> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-</svg>
-</div>
-<h4>Attendance Saved</h4>
-</div>
-      </div>
+            <select
+              type="text"
+              className="form-control"
+              id="subject"
+              name="subject"
+              value={subject}
+              required
+              onChange={(e) => setsubject(e.target.value)}>
+              <option required>Select Subject</option>
+              <option value="Software Design & Programming">
+                Software Design & Programming
+              </option>
+            </select></div>}
+          {MKDas && <div className="mb-3 selectsubjectcontainer">
+
+            <select
+              type="text"
+              className="form-control"
+              id="subject"
+              name="subject"
+              value={subject}
+              required
+              onChange={(e) => setsubject(e.target.value)}>
+              <option required>Select Subject</option>
+              <option value="Mathematical Foundation Of Computing">
+                Mathematical Foundation of Computing
+              </option>
+            </select></div>}
+          {SunilKumar && <div className="mb-3 selectsubjectcontainer">
+
+            <select
+              type="text"
+              className="form-control"
+              id="subject"
+              name="subject"
+              value={subject}
+              required
+              onChange={(e) => setsubject(e.target.value)}>
+              <option required>Select Subject</option>
+              <option value="Computer System Architecture">
+                Computer System Architecture
+              </option>
+            </select></div>}
+
+          <div className="table-1">
+            <table className="table table-striped">
+              <thead className="heading-1">
+                <tr>
+                  <th>Student</th>
+                  <th>Present</th>
+                </tr>
+              </thead>
+              <tbody>
+                <List students={students} status={status} setstatus={setstatus} />
+              </tbody>
+            </table>
+          </div>
+          <div className="button-1">
+            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onClick={Submit}>Submit</button>
+          </div>
+        </div>
+        {success && <div className="container-fluid blacky">
+          <div className="success">
+            <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none" /> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+            </svg>
+            </div>
+            <h4>Attendance Saved</h4>
+          </div>
+        </div>}
       </div>
     </>
   );
