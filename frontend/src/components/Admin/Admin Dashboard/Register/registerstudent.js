@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from '../../../Admin Dashboard/Navbar'
 
 function StudentRegister() {
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ function StudentRegister() {
    
   return (
     <>
+    <Navbar />
      <section>
         <div className="container pt-10">
           <div className="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center">
