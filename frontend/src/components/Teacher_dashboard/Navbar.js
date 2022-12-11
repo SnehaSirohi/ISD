@@ -59,10 +59,6 @@ function Navbar() {
                             <Link to="/Teacherdashboard/sem4"><p>4th</p></Link>
                         </li>
                         <li className="nav-text">
-                            <FaIcons.FaBookReader color='rgb(0, 104, 74)' />
-                            <Link to="/Teacherdashboard/studymaterial"><span>Study Material</span></Link>
-                        </li>
-                        <li className="nav-text">
                             <FaIcons.FaBell color='rgb(0, 104, 74)' />
                             <Link to="/teacherNotifications"><span>Notifications</span></Link>
                         </li>

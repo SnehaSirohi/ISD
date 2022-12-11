@@ -400,7 +400,10 @@ const PostAssignmentSubmitt = async (req, res) => {
       date,
       files
     });
-    res.status(200).json(assignment);
+    res.status(200).json({
+      assignment,
+      success:true
+    });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
