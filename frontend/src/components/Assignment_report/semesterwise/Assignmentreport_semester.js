@@ -25,7 +25,9 @@ const Assignmentreport = () => {
   const monthval = newdate.getMonth() + 1;
   const day = newdate.getDate()
   const year = newdate.getFullYear()
-  const [files, setfile] = useState("")
+  const [files, setfile] = useState({_id: "", name: ""})
+  const [removefileid, setremovefileid] = useState("")
+  const [temp, setTemp] = React.useState({id: "", name: ""})
 
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/assignmentreportstudent", {
@@ -97,7 +99,7 @@ const Assignmentreport = () => {
       }
     }
   }, [])
-  const AssignmentSubmit = async (e) => {
+  const AssignmentSubmit = async (e, _id) => {
     e.preventDefault()
     console.log("this is user", user);
     const response = await fetch("http://localhost:4000/assignmentsubmit", {
@@ -107,13 +109,19 @@ const Assignmentreport = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        files,
+        files: localStorage.getItem(_id),
         enrollNum: user.enrollNum,
         subject
       })
     })
      const data = await response.json();
-     
+     console.log(files);
+     if(data.success)
+     {
+      localStorage.removeItem(_id)
+      setremovefileid(_id)
+      setTemp("")
+     }
       setsuccess(data.success)
       setTimeout(() => {
         setsuccess(false)
@@ -231,7 +239,7 @@ const Assignmentreport = () => {
               </tr>
             </thead>
             <tbody>
-              <List key={assignments.id} assignments={assignments} files={files} setfile={setfile} AssignmentSubmit={AssignmentSubmit} />
+              <List key={assignments.id} assignments={assignments} files={files} setfile={setfile} AssignmentSubmit={AssignmentSubmit} removefileid={removefileid} setremovefileid={setremovefileid} temp={temp} setTemp={setTemp}/>
             </tbody>
           </table>
         </div>}
