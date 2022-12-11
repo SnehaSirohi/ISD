@@ -7,7 +7,7 @@ function Sem1() {
     return (
         <div className='page height100vh'>
             <Navbar />
-            <div class="album py-5 bg-light text-center">
+            <div class="album py-5 text-center">
                 <h1 className='container semheadline'>Semester 1st</h1>
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
