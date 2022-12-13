@@ -37,15 +37,12 @@ const List = ({ assignments, AssignmentSubmit, files, setfile, key, removefileid
               <td>
                 {file}    
               </td>
-              <td>
-                <form id="uploadandsubmitblock" color='red'>
+              <td style={{backgroundColor:'#81ffc487'}}>
+                <form id="uploadandsubmitblock" >
                   <input type="file" id='inputfilechoose' value={""} onChange={(e) => {
                     setfile({id: _id, name: e.target.value})
-                    // localStorage.setItem(_id, e.target.value)
-                    // console.log("chhhh")
                      }} />
-                  <button className='upload_button'>Upload</button>
-                     {/* <span>{files}</span> */}
+                  <button className='upload_button'>Upload</button>  
                   <span>{removefileid !== _id && (localStorage.getItem(_id) || (_id===temp.id && temp.name)) }</span>
                   <button className='submit_button' type='submit' onClick={(e)=>{AssignmentSubmit(e, _id)}}>Submit</button>
               

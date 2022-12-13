@@ -26,7 +26,7 @@ const Assignmentreport = () => {
       }
     })
     const json = await response.json()
-    setAssignments(json.data)
+    setAssignments(json.data.reverse())
     if (json.data.length != 0) {
       setVisible(true)
       setString("Assignments Posted ")

@@ -84,7 +84,7 @@ useEffect(()=>{
       {data2 && <> <div class="row overviewdatacontent" >
                                 <div class="col-lg-7 col-md-6 col-sm-12 datacontent flex" >
 
-                                    <div class="classinfo">
+                                    <div class="classtkn">
                                         <h5>Total classes taken by {professor}</h5>
                                       
                                     </div>
