@@ -38,7 +38,7 @@ const List = ({ assignments, AssignmentSubmit, files, setfile, key, removefileid
                 {file}    
               </td>
               <td>
-                <form id="uploadandsubmitblock">
+                <form id="uploadandsubmitblock" color='red'>
                   <input type="file" id='inputfilechoose' value={""} onChange={(e) => {
                     setfile({id: _id, name: e.target.value})
                     // localStorage.setItem(_id, e.target.value)
