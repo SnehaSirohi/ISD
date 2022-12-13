@@ -24,7 +24,7 @@ function Navbar() {
                         <FaIcons.FaBars onClick={showSidebar} />
                     </Link>
                     <div className="heading">
-                       <Link to="/teacherNotifications"><i class="fa fa-bell mt-1 fa-2x"></i></Link> 
+                       {/* <Link to="/teacherNotifications"><i class="fa fa-bell mt-1 fa-2x"></i></Link>  */}
                         {/* <Link to="/Teacherdashboard/profile"><div className="button"><img src={logo} alt="..." class="profilePic"></img></div></Link> */}
 
                     </div>
