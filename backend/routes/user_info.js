@@ -44,7 +44,8 @@ const {
   classnotification,
   StudyMaterial_Posted_Students,
   PostAssignmentSubmitt,
-  testnotification
+  testnotification,
+  assignmentsubmited
 } = require("../controllers/studentscontrol");
 
 const {
@@ -139,4 +140,5 @@ router.get("/notifications/tests", testnotification);
 router.post("/assignmentsubmit",PostAssignmentSubmitt)
 router.get("/assignmentsubmit",GetAssignmentSubmitt)
 router.get('/classestaken',AdClassesTaken)
+router.get('/assignmentsubmited',assignmentsubmited)
 module.exports = router;
