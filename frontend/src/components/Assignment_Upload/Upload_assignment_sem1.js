@@ -173,7 +173,7 @@ function UploadAssignmentsem1() {
           </div>
         )}
 
-        <div className="mb-3 mt-3" id="deadline_block">
+        <div className="mb-3 " id="deadline_block">
           <label className="form-label deadline">Deadline</label>
           <input
             type="date"

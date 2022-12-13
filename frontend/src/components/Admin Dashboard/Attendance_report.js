@@ -2,12 +2,14 @@ import React from 'react'
 import Navbar from "./Navbar.js"
 import { Link } from "react-router-dom";
 // import "./sem.css"
+import "../Admin/Admin Dashboard/Register/registermultiple.css"
 
 function Attendance_report() {
     return (
+        <div className='height100vh'>
         <div className='page'>
             <Navbar />
-            <div class="album py-5 bg-light text-center">
+            <div class="album py-5  text-center">
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
                         <Link to='/admindashboard/Sem1/attendance'><div class="col">
@@ -40,6 +42,7 @@ function Attendance_report() {
                 </div>
             </div>
         </div>
+    </div>
     )
 }
 
