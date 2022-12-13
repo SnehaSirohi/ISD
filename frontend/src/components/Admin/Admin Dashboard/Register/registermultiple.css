@@ -1,3 +1,18 @@
 .registermultiplebody {
     margin: 0 20%;
 }
+
+.classtkn{
+    text-align: center;
+    margin-left: 3.5rem;
+}
+
+.classtkn>*{
+    margin-top: 2rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 41vw;
+        background: #D9D9D9;
+}
