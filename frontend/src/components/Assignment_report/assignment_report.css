@@ -13,7 +13,7 @@
     z-index: 1;
 }
 
-#inputfilechoose:active ~.upload_button {
+#inputfilechoose:active~.upload_button {
     transform: translateY(1px);
 }
 
@@ -51,4 +51,13 @@
 
 #mytable-1 {
     overflow-x: auto;
+}
+
+@media screen and (max-width : 1000px) {
+
+    #mytable-1 {
+        margin: 0 10%;
+        width: 80%;
+    }
+    
 }
