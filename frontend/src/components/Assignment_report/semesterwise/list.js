@@ -1,14 +1,25 @@
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CSVLink } from 'react-csv'
-const List = ({ assignments, AssignmentSubmit, files, setfile, key }) => {
-  const [filename, setfilename] = React.useState("")
+
+const List = ({ assignments, AssignmentSubmit, files, setfile, key, removefileid, setremovefileid, temp, setTemp }) => {
+  useEffect(() =>{
+    if(files.id !== "")
+    {
+      localStorage.setItem(files.id, files.name)
+      setTemp({id: files.id, name: files.name})
+      setremovefileid("")
+    }
+
+
   return (
     <>
       {assignments.map((teach, index) => {
         const { _id,date, teacher, subject, deadline, file} = teach;
-        localStorage.setItem(_id,false)
+        // localStorage.setItem(_id,"")
+
+        
         return (
 
           <>
@@ -27,17 +38,16 @@ const List = ({ assignments, AssignmentSubmit, files, setfile, key }) => {
               <td>
                 {file}    
               </td>
-              <td>
-                {_id && <form id="uploadandsubmitblock">
+              <td style={{backgroundColor:'#81ffc487'}}>
+                <form id="uploadandsubmitblock" >
                   <input type="file" id='inputfilechoose' value={""} onChange={(e) => {
-                    setfile(e.target.value)
-                     setfilename(e.target.value)
+                    setfile({id: _id, name: e.target.value})
                      }} />
-                  <button className='upload_button'>Upload</button>
-                  <span>{files}</span>
-                  <button className='submit_button' type='submit' onClick={AssignmentSubmit}>Submit</button>
+                  <button className='upload_button'>Upload</button>  
+                  <span>{removefileid !== _id && (localStorage.getItem(_id) || (_id===temp.id && temp.name)) }</span>
+                  <button className='submit_button' type='submit' onClick={(e)=>{AssignmentSubmit(e, _id)}}>Submit</button>
               
-                </form>}
+                </form>
               </td>
             </tr>
           </>

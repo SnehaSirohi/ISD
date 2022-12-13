@@ -64,7 +64,7 @@ const Teacher_Dashboard = (props) => {
                 <div>
                     <div className="flex dashboardcontent">
                         <div class="col main pt-5  dashboardbackground">
-                            <div class="row mb-3 dashblocks">
+                            <div class="row mb-3 dashblockteacher">
                                 <Link to='/scheduledclassreport'><div class="col-xl-3 col-sm-6 blockcolour">
                                     <h5 class="text-uppercase pt-3">CLASS SCHEDULED</h5>
                                     <h1 class="display-4">{totalClassScheduled}</h1>

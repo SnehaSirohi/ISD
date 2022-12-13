@@ -2,8 +2,11 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import List from './/List'
 import Navbar from './Navbar'
+
 import "../Admin/Admin Dashboard/Register/registermultiple.css"
 
+
+import "../Admin/Admin Dashboard/Register/registermultiple.css";
 
 const Classes_taken = () => {
   const[classes,setclasses]=useState([])
@@ -88,7 +91,7 @@ useEffect(()=>{
       {data2 && <> <div class="row overviewdatacontent" >
                                 <div class="col-lg-7 col-md-6 col-sm-12 datacontent flex" >
 
-                                    <div class="classinfo">
+                                    <div class="classtkn">
                                         <h5>Total classes taken by {professor}</h5>
                                       
                                     </div>
