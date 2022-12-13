@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CSVLink } from 'react-csv'
@@ -11,16 +10,13 @@ const List = ({ assignments, AssignmentSubmit, files, setfile, key, removefileid
       setremovefileid("")
     }
   },[files])
-
   return (
     <>
       {assignments.map((teach, index) => {
         const { _id,date, teacher, subject, deadline, file} = teach;
         // localStorage.setItem(_id,"")
-
         
         return (
-
           <>
             <tr >
               <td>
@@ -37,13 +33,18 @@ const List = ({ assignments, AssignmentSubmit, files, setfile, key, removefileid
               <td>
                 {file}    
               </td>
-              <td id={_id} >
-                <form id="uploadandsubmitblock" >
+             
+              <td id={_id}>
+                {/* <form id="uploadandsubmitblock"> */}
+                <form id="uploadandsubmitblock" color='red'>
                   <input type="file" id='inputfilechoose' value={""} onChange={(e) => {
-                    setfile({id: _id, name: e.target.value})
-                    setassignment_id(_id)
-                     } } />
-                  <button className='upload_button'>Upload</button>  
+                    setfile({id: _id, name: e.target.value}
+                     
+                      )
+                   setassignment_id(_id)
+                     }} />
+                  <button className='upload_button'>Upload</button>
+                     {/* <span>{files}</span> */}
                   <span>{removefileid !== _id && (localStorage.getItem(_id) || (_id===temp.id && temp.name)) }</span>
                   <button className='submit_button' type='submit' onClick={   (e)=>{AssignmentSubmit(e, _id)}}>Submit</button>
               
@@ -56,5 +57,4 @@ const List = ({ assignments, AssignmentSubmit, files, setfile, key, removefileid
     </>
   )
 }
-
 export default List
