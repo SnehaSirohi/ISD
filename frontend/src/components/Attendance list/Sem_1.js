@@ -100,7 +100,7 @@ const Sem_1 = () => {
           {UnmeshShukla && <div className="mb-3 selectsubjectcontainer ">
             <select
               type="text"
-              className="form-control"
+              className="form-control shadow-none"
               id="subject"
               name="subject"
               value={subject}
@@ -115,7 +115,7 @@ const Sem_1 = () => {
 
             <select
               type="text"
-              className="form-control"
+              className="form-control shadow-none"
               id="subject"
               name="subject"
               value={subject}
@@ -130,7 +130,7 @@ const Sem_1 = () => {
 
             <select
               type="text"
-              className="form-control"
+              className="form-control shadow-none"
               id="subject"
               name="subject"
               value={subject}
@@ -145,7 +145,7 @@ const Sem_1 = () => {
 
             <select
               type="text"
-              className="form-control"
+              className="form-control shadow-none"
               id="subject"
               name="subject"
               value={subject}
