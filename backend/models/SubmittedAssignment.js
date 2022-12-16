@@ -1,6 +1,10 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 const SubmittedAssignment = new Schema({
+    assignment_id:{
+        type:String,
+        required:true,
+    },
     name:{
         type:String,
         required:true

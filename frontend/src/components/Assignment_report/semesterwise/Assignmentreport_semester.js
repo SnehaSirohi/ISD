@@ -28,9 +28,11 @@ const Assignmentreport = () => {
   const [files, setfile] = useState({_id: "", name: ""})
   const [removefileid, setremovefileid] = useState("")
   const [temp, setTemp] = React.useState({id: "", name: ""})
-
+  const [assignment_id,setassignment_id]=useState("")
+  const [check,setcheck]=useState([])
+  let json2;
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/assignmentreportstudent", {
+    const response1 = await fetch("http://localhost:4000/assignmentreportstudent", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -38,14 +40,34 @@ const Assignmentreport = () => {
         'x-access-token': localStorage.getItem('token'), //
       }
     })
-
-    const json = await response.json()
-
-    setReport(json)
+    const json1 = await response1.json()
+    setReport(json1)
 
   }
 
+  
+
+    const fetchd = async()=>{
+ const response2 = await fetch("http://localhost:4000/assignmentsubmited", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        'x-access-token': localStorage.getItem('token'), //
+      }
+    })
+     json2 = await response2.json()
+     setcheck(json2.data)
+    }
+  check.map((x)=>
+    ( document.getElementById(x.assignment_id).innerHTML="submitted") &&
+     (document.getElementById(x.assignment_id).style.backgroundColor="#abffab")
+   )
+
+
+
   async function subjectupdate(e) {
+    fetchd()
     setVisible(false)
     setString("")
     e.preventDefault();
@@ -109,15 +131,18 @@ const Assignmentreport = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        assignment_id,
         files: localStorage.getItem(_id),
         enrollNum: user.enrollNum,
         subject
       })
     })
      const data = await response.json();
-     console.log(files);
      if(data.success)
      {
+      fetchd()
+      document.getElementById(_id).innerHTML="Submitted";
+      document.getElementById(_id).style.backgroundColor="#81ffc487";
       localStorage.removeItem(_id)
       setremovefileid(_id)
       setTemp("")
@@ -239,7 +264,7 @@ const Assignmentreport = () => {
               </tr>
             </thead>
             <tbody>
-              <List key={assignments.id} assignments={assignments} files={files} setfile={setfile} AssignmentSubmit={AssignmentSubmit} removefileid={removefileid} setremovefileid={setremovefileid} temp={temp} setTemp={setTemp}/>
+              <List key={assignments.id} assignments={assignments} files={files} setfile={setfile} AssignmentSubmit={AssignmentSubmit} removefileid={removefileid} setremovefileid={setremovefileid} temp={temp} setTemp={setTemp} setassignment_id={setassignment_id} />
             </tbody>
           </table>
         </div>}
