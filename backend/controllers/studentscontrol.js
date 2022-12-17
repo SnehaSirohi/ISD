@@ -415,7 +415,6 @@ const PostAssignmentSubmitt = async (req, res) => {
   const student = await Students.findOne({ enrollNum: enrollNum })
   const name = student.name;
   const semester = student.semester;
-  console.log("date is the : ",date,files,enrollNum,subject)
 
   try {
 
@@ -438,6 +437,7 @@ const PostAssignmentSubmitt = async (req, res) => {
 };
 
 const assignmentsubmited = async(req,res)=>{
+
    const token = req.headers["x-access-token"];
   try {
     const decoded = jwt.verify(token, "secret123");
