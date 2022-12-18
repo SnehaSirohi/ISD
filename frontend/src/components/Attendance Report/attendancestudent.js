@@ -22,7 +22,7 @@ const Attendancereport = () => {
   const [sem4, setSem4] = useState(false)
   const [subject, setSubject] = useState("")
   const [semester, setSemester] = useState("")
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(true)
 
   const fetchdata = async () => {
     const response = await fetch("http://localhost:4000/dashboard", {
@@ -38,7 +38,6 @@ const Attendancereport = () => {
         setstudent(json.attend.reverse())
         setAttendmaterial(json.attend)
   }
-
 
   async function subjectupdate(e) {
     e.preventDefault();
@@ -70,7 +69,6 @@ const Attendancereport = () => {
     }
 
   }
-
   useEffect(() =>{
     if(semester == 'Sem-1')
         {
@@ -112,6 +110,8 @@ const Attendancereport = () => {
       }
     }
   }, [])
+
+  console.log(attendmaterial);
 
   const exporttoexcelhandler = () => {
     var wb = XLSX.utils.book_new(),
