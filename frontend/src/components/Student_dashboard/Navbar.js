@@ -46,7 +46,7 @@ function Navbar() {
                 setSem4(true)
             }
         }
-        console.log(json);
+      
     }
 
     useEffect(() => {

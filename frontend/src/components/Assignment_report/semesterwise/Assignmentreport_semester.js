@@ -30,8 +30,9 @@ const Assignmentreport = () => {
   const [temp, setTemp] = React.useState({id: "", name: ""})
   const [assignment_id,setassignment_id]=useState("")
   const [check,setcheck]=useState([])
-  let json2;
+  // console.log("check value : ",check)
   const fetchdata = async () => {
+
     const response1 = await fetch("http://localhost:4000/assignmentreportstudent", {
       method: "GET",
       headers: {
@@ -41,7 +42,10 @@ const Assignmentreport = () => {
       }
     })
     const json1 = await response1.json()
+    console.log("json 1 : ",json1.data)
     setReport(json1)
+      fetchd()
+    
 
   }
 
@@ -56,18 +60,27 @@ const Assignmentreport = () => {
         'x-access-token': localStorage.getItem('token'), //
       }
     })
-     json2 = await response2.json()
+     const json2 = await response2.json()
      setcheck(json2.data)
     }
-  check.map((x)=>
-    ( document.getElementById(x.assignment_id).innerHTML="submitted") &&
-     (document.getElementById(x.assignment_id).style.backgroundColor="#abffab")
-   )
+    console.log("check data",check)
+    if(check)
+    {
+       check.map((x)=> {
+       if(document.getElementById(x.assignment_id))
+       {
+                document.getElementById(x.assignment_id).innerHTML="Submitted✅" 
+              document.getElementById(x.assignment_id).style.backgroundColor="#abffab"
+         
+       }
+      }
+       )
+            
+    }
 
 
 
   async function subjectupdate(e) {
-    fetchd()
     setVisible(false)
     setString("")
     e.preventDefault();
@@ -141,7 +154,7 @@ const Assignmentreport = () => {
      if(data.success)
      {
       fetchd()
-      document.getElementById(_id).innerHTML="Submitted";
+      document.getElementById(_id).innerHTML="Submitted✅";
       document.getElementById(_id).style.backgroundColor="#81ffc487";
       localStorage.removeItem(_id)
       setremovefileid(_id)
@@ -167,6 +180,7 @@ const Assignmentreport = () => {
               name="subject"
               value={subject}
               required
+              // onClick={()=>fetchd()}
               onChange={(e) => setSubject(e.target.value)}>
               <option required>Select Subject</option>
               <option value="Algorithms And Data Structure">
@@ -194,6 +208,7 @@ const Assignmentreport = () => {
               className="form-control shadow-none"
               id="subject"
               name="subject"
+              // onClick={()=>fetchd()}
               value={subject}
               required
               onChange={(e) => setSubject(e.target.value)}>
