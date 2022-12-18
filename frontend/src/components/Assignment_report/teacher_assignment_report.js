@@ -5,13 +5,13 @@ import jsPDF from "jspdf";
 import "../Scheduled_Class_List/scheduledclass.css";
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
-import { useNavigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 import Navbar from "../Teacher_dashboard/Navbar";
-
 import List from './list';
+import { Link } from "react-router-dom";
 var XLSX = require("xlsx");
 
-const Assignmentreport = () => {
+const Assignmentreport = ({setassid}) => {
   const navigate = useNavigate();
   const [assignments, setAssignments] = useState([]);
   const [visible, setVisible] = useState(false)
@@ -47,20 +47,11 @@ const Assignmentreport = () => {
       }
     }
   }, [])
-
-  const exporttoexcelhandler = () => {
-    var wb = XLSX.utils.book_new(),
-      ws = XLSX.utils.json_to_sheet(assignments);
-    XLSX.utils.book_append_sheet(wb, ws, "MySheet1");
-    XLSX.writeFile(wb, "MyExcel.xlsx")
-  };
-
-  const exporttopdfhandler = () => {
-    const doc = new jsPDF()
-    doc.text("Overall Assignments Posted", 70, 10)
-    autoTable(doc, { html: '#mytable' })
-    doc.save('table.pdf')
-  };
+  
+  function handleclick(e){
+    setassid(e.target.value)
+    navigate("/Teacherdashboard/submissions")
+  }
   return (
     <>
     <div className='height100vh'>
@@ -80,14 +71,10 @@ const Assignmentreport = () => {
             </tr>
           </thead>
           <tbody>
-            <List assignments={assignments} />
+            <List assignments={assignments} handleclick={handleclick} />
           </tbody>
         </table>
       </div>}
-      {/* {visible && <div className='text-center'>
-        <button type="button" class="btn btn-primary" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttoexcelhandler}>Download in excel</button>
-        <button type="button" class="btn btn-primary-1" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttopdfhandler}>Download in pdf</button>
-      </div>} */}
       </div>
     </>
   )
