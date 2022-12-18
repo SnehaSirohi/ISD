@@ -76,6 +76,7 @@ const Assignmentreport = () => {
               <th>Subject</th>
               <th>Deadline</th>
               <th>Assignment</th>
+              <th>Submissions</th>
             </tr>
           </thead>
           <tbody>

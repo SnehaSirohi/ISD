@@ -23,6 +23,9 @@ const List = ({ assignments }) => {
               <td>
                 {file}
               </td>
+              <td>
+                <button  style={{backgroundColor:'#007bff', color:'white',borderRadius:"10px",border:"none", height:"30px", width:"10rem",opacity:"0.8"}} >View Submissions</button>
+              </td>
             </tr>
           </>
         )
