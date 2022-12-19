@@ -124,8 +124,8 @@ const Dashboard = (props) => {
                                         <div className='classinfokey'>
                                             <h5>Attendance %</h5>
                                         </div>
-                                        <div className='classinfoval'>
-                                            <h5 id='ap'>{attendancepercentage} %</h5>
+                                        <div className='classinfoval' id='ap'>
+                                            <h5 >{attendancepercentage} %</h5>
                                         </div>
                                     </div>
                                 </div>
