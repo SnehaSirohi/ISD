@@ -56,6 +56,7 @@ const SubmittedAssignments = ({assid}) => {
               <th>Semester</th>
               <th>Date</th>
               <th>Assignment</th>
+              <th>Submissions</th>
             </tr>
           </thead>
           <tbody>
