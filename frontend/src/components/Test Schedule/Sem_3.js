@@ -72,10 +72,6 @@ const Sem_3 = () => {
         setwarning(data.warning)
         setsuccess(data.success)
       });
-      setTimeout(() => {
-        setsuccess(false)
-        navigate("/Teacherdashboard");
-      }, 2500);
     }
     else {
       e.preventDefault()
@@ -155,7 +151,13 @@ const Sem_3 = () => {
       }
     }
   }, [])
-
+  if(success)
+  {
+    setTimeout(() => {
+      setsuccess(false)
+      navigate("/Teacherdashboard");
+    }, 2500);
+  }
   return (
     <>
     <div className='height100vh'>
