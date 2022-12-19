@@ -172,7 +172,7 @@ const PostscheduleTest = async (req, res) => {
   }
 
   const cron = require("node-cron")
-cron.schedule('40 0 18 * *', async () =>
+cron.schedule('1 0 1 * *', async () =>
     {    
           console.log("ran");
           const arr=["Sem-1","Sem-2","Sem-3","Sem-4"]

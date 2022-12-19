@@ -439,6 +439,8 @@ const PostAssignmentSubmitt = async (req, res) => {
 const assignmentsubmited = async(req,res)=>{
 
    const token = req.headers["x-access-token"];
+   console.log("request rcvd")
+   console.log(req.headers['assignment_id'])
   try {
     const decoded = jwt.verify(token, "secret123");
     const enrollNum = decoded.enrollNum;

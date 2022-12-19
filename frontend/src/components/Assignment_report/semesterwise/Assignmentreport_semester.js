@@ -69,7 +69,7 @@ const Assignmentreport = () => {
        check.map((x)=> {
        if(document.getElementById(x.assignment_id))
        {
-                document.getElementById(x.assignment_id).innerHTML="Submitted✅" 
+                document.getElementById(x.assignment_id).innerHTML="Submitted ✅" 
               document.getElementById(x.assignment_id).style.backgroundColor="#abffab"
          
        }
@@ -154,7 +154,7 @@ const Assignmentreport = () => {
      if(data.success)
      {
       fetchd()
-      document.getElementById(_id).innerHTML="Submitted✅";
+      document.getElementById(_id).innerHTML="Submitted ✅";
       document.getElementById(_id).style.backgroundColor="#81ffc487";
       localStorage.removeItem(_id)
       setremovefileid(_id)
