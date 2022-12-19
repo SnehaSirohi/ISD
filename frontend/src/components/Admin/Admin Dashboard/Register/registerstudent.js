@@ -5,6 +5,7 @@ import Navbar from '../../../Admin Dashboard/Navbar'
 
 function StudentRegister() {
   const navigate = useNavigate();
+  const [success, setSuccess] = useState(false)
   const [user, setUser] = useState({
     name: "",
     semester: "",
@@ -28,7 +29,7 @@ function StudentRegister() {
   async function Register(e) {
     e.preventDefault()
 
-      const response = await fetch("http://localhost:4000/register", {
+      const response = await fetch("https://isd-production.up.railway.app/register", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -38,19 +39,16 @@ function StudentRegister() {
       });
   
       const data = await response.json();
-      console.log(data)
-      if (data.status === "ok") {
-        setErrmsg("")
-        alert("New Student Added succesfully")
-        navigate('/admindashboard')
-        setErrmsg("")
-      }
-      else if(data.status === "notok"){
+      setSuccess(data.success)
+    setTimeout(() => {
+      setSuccess(false)
+      navigate('/admindashboard')
+    }, 2500)
+     
+  if(data.status === "notok"){
         setErrmsg(data.msg)
       }
-      else{
-        navigate('/admindashboard')
-      }
+  
     }  
 
   return (
@@ -168,6 +166,14 @@ function StudentRegister() {
           </div>
         </div>
       </section>
+      {success && <div className="container-fluid blacky">
+          <div className="success">
+            <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none" /> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+            </svg>
+            </div>
+            <h4>Student Registered succesfully</h4>
+          </div>
+        </div>}
     </>
   );
 }

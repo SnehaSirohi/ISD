@@ -31,7 +31,7 @@ function StudentRegister() {
   async function RegisterAll(e) {
     e.preventDefault()
 
-    const response = await fetch("http://localhost:4000/registerall", {
+    const response = await fetch("https://isd-production.up.railway.app/registerall", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -60,8 +60,9 @@ function StudentRegister() {
 
   return (
     <>
-      <div className="height100vh">
         <Navbar />
+ 
+    <div className="height100vh">
         <div className="text-center"> <h2 className="text-dark fw-bolder fs-2 mb-3">Register Multipe Students</h2></div>
         <section className="registermultiplebody">
           <div className="file-card">
@@ -122,6 +123,8 @@ function StudentRegister() {
           </div>
         </div>}
       </div>
+  
+      
     </>
   );
 }

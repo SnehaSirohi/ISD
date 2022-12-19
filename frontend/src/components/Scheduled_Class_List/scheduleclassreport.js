@@ -16,7 +16,7 @@ const Classreport = () => {
     const [visible, setVisible] = useState(false)
     const [string, setString] = useState("")
     const fetchdata=async()=>{
-        const response=await fetch("http://localhost:4000/scheduledclassreport", {
+        const response=await fetch("https://isd-production.up.railway.app/scheduledclassreport", {
             method: "GET",
             headers: {
                 Accept: "application/json",

@@ -26,7 +26,7 @@ const Login = () => {
 
   const login = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:4000/login", {
+    await fetch("https://isd-production.up.railway.app/login", {
       method: "POST",
       headers: {
         Accept: "application/json",

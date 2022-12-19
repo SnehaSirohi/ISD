@@ -25,7 +25,7 @@ const Attendancereport = () => {
   const [visible, setVisible] = useState(true)
 
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/dashboard", {
+    const response = await fetch("https://isd-production.up.railway.app/dashboard", {
       method: "GET",
       headers: {
         Accept: "application/json",

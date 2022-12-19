@@ -190,7 +190,6 @@ teacher.map((x) => {
     check = "false"
   }
 })
-console.log(check)
 
 if(check) {
   res.status(400).json({status: "notok", msg: "Another Teacher already registered with this Teacher ID"})
@@ -203,7 +202,7 @@ if(check) {
       contactNum,
       password,
     });
-    res.status(200).json({status: "ok",teacher});
+    res.status(200).json({success:true});
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

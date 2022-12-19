@@ -17,7 +17,7 @@ const Studymaterial_report = () => {
   const [string, setString] = useState("")
   console.log(material);
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/studymaterial_teacher", {
+    const response = await fetch("https://isd-production.up.railway.app/studymaterial_teacher", {
       method: "GET",
       headers: {
         Accept: "application/json",

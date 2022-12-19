@@ -19,7 +19,7 @@ const Classreport = () => {
     const day = newdate.getDate()
     const year = newdate.getFullYear()
     const fetchdata=async()=>{
-        const response=await fetch("http://localhost:4000/classschedule", {
+        const response=await fetch("https://isd-production.up.railway.app/classschedule", {
             method: "GET",
             headers: {
                 Accept: "application/json",

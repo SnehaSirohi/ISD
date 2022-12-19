@@ -20,7 +20,7 @@ const Testreport = () => {
   const monthval = newdate.getMonth() + 1;
   const day = newdate.getDate()
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/testschedule", {
+    const response = await fetch("https://isd-production.up.railway.app/testschedule", {
       method: "GET",
       headers: {
         Accept: "application/json",

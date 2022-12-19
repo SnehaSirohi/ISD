@@ -18,7 +18,7 @@ const Sem_1 = () => {
   const [SunilKumar, setSunilKumar] = useState(false)
   const [success, setsuccess] = useState(false)
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/attendance", {
+    const response = await fetch("https://isd-production.up.railway.app/attendance", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -68,7 +68,7 @@ const Sem_1 = () => {
     }
     else {
       e.preventDefault()
-      const response = await fetch("http://localhost:4000/attendance/sem1", {
+      const response = await fetch("https://isd-production.up.railway.app/attendance/sem1", {
         method: "POST",
         headers: {
           Accept: "application/json",

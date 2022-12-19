@@ -17,7 +17,7 @@ const Assignmentreport = () => {
   const navigate = useNavigate();
   const [assignments, setAssignments] = useState([]);
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/assignmentreportstudent", {
+    const response = await fetch("https://isd-production.up.railway.app/assignmentreportstudent", {
       method: "GET",
       headers: {
         Accept: "application/json",

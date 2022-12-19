@@ -18,7 +18,7 @@ function UploadAssignmentsem2() {
   const [Sanjeev, setSanjeev] = useState(false);
   const [success, setsuccess] = useState(false)
   async function populate(e) {
-    const req = await fetch("http://localhost:4000/upload/assignment", {
+    const req = await fetch("https://isd-production.up.railway.app/upload/assignment", {
       headers: {
         "x-access-token": localStorage.getItem("token"), //
       },
@@ -47,7 +47,7 @@ function UploadAssignmentsem2() {
       alert("Please upload a file")
     }
     else {
-      const response = await fetch("http://localhost:4000/upload/assignment", {
+      const response = await fetch("https://isd-production.up.railway.app/upload/assignment", {
         method: "POST",
         headers: {
           Accept: "application/json",

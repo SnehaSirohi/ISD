@@ -19,7 +19,7 @@ const Dashboard = (props) => {
     const [email, setEmail] = useState([])
 
     async function populatedashboard() {
-        const req = await fetch('http://localhost:4000/dashboard', {
+        const req = await fetch('https://isd-production.up.railway.app/dashboard', {
             headers: {
                 'x-access-token': localStorage.getItem('token'),
 

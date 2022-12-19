@@ -38,7 +38,7 @@ const Classes_taken = () => {
      console.log(data2);
   }
    const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/classestaken", {
+    const response = await fetch("https://isd-production.up.railway.app/classestaken", {
       method: "GET",
       headers: {
         Accept: "application/json",

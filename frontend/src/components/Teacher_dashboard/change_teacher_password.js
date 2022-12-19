@@ -41,7 +41,7 @@ const ChangeTeacherPassword = () => {
       setIfpasswordsame(false);
       setIfconfirmpassworddifferent(true);
     } else {
-      const req = await fetch('http://localhost:4000/Teacherdashboard/changepassword', {
+      const req = await fetch('https://isd-production.up.railway.app/Teacherdashboard/changepassword', {
         method: "PATCH",
         headers: {
 
