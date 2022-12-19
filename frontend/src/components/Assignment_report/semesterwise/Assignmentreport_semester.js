@@ -33,7 +33,7 @@ const Assignmentreport = () => {
   // console.log("check value : ",check)
   const fetchdata = async () => {
 
-    const response1 = await fetch("http://localhost:4000/assignmentreportstudent", {
+    const response1 = await fetch("https://isd-production.up.railway.app/assignmentreportstudent", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -52,7 +52,7 @@ const Assignmentreport = () => {
   
 
     const fetchd = async()=>{
- const response2 = await fetch("http://localhost:4000/assignmentsubmited", {
+ const response2 = await fetch("https://isd-production.up.railway.app/assignmentsubmited", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -137,7 +137,7 @@ const Assignmentreport = () => {
   const AssignmentSubmit = async (e, _id) => {
     e.preventDefault()
     console.log("this is user", user);
-    const response = await fetch("http://localhost:4000/assignmentsubmit", {
+    const response = await fetch("https://isd-production.up.railway.app/assignmentsubmit", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -176,7 +176,7 @@ const Assignmentreport = () => {
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
               value={subject}
               required
@@ -206,7 +206,7 @@ const Assignmentreport = () => {
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
               // onClick={()=>fetchd()}
               value={subject}
@@ -229,7 +229,7 @@ const Assignmentreport = () => {
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
               value={subject}
               required
@@ -250,7 +250,7 @@ const Assignmentreport = () => {
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
               value={subject}
               required

@@ -13,7 +13,7 @@ const Notifications = () => {
 
     console.log(notification)
     const fetchdata=async()=>{
-        const response = await fetch("http://localhost:4000/assignmentsubmit", {
+        const response = await fetch("https://isd-production.up.railway.app/assignmentsubmit", {
       
             method: "GET",
             headers: {

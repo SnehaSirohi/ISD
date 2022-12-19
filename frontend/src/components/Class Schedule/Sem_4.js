@@ -26,7 +26,7 @@ const Sem_4 = () => {
   const sem = "Sem-4";
   //-----------
   async function populate(e) {
-    const req = await fetch('http://localhost:4000/scheduleclass', {
+    const req = await fetch('https://isd-production.up.railway.app/scheduleclass', {
       headers: {
         'x-access-token': localStorage.getItem('token'), //
       },
@@ -52,7 +52,7 @@ const Sem_4 = () => {
 
     if (subject && time && date) {
       e.preventDefault()
-      const req = await fetch("http://localhost:4000/scheduleclass", {
+      const req = await fetch("https://isd-production.up.railway.app/scheduleclass", {
         method: "POST",
         headers: {
           Accept: "application/json",

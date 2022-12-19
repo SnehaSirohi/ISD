@@ -18,7 +18,7 @@ const Testreport = () => {
   const [string, setString] = useState("")
   console.log(tests);
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/scheduledtestreport", {
+    const response = await fetch("https://isd-production.up.railway.app/scheduledtestreport", {
       method: "GET",
       headers: {
         Accept: "application/json",

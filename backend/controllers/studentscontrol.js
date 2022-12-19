@@ -287,7 +287,7 @@ console.log(check)
         enrollNum,
         password,
       });
-      res.status(200).json({status: "ok", student});
+      res.status(200).json({success:true});
     } catch (error) {
       res.status(400).json({ error: error.message });
     }

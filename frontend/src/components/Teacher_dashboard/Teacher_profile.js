@@ -15,7 +15,7 @@ const Teacher_Profile = () => {
     const [contactNum, setContactNum] = useState([])
 
     async function populatedashboard() {
-        const req = await fetch('http://localhost:4000/Teacherdashboard/profile', {
+        const req = await fetch('https://isd-production.up.railway.app/Teacherdashboard/profile', {
             headers: {
                 'x-access-token': localStorage.getItem('token'),
 

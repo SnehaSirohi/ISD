@@ -27,7 +27,7 @@ const Sem2Attendance = () => {
   const [heading, setHeading] = useState("Overall Attendance Report")
   
   const fetchdata = async () => {
-      const response = await fetch("http://localhost:4000/attendancereport/sem2", {
+      const response = await fetch("https://isd-production.up.railway.app/attendancereport/sem2", {
       method: "GET",
       headers: {
         Accept: "application/json",

@@ -15,7 +15,7 @@ const Profile = () => {
     const [enrollNum, setEnrollNum] = useState([])
 
     async function populatedashboard() {
-        const req = await fetch('http://localhost:4000/dashboard/profile', {
+        const req = await fetch('https://isd-production.up.railway.app/dashboard/profile', {
             headers: {
                 'x-access-token': localStorage.getItem('token'),
 
@@ -51,7 +51,7 @@ const Profile = () => {
     }, [name], [email])
 
     return (
-        <div className='height100percent'>
+        <div className='height100vh'>
             <Navbar />
             <h1 className='Teacherheading'>Student Profile</h1>
             <div class="emp-profile">
