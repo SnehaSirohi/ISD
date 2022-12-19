@@ -70,14 +70,10 @@ const Sem_4 = () => {
         setwarning(data.warning)
         setsuccess(data.success)
       });
-      if(success)
-      {
-        
-       setTimeout(() => {
-         setsuccess(false)
-         navigate("/Teacherdashboard");
-       }, 2500);
-      }
+      setTimeout(() => {
+        setsuccess(false)
+        navigate("/Teacherdashboard");
+      }, 2500);
     }
     else {
       e.preventDefault()
