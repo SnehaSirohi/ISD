@@ -1,11 +1,11 @@
 import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CSVLink } from 'react-csv'
-const List = ({ assignments }) => {
+const List = ({ assignments,handleclick }) => {
   return (
     <>
       {assignments.map((teach) => {
-        const {date, teacher, subject, deadline, file } = teach;
+        const {date, teacher, subject, deadline, file,_id } = teach;
         return (
           <>
             <tr>
@@ -22,6 +22,9 @@ const List = ({ assignments }) => {
               </td>
               <td>
                 {file}
+              </td>
+              <td>
+                <button value={_id}  style={{backgroundColor:'#007bff', color:'white',borderRadius:"10px",border:"none", height:"30px", width:"10rem",opacity:"0.8"}} onClick={handleclick} >View Submissions</button>
               </td>
             </tr>
           </>

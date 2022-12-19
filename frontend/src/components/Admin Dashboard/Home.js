@@ -1,12 +1,14 @@
 import React from 'react'
 import Navbar from './Navbar'
 import { Link } from "react-router-dom";
+import "../Admin/Admin Dashboard/Register/registermultiple.css"
 const Home = () => {
   return (
     <>
+    <div className='height100vh'>
     <div className='page'>
             <Navbar />
-            <div class="album py-5 bg-light text-center">
+            <div class="album py-5 text-center">
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-3 row-cols-md-3 g-3">
                         <Link to='/registerTeacher'><div class="col">
@@ -33,7 +35,7 @@ const Home = () => {
                 </div>
             </div>
         </div>
-
+        </div>
     </>
   )
 }

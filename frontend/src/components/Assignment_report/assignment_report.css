@@ -29,7 +29,8 @@
     border-radius: 5px;
     height: 2rem;
     position: absolute;
-    background-color: #1E6A44;
+    background-color: #f55e30;
+    border: none;
 }
 
 .submit_button {
@@ -38,7 +39,8 @@
     height: 2rem;
     border-radius: 5px;
     margin-left: 1rem;
-    background-color: #A80B01;
+    background-color: #1E6A44 ;
+    border: none;
 }
 
 button:active {

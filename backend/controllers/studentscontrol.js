@@ -411,15 +411,15 @@ const StudyMaterial_Posted_Students = async (req, res) => {
 };
 
 const PostAssignmentSubmitt = async (req, res) => {
-  const { files, enrollNum, subject } = req.body
+  const { assignment_id,files, enrollNum, subject } = req.body
   const student = await Students.findOne({ enrollNum: enrollNum })
   const name = student.name;
   const semester = student.semester;
-  console.log("date is the : ",date,files,enrollNum,subject)
 
   try {
 
     const assignment = await SubmittedAssignment.create({
+      assignment_id,
       name,
       subject,
       semester,
@@ -435,6 +435,25 @@ const PostAssignmentSubmitt = async (req, res) => {
   }
 
 };
+
+const assignmentsubmited = async(req,res)=>{
+
+   const token = req.headers["x-access-token"];
+   console.log("request rcvd")
+   console.log(req.headers['assignment_id'])
+  try {
+    const decoded = jwt.verify(token, "secret123");
+    const enrollNum = decoded.enrollNum;
+    const students = await Students.findOne({ enrollNum: enrollNum });
+    return res.status(200).json({
+      success: true,
+      data: await SubmittedAssignment.find({ name:students.name}),
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ status: "error", error: "invalid token" });
+  }
+}
 
 
 module.exports = {
@@ -453,5 +472,6 @@ module.exports = {
   classnotification,
   StudyMaterial_Posted_Students,
   PostAssignmentSubmitt,
-  testnotification
+  testnotification,
+  assignmentsubmited
 };

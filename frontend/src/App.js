@@ -61,19 +61,21 @@ import Teacherprofile2 from './components/Teacher_dashboard/Teacherprofile2';
 import TeacherNotifications from './components/Teacher_dashboard/Notifications'
 import Profile from './components/Teacher_dashboard/Profile/Profile';
 import Attendance_report from './components/Admin Dashboard/Attendance_report';
-import Navbar from './components/Admin Dashboard/Navbar';
 import AdminSem1Attendance from './components/Admin Dashboard/Sem1Attendance';
 import AdminSem2Attendance from './components/Admin Dashboard/Sem2Attendance';
 import AdminSem3Attendance from './components/Admin Dashboard/Sem3Attendance';
 import AdminSem4Attendance from './components/Admin Dashboard/Sem4Attendance';
 import AdClasses_taken from './components/Admin Dashboard/Classes_taken';
 import Home from './components/Admin Dashboard/Home';
+import SubmittedAssignments from './components/Assignment_report/SubmittedAssignments';
 function App() {
+  const [assid,setassid]=useState("")
   useEffect(() => {
     window.process = {
       ...window.process,
     };
   }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -93,7 +95,7 @@ function App() {
           <Route path='/testschedule' element={<Testreport_student />} />
           <Route path='/classschedule' element={<Classreport_student />} />
           <Route path='/assignmentreportstudent' element={<Assignmentreport_student />} />
-          <Route path='/Teacherdashboard/assignmentreportteacher' element={<Assignmentreport_teacher />} />
+          <Route path='/Teacherdashboard/assignmentreportteacher' element={<Assignmentreport_teacher setassid={setassid} />} />
           <Route path='/Teacherdashboard' element={<Teacher_Dashboard />} />
           <Route path='/Teacherdashboard/profile' element={<Teacher_Profile />} />
           <Route path="/Teacherdashboard/changepassword" element={<ChangeTeacherPassword />} />
@@ -144,6 +146,7 @@ function App() {
           <Route path="/admindashboard/classestaken" element={<AdClasses_taken />} />
           <Route path="/admindashboard" element={<Home />} />
           <Route path="/profile3" element={<Profile />} />
+          <Route path="/Teacherdashboard/submissions" element={<SubmittedAssignments assid={assid} />} />
           {/* <Route path="/admindashboard/home" element ={<Home/>}/> */}
 
         </Routes>

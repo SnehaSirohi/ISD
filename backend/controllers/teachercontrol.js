@@ -777,6 +777,24 @@ const GetAssignmentSubmitt = async (req, res) => {
   }
  
 };
+const assignment_s_submited = async(req,res)=>{
+
+  const token = req.headers["x-access-token"];
+  const val = req.params.id
+  console.log(req.headers['assignment_id'])
+ try {
+   const decoded = jwt.verify(token, "secret1234");
+   const Teacher_id = decoded.Teacher_id;
+   const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+   return res.status(200).json({
+     success: true,
+     data: await SubmittedAssignment.find({assignment_id:val }),
+   });
+ } catch (error) {
+   console.log(error);
+   res.json({ status: "error", error: "invalid token" });
+ }
+}
 
 
 module.exports = {
@@ -805,4 +823,5 @@ module.exports = {
   GetStudyMaterial,
   StudyMaterial_Posted,
   GetAssignmentSubmitt,
+  assignment_s_submited
 };

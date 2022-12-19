@@ -28,9 +28,12 @@ const Assignmentreport = () => {
   const [files, setfile] = useState({_id: "", name: ""})
   const [removefileid, setremovefileid] = useState("")
   const [temp, setTemp] = React.useState({id: "", name: ""})
-
+  const [assignment_id,setassignment_id]=useState("")
+  const [check,setcheck]=useState([])
+  // console.log("check value : ",check)
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/assignmentreportstudent", {
+
+    const response1 = await fetch("http://localhost:4000/assignmentreportstudent", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -38,12 +41,44 @@ const Assignmentreport = () => {
         'x-access-token': localStorage.getItem('token'), //
       }
     })
-
-    const json = await response.json()
-
-    setReport(json)
+    const json1 = await response1.json()
+    console.log("json 1 : ",json1.data)
+    setReport(json1)
+      fetchd()
+    
 
   }
+
+  
+
+    const fetchd = async()=>{
+ const response2 = await fetch("http://localhost:4000/assignmentsubmited", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        'x-access-token': localStorage.getItem('token'), //
+      }
+    })
+     const json2 = await response2.json()
+     setcheck(json2.data)
+    }
+    console.log("check data",check)
+    if(check)
+    {
+       check.map((x)=> {
+       if(document.getElementById(x.assignment_id))
+       {
+                document.getElementById(x.assignment_id).innerHTML="Submitted ✅" 
+              document.getElementById(x.assignment_id).style.backgroundColor="#abffab"
+         
+       }
+      }
+       )
+            
+    }
+
+
 
   async function subjectupdate(e) {
     setVisible(false)
@@ -109,15 +144,18 @@ const Assignmentreport = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        assignment_id,
         files: localStorage.getItem(_id),
         enrollNum: user.enrollNum,
         subject
       })
     })
      const data = await response.json();
-     console.log(files);
      if(data.success)
      {
+      fetchd()
+      document.getElementById(_id).innerHTML="Submitted ✅";
+      document.getElementById(_id).style.backgroundColor="#81ffc487";
       localStorage.removeItem(_id)
       setremovefileid(_id)
       setTemp("")
@@ -142,6 +180,7 @@ const Assignmentreport = () => {
               name="subject"
               value={subject}
               required
+              // onClick={()=>fetchd()}
               onChange={(e) => setSubject(e.target.value)}>
               <option required>Select Subject</option>
               <option value="Algorithms And Data Structure">
@@ -169,6 +208,7 @@ const Assignmentreport = () => {
               className="form-control shadow-none"
               id="subject"
               name="subject"
+              // onClick={()=>fetchd()}
               value={subject}
               required
               onChange={(e) => setSubject(e.target.value)}>
@@ -239,7 +279,7 @@ const Assignmentreport = () => {
               </tr>
             </thead>
             <tbody>
-              <List key={assignments.id} assignments={assignments} files={files} setfile={setfile} AssignmentSubmit={AssignmentSubmit} removefileid={removefileid} setremovefileid={setremovefileid} temp={temp} setTemp={setTemp}/>
+              <List key={assignments.id} assignments={assignments} files={files} setfile={setfile} AssignmentSubmit={AssignmentSubmit} removefileid={removefileid} setremovefileid={setremovefileid} temp={temp} setTemp={setTemp} setassignment_id={setassignment_id} />
             </tbody>
           </table>
         </div>}

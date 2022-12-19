@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar.js";
 import "./student_dashboard.css";
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
 
 const Dashboard = (props) => {
     const [totalclassesheld, setTotalclassesheld] = useState([])
@@ -42,9 +44,14 @@ const Dashboard = (props) => {
         }
     }
 
-    attendancepercentage = (totalClasstaken / totalclassesheld) * 100
+    attendancepercentage = ((totalClasstaken / totalclassesheld) * 100).toFixed(2)
     // console.log(attendancepercentage)
-
+    if(attendancepercentage<50)
+    {
+        document.getElementById("ap").style.backgroundColor='red'
+        document.getElementById("ap").style.color='white'
+        document.getElementById("ap").innerHTML=  `${attendancepercentage}❕`
+    }
     useEffect(() => {
         const token = localStorage.getItem('token')
         if (token) {
@@ -98,7 +105,7 @@ const Dashboard = (props) => {
                                     <h5>{totalClasstaken}</h5>
                                     <h5>{totalTestScheduled}</h5>
                                     <h5>{assignments}</h5>
-                                    <h5>{attendancepercentage.toFixed(2)} %</h5>
+                                    <h5 id='ap'>{attendancepercentage} %</h5>
                                 </div>
                             </div>
                         </div>

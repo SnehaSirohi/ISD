@@ -197,7 +197,7 @@ function UploadAssignmentsem2() {
 
           {/* text box */}
 
-          <div class="mb-3 mt-4">
+          <div class="mb-3 ">
             <label for="exampleFormControlTextarea1" class="form-label">
               Discription
             </label>
