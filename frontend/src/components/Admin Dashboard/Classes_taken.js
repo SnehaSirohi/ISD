@@ -32,13 +32,8 @@ const Classes_taken = () => {
     data2 = classes.filter((classes) => classes.name == professor)
     console.log(data2);
   }
-<<<<<<< HEAD
    const fetchdata = async () => {
     const response = await fetch("https://isd-production.up.railway.app/classestaken", {
-=======
-  const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/classestaken", {
->>>>>>> e7e0a9e87a71639da70aee3408a6a9268b718718
       method: "GET",
       headers: {
         Accept: "application/json",

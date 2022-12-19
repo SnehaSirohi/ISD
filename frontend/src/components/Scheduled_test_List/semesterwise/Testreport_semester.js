@@ -25,7 +25,6 @@ const Testreport = () => {
   const [visible, setVisible] = useState(false)
   const [string, setString] = useState("")
 
-<<<<<<< HEAD
     const fetchdata=async()=>{
         const response=await fetch("https://isd-production.up.railway.app/testschedule", {
             method: "GET",
@@ -36,20 +35,8 @@ const Testreport = () => {
             }})
             const json = await response.json()
             setReport(json)
-=======
-  const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/testschedule", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        'x-access-token': localStorage.getItem('token'), //
->>>>>>> e7e0a9e87a71639da70aee3408a6a9268b718718
       }
-    })
-    const json = await response.json()
-    setReport(json)
-  }
+    
 
   async function subjectupdate(e) {
     setVisible(false)

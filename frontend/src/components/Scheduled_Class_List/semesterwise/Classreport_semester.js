@@ -12,7 +12,6 @@ import Navbar from "../../Student_dashboard/Navbar";
 var XLSX = require("xlsx");
 
 const Classreport = () => {
-<<<<<<< HEAD
     const navigate = useNavigate();
     const [classes,setClasses]=useState([]);
     const newdate= new Date()
@@ -37,34 +36,8 @@ const Classreport = () => {
             }})
             const json = await response.json()
             setReport(json)
-=======
-  const navigate = useNavigate();
-  const [classes, setClasses] = useState([]);
-  const newdate = new Date()
-  const monthval = newdate.getMonth() + 1;
-  const day = newdate.getDate()
-  const [subject, setSubject] = useState("")
-  const [sem1, setSem1] = useState(false)
-  const [sem2, setSem2] = useState(false)
-  const [sem3, setSem3] = useState(false)
-  const [sem4, setSem4] = useState(false)
-  const [report, setReport] = useState({})
-  const [visible, setVisible] = useState(false)
-  const [string, setString] = useState("")
-
-  const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/classschedule", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        'x-access-token': localStorage.getItem('token'), //
->>>>>>> e7e0a9e87a71639da70aee3408a6a9268b718718
       }
-    })
-    const json = await response.json()
-    setReport(json)
-  }
+    
 
   async function subjectupdate(e) {
     setVisible(false)
