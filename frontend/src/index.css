@@ -25,14 +25,13 @@ code {
 
 .height100vh {
   height: 100vh;
+  background: rgb(248, 246, 246);
 }
 
-.overflowxauto{
+.overflowxauto {
   overflow-x: auto;
 }
 
-.height100percent{
-    height : 100%
+.height100percent {
+  height: 100%
 }
-
-

@@ -81,21 +81,35 @@ const Teacher_Dashboard = (props) => {
                                     <h5 class="text-uppercase pt-3">STUDY MATERIAL POSTED</h5>
                                     <h1 class="display-4">{totalStudymaterial}</h1>
                                 </div></Link>
-                                 
+
                             </div>
 
                             <div class="row overviewdatacontent">
-                                <div class="col-lg-7 col-md-6 col-sm-12 datacontent flex">
+                                <div class="col-lg-7 col-md-6 col-sm-12 datacontent ">
 
                                     <div class="classinfo">
-                                        <h5>Total classes Held</h5>
-                                        <h5>Total Tests</h5>
-                                        <h5>Total Study Material Uploaded</h5>
+                                        <div class="classinfokey">
+                                            <h5>Total classes Held</h5>
+                                        </div>
+                                        <div class="classinfoval">
+                                            <h5>{totalClasstaken}</h5>
+                                        </div>
                                     </div>
-                                    <div class="classinfoval">
-                                        <h5>{totalClasstaken}</h5>
-                                        <h5>{totalTestScheduled}</h5>
-                                        <h5>{totalStudymaterial}</h5>
+                                    <div class="classinfo">
+                                        <div class="classinfokey">
+                                            <h5>Total Tests</h5>
+                                        </div>
+                                        <div class="classinfoval">
+                                            <h5>{totalTestScheduled}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="classinfo">
+                                        <div class="classinfokey">
+                                            <h5>Total Study Material Uploaded</h5>
+                                        </div>
+                                        <div class="classinfoval">
+                                            <h5>{totalStudymaterial}</h5>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -51,7 +51,7 @@ const Profile = () => {
     }, [name], [email])
 
     return (
-        <div className='height100percent'>
+        <div className='height100vh'>
             <Navbar />
             <h1 className='Teacherheading'>Student Profile</h1>
             <div class="emp-profile">

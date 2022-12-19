@@ -80,7 +80,7 @@ html{
 
 .datacontent {
     width: 100%;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     margin-bottom: 2rem;
 }
@@ -125,7 +125,7 @@ html{
     font-size: 1rem;
 }
 
-.classinfo {
+/* .classinfo {
     text-align: center;
     margin-left: 3rem;
 }
@@ -150,7 +150,7 @@ html{
     width: 18vw;
     background: #2BB0A8 ;
     margin-right: 2rem;
-}
+} */
 
 .display-4 {
     margin-bottom: 0px;
