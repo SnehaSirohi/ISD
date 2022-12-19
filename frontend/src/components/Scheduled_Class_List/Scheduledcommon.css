@@ -47,13 +47,18 @@
 }
 
 .repform1 {
-    margin-left: 20%;
-    margin-right: 27%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #btn-12 {
     width:6rem;
     margin-left: 1%;
+}
+
+#subject1{
+    width: 50vw;
 }
 /* 
 rep-1 {

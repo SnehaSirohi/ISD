@@ -176,7 +176,7 @@ const Assignmentreport = () => {
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
               value={subject}
               required
@@ -206,7 +206,7 @@ const Assignmentreport = () => {
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
               // onClick={()=>fetchd()}
               value={subject}
@@ -229,7 +229,7 @@ const Assignmentreport = () => {
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
               value={subject}
               required
@@ -250,7 +250,7 @@ const Assignmentreport = () => {
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
               value={subject}
               required
