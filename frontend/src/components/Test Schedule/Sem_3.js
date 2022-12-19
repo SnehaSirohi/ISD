@@ -72,10 +72,14 @@ const Sem_3 = () => {
         setwarning(data.warning)
         setsuccess(data.success)
       });
-      setTimeout(() => {
-        setsuccess(false)
-        navigate("/Teacherdashboard");
-      }, 2500);
+      if(success)
+      {
+        
+       setTimeout(() => {
+         setsuccess(false)
+         navigate("/Teacherdashboard");
+       }, 2500);
+      }
     }
     else {
       e.preventDefault()

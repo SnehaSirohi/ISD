@@ -86,10 +86,14 @@ const Sem_1 = () => {
         setsuccess(data.success)
         
       });
+     if(success)
+     {
+       
       setTimeout(() => {
         setsuccess(false)
         navigate("/Teacherdashboard");
       }, 2500);
+     }
 
     }
     else {
