@@ -4,13 +4,13 @@
 
 .classtkn{
     text-align: center;
-    margin-left: 3.5rem;
+    margin-left: 1.5rem;
 }
 
 .classtkn>*{
-    margin-top: 2rem;
         height: 3rem;
         display: flex;
+        font-size: 100%;
         align-items: center;
         justify-content: center;
         width: 41vw;
