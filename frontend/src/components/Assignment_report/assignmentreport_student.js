@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import '../Scheduled_Class_List/Scheduledcommon.css';
 import './assignment_report.css'
-import List from './list';
+import List3 from './List3';
 import Navbar from "../Student_dashboard/Navbar";
 
 
@@ -85,7 +85,7 @@ const Assignmentreport = () => {
             </tr>
           </thead>
           <tbody>
-            <List assignments={assignments}  />
+            <List3 assignments={assignments}  />
           </tbody>
         </table>
       </div>}
