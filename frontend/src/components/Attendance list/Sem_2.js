@@ -67,31 +67,20 @@ const Sem_2 = () => {
 
   async function Submit(e) {
     if (!subject) {
-      alert("Please select the subject ")
+
+      document.getElementById("subject").style.borderColor = "red"
+      document.getElementById("subject").style.backgroundColor = "pink"
+      document.getElementById("subject").classList.add("shaking")
+      setTimeout(() => {
+        document.getElementById("subject").classList.remove("shaking")
+      }, 1000);
+
     }
     else {
-      e.preventDefault()
-      const response = await fetch("http://localhost:4000/attendance/sem2", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          'x-access-token': localStorage.getItem('token'), //
-        },
-        body: JSON.stringify({
-          subject,
-          status,
-        }),
-      }).then(async (response) => {
-        let dataa = await response.json();
-        setsuccess(dataa.success)
-      });
-      setTimeout(() => {
-         setsuccess(false)
-         navigate("/Teacherdashboard");
-      }, 2500);
+      // document.getElementById("subject").style.color="black"
+      document.getElementById("subject").style.borderColor = "black"
+      document.getElementById("subject").style.backgroundColor = "white"
     }
-
   }
 
 

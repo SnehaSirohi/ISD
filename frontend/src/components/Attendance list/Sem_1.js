@@ -63,10 +63,8 @@ const Sem_1 = () => {
   }, []);
 
   async function Submit(e) {
-    if (!subject) {
-      alert("Please select the subject ")
-    }
-    else {
+  
+    if(subject) {
       e.preventDefault()
       const response = await fetch("http://localhost:4000/attendance/sem1", {
         method: "POST",
@@ -87,6 +85,23 @@ const Sem_1 = () => {
         setsuccess(false)
         navigate("/Teacherdashboard");
       }, 2500);
+    }
+    else{
+      if (!subject) {
+
+        document.getElementById("subject").style.borderColor = "red"
+        document.getElementById("subject").style.backgroundColor = "pink"
+        document.getElementById("subject").classList.add("shaking")
+        setTimeout(() => {
+          document.getElementById("subject").classList.remove("shaking")
+        }, 1000);
+
+      }
+      else {
+        // document.getElementById("subject").style.color="black"
+        document.getElementById("subject").style.borderColor = "black"
+        document.getElementById("subject").style.backgroundColor = "white"
+      }
     }
 
   }
