@@ -141,7 +141,7 @@ function UploadAssignmentsem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Algorithms And Data Structure">
                 Algorithms and Data Structure
               </option>
@@ -159,7 +159,7 @@ function UploadAssignmentsem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Software Design & Programming">
                 Software Design & Programming
               </option>
@@ -177,7 +177,7 @@ function UploadAssignmentsem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Mathematical Foundation Of Computing">
                 Mathematical Foundation of Computing
               </option>
@@ -195,7 +195,7 @@ function UploadAssignmentsem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Computer System Architecture">
                 Computer System Architecture
               </option>

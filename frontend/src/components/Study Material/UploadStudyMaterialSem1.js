@@ -40,28 +40,7 @@ function UploadStudyMaterialSem1() {
   }
 
   async function Upload() {
-    // if(!subject)
-    // {
-      
-    //   document.getElementById("subject").style.borderColor = "red"
-    //   document.getElementById("subject").style.backgroundColor = "pink"
-    //   document.getElementById("subject").classList.add("shaking")
-    //   setTimeout(() => {
-    //     document.getElementById("subject").classList.remove("shaking")
-    //   }, 1000);
-    // }
-    // else if(subject) {
-    //   if(!file){
-    //     alert("Please upload a file")
-    //   // document.getElementById("subject").style.color="black"
-    //   document.getElementById("subject").style.borderColor = "black"
-    //   document.getElementById("subject").style.backgroundColor = "white"
-    // }
-    //   else{
-    //     document.getElementById("subject").style.borderColor = "black"
-    //   document.getElementById("subject").style.backgroundColor = "white"
-    //   }
-    // }
+
   
     if(subject && file){
 

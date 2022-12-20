@@ -44,9 +44,11 @@ const Notifications = () => {
         
   return (
     <>
+    <div className='height100vh'>
     <Navbar/>
-    <div className="container notification">
+    <div className="container notification ">
      {notification && <List notification={notification} teacher={teacher} />} 
+     </div>
      </div>
     </>
   )
