@@ -40,13 +40,8 @@ function UploadAssignmentsem1() {
   }
 
   async function Upload(e) {
-    if (!subject) {
-      alert("Please select the subject")
-    }
-    else if (!file) {
-      alert("Please upload a file")
-    }
-    else {
+  
+    if(deadline && subject && file) {
       e.preventDefault()
       const response = await fetch("https://isd-production.up.railway.app/upload/assignment", {
         method: "POST",
@@ -71,6 +66,41 @@ function UploadAssignmentsem1() {
         setsuccess(false)
         navigate("/Teacherdashboard");
       }, 2500);
+    }
+
+    else{
+      if(!subject){
+        document.getElementById("subject").style.borderColor = "red"
+        document.getElementById("subject").style.backgroundColor = "pink"
+        document.getElementById("subject").classList.add("shaking")
+        setTimeout(() => {
+          document.getElementById("subject").classList.remove("shaking")
+        }, 1000);
+      }
+      else{
+        document.getElementById("subject").style.borderColor = "black"
+        document.getElementById("subject").style.backgroundColor = "white"
+      }
+
+      if(!deadline){
+       
+        document.getElementById("deadlne_blk-1").style.borderColor = "red"
+        document.getElementById("deadlne_blk-1").style.backgroundColor = "pink"
+        document.getElementById("deadlne_blk-1").classList.add("shaking")
+       
+        setTimeout(() => {
+          document.getElementById("deadlne_blk-1").classList.remove("shaking")
+          
+        }, 1000);
+      }
+      else{
+        document.getElementById("deadlne_blk-1").style.borderColor = "black"
+        document.getElementById("deadlne_blk-1").style.backgroundColor = "white"
+      }
+
+      if(!file){
+        alert("Please upload a file")
+      }
     }
     
 
@@ -178,6 +208,7 @@ function UploadAssignmentsem1() {
           <input
             type="date"
             className="time_block12"
+            id="deadlne_blk-1"
             value={deadline}
             onChange={(e) => setdeadline(e.target.value)}
           />

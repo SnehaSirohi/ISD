@@ -121,7 +121,7 @@ const Sem_3 = () => {
             name="subject"
             value={subject}
             onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
+            <option value="">Select Subject</option>
             <option value="Information System Design">
               Information System Design
             </option>
@@ -136,7 +136,7 @@ const Sem_3 = () => {
             name="subject"
             value={subject}
             onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
+            <option value="">Select Subject</option>
             <option value="Cloud Computing">Cloud Computing</option>
           </select>
         </div>}
@@ -149,7 +149,7 @@ const Sem_3 = () => {
             name="subject"
             value={subject}
             onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
+            <option value="">Select Subject</option>
             <option value="Software Engineering">Software Engineering</option>
           </select>
         </div>}
@@ -162,7 +162,7 @@ const Sem_3 = () => {
             name="subject"
             value={subject}
             onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
+            <option value="">Select Subject</option>
             <option value="IT Planning and Management">
               IT Planning and Management
             </option>

@@ -87,21 +87,13 @@ const Sem_1 = () => {
       }, 2500);
     }
     else{
-      if (!subject) {
-
+  
         document.getElementById("subject").style.borderColor = "red"
         document.getElementById("subject").style.backgroundColor = "pink"
         document.getElementById("subject").classList.add("shaking")
         setTimeout(() => {
           document.getElementById("subject").classList.remove("shaking")
         }, 1000);
-
-      }
-      else {
-        // document.getElementById("subject").style.color="black"
-        document.getElementById("subject").style.borderColor = "black"
-        document.getElementById("subject").style.backgroundColor = "white"
-      }
     }
 
   }
@@ -121,7 +113,7 @@ const Sem_1 = () => {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option required>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Algorithms And Data Structure">
                 Algorithms and Data Structure
               </option>
@@ -136,7 +128,7 @@ const Sem_1 = () => {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option required>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Software Design & Programming">
                 Software Design & Programming
               </option>
@@ -151,7 +143,7 @@ const Sem_1 = () => {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option required>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Mathematical Foundation Of Computing">
                 Mathematical Foundation of Computing
               </option>
@@ -166,7 +158,7 @@ const Sem_1 = () => {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option required>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Computer System Architecture">
                 Computer System Architecture
               </option>
