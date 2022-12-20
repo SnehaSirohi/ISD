@@ -81,7 +81,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' exact element={<Homepage />} />
-          <Route path = '/admin' exact element = {<Admin />} />
+          <Route path = '/admin'  element = {<Admin />} />
           <Route path = '/registerTeacher' element = {<Register_teacher />} />
           <Route path = '/registerStudent' element = {<Register_student />} />
           <Route path = '/registerAllStudent' element = {<Register_Mul_student />} />
