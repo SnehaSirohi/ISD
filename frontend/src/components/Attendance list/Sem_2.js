@@ -67,7 +67,14 @@ const Sem_2 = () => {
 
   async function Submit(e) {
     if (!subject) {
-      alert("Please select the subject ")
+
+      document.getElementById("subject").style.borderColor = "red"
+      document.getElementById("subject").style.backgroundColor = "pink"
+      document.getElementById("subject").classList.add("shaking")
+      setTimeout(() => {
+        document.getElementById("subject").classList.remove("shaking")
+      }, 1000);
+
     }
     else {
       e.preventDefault()
@@ -91,7 +98,6 @@ const Sem_2 = () => {
          navigate("/Teacherdashboard");
       }, 2500);
     }
-
   }
 
 
@@ -111,7 +117,7 @@ const Sem_2 = () => {
             name="subject"
             value={subject}
             onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
+            <option value="">Select Subject</option>
             <option value="Computer Communication and Networks">
               Computer Communication and Networks
             </option>
@@ -127,7 +133,7 @@ const Sem_2 = () => {
             name="subject"
             value={subject}
             onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
+            <option value="">Select Subject</option>
             <option value="Database Systems">Database Systems</option>
           </select></div>}
           
@@ -140,7 +146,7 @@ const Sem_2 = () => {
             name="subject"
             value={subject}
             onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option> 
+            <option value="">Select Subject</option> 
             <option value="Applied Machine Learning">
               Applied Machine Learning
             </option>
@@ -155,7 +161,7 @@ const Sem_2 = () => {
             name="subject"
             value={subject}
             onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
+            <option value="">Select Subject</option>
             <option value="Open Elective-1">Open Elective-1</option>
           </select></div>}
 

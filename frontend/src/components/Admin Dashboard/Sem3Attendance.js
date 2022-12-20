@@ -178,6 +178,7 @@ useEffect(()=>{
 return (
   <>
    <Navbar/>
+   <div className="height100vh" >
    <div className=" mb-3" >
    
         {/* <label className="form-label">Select Filter</label> */}
@@ -293,6 +294,7 @@ return (
           <button type="button" class="btn btn-primary-1" id='butn' data-toggle="button" aria-pressed="false" autocomplete="off" onClick={exporttopdfhandler}>Download in pdf</button>
         </div>
 </>}
+</div>
   </>
 )
 }

@@ -4,6 +4,7 @@ import "./Student_profile.css"
 import Navbar from './Navbar'
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
+import logo from './image.png'
 
 const Profile = () => {
 
@@ -53,13 +54,13 @@ const Profile = () => {
     return (
         <div className='height100vh'>
             <Navbar />
-            <h1 className='Teacherheading'>Student Profile</h1>
+            <h1 className='Teacherheading'>{name}'s Profile</h1>
             <div class="emp-profile">
                 <div className='pblock'>
                     <form method="post">
                         <div className='photo_block'>
                             <div class="profile-img">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="" />
+                            <img src={logo} alt="..." class="profilePic"></img>
                             </div>
                             <div class="profile-head">
                                 <h2>

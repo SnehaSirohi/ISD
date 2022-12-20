@@ -40,16 +40,30 @@ function UploadStudyMaterialSem1() {
   }
 
   async function Upload() {
-    if(!subject)
-    {
-      alert("Please select the subject")
-    }
-    else if(!file)
-    {
-      alert("Please upload a file")
-    }
-    else
-    {
+    // if(!subject)
+    // {
+      
+    //   document.getElementById("subject").style.borderColor = "red"
+    //   document.getElementById("subject").style.backgroundColor = "pink"
+    //   document.getElementById("subject").classList.add("shaking")
+    //   setTimeout(() => {
+    //     document.getElementById("subject").classList.remove("shaking")
+    //   }, 1000);
+    // }
+    // else if(subject) {
+    //   if(!file){
+    //     alert("Please upload a file")
+    //   // document.getElementById("subject").style.color="black"
+    //   document.getElementById("subject").style.borderColor = "black"
+    //   document.getElementById("subject").style.backgroundColor = "white"
+    // }
+    //   else{
+    //     document.getElementById("subject").style.borderColor = "black"
+    //   document.getElementById("subject").style.backgroundColor = "white"
+    //   }
+    // }
+  
+    if(subject && file){
 
       const response = await fetch("https://isd-production.up.railway.app/upload/studymaterial", {
         method: "POST",
@@ -73,6 +87,25 @@ function UploadStudyMaterialSem1() {
         setsuccess(false)
         navigate("/Teacherdashboard");
       },2500);
+    }
+
+    else{
+      if(!subject){
+        document.getElementById("subject").style.borderColor = "red"
+        document.getElementById("subject").style.backgroundColor = "pink"
+        document.getElementById("subject").classList.add("shaking")
+        setTimeout(() => {
+          document.getElementById("subject").classList.remove("shaking")
+        }, 1000);
+      }
+      else{
+        document.getElementById("subject").style.borderColor = "black"
+        document.getElementById("subject").style.backgroundColor = "white"
+      }
+
+      if(!file){
+        alert("Please upload a file")
+      }
     }
    
   }
@@ -111,7 +144,7 @@ function UploadStudyMaterialSem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Algorithms And Data Structure">
                 Algorithms and Data Structure
               </option>
@@ -129,7 +162,7 @@ function UploadStudyMaterialSem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Software Design & Programming">
                 Software Design & Programming
               </option>
@@ -147,7 +180,7 @@ function UploadStudyMaterialSem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Mathematical Foundation Of Computing">
                 Mathematical Foundation of Computing
               </option>
@@ -165,7 +198,7 @@ function UploadStudyMaterialSem1() {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Computer System Architecture">
                 Computer System Architecture
               </option>

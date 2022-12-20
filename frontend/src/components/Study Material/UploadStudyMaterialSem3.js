@@ -39,16 +39,7 @@ function UploadStudyMaterialSem3() {
   }
 
   async function Upload() {
-    if(!subject)
-    {
-      alert("Please select the subject")
-    }
-    else if(!file)
-    {
-      alert("Please upload a file")
-    }
-    else
-    {
+    if(subject && file){
 
       const response = await fetch("https://isd-production.up.railway.app/upload/studymaterial", {
         method: "POST",
@@ -72,6 +63,25 @@ function UploadStudyMaterialSem3() {
         setsuccess(false)
         navigate("/Teacherdashboard");
       },2500);
+    }
+
+    else{
+      if(!subject){
+        document.getElementById("subject").style.borderColor = "red"
+        document.getElementById("subject").style.backgroundColor = "pink"
+        document.getElementById("subject").classList.add("shaking")
+        setTimeout(() => {
+          document.getElementById("subject").classList.remove("shaking")
+        }, 1000);
+      }
+      else{
+        document.getElementById("subject").style.borderColor = "black"
+        document.getElementById("subject").style.backgroundColor = "white"
+      }
+
+      if(!file){
+        alert("Please upload a file")
+      }
     }
    
   }
@@ -109,7 +119,7 @@ function UploadStudyMaterialSem3() {
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                   <option>Select Subject</option>
+                   <option value="">Select Subject</option>
                 <option value="Information System Design">
                   Information System Design
                 </option>
@@ -126,7 +136,7 @@ function UploadStudyMaterialSem3() {
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                   <option>Select Subject</option>
+                   <option value="">Select Subject</option>
                 <option value="Cloud Computing">Cloud Computing</option>
               </select>
             </div>
@@ -141,7 +151,7 @@ function UploadStudyMaterialSem3() {
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                   <option>Select Subject</option>
+                   <option value="">Select Subject</option>
                 <option value="Software Engineering">
                   Software Engineering
                 </option>
@@ -158,7 +168,7 @@ function UploadStudyMaterialSem3() {
                 name="subject"
                 value={subject}
                 onChange={(e) => setsubject(e.target.value)}>
-                   <option>Select Subject</option>
+                   <option value="">Select Subject</option>
                 <option value="IT Planning and Management">
                   IT Planning and Management
                 </option>

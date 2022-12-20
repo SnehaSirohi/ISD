@@ -63,10 +63,8 @@ const Sem_1 = () => {
   }, []);
 
   async function Submit(e) {
-    if (!subject) {
-      alert("Please select the subject ")
-    }
-    else {
+  
+    if(subject) {
       e.preventDefault()
       const response = await fetch("https://isd-production.up.railway.app/attendance/sem1", {
         method: "POST",
@@ -88,6 +86,15 @@ const Sem_1 = () => {
         navigate("/Teacherdashboard");
       }, 2500);
     }
+    else{
+  
+        document.getElementById("subject").style.borderColor = "red"
+        document.getElementById("subject").style.backgroundColor = "pink"
+        document.getElementById("subject").classList.add("shaking")
+        setTimeout(() => {
+          document.getElementById("subject").classList.remove("shaking")
+        }, 1000);
+    }
 
   }
 
@@ -106,7 +113,7 @@ const Sem_1 = () => {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option required>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Algorithms And Data Structure">
                 Algorithms and Data Structure
               </option>
@@ -121,7 +128,7 @@ const Sem_1 = () => {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option required>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Software Design & Programming">
                 Software Design & Programming
               </option>
@@ -136,7 +143,7 @@ const Sem_1 = () => {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option required>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Mathematical Foundation Of Computing">
                 Mathematical Foundation of Computing
               </option>
@@ -151,7 +158,7 @@ const Sem_1 = () => {
               value={subject}
               required
               onChange={(e) => setsubject(e.target.value)}>
-              <option required>Select Subject</option>
+              <option value="">Select Subject</option>
               <option value="Computer System Architecture">
                 Computer System Architecture
               </option>

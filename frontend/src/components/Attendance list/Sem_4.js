@@ -67,9 +67,21 @@ const Sem_4 = () => {
 
   async function Submit(e) {
     if (!subject) {
-      alert("Please select the subject ")
+
+      document.getElementById("subject").style.borderColor = "red"
+      document.getElementById("subject").style.backgroundColor = "pink"
+      document.getElementById("subject").classList.add("shaking")
+      setTimeout(() => {
+        document.getElementById("subject").classList.remove("shaking")
+      }, 1000);
+
     }
     else {
+
+      // document.getElementById("subject").style.color="black"
+      document.getElementById("subject").style.borderColor = "black"
+      document.getElementById("subject").style.backgroundColor = "white"
+
       e.preventDefault()
       const response = await fetch("https://isd-production.up.railway.app/attendance/sem4", {
         method: "POST",
@@ -90,6 +102,7 @@ const Sem_4 = () => {
          setsuccess(false)
          navigate("/Teacherdashboard");
       }, 2500);
+
     }
 
   }
@@ -109,7 +122,7 @@ const Sem_4 = () => {
             name="subject"
             value={subject}
             onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
+            <option value="">Select Subject</option>
             <option value="Internet of Things Systems, Security and Cloud">
               Internet of Things Systems, Security and Cloud
             </option>
@@ -124,7 +137,7 @@ const Sem_4 = () => {
             name="subject"
             value={subject}
             onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
+            <option value="">Select Subject</option>
             <option value="Health Informatics">Health Informatics</option>
           </select>
         </div>}
@@ -137,7 +150,7 @@ const Sem_4 = () => {
             name="subject"
             value={subject}
             onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
+            <option value="">Select Subject</option>
             <option value="Dissertation Project">Dissertation Project</option>
           </select>
         </div>}
@@ -150,7 +163,7 @@ const Sem_4 = () => {
             name="subject"
             value={subject}
             onChange={(e) => setsubject(e.target.value)}>
-            <option>Select Subject</option>
+            <option value="">Select Subject</option>
             <option value="Research Methods in Informatics">
               Research Methods in Informatics
             </option>
