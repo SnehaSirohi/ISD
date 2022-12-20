@@ -186,7 +186,7 @@ function UploadAssignmentsem2() {
                 value={file}
                 onChange={(e) => setFile(e.target.value)}
               />
-              <button>Upload</button>
+              <button>Select File</button>
             </div>
             {file && <div className="fileuploaddisplay">{file}</div>}
             <div className="infocontent">
@@ -214,7 +214,7 @@ function UploadAssignmentsem2() {
 
           <div className="text-center">
             <button className="submitbutton mt-3 " onClick={Upload}>
-              Submit
+              Post
             </button>
           </div>
         </div>

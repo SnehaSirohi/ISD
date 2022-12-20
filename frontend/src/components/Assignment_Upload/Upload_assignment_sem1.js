@@ -213,7 +213,7 @@ function UploadAssignmentsem1() {
         </div>
         <div className="text-center">
           <button className="submitbutton mt-3 " onClick={Upload}>
-            Submit
+            Post
           </button>
         </div>
 
