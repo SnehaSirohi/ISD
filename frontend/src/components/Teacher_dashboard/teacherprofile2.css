@@ -14,7 +14,8 @@
 
 .pblock {
     padding-bottom: 2rem;
-    background: lightgray;
+    background: #2BB0A8;
+    opacity: 0.85;
     border-radius: 15px;
 }
 
@@ -96,7 +97,7 @@ a {
     display: flex;
     margin: 0 10%;
     font-size: 100%;
-    background: gray;
+    background: #d6e6e7;
     border-radius: 8px;
     padding: 25px;
 }
@@ -104,7 +105,7 @@ a {
 .profile-head {
     text-align: center;
     /* margin-bottom: 1rem; */
-    margin-left: 1rem;
+    /* margin-left: 1rem; */
 }
 
 .profile-head>h4 {
@@ -134,7 +135,8 @@ a {
 .values {
     text-align: initial;
     transform: translateX(30%);
-    color: #ffffff;
+    color: #00684A;
+    font-weight: bold;
     font-size: 20px;
 }
 
@@ -144,19 +146,26 @@ a {
 
 .teacherinfo2 {
     display: none;
+
 }
 
 @media screen and (max-width : 800px) {
     .teacherinfo2 {
         display: block;
     }
-
+    .teacherinfo2>h6{
+        color: #ffffff;
+    }
+    .teacherinfo2>p{
+        font-weight: bold;
+    }
     .keys {
         display: none;
     }
 
     .values {
         display: none;
+        
     }
 
     .emp-profile {
