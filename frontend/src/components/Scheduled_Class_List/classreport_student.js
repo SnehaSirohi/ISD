@@ -14,12 +14,14 @@ var XLSX = require("xlsx");
 const Classreport = () => {
     const navigate = useNavigate();
     const [classes,setClasses]=useState([]);
+    const [visible, setVisible] = useState(false)
+    const [string, setString] = useState("")  
     const newdate = new Date()
     const monthval = newdate.getMonth()+1;
     const day = newdate.getDate()
     const year = newdate.getFullYear()
     const fetchdata=async()=>{
-        const response=await fetch("http://localhost:4000/classschedule", {
+        const response=await fetch("https://isd-production.up.railway.app/classschedule", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -37,6 +39,16 @@ const Classreport = () => {
 
                 setClasses(data.reverse())
       }
+
+      useEffect(() => {
+        if(classes.length !=0){
+          setVisible(true)
+          setString("Overall Classes Scheduled")
+        }else{
+          setString(" No Classes Scheduled !")
+        }
+      },[classes])
+
       useEffect(() => {
         const token = localStorage.getItem('token')
         if (token) {
@@ -68,9 +80,9 @@ const Classreport = () => {
   return (
    <>
   <Navbar/>
- {<h1 className='text-center'>Overall Scheduled Classes </h1>}
+ {<h1 className='text-center'>{string} </h1>}
  
-  <div className='tableblock'>
+  {visible && <div className='tableblock'>
     <table className='table table-striped overflowxauto' id='mytable'>
       <thead className='heading-2'>
         <tr>
@@ -84,11 +96,11 @@ const Classreport = () => {
       <List classes={classes} />
       </tbody>
     </table>
-  </div>
-  <div className='text-center'>
+  </div>}
+  {visible && <div className='text-center'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
-   </div>
+   </div>}
    </>
   )
 }

@@ -24,7 +24,7 @@ const Sem_2 = () => {
 
   //-----------
   async function populate(e) {
-    const req = await fetch('http://localhost:4000/scheduleclass', {
+    const req = await fetch('https://isd-production.up.railway.app/scheduleclass', {
       headers: {
         'x-access-token': localStorage.getItem('token'), //
       },
@@ -51,7 +51,7 @@ const Sem_2 = () => {
     e.preventDefault();
     if (subject && time && date) {
 
-      const req = await fetch("http://localhost:4000/scheduleclass", {
+      const req = await fetch("https://isd-production.up.railway.app/scheduleclass", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -72,10 +72,6 @@ const Sem_2 = () => {
         setwarning(data.warning)
         setsuccess(data.success)
       });
-      setTimeout(() => {
-        setsuccess(false)
-        navigate("/Teacherdashboard");
-      }, 2500);
     }
     else {
       e.preventDefault()
@@ -151,6 +147,13 @@ useEffect(() => {
     }
   }
 }, [])
+if(success)
+{
+  setTimeout(() => {
+    setsuccess(false)
+    navigate("/Teacherdashboard");
+  }, 2500);
+}
 
 return (
   <>

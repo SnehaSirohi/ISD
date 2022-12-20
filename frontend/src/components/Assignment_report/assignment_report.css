@@ -43,7 +43,7 @@
     border: none;
 }
 
-.submit_button:active {
+button:active {
     transform: translateY(1px);
 }
 
@@ -53,6 +53,7 @@
 
 #mytable-1 {
     overflow-x: auto;
+    
 }
 
 @media screen and (max-width : 1000px) {
@@ -61,5 +62,5 @@
         margin: 0 10%;
         width: 80%;
     }
-    
+
 }

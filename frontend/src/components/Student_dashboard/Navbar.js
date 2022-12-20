@@ -22,7 +22,7 @@ function Navbar() {
     const [sem4, setSem4] = useState(false)
 
     async function populatenavbar() {
-        const req = await fetch('http://localhost:4000/dashboard', {
+        const req = await fetch('https://isd-production.up.railway.app/dashboard', {
             headers: {
                 'x-access-token': localStorage.getItem('token'),
 
@@ -46,7 +46,7 @@ function Navbar() {
                 setSem4(true)
             }
         }
-        console.log(json);
+      
     }
 
     useEffect(() => {

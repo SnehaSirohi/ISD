@@ -1,7 +1,7 @@
 import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CSVLink } from 'react-csv'
-const List = ({ assignments,handleclick }) => {
+const List3 = ({ assignments,handleclick }) => {
   return (
     <>
       {assignments.map((teach) => {
@@ -23,9 +23,6 @@ const List = ({ assignments,handleclick }) => {
               <td>
                 {file}
               </td>
-              <td>
-                <button value={_id}  style={{backgroundColor:'#007bff', color:'white',borderRadius:"10px",border:"none", height:"30px", width:"10rem",opacity:"0.8"}} onClick={handleclick} >View Submissions</button>
-              </td>
             </tr>
           </>
         )
@@ -34,4 +31,4 @@ const List = ({ assignments,handleclick }) => {
   )
 }
 
-export default List
+export default List3

@@ -287,7 +287,7 @@ console.log(check)
         enrollNum,
         password,
       });
-      res.status(200).json({status: "ok", student});
+      res.status(200).json({success:true});
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
@@ -415,7 +415,6 @@ const PostAssignmentSubmitt = async (req, res) => {
   const student = await Students.findOne({ enrollNum: enrollNum })
   const name = student.name;
   const semester = student.semester;
-  console.log("date is the : ",date,files,enrollNum,subject)
 
   try {
 
@@ -438,7 +437,10 @@ const PostAssignmentSubmitt = async (req, res) => {
 };
 
 const assignmentsubmited = async(req,res)=>{
+
    const token = req.headers["x-access-token"];
+   console.log("request rcvd")
+   console.log(req.headers['assignment_id'])
   try {
     const decoded = jwt.verify(token, "secret123");
     const enrollNum = decoded.enrollNum;

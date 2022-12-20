@@ -9,7 +9,7 @@ const Notifications = () => {
 
     // const [testnotifications,settestnotifications]=useState([])
     const fetchdata=async()=>{
-        const response1=await fetch("http://localhost:4000/notifications/assignment", {
+        const response1=await fetch("https://isd-production.up.railway.app/notifications/assignment", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -18,7 +18,7 @@ const Notifications = () => {
             const json1 = await response1.json()
             const array1= json1.data.reverse();
             setassignmentnotifications(array1)
-        const response2=await fetch("http://localhost:4000/notifications/classes", {
+        const response2=await fetch("https://isd-production.up.railway.app/notifications/classes", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -28,7 +28,7 @@ const Notifications = () => {
             console.log(json2);
               const array2= json2.data.reverse();
             setclassnotifications(array2)
-        const response3=await fetch("http://localhost:4000/notifications/tests", {
+        const response3=await fetch("https://isd-production.up.railway.app/notifications/tests", {
             method: "GET",
             headers: {
                 Accept: "application/json",

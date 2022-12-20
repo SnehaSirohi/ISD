@@ -39,7 +39,7 @@ const ChangePassword = () => {
       setIfpasswordsame(false);
       setIfconfirmpassworddifferent(true);
     } else {
-      const req = await fetch('http://localhost:4000/dashboard/changepassword', {
+      const req = await fetch('https://isd-production.up.railway.app/dashboard/changepassword', {
         method: "PATCH",
         headers: {
 

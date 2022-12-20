@@ -17,7 +17,7 @@ function UploadStudyMaterialSem4() {
   const [Sanjeev, setSanjeev] = useState(false);
   const[success,setsuccess]=useState(false)
   async function populate(e) {
-    const req = await fetch("http://localhost:4000/upload/studymaterial", {
+    const req = await fetch("https://isd-production.up.railway.app/upload/studymaterial", {
       headers: {
         "x-access-token": localStorage.getItem("token"), //
       },
@@ -50,7 +50,7 @@ function UploadStudyMaterialSem4() {
     else
     {
 
-      const response = await fetch("http://localhost:4000/upload/studymaterial", {
+      const response = await fetch("https://isd-production.up.railway.app/upload/studymaterial", {
         method: "POST",
         headers: {
           Accept: "application/json",

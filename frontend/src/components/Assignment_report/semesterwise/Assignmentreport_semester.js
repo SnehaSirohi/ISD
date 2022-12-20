@@ -30,9 +30,10 @@ const Assignmentreport = () => {
   const [temp, setTemp] = React.useState({id: "", name: ""})
   const [assignment_id,setassignment_id]=useState("")
   const [check,setcheck]=useState([])
-  let json2;
+  // console.log("check value : ",check)
   const fetchdata = async () => {
-    const response1 = await fetch("http://localhost:4000/assignmentreportstudent", {
+
+    const response1 = await fetch("https://isd-production.up.railway.app/assignmentreportstudent", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -41,14 +42,17 @@ const Assignmentreport = () => {
       }
     })
     const json1 = await response1.json()
+    console.log("json 1 : ",json1.data)
     setReport(json1)
+      fetchd()
+    
 
   }
 
   
 
     const fetchd = async()=>{
- const response2 = await fetch("http://localhost:4000/assignmentsubmited", {
+ const response2 = await fetch("https://isd-production.up.railway.app/assignmentsubmited", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -56,18 +60,27 @@ const Assignmentreport = () => {
         'x-access-token': localStorage.getItem('token'), //
       }
     })
-     json2 = await response2.json()
+     const json2 = await response2.json()
      setcheck(json2.data)
     }
-  check.map((x)=>
-    ( document.getElementById(x.assignment_id).innerHTML="submitted") &&
-     (document.getElementById(x.assignment_id).style.backgroundColor="#abffab")
-   )
+    console.log("check data",check)
+    if(check)
+    {
+       check.map((x)=> {
+       if(document.getElementById(x.assignment_id))
+       {
+                document.getElementById(x.assignment_id).innerHTML="Submitted ✅" 
+              document.getElementById(x.assignment_id).style.backgroundColor="#abffab"
+         
+       }
+      }
+       )
+            
+    }
 
 
 
   async function subjectupdate(e) {
-    fetchd()
     setVisible(false)
     setString("")
     e.preventDefault();
@@ -124,7 +137,7 @@ const Assignmentreport = () => {
   const AssignmentSubmit = async (e, _id) => {
     e.preventDefault()
     console.log("this is user", user);
-    const response = await fetch("http://localhost:4000/assignmentsubmit", {
+    const response = await fetch("https://isd-production.up.railway.app/assignmentsubmit", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -141,7 +154,7 @@ const Assignmentreport = () => {
      if(data.success)
      {
       fetchd()
-      document.getElementById(_id).innerHTML="Submitted";
+      document.getElementById(_id).innerHTML="Submitted ✅";
       document.getElementById(_id).style.backgroundColor="#81ffc487";
       localStorage.removeItem(_id)
       setremovefileid(_id)
@@ -163,10 +176,11 @@ const Assignmentreport = () => {
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
               value={subject}
               required
+              // onClick={()=>fetchd()}
               onChange={(e) => setSubject(e.target.value)}>
               <option required>Select Subject</option>
               <option value="Algorithms And Data Structure">
@@ -192,8 +206,9 @@ const Assignmentreport = () => {
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
+              // onClick={()=>fetchd()}
               value={subject}
               required
               onChange={(e) => setSubject(e.target.value)}>
@@ -214,7 +229,7 @@ const Assignmentreport = () => {
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
               value={subject}
               required
@@ -235,7 +250,7 @@ const Assignmentreport = () => {
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
               value={subject}
               required

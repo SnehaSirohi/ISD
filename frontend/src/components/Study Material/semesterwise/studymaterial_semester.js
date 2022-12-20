@@ -23,7 +23,7 @@ const Classreport = () => {
   const [string, setString] = useState("")
 
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/studymaterial_student", {
+    const response = await fetch("https://isd-production.up.railway.app/studymaterial_student", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -126,7 +126,7 @@ const Classreport = () => {
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
               value={subject}
               required
@@ -151,11 +151,11 @@ const Classreport = () => {
           </form>
         </div>}
         {sem2 && <div className='classrepcontainer'>
-          <form onSubmit={subjectupdate}>
+          <form className='repform1' onSubmit={subjectupdate}>
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
               value={subject}
               required
@@ -173,11 +173,11 @@ const Classreport = () => {
           </form>
         </div>}
         {sem3 && <div className='classrepcontainer'>
-          <form onSubmit={subjectupdate}>
+          <form className='repform1' onSubmit={subjectupdate}>
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
               value={subject}
               required
@@ -194,11 +194,11 @@ const Classreport = () => {
           </form>
         </div>}
         {sem4 && <div className='classrepcontainer'>
-          <form onSubmit={subjectupdate}>
+          <form className='repform1' onSubmit={subjectupdate}>
             <select
               type="text"
               className="form-control shadow-none"
-              id="subject"
+              id="subject1"
               name="subject"
               value={subject}
               required

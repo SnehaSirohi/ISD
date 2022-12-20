@@ -23,7 +23,7 @@ const classScheduleMail = (
       from: process.env.EMAIL,
       to: recieverEmail,
       subject: `${subject}'s class`,
-      html: `Hello ${name} <br> ${teacher} has scheduled the class of ${subject} on ${date} at ${time} <br> ${message} `,
+      html: `Hello ${name} <br> ${teacher} has scheduled the class of ${subject} on ${date} at ${time}. <br> ${message} `,
     })
     .catch((err) => console.log(err));
 };
@@ -41,7 +41,7 @@ const testScheduleMail = (
       from: process.env.EMAIL,
       to: recieverEmail,
       subject: `${subject}'s Test`,
-      html: `Hello ${name} <br> ${teacher} has scheduled the test of ${subject} on ${date} at ${time} <br> ${message}`,
+      html: `Hello ${name} <br> ${teacher} has scheduled the test of ${subject} on ${date} at ${time}. <br> ${message}`,
     })
     .catch((err) => console.log(err));
 };
@@ -98,14 +98,14 @@ const MonthlyMail = (
 const WarningMail = (
   name,
   recieverEmail,
- semester
+  monthname
 ) => {
   transport
     .sendMail({
       from: process.env.EMAIL,
       to: recieverEmail,
       subject: `Alert`,
-      html: `Hello ${name} <br> Your attendance percentage in {} is lesser than 50%. <br> Kindly start attedning the class`,
+      html: `Hello ${name} <br> Your attendance percentage in ${monthname} was lesser than 50%. <br> Kindly start attending the classes.`,
     })
     .catch((err) => console.log(err));
 };

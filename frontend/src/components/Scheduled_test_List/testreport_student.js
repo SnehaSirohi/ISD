@@ -14,11 +14,13 @@ var XLSX = require("xlsx");
 const Testreport = () => {
   const navigate = useNavigate();
   const [tests, setTests] = useState([]);
+  const [visible, setVisible] = useState(false)
+  const [string, setString] = useState("")
   const newdate = new Date()
   const monthval = newdate.getMonth() + 1;
   const day = newdate.getDate()
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/testschedule", {
+    const response = await fetch("https://isd-production.up.railway.app/testschedule", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -33,12 +35,21 @@ const Testreport = () => {
       }
       else if (data.date.slice(5, 7) > monthval) {
         return data
+        
       }
     })
 
     setTests(data.reverse())
-
   }
+
+useEffect(() => {
+  if(tests.length !=0){
+    setVisible(true)
+    setString("Overall Tests Scheduled")
+  }else{
+    setString(" No Tests Scheduled !")
+  }
+},[tests])
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
@@ -72,9 +83,9 @@ const Testreport = () => {
      <div className='height100vh'>
       <Navbar />
 
-      {<h1 className='text-center'>Overall Tests Scheduled </h1>}
+      {<h1 className='text-center'>{string}</h1>}
 
-      <div className='tableblock overflowxauto'>
+      {visible && <div className='tableblock overflowxauto'>
         <table className='table table-striped overflow' id='mytable'>
           <thead className='heading-2'>
             <tr>
@@ -88,11 +99,11 @@ const Testreport = () => {
             <List tests={tests} />
           </tbody>
         </table>
-      </div>
-      <div className='text-center'>
+      </div>}
+      {visible && <div className='text-center'>
         <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
         <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
-      </div>
+      </div>}
       </div>
     </>
   )

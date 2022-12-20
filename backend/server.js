@@ -9,10 +9,6 @@ const jwt = require('jsonwebtoken')
 const app = express()
 app.use(cors())
 
-const cron = require("node-cron")
-// cron.schedule('* * * * * *', () =>
-// console.log('Tasked scheduled with 1 minute interval')
-// );
 //middleware
 app.use(express.json())
 app.use((req, res, next) => {

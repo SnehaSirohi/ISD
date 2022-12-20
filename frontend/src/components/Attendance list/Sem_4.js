@@ -18,7 +18,7 @@ const Sem_4 = () => {
   const [Sanjeev,setSanjeev]=useState(false)
   const[success,setsuccess]= useState(false)
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/attendance", {
+    const response = await fetch("https://isd-production.up.railway.app/attendance", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -77,9 +77,32 @@ const Sem_4 = () => {
 
     }
     else {
+
       // document.getElementById("subject").style.color="black"
       document.getElementById("subject").style.borderColor = "black"
       document.getElementById("subject").style.backgroundColor = "white"
+
+      e.preventDefault()
+      const response = await fetch("https://isd-production.up.railway.app/attendance/sem4", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          'x-access-token': localStorage.getItem('token'), //
+        },
+        body: JSON.stringify({
+          subject,
+          status,
+        }),
+      }).then(async (response) => {
+        let dataa = await response.json();
+        setsuccess(dataa.success)
+      });
+      setTimeout(() => {
+         setsuccess(false)
+         navigate("/Teacherdashboard");
+      }, 2500);
+
     }
 
   }
@@ -161,7 +184,7 @@ const Sem_4 = () => {
         </table>
       </div>
       <div className="button-1">
-        <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onClick={Submit}>Submit</button>
+        <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onClick={Submit}>Save</button>
       </div> 
     </div>
     {success && <div className="container-fluid blacky">

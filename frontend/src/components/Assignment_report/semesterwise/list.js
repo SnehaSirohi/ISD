@@ -43,12 +43,13 @@ const List = ({ assignments, AssignmentSubmit, files, setfile, key, removefileid
                       )
                    setassignment_id(_id)
                      }} />
-                  <button className='upload_button'>Upload</button>
+                  <button className='upload_button' style={{backgroundColor:'#007bff', color:'white'}}>Upload</button>
                      {/* <span>{files}</span> */}
-                  <span>{removefileid !== _id && (localStorage.getItem(_id) || (_id===temp.id && temp.name)) }</span>
                   <button className='submit_button' type='submit' onClick={   (e)=>{AssignmentSubmit(e, _id)}}>Submit</button>
-              
+
                 </form>
+                <div style={{color:'blue'}}>{removefileid !== _id && (localStorage.getItem(_id) || (_id===temp.id && temp.name)) }</div>
+
               </td>
             </tr>
           </>

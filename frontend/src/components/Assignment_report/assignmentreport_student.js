@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import '../Scheduled_Class_List/Scheduledcommon.css';
 import './assignment_report.css'
-import List from './list';
+import List3 from './List3';
 import Navbar from "../Student_dashboard/Navbar";
 
 
@@ -16,8 +16,10 @@ var XLSX = require("xlsx");
 const Assignmentreport = () => {
   const navigate = useNavigate();
   const [assignments, setAssignments] = useState([]);
+  const [visible, setVisible] = useState(false)
+  const [string, setString] = useState("")
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/assignmentreportstudent", {
+    const response = await fetch("https://isd-production.up.railway.app/assignmentreportstudent", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -28,6 +30,15 @@ const Assignmentreport = () => {
     const json = await response.json()
         setAssignments(json.data.reverse())
   }
+
+  useEffect(() => {
+    if(assignments.length !=0){
+      setVisible(true)
+      setString("Overall Assignments Posted")
+    }else{
+      setString(" No Assignment Posted !")
+    }
+  },[assignments])
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -60,9 +71,9 @@ const Assignmentreport = () => {
   return (
     <>
 <Navbar />
-      {<h1 className='text-center-1'>Overall Assignments Posted </h1>}
+      {<h1 className='text-center-1'>{string} </h1>}
 
-      <div className='overflowxauto'>
+      {visible && <div className='overflowxauto'>
         <table className='table table-striped overflowxauto' id='mytable-5'>
           <thead className='heading_1'>
             <tr>
@@ -74,15 +85,15 @@ const Assignmentreport = () => {
             </tr>
           </thead>
           <tbody>
-            <List assignments={assignments}  />
+            <List3 assignments={assignments}  />
           </tbody>
         </table>
-      </div>
+      </div>}
 
-      <div className='text-center'>
+      {visible && <div className='text-center'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
-   </div>
+   </div>}
     </>
   )
 }

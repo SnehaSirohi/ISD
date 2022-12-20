@@ -14,7 +14,7 @@ var XLSX = require("xlsx");
 const Attendancereport = () => {
   const navigate = useNavigate();
   const [student, setstudent] = useState([]);
-  const [attendmaterial,setAttendmaterial]=useState([]);
+  const [attendmaterial, setAttendmaterial] = useState([]);
   var [string, setString] = useState("Overall Attendance Report")
   const [sem1, setSem1] = useState(false)
   const [sem2, setSem2] = useState(false)
@@ -22,10 +22,10 @@ const Attendancereport = () => {
   const [sem4, setSem4] = useState(false)
   const [subject, setSubject] = useState("")
   const [semester, setSemester] = useState("")
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(true)
 
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/dashboard", {
+    const response = await fetch("https://isd-production.up.railway.app/dashboard", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -34,69 +34,60 @@ const Attendancereport = () => {
       }
     })
     const json = await response.json()
-        setSemester(json.semester)
-        setstudent(json.attend.reverse())
-        setAttendmaterial(json.attend)
+    setSemester(json.semester)
+    setstudent(json.attend.reverse())
+    setAttendmaterial(json.attend)
   }
-
 
   async function subjectupdate(e) {
     e.preventDefault();
     setVisible(false)
     console.log(student)
-    if(subject != "overall")
-      setString("Subject-wise Attendance Report : "+ subject)
+    if (subject != "overall")
+      setString("Subject-wise Attendance Report : " + subject)
 
     let data = student.filter((data) => {
-      if(data.subject == subject)
-      {
+      if (data.subject == subject) {
         return data
       }
     })
     console.log(data)
 
     setAttendmaterial(data)
-    if(data.length!=0)
-    {
+    if (data.length != 0) {
       setVisible(true)
-    }else{
+    } else {
       setString("No Attendance Report Available")
     }
-    if(subject == "overall")
-    {
+    if (subject == "overall") {
       setAttendmaterial(student)
       setVisible(true)
       setString("Overall Attendance Report")
     }
 
   }
+  useEffect(() => {
+    if (semester == 'Sem-1') {
+      setSem1(true)
+      console.log("This is sem1", sem1)
 
-  useEffect(() =>{
-    if(semester == 'Sem-1')
-        {
-            setSem1(true)
-            console.log("This is sem1",sem1)
-            
-        }
+    }
 
-        else if(semester == "Sem-2")
-        {
-            setSem2(true)
-            console.log(sem2)
-        }
-        else if(semester == "Sem-3")
-        {
-            setSem3(true)
-            console.log(sem3)
-        }
-        
-        else if(semester == "Sem-4")
-        {
-            setSem4(true)
-            console.log(sem4)
-        }
-      
-  },[student])
+    else if (semester == "Sem-2") {
+      setSem2(true)
+      console.log(sem2)
+    }
+    else if (semester == "Sem-3") {
+      setSem3(true)
+      console.log(sem3)
+    }
+
+    else if (semester == "Sem-4") {
+      setSem4(true)
+      console.log(sem4)
+    }
+
+  }, [student])
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -112,6 +103,8 @@ const Attendancereport = () => {
       }
     }
   }, [])
+
+  console.log(attendmaterial);
 
   const exporttoexcelhandler = () => {
     var wb = XLSX.utils.book_new(),
@@ -129,127 +122,127 @@ const Attendancereport = () => {
 
   return (
     <>
-       <div className='height100vh'>
-    <Navbar />
-      {sem1 && <div className='classrepcontainer' id='sem-23'>
-  <form className='repform1' onSubmit={subjectupdate}>
-    <select
-                type="text"
-            className="form-control shadow-none"
-                id="subject"
-                name="subject"
-                value={subject}
-                required
-                onChange={(e) => setSubject(e.target.value)}>
-                <option required>Select Subject</option>
-                <option value='overall'>Overall</option>
-                <option value="Algorithms And Data Structure">
-                  Algorithms and Data Structure
-                </option>
-                <option value="Software Design & Programming">
-                  Software Design & Programming
-                </option>
-                <option value="Mathematical Foundation Of Computing">
-                  Mathematical Foundation of Computing
-                </option>
-                <option value="Computer System Architecture">
-                  Computer System Architecture
-                </option>
-              </select>
-              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
-             Search
-            </button>
-    </form>
-  </div>}
-  {sem2 && <div className='classrepcontainer'>
-    <form onSubmit={subjectupdate}>
-    <select
-                type="text"
-            className="form-control shadow-none"
-                id="subject"
-                name="subject"
-                value={subject}
-                required
-                onChange={(e) => setSubject(e.target.value)}>
-                <option required>Select Subject</option>
-                <option value='overall'>Overall</option>
-                <option value="Computer Communication and Networks">Computer Communication and Networks</option>
-                <option value="Operating Systems">Operating Systems</option>
-                <option value="Database Systems">Database Systems</option>
-                <option value="Applied Machine Learning">Applied Machine Learning</option>
-                <option value="Open Elective-1">Open Elective-1</option>
-              </select>
-              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
-             Search
-            </button>
-    </form>
-  </div>}
-  {sem3 && <div className='classrepcontainer'>
-    <form onSubmit={subjectupdate}>
-    <select
-                type="text"
-            className="form-control shadow-none"
-                id="subject"
-                name="subject"
-                value={subject}
-                required
-                onChange={(e) => setSubject(e.target.value)}>
-                <option required>Select Subject</option>
-                <option value='overall'>Overall Attendance</option>
-                <option value="Information System Design">Information System Design</option>
-                <option value="Cloud Computing">Cloud Computing</option>
-                <option value="Software Engineering">Software Engineering</option>
-                <option value="IT Planning and Management">IT Planning and Management</option>
-              </select>
-              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
+      <div className='height100vh'>
+        <Navbar />
+        {sem1 && <div className='classrepcontainer' id='sem-23'>
+          <form className='repform1' onSubmit={subjectupdate}>
+            <select
+              type="text"
+              className="form-control shadow-none"
+              id="subject1"
+              name="subject"
+              value={subject}
+              required
+              onChange={(e) => setSubject(e.target.value)}>
+              <option required>Select Subject</option>
+              <option value='overall'>Overall</option>
+              <option value="Algorithms And Data Structure">
+                Algorithms and Data Structure
+              </option>
+              <option value="Software Design & Programming">
+                Software Design & Programming
+              </option>
+              <option value="Mathematical Foundation Of Computing">
+                Mathematical Foundation of Computing
+              </option>
+              <option value="Computer System Architecture">
+                Computer System Architecture
+              </option>
+            </select>
+            <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
               Search
             </button>
-    </form>
-  </div>}
-  {sem4 && <div className='classrepcontainer'>
-    <form onSubmit={subjectupdate}>
-    <select
-                type="text"
-            className="form-control shadow-none"
-                id="subject"
-                name="subject"
-                value={subject}
-                required
-                onChange={(e) => setSubject(e.target.value)}>
-                <option required>Select Subject</option>
-                <option value='overall'>Overall</option>
-                <option value="Internet of Things Systems, Security and Cloud">Internet of Things Systems, Security and Cloud</option>
-                <option value="Health Informatics">Health Informatics</option>
-                <option value="Research Methods in Informatics">Research Methods in Informatics</option>
-              </select>
-              <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
+          </form>
+        </div>}
+        {sem2 && <div className='classrepcontainer'>
+          <form className='repform1' onSubmit={subjectupdate}>
+            <select
+              type="text"
+              className="form-control shadow-none"
+              id="subject1"
+              name="subject"
+              value={subject}
+              required
+              onChange={(e) => setSubject(e.target.value)}>
+              <option required>Select Subject</option>
+              <option value='overall'>Overall</option>
+              <option value="Computer Communication and Networks">Computer Communication and Networks</option>
+              <option value="Operating Systems">Operating Systems</option>
+              <option value="Database Systems">Database Systems</option>
+              <option value="Applied Machine Learning">Applied Machine Learning</option>
+              <option value="Open Elective-1">Open Elective-1</option>
+            </select>
+            <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
               Search
             </button>
-    </form>
-  </div>}
-    {<h3 className='text-center' id='string-12'>{string}</h3>}
-    
-     {visible && <div className='overflowxauto'>
-        <table className='table table-striped overflowxauto' id='mytable-2'>
-          <thead className='heading-2'>
-            <tr>
-                    
+          </form>
+        </div>}
+        {sem3 && <div className='classrepcontainer'>
+          <form className='repform1' onSubmit={subjectupdate}>
+            <select
+              type="text"
+              className="form-control shadow-none"
+              id="subject1"
+              name="subject"
+              value={subject}
+              required
+              onChange={(e) => setSubject(e.target.value)}>
+              <option required>Select Subject</option>
+              <option value='overall'>Overall Attendance</option>
+              <option value="Information System Design">Information System Design</option>
+              <option value="Cloud Computing">Cloud Computing</option>
+              <option value="Software Engineering">Software Engineering</option>
+              <option value="IT Planning and Management">IT Planning and Management</option>
+            </select>
+            <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
+              Search
+            </button>
+          </form>
+        </div>}
+        {sem4 && <div className='classrepcontainer'>
+          <form className='repform1' onSubmit={subjectupdate}>
+            <select
+              type="text"
+              className="form-control shadow-none"
+              id="subject1"
+              name="subject"
+              value={subject}
+              required
+              onChange={(e) => setSubject(e.target.value)}>
+              <option required>Select Subject</option>
+              <option value='overall'>Overall</option>
+              <option value="Internet of Things Systems, Security and Cloud">Internet of Things Systems, Security and Cloud</option>
+              <option value="Health Informatics">Health Informatics</option>
+              <option value="Research Methods in Informatics">Research Methods in Informatics</option>
+            </select>
+            <button type="submit" className="btn btn-primary submit-btn" id='btn-12'>
+              Search
+            </button>
+          </form>
+        </div>}
+        {<h3 className='text-center' id='string-12'>{string}</h3>}
+
+        {visible && <div className='overflowxauto'>
+          <table className='table table-striped overflowxauto' id='mytable-2'>
+            <thead className='heading-2'>
+              <tr>
+
                 <th>subject</th>
                 <th>Date</th>
                 <th>Attendance Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <List attendmaterial={attendmaterial} />
-          </tbody>
-        </table>
-      </div>}
+              </tr>
+            </thead>
+            <tbody>
+              <List attendmaterial={attendmaterial} />
+            </tbody>
+          </table>
+        </div>}
 
-    {visible && <div className='text-center  button_block8'>
-   <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
-   <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
-   </div>}
-   </div>
+        {visible && <div className='text-center  button_block8'>
+          <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
+          <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>
+        </div>}
+      </div>
     </>
   )
 }

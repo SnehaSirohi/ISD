@@ -18,7 +18,7 @@ const Sem_1 = () => {
   const [SunilKumar, setSunilKumar] = useState(false)
   const [success, setsuccess] = useState(false)
   const fetchdata = async () => {
-    const response = await fetch("http://localhost:4000/attendance", {
+    const response = await fetch("https://isd-production.up.railway.app/attendance", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -66,7 +66,7 @@ const Sem_1 = () => {
   
     if(subject) {
       e.preventDefault()
-      const response = await fetch("http://localhost:4000/attendance/sem1", {
+      const response = await fetch("https://isd-production.up.railway.app/attendance/sem1", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -186,7 +186,7 @@ const Sem_1 = () => {
             </table>
           </div>
           <div className="button-1">
-            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onClick={Submit}>Submit</button>
+            <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onClick={Submit}>Save</button>
           </div>
         </div>
         {success && <div className="container-fluid blacky">

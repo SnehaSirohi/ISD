@@ -23,7 +23,7 @@ const Sem_3 = () => {
   const sem = "Sem-3";
   //-----------
   async function populate(e) {
-    const req = await fetch('http://localhost:4000/scheduletest', {
+    const req = await fetch('https://isd-production.up.railway.app/scheduletest', {
       headers: {
         'x-access-token': localStorage.getItem('token'), //
       },
@@ -52,7 +52,7 @@ const Sem_3 = () => {
     if(subject && time && date)
     {
   
-      const response = await fetch("http://localhost:4000/scheduletest", {
+      const response = await fetch("https://isd-production.up.railway.app/scheduletest", {
         method: "POST",
         headers: {
           Accept: "application/json",//
@@ -72,10 +72,6 @@ const Sem_3 = () => {
         setwarning(data.warning)
         setsuccess(data.success)
       });
-      setTimeout(() => {
-        setsuccess(false)
-        navigate("/Teacherdashboard");
-      }, 2500);
     }
     else {
       e.preventDefault()
@@ -155,7 +151,13 @@ const Sem_3 = () => {
       }
     }
   }, [])
-
+  if(success)
+  {
+    setTimeout(() => {
+      setsuccess(false)
+      navigate("/Teacherdashboard");
+    }, 2500);
+  }
   return (
     <>
     <div className='height100vh'>
