@@ -5,7 +5,7 @@ const List = ({ material }) => {
   return (
     <>
       {material.map((teach) => {
-        const { teacher, subject, semester, file } = teach;
+        const { teacher, subject, semester,date, file } = teach;
         return (
           <>
             <tr>
@@ -16,6 +16,9 @@ const List = ({ material }) => {
               </td>
               <td>
                 {semester}
+              </td>
+              <td>
+                {date}
               </td>
               <td>
                 {file}

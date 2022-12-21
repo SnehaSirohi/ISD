@@ -30,7 +30,7 @@ const Studymaterial_report = () => {
     console.log(json)
     if (json.data.length != 0) {
       setVisible(true)
-      setString("Study Material Posted ")
+      setString("Study Materials Posted ")
     } else {
       setString("No Study Material Posted !")
     }
@@ -76,6 +76,7 @@ const Studymaterial_report = () => {
                 <th>Professor</th>
                 <th>Subject</th>
                 <th>Semester</th>
+                <th>Date</th>
                 <th>File</th>
               </tr>
             </thead>
