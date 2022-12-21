@@ -138,7 +138,7 @@ function UploadAssignmentsem4() {
                   name="subject"
                   value={subject}
                   onChange={(e) => setsubject(e.target.value)}>
-                  <option>Select Subject</option>
+                  <option value="">Select Subject</option>
                   <option value="Internet of Things Systems, Security and Cloud">
                     Internet of Things Systems, Security and Cloud
                   </option>
@@ -155,7 +155,7 @@ function UploadAssignmentsem4() {
                   name="subject"
                   value={subject}
                   onChange={(e) => setsubject(e.target.value)}>
-                  <option>Select Subject</option>
+                  <option value="">Select Subject</option>
                   <option value="Health Informatics">Health Informatics</option>
                 </select>
               </div>
@@ -170,7 +170,7 @@ function UploadAssignmentsem4() {
                   name="subject"
                   value={subject}
                   onChange={(e) => setsubject(e.target.value)}>
-                  <option>Select Subject</option>
+                  <option value="">Select Subject</option>
                   <option value="Dissertation Project">
                     Dissertation Project
                   </option>
@@ -187,7 +187,7 @@ function UploadAssignmentsem4() {
                   name="subject"
                   value={subject}
                   onChange={(e) => setsubject(e.target.value)}>
-                  <option>Select Subject</option>
+                  <option value="">Select Subject</option>
                   <option value="Research Methods in Informatics">
                     Research Methods in Informatics
                   </option>
