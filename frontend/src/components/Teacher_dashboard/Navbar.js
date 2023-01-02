@@ -15,7 +15,6 @@ function Navbar() {
     const showsemesterhandler = () => setsem(!sem);
     const showSidebar = () => setSidebar(!sidebar);
 
-
     return (
         <>
             <IconContext.Provider value={{ color: '#fff' }}>
@@ -53,10 +52,14 @@ function Navbar() {
                         <li className="semester " style={{
                             display: sem ? "block" : "none"
                         }}>
-                            <Link to="/Teacherdashboard/sem1"><p>1st</p></Link>
-                            <Link to="/Teacherdashboard/sem2"><p>2nd</p></Link>
-                            <Link to="/Teacherdashboard/sem3"><p>3rd</p></Link>
-                            <Link to="/Teacherdashboard/sem4"><p>4th</p></Link>
+                            <Link to="/operations/Sem-1"><p>1st</p></Link>
+                            <Link to="/operations/Sem-2"><p>2nd</p></Link>
+                            <Link to="/operations/Sem-3"><p>3rd</p></Link>
+                            <Link to="/operations/Sem-4"><p>4th</p></Link>
+                            {/* <p onClick={(e)=>navigate("/Teacherdashboard/sem2")} >1st</p>
+                            <p onClick={(e)=>handleclick("Sem-2")} >2nd</p>
+                            <p onClick={(e)=>handleclick("Sem-3")} >3rd</p>
+                            <p onClick={(e)=>handleclick("Sem-4")} >4th</p> */}
                         </li>
                         <li className="nav-text">
                             <FaIcons.FaBell color='rgb(0, 104, 74)' />

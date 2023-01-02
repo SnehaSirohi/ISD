@@ -2,13 +2,18 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import jwt from 'jsonwebtoken'
-import { useNavigate } from "react-router-dom"
+import { useNavigate,useParams } from "react-router-dom"
 import List from './List'
 import jsPDF from "jspdf";
-import autoTable from 'jspdf-autotable';
 import Navbar from '../Teacher_dashboard/Navbar';
+import autoTable from 'jspdf-autotable';
+import './filters.css'
+import Sem1Subjects from '../Subjects/Sem1Subjects';
+import Sem2Subjects from '../Subjects/Sem2Subjects';
+import Sem3Subjects from '../Subjects/Sem3Subjects';
+import Sem4Subjects from '../Subjects/Sem4Subjects';
 var XLSX = require("xlsx");
-const Sem3filters = () => {
+const Filters = ({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish}) => {
   const navigate = useNavigate();
   const [subject, setsubject] = useState(false)
   const [date, setdate] = useState(false)
@@ -22,16 +27,18 @@ const Sem3filters = () => {
   const [val, setval] = useState("")
   const [student, setstudent] = useState([]);
   const [report, setreport] = useState(false)
-  const [UnmeshShukla, setUnmeshShukla] = useState(false)
-  const [NitishaAgg, setNitishaAgg] = useState(false)
-  const [MKDas, setMKDas] = useState(false)
-  const [Manish, setManish] = useState(false)
+  const[Sem1,setSem1]=useState(false)
+  const[Sem2,setSem2]=useState(false)
+  const[Sem3,setSem3]=useState(false)
+  const[Sem4,setSem4]=useState(false)
   const [visible, setVisible] = useState(false)
   const [string, setString] = useState("")
   const [heading, setHeading] = useState("Overall Attendance Report")
-
+ const params=useParams()
+ const sem=params.semester;
+ const semparam = sem.slice(0,3)+sem.slice(4,5)
   const fetchdata = async () => {
-    const response = await fetch("https://isd-production.up.railway.app/attendancereport/sem3", {
+    const response = await fetch(`https://isd-production.up.railway.app/attendancereport/${semparam}`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -40,18 +47,6 @@ const Sem3filters = () => {
       }
     })
     const json = await response.json()
-    if (json.name == "Unmesh Shukla") {
-      setUnmeshShukla(true)
-    }
-    if (json.name == "Nitisha Aggarwal") {
-      setNitishaAgg(true)
-    }
-    if (json.name == "M.K Das") {
-      setMKDas(true)
-    }
-    if (json.name == "Manish") {
-      setManish(true)
-    }
     setstudent(json.data)
 
     if (json.data.length != 0) {
@@ -59,7 +54,6 @@ const Sem3filters = () => {
     }
     else {
       setString("No Attendance Report Available !")
-
     }
 
     if (monthval) {
@@ -90,6 +84,55 @@ const Sem3filters = () => {
     }
 
   }
+ 
+  function handlechange(e) {
+    var val = e.target.value
+    setfilter(val)
+
+    if (val == "overall") {
+
+      setdate(false)
+      setmonth(false)
+      setsubject(false)
+      setbutton(true)
+      setoverall(true)
+      setreport(false)
+      setdateval("")
+      setmonthval("")
+      setsubjectval("")
+    }
+    if (val == "date") {
+      setdate(true)
+      setmonth(false)
+      setsubject(false)
+      setbutton(true)
+      setreport(false)
+      setoverall("")
+      setmonthval("")
+      setsubjectval("")
+    }
+    if (val == "month") {
+      setdate(false)
+      setmonth(true)
+      setsubject(false)
+      setbutton(true)
+      setreport(false)
+      setoverall("")
+      setdateval("")
+      setsubjectval("")
+    }
+    if (val == "subject") {
+      setdate(false)
+      setmonth(false)
+      setsubject(true)
+      setbutton(true)
+      setreport(false)
+      setoverall("")
+      setdateval("")
+      setmonthval("")
+    }
+  }
+
 useEffect(()=>{
     const token = localStorage.getItem('token')
     if (token) {
@@ -101,6 +144,20 @@ useEffect(()=>{
         fetchdata()
       }
     } 
+     switch(sem)
+  {
+    case "Sem-1":
+        setSem1(true)
+        break;
+    case "Sem-2":
+        setSem2(true)
+        break;
+    case "Sem-3":
+        setSem3(true)
+        break
+    case "Sem-4":
+        setSem4(true)
+  }
   },[])
 useEffect(()=>{
   if(overall && val)
@@ -127,51 +184,6 @@ useEffect(()=>{
     fetchdata()
   
   }
-  function handlechange(e) {
-    var val = e.target.value
-    setfilter(val)
-
-    if (val == "overall") {
-
-      setdate(false)
-      setmonth(false)
-      setsubject(false)
-      
-      setoverall(true)
-      setreport(false)
-      setdateval("")
-      setmonthval("")
-      setsubjectval("")
-    }
-    if (val == "date") {
-      setdate(true)
-      setmonth(false)
-      setsubject(false)
-      setbutton(true)
-      setoverall("")
-      setmonthval("")
-      setsubjectval("")
-    }
-    if (val == "month") {
-      setdate(false)
-      setmonth(true)
-      setsubject(false)
-      setbutton(true)
-      setoverall("")
-      setdateval("")
-      setsubjectval("")
-    }
-    if (val == "subject") {
-      setdate(false)
-      setmonth(false)
-      setsubject(true)
-      setbutton(true)
-      setoverall("")
-      setdateval("")
-      setmonthval("")
-    }
-  }
-  
   const exporttoexcelhandler = () => {
     var wb = XLSX.utils.book_new(),
       ws = XLSX.utils.json_to_sheet(student);
@@ -186,12 +198,12 @@ useEffect(()=>{
     autoTable(doc, { html: '#mytable' })
     doc.save('table.pdf')
   };
+
   return (
     <>
        <div className='height100vh'>
-      <Navbar />
       <div className=" mb-3" >
-
+        <Navbar />
         {/* <label className="form-label">Select Filter</label> */}
         <select
           type="text"
@@ -215,7 +227,7 @@ useEffect(()=>{
         </select>
       </div>
       {date && <form>
-        <div className="mb-3" id='date_block1'>
+        <div className="mb-3" id='date_block1' >
           {/* <label className="form-label">Enter Date</label> */}
           <input type="date" className="form-control-12" value={dateval} onChange={(e) => setdateval(e.target.value)} />
         </div>
@@ -226,7 +238,7 @@ useEffect(()=>{
           {/* <label className="form-label">Select Month</label> */}
           <select
             type="text"
-            className="form-control-12 shadow-none"
+            className="form-control-12"
             id="month"
             name="month"
             value={monthval}
@@ -253,81 +265,19 @@ useEffect(()=>{
           </select>
         </div>
       </form>}
-      {subject && NitishaAgg && <form>
-        <div className="selectsubjectcontainer">
-          {/* <label className="form-label">Select Subject</label> */}
-          <select
-            type="text"
-            className="form-control shadow-none"
-            id="subject"
-            name="subject"
-            value={subjectval}
-            onChange={(e) => setsubjectval(e.target.value)}>
-            <option>Select Subject</option>
-            <option value="Information System Design">
-              Information System Design
-            </option>
-
-
-          </select>
-        </div>
-      </form>}
-      {subject && UnmeshShukla && <form>
-        <div className="selectsubjectcontainer">
-          {/* <label className="form-label">Select Subject</label> */}
-          <select
-            type="text"
-            className="form-control shadow-none"
-            id="subject"
-            name="subject"
-            value={subjectval}
-            onChange={(e) => setsubjectval(e.target.value)}>
-            <option>Select Subject</option>
-            <option value="Cloud Computing">Cloud Computing</option>
-          </select>
-        </div>
-      </form>}
-      {subject && MKDas && <form>
-        <div className="selectsubjectcontainer">
-          {/* <label className="form-label">Select Subject</label> */}
-          <select
-            type="text"
-            className="form-control shadow-none"
-            id="subject"
-            name="subject"
-            value={subjectval}
-            onChange={(e) => setsubjectval(e.target.value)}>
-            <option>Select Subject</option>
-            <option value="Software Engineering">Software Engineering</option>
-
-          </select>
-        </div>
-      </form>}
-      {subject && Manish && <form>
-        <div className="selectsubjectcontainer">
-          {/* <label className="form-label">Select Subject</label> */}
-          <select
-            type="text"
-            className="form-control shadow-none"
-            id="subject"
-            name="subject"
-            value={subjectval}
-            onChange={(e) => setsubjectval(e.target.value)}>
-            <option>Select Subject</option>
-            <option value="IT Planning and Management">
-              IT Planning and Management
-            </option>
-          </select>
-        </div>
-      </form>}
+           {subject && Sem1 &&  <Sem1Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} SunilKumar={SunilKumar} subject={subject} setsubject={setsubject} />}
+           {subject &&Sem2 &&  <Sem2Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} subject={subject} setsubject={setsubject} />}
+           {subject &&Sem3 &&  <Sem3Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Manish={Manish} subject={subject} setsubject={setsubject} />}
+           {subject &&Sem4 &&  <Sem4Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} subject={subject} setsubject={setsubject} />}
 
       <div className='text-center'>
         {button && <button type="submit" className="btn btn-primary" id='button_block5' onClick={Print}  >Print Attendance</button>}
       </div>
-      <div>{string}</div>
-      {visible && <>
+      {visible && <div>
         <h3 className='overall-1'>{heading}</h3>
-      </>}
+
+      </div>}
+      <div>{string}</div>
       {visible && <>
         <div className='table-24 overflowxauto'>
           <table className='table table-striped overflowxauto'>
@@ -354,4 +304,4 @@ useEffect(()=>{
   )
 }
 
-export default Sem3filters
+export default Filters

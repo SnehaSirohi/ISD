@@ -1,62 +1,71 @@
 import React from 'react'
-import Navbar from "./Navbar.js"
-import { Link } from "react-router-dom";
+import {useParams } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
+import Navbar from "./Navbar.js";
 import "./sem.css"
+const Operations = () => {
+    const navigate=useNavigate()
+    const params=useParams()
+    const semester = params.semester
 
-function Sem1() {
-    return (
-        <div className='page height100vh'>
+
+
+  
+
+  return (
+   <>
+    <div className='page height100vh'>
             <Navbar />
             <div class="album py-5 text-center">
-                <h1 className='container semheadline'>Semester 1st</h1>
+                <h1 className='container semheadline'>{semester}</h1>
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        <Link to='/Teacherdashboard/sem1/classschedule'><div class="col">
+                       <div class="col" onClick={()=>navigate(`/Teacherdashboard/scheduleclass/${semester}`)} >
                             <div class="card-body">
                                 <h3>Schedule Class</h3>
                             </div>
                         </div>
-                        </Link>
-                        <Link to="/Teacherdashboard/sem1/testschedule"><div class="col">
+                        
+                     <div class="col" onClick={()=>navigate(`/Teacherdashboard/scheduletest/${semester}`)}>
 
                             <div class="card-body">
                                 <h3>Schedule Test</h3>
                             </div>
                         </div>
-                        </Link>
-                        <Link to="/Teacherdashboard/sem1/attendance"> <div class="col">
+                  <div class="col" onClick={()=>navigate(`/Teacherdashboard/attendance/${semester}`)}>
                             <div class="card-body">
                                 <h3>Mark Attendance</h3>
                             </div>
                         </div>
-                        </Link>
-                        <Link to="/Teacherdashboard/sem1/studymaterial">
-                            <div class="col">
+                       
+                      
+                            <div class="col" onClick={()=>navigate(`/Teacherdashboard/upload/studymaterial/${semester}`)}>
                                 <div class="card-body">
                                     <h3>Upload Study Material</h3>
                                 </div>
                             </div>
-                        </Link>
-                        <Link to="/Teacherdashboard/sem1/assignment">
-                            <div class="col">
+                        
+                
+                            <div class="col" onClick={()=>navigate(`/Teacherdashboard/upload/assignment/${semester}`)}>
 
                                 <div class="card-body">
                                     <h3>Upload Assignment</h3>
                                 </div>
                             </div>
-                        </Link>
-                        <Link to='/Teacherdashboard/filters/sem1'><div class="col">
+                   
+                       <div class="col" onClick={()=>navigate(`/Teacherdashboard/filters/${semester}`)}>
 
                             <div class="card-body">
                                 <h3>Attendance Report</h3>
                             </div>
                         </div>
-                        </Link>
+                        
                     </div>
                 </div>
             </div>
         </div>
-    )
+   </>
+  )
 }
 
-export default Sem1
+export default Operations

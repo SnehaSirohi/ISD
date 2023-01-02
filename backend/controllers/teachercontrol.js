@@ -526,6 +526,13 @@ const sem4Attendance = async (req, res) => {
     }
   }
 };
+const UploadContent=async(req,res)=>{
+  console.log("rqst rcvd")
+  console.log(req.params.postparam)
+  
+}
+
+
 
 const Sem1AttendanceReport = async (req, res) => {
   const token = req.headers["x-access-token"];
@@ -822,5 +829,6 @@ module.exports = {
   GetStudyMaterial,
   StudyMaterial_Posted,
   GetAssignmentSubmitt,
-  assignment_s_submited
+  assignment_s_submited,
+  UploadContent
 };

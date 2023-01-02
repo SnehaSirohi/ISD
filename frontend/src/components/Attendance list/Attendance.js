@@ -4,19 +4,26 @@ import "./attendance.css";
 import jwt from 'jsonwebtoken' //
 import List from "./List";
 import Navbar from "../Teacher_dashboard/Navbar.js";
-import { useNavigate } from "react-router-dom"
-
-const Sem_1 = () => {
-  //
+import { useNavigate,useParams } from "react-router-dom"
+import Sem1Subjects from '../Subjects/Sem1Subjects';
+import Sem2Subjects from '../Subjects/Sem2Subjects';
+import Sem3Subjects from '../Subjects/Sem3Subjects';
+import Sem4Subjects from '../Subjects/Sem4Subjects';
+const Attendance = ({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish}) => {
+  const params=useParams()
+  console.log(params)
   const navigate = useNavigate();
   const [students, setstudents] = useState([]);
   const [status, setstatus] = useState({});
   const [subject, setsubject] = useState("");
-  const [UnmeshShukla, setUnmeshShukla] = useState(false)
-  const [NitishaAgg, setNitishaAgg] = useState(false)
-  const [MKDas, setMKDas] = useState(false)
-  const [SunilKumar, setSunilKumar] = useState(false)
+   const[Sem1,setSem1]=useState(false)
+  const[Sem2,setSem2]=useState(false)
+  const[Sem3,setSem3]=useState(false)
+  const[Sem4,setSem4]=useState(false)
   const [success, setsuccess] = useState(false)
+  const sem = params.semester ;
+  const semparam=sem.slice(0,3) + sem.slice(4,5)
+  console.log(semparam)
   const fetchdata = async () => {
     const response = await fetch("https://isd-production.up.railway.app/attendance", {
       method: "GET",
@@ -28,20 +35,6 @@ const Sem_1 = () => {
       },
     });
     const json = await response.json();
-
-    if (json.name == "Unmesh Shukla") {
-      setUnmeshShukla(true)
-    }
-    if (json.name == "Nitisha Aggarwal") {
-      setNitishaAgg(true)
-    }
-    if (json.name == "M.K Das") {
-      setMKDas(true)
-    }
-    if (json.name == "Sunil Kumar") {
-      setSunilKumar(true)
-    }
-
     let data1 = json.data.filter((data) => data.semester == "Sem-1");
     setstudents(data1);
   };
@@ -59,6 +52,20 @@ const Sem_1 = () => {
         fetchdata()
       }
     }
+    switch(sem)
+  {
+    case "Sem-1":
+        setSem1(true)
+        break;
+    case "Sem-2":
+        setSem2(true)
+        break;
+    case "Sem-3":
+        setSem3(true)
+        break
+    case "Sem-4":
+        setSem4(true)
+  }
 
   }, []);
 
@@ -66,7 +73,7 @@ const Sem_1 = () => {
   
     if(subject) {
       e.preventDefault()
-      const response = await fetch("https://isd-production.up.railway.app/attendance/sem1", {
+      const response = await fetch(`https://isd-production.up.railway.app/attendance/${semparam}`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -103,67 +110,11 @@ const Sem_1 = () => {
       <div className='height100vh'>
         <div className="attendencebody">
           <Navbar />
-          <h1 className="atte1">Sem-1 Attendance</h1>
-          {UnmeshShukla && <div className="mb-3 selectsubjectcontainer ">
-            <select
-              type="text"
-              className="form-control shadow-none"
-              id="subject"
-              name="subject"
-              value={subject}
-              required
-              onChange={(e) => setsubject(e.target.value)}>
-              <option value="">Select Subject</option>
-              <option value="Algorithms And Data Structure">
-                Algorithms and Data Structure
-              </option>
-            </select></div>}
-          {NitishaAgg && <div className="mb-3 selectsubjectcontainer">
-
-            <select
-              type="text"
-              className="form-control shadow-none"
-              id="subject"
-              name="subject"
-              value={subject}
-              required
-              onChange={(e) => setsubject(e.target.value)}>
-              <option value="">Select Subject</option>
-              <option value="Software Design & Programming">
-                Software Design & Programming
-              </option>
-            </select></div>}
-          {MKDas && <div className="mb-3 selectsubjectcontainer">
-
-            <select
-              type="text"
-              className="form-control shadow-none"
-              id="subject"
-              name="subject"
-              value={subject}
-              required
-              onChange={(e) => setsubject(e.target.value)}>
-              <option value="">Select Subject</option>
-              <option value="Mathematical Foundation Of Computing">
-                Mathematical Foundation of Computing
-              </option>
-            </select></div>}
-          {SunilKumar && <div className="mb-3 selectsubjectcontainer">
-
-            <select
-              type="text"
-              className="form-control shadow-none"
-              id="subject"
-              name="subject"
-              value={subject}
-              required
-              onChange={(e) => setsubject(e.target.value)}>
-              <option value="">Select Subject</option>
-              <option value="Computer System Architecture">
-                Computer System Architecture
-              </option>
-            </select></div>}
-
+          <h1 className="atte1">{sem} Attendance</h1>
+          {Sem1 &&  <Sem1Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} SunilKumar={SunilKumar} subject={subject} setsubject={setsubject} />}
+           {Sem2 &&  <Sem2Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} subject={subject} setsubject={setsubject} />}
+           {Sem3 &&  <Sem3Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Manish={Manish} subject={subject} setsubject={setsubject} />}
+           {Sem4 &&  <Sem4Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} subject={subject} setsubject={setsubject} />}
           <div className="table-1">
             <table className="table table-striped">
               <thead className="heading-1">
@@ -194,4 +145,4 @@ const Sem_1 = () => {
   );
 };
 
-export default Sem_1;
+export default Attendance;

@@ -26,7 +26,8 @@ const {
   GetStudyMaterial,
   StudyMaterial_Posted,
   GetAssignmentSubmitt,
-  assignment_s_submited
+  assignment_s_submited,
+  UploadContent
 } = require("../controllers/teachercontrol");
 
 const {
@@ -115,14 +116,14 @@ router.post("/scheduletest", PostscheduleTest);
 
 //............
 router.get("/attendance", GetAttendance);
-router.post("/attendance/sem1", sem1Attendance);
-router.post("/attendance/sem2", sem2Attendance);
-router.post("/attendance/sem3", sem3Attendance);
-router.post("/attendance/sem4", sem4Attendance);
-router.get("/attendancereport/sem1", Sem1AttendanceReport);
-router.get("/attendancereport/sem2", Sem2AttendanceReport);
-router.get("/attendancereport/sem3", Sem3AttendanceReport);
-router.get("/attendancereport/sem4", Sem4AttendanceReport);
+router.post("/attendance/Sem1", sem1Attendance);
+router.post("/attendance/Sem2", sem2Attendance);
+router.post("/attendance/Sem3", sem3Attendance);
+router.post("/attendance/Sem4", sem4Attendance);
+router.get("/attendancereport/Sem1", Sem1AttendanceReport);
+router.get("/attendancereport/Sem2", Sem2AttendanceReport);
+router.get("/attendancereport/Sem3", Sem3AttendanceReport);
+router.get("/attendancereport/Sem4", Sem4AttendanceReport);
 router.get("/scheduledclassreport", ScheduledClassReport);
 router.get("/scheduledtestreport", ScheduledTestReport);
 router.get("/upload/assignment", Getuploadassignment);

@@ -1,71 +1,48 @@
-import React from "react";
+import React from 'react'
+import { useParams } from 'react-router-dom'
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./classschedule.css";
 import Navbar from "../Teacher_dashboard/Navbar";
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import * as FaIcons from 'react-icons/fa';
-
-
-
-const Sem_1 = () => {
-  //
+import Sem1Subjects from '../Subjects/Sem1Subjects';
+import Sem2Subjects from '../Subjects/Sem2Subjects';
+import Sem3Subjects from '../Subjects/Sem3Subjects';
+import Sem4Subjects from '../Subjects/Sem4Subjects';
+import "./classschedule.css"
+const Schedule = ({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish}) => {
+  const params=useParams()
+ console.log(params)
   const navigate = useNavigate();
+  const[classschedule,setClasschedule]=useState(false)
   const [subject, setsubject] = useState("");
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
   const [message, setmessage] = useState("");
   const [warning, setwarning] = useState("");
-  const [UnmeshShukla, setUnmeshShukla] = useState(false)
-  const [NitishaAgg, setNitishaAgg] = useState(false)
-  const [MKDas, setMKDas] = useState(false)
-  const [SunilKumar, setSunilKumar] = useState(false)
+//   const [UnmeshShukla, setUnmeshShukla] = useState(false)
+//   const [NitishaAgg, setNitishaAgg] = useState(false)
+//   const [MKDas, setMKDas] = useState(false)
+//   const [SunilKumar, setSunilKumar] = useState(false)
+//   const[Sanjeev,setSanjeev]=useState(false)
+//   const [Manish,setManish]=useState(false)
   const [teacher, setTeacher] = useState("")
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [isdot, setIsdotVisible] = useState(false);
   const[success,setsuccess] = useState(false)
   const [empty,setempty]=useState(false)
-
-  // const handleButtonClick = () => {
-  //   setIsdotVisible(true);
-  //   setTimeout(() => {
-  //     setIsdotVisible(false);
-  //     setIsAlertVisible(true);
-  //   }, 2000);
-  // }
-
-  const sem = "Sem-1";
+  const[Sem1,setSem1]=useState(false)
+  const[Sem2,setSem2]=useState(false)
+  const[Sem3,setSem3]=useState(false)
+  const[Sem4,setSem4]=useState(false)
+  const sem = params.semester ;
 
   //-----------
-  async function populate(e) {
-    const req = await fetch('https://isd-production.up.railway.app/scheduleclass', {
-      headers: {
-        'x-access-token': localStorage.getItem('token'), //
-      },
-    })
-    const data = await req.json();
-    setTeacher(data.name)
-    if (data.name == "Unmesh Shukla") {
-      setUnmeshShukla(true)
-    }
-    if (data.name == "Nitisha Aggarwal") {
-      setNitishaAgg(true)
-    }
-    if (data.name == "M.K Das") {
-      setMKDas(true)
-    }
-    if (data.name == "Sunil Kumar") {
-      setSunilKumar(true)
-    }
-  }
-
-  async function schedule(e) {
-
-    
+  async function schedule(e) { 
     if (subject && time && date) {
       e.preventDefault() 
-      const req = await fetch("https://isd-production.up.railway.app/scheduleclass", {
+      const req = await fetch(`https://isd-production.up.railway.app/${params.schparam}`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -150,19 +127,27 @@ const Sem_1 = () => {
 
   //--------------------
   useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (token) {
-      const user = jwt.decode(token)
-      console.log(user)
-      if (!user) {
-        localStorage.removeItem('token')
-        navigate("/Teacherdashboard");
-      } else {
-        populate()
-
-      }
-    }
+ if(params.schparam=="scheduleclass")
+  {
+    setClasschedule(true)
+  }
+    switch(sem)
+  {
+    case "Sem-1":
+        setSem1(true)
+        break;
+    case "Sem-2":
+        setSem2(true)
+        break;
+    case "Sem-3":
+        setSem3(true)
+        break
+    case "Sem-4":
+        setSem4(true)
+  }
   }, [])
+
+   
 if(success)
 {
   setTimeout(() => {
@@ -173,116 +158,17 @@ if(success)
   return (
     <>
      <div className='height100vh'>
-      {/* <div>
-        {isdot && <div class="loader"  >
-          <div class="pair p1">
-            <div class="dot dot-1 ">
-
-
-            </div>
-            <div class="dot dot-2">
-
-            </div>
-          </div>
-          <div class="pair p2">
-            <div class="dot dot-1">
-
-            </div>
-            <div class="dot dot-2">
-
-            </div>
-          </div>
-        </div>}
-      </div> */}
       <Navbar />
       <form onSubmit={schedule}>
-        <div>
-          {/* popup */}
-          {isAlertVisible && <div className="popup center">
-            <div class="icon">
-              <i class="fa fa-check"></i>
-            </div>
-            <div class="title">
-              Success!!
-            </div>
-            <div class="description">
-              class is scheduled successfully
-            </div>
-            <div class="dismiss-btn">
-              <button id="dismiss-popup-btn" onClick={() => setIsAlertVisible(false)}>
-                Dismiss
-              </button>
-            </div>
-          </div>}
-        </div>
-
-        {/* loading */}
-
-
-
         <div className="mb-3 scheduledcontainer" style={{ filter: isAlertVisible || isdot ? "blur(3px)" : "none", background: isAlertVisible ? "#f1ebeb" : "none" }} >
+         <div className=" mb-3">
+            {classschedule ? <h1 className="class-1 mb-1">Class Schedule</h1> : <h1 className="class-1 mb-1">Test Schedule</h1>}
 
 
-          <div className=" mb-3">
-            <h1 className="class-1 mb-1">Class Schedule</h1>
-            {UnmeshShukla && <div className="selectsubjectcontainer">
-
-              <select
-                type="text"
-                className="form-control shadow-none"
-                id="subject"
-                name="subject"
-                value={subject}
-                onChange={(e) => setsubject(e.target.value)}>
-                <option value="">Select Subject</option>
-                <option value="Algorithms And Data Structure">
-                  Algorithms and Data Structure
-                </option>
-              </select></div>}
-            {NitishaAgg && <div className="selectsubjectcontainer">
-
-              <select
-                type="text"
-                className="form-control shadow-none"
-                id="subject"
-                name="subject"
-                value={subject}
-
-                onChange={(e) => setsubject(e.target.value)}>
-                <option value="">Select Subject</option>
-                <option value="Software Design & Programming">
-                  Software Design & Programming
-                </option>
-              </select></div>}
-            {MKDas && <div className="selectsubjectcontainer">
-              <select
-                type="text"
-                className="form-control mt-2 shadow-none"
-                id="subject"
-                name="subject"
-                value={subject}
-
-                onChange={(e) => setsubject(e.target.value)}>
-                <option value="">Select Subject</option>
-                <option value="Mathematical Foundation Of Computing">
-                  Mathematical Foundation of Computing
-                </option>
-              </select></div>}
-            {SunilKumar && <div className="selectsubjectcontainer">
-              <select
-                type="text"
-                className="form-control mt-2 shadow-none"
-                id="subject"
-                name="subject"
-                value={subject}
-
-                onChange={(e) => setsubject(e.target.value)}>
-                <option value="">Select Subject</option>
-                <option value="Computer System Architecture">
-                  Computer System Architecture
-                </option>
-              </select></div>}
-
+           {Sem1 &&  <Sem1Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} SunilKumar={SunilKumar} subject={subject} setsubject={setsubject} />}
+           {Sem2 &&  <Sem2Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} subject={subject} setsubject={setsubject} />}
+           {Sem3 &&  <Sem3Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Manish={Manish} subject={subject} setsubject={setsubject} />}
+           {Sem4 &&  <Sem4Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} subject={subject} setsubject={setsubject} />}
           </div>
 
           <div className="abc-1">
@@ -325,9 +211,11 @@ if(success)
           </div>
 
           <div className="btn-class">
-            <button type="submit" className="btn btn-primary submit-btn"  >
+            {classschedule ? <button type="submit" className="btn btn-primary submit-btn"  >
               Schedule Class
-            </button>
+            </button>:<button type="submit" className="btn btn-primary submit-btn"  >
+              Schedule Test
+            </button>}
           </div>
          
         </div>
@@ -338,7 +226,7 @@ if(success)
    <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none"/> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
 </svg>
 </div>
-<h4>Class scheduled successfully</h4>
+{classschedule ?<h4>Class scheduled successfully</h4> : <h4>Test scheduled successfully</h4>}
 </div>
       </div>}
 {warning && <><div className="container-fluid blacky">
@@ -357,6 +245,6 @@ if(success)
       
     </>
   )
-};
+}
 
-export default Sem_1;
+export default Schedule

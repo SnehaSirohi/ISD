@@ -38,10 +38,7 @@ const Teacher_Dashboard = (props) => {
             setTotalAssignments(json.Assignments_posted)
             setTotalStudymaterial(json.Study_Material_posted)
         }
-        else {
-            // alert(data.error)
-        }
-
+      
     }
 
 

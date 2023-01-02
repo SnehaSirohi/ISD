@@ -1,49 +1,38 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Navbar from "../Teacher_dashboard/Navbar";
-import "./upload_assignment.css";
+import "../Study Material/study.css";
 import jwt from "jsonwebtoken";
-import { useNavigate } from "react-router-dom";
-
-function UploadAssignmentsem1() {
+import { useNavigate,useParams } from "react-router-dom";
+import Sem1Subjects from '../Subjects/Sem1Subjects';
+import Sem2Subjects from '../Subjects/Sem2Subjects';
+import Sem3Subjects from '../Subjects/Sem3Subjects';
+import Sem4Subjects from '../Subjects/Sem4Subjects';
+import './Upload.css'
+function Upload({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish}) {
+  const params=useParams()
+  console.log(params)
   const navigate = useNavigate();
+  const [assignparam,setAssignparam]=useState(false)
   const [file, setFile] = useState("");
   const [subject, setsubject] = useState("");
   const [deadline, setdeadline] = useState("");
   const [teacher, setTeacher] = useState("");
   const [description, setdescription] = useState("");
-  const [UnmeshShukla, setUnmeshShukla] = useState(false);
-  const [NitishaAgg, setNitishaAgg] = useState(false);
-  const [MKDas, setMKDas] = useState(false);
-  const [SunilKumar, setSunilKumar] = useState(false);
   const[success,setsuccess]=useState(false)
-  async function populate(e) {
-    const req = await fetch("https://isd-production.up.railway.app/upload/assignment", {
-      headers: {
-        "x-access-token": localStorage.getItem("token"), //
-      },
-    });
-    const data = await req.json();
-    setTeacher(data.name);
-    if (data.name == "Unmesh Shukla") {
-      setUnmeshShukla(true);
-    }
-    if (data.name == "Nitisha Aggarwal") {
-      setNitishaAgg(true);
-    }
-    if (data.name == "M.K Das") {
-      setMKDas(true);
-    }
-    if (data.name == "Sunil Kumar") {
-      setSunilKumar(true);
-    }
-  }
+   const[Sem1,setSem1]=useState(false)
+  const[Sem2,setSem2]=useState(false)
+  const[Sem3,setSem3]=useState(false)
+  const[Sem4,setSem4]=useState(false)
+  const semester = params.semester ;
 
   async function Upload(e) {
   
-    if(deadline && subject && file) {
+   if(assignparam)
+   {
+     if(deadline && subject && file) {
       e.preventDefault()
-      const response = await fetch("https://isd-production.up.railway.app/upload/assignment", {
+      const response = await fetch(`https://isd-production.up.railway.app/upload/assignment`, {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -54,7 +43,7 @@ function UploadAssignmentsem1() {
           file,
           subject,
           deadline,
-          semester: "Sem-1",
+          semester,
           teacher,
           description,
         }),
@@ -66,6 +55,35 @@ function UploadAssignmentsem1() {
         setsuccess(false)
         navigate("/Teacherdashboard");
       }, 2500);
+    }
+   }
+   if(!assignparam)
+    {
+        if(subject && file){
+
+      const response = await fetch("https://isd-production.up.railway.app/upload/studymaterial", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "x-access-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify({
+          file,
+          subject,
+          semester: "Sem-1",
+          teacher,
+          description,
+        }),
+      });
+  
+      const data = await response.json();
+      setsuccess(data.success)
+      setTimeout(() => {
+        setsuccess(false)
+        navigate("/Teacherdashboard");
+      },2500);
+    }
     }
 
     else{
@@ -82,7 +100,9 @@ function UploadAssignmentsem1() {
         document.getElementById("subject").style.backgroundColor = "white"
       }
 
-      if(!deadline){
+      if(assignparam)
+      {
+           if(!deadline){
        
         document.getElementById("deadlne_blk-1").style.borderColor = "red"
         document.getElementById("deadlne_blk-1").style.backgroundColor = "pink"
@@ -97,6 +117,9 @@ function UploadAssignmentsem1() {
         document.getElementById("deadlne_blk-1").style.borderColor = "black"
         document.getElementById("deadlne_blk-1").style.backgroundColor = "white"
       }
+      }
+
+     
 
       if(!file){
         alert("Please upload a file")
@@ -108,102 +131,39 @@ function UploadAssignmentsem1() {
 
   //--------------------
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      const user = jwt.decode(token);
-      console.log(user);
-      if (!user) {
-        localStorage.removeItem("token");
-        navigate("/Teacherdashboard");
-      } else {
-        populate();
-      }
+    if(params.postparam=='assignment')
+    {
+        setAssignparam(true)
     }
+    switch(semester)
+  {
+    case "Sem-1":
+        setSem1(true)
+        break;
+    case "Sem-2":
+        setSem2(true)
+        break;
+    case "Sem-3":
+        setSem3(true)
+        break
+    case "Sem-4":
+        setSem4(true)
+  }
   }, []);
   return (
     <>
     <div className="uploadassignmentbody">
       <Navbar />
       <div className="uploadheading">
-        <h1>Upload Assignment</h1>
+        {assignparam ? <h1>Upload Assignment</h1>:<h1>Upload Study Material</h1>}
       </div>
 
       <div className="uploadassignmentcontent">
-        {UnmeshShukla && (
-          <div>
-
-
-            <select
-              type="text"
-              className="form-control shadow-none"
-              id="subject"
-              name="subject"
-              value={subject}
-              required
-              onChange={(e) => setsubject(e.target.value)}>
-              <option value="">Select Subject</option>
-              <option value="Algorithms And Data Structure">
-                Algorithms and Data Structure
-              </option>
-            </select>
-          </div>
-        )}
-        {NitishaAgg && (
-          <div>
-
-            <select
-              type="text"
-              className="form-control shadow-none"
-              id="subject"
-              name="subject"
-              value={subject}
-              required
-              onChange={(e) => setsubject(e.target.value)}>
-              <option value="">Select Subject</option>
-              <option value="Software Design & Programming">
-                Software Design & Programming
-              </option>
-            </select>
-          </div>
-        )}
-        {MKDas && (
-          <div>
-
-            <select
-              type="text"
-              className="form-control mt-2 shadow-none"
-              id="subject"
-              name="subject"
-              value={subject}
-              required
-              onChange={(e) => setsubject(e.target.value)}>
-              <option value="">Select Subject</option>
-              <option value="Mathematical Foundation Of Computing">
-                Mathematical Foundation of Computing
-              </option>
-            </select>
-          </div>
-        )}
-        {SunilKumar && (
-          <div>
-
-            <select
-              type="text"
-              className="form-control mt-2 shadow-none"
-              id="subject"
-              name="subject"
-              value={subject}
-              required
-              onChange={(e) => setsubject(e.target.value)}>
-              <option value="">Select Subject</option>
-              <option value="Computer System Architecture">
-                Computer System Architecture
-              </option>
-            </select>
-          </div>
-        )}
-
-        <div className="mb-3 " id="deadline_block">
+           {Sem1 &&  <Sem1Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} SunilKumar={SunilKumar} subject={subject} setsubject={setsubject} />}
+           {Sem2 &&  <Sem2Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} subject={subject} setsubject={setsubject} />}
+           {Sem3 &&  <Sem3Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Manish={Manish} subject={subject} setsubject={setsubject} />}
+           {Sem4 &&  <Sem4Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} subject={subject} setsubject={setsubject} />}
+       {assignparam &&  <div className="mb-3 " id="deadline_block">
           <label className="form-label deadline">Deadline</label>
           <input
             type="date"
@@ -212,7 +172,7 @@ function UploadAssignmentsem1() {
             value={deadline}
             onChange={(e) => setdeadline(e.target.value)}
           />
-        </div>
+        </div>}
         {/* upload file */}
 
         <div className="file-card">
@@ -258,11 +218,11 @@ function UploadAssignmentsem1() {
    <div classNam="wrappertick"> <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"> <circle className="checkmark__circle" cx={26} cy={26} r={25} fill="none"/> <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
 </svg>
 </div>
-<h4>Assignment Posted</h4>
+{assignparam ? <h4>Assignment Posted</h4> : <h4>Study Material Posted</h4>}
 </div>
       </div>}
     </>
   );
 }
 
-export default UploadAssignmentsem1;
+export default Upload;
