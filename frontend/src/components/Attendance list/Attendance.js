@@ -23,7 +23,6 @@ const Attendance = ({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish}) =
   const [success, setsuccess] = useState(false)
   const sem = params.semester ;
   const semparam=sem.slice(0,3) + sem.slice(4,5)
-  console.log(semparam)
   const fetchdata = async () => {
     const response = await fetch("https://isd-production.up.railway.app/attendance", {
       method: "GET",

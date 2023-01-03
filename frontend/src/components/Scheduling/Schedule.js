@@ -11,33 +11,23 @@ import Sem2Subjects from '../Subjects/Sem2Subjects';
 import Sem3Subjects from '../Subjects/Sem3Subjects';
 import Sem4Subjects from '../Subjects/Sem4Subjects';
 import "./classschedule.css"
-const Schedule = ({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish}) => {
+const Schedule = ({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish,teacher}) => {
   const params=useParams()
  console.log(params)
-  const navigate = useNavigate();
-  const[classschedule,setClasschedule]=useState(false)
-  const [subject, setsubject] = useState("");
+ const navigate = useNavigate();
+ const[classschedule,setClasschedule]=useState(false)
+ const [subject, setsubject] = useState("");
   const [date, setdate] = useState("");
   const [time, settime] = useState("");
   const [message, setmessage] = useState("");
   const [warning, setwarning] = useState("");
-//   const [UnmeshShukla, setUnmeshShukla] = useState(false)
-//   const [NitishaAgg, setNitishaAgg] = useState(false)
-//   const [MKDas, setMKDas] = useState(false)
-//   const [SunilKumar, setSunilKumar] = useState(false)
-//   const[Sanjeev,setSanjeev]=useState(false)
-//   const [Manish,setManish]=useState(false)
-  const [teacher, setTeacher] = useState("")
-  const [isAlertVisible, setIsAlertVisible] = useState(false);
-  const [isdot, setIsdotVisible] = useState(false);
   const[success,setsuccess] = useState(false)
-  const [empty,setempty]=useState(false)
   const[Sem1,setSem1]=useState(false)
   const[Sem2,setSem2]=useState(false)
   const[Sem3,setSem3]=useState(false)
   const[Sem4,setSem4]=useState(false)
   const sem = params.semester ;
-
+  
   //-----------
   async function schedule(e) { 
     if (subject && time && date) {
@@ -160,7 +150,7 @@ if(success)
      <div className='height100vh'>
       <Navbar />
       <form onSubmit={schedule}>
-        <div className="mb-3 scheduledcontainer" style={{ filter: isAlertVisible || isdot ? "blur(3px)" : "none", background: isAlertVisible ? "#f1ebeb" : "none" }} >
+        <div className="mb-3 scheduledcontainer" >
          <div className=" mb-3">
             {classschedule ? <h1 className="class-1 mb-1">Class Schedule</h1> : <h1 className="class-1 mb-1">Test Schedule</h1>}
 

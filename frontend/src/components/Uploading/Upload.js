@@ -9,15 +9,13 @@ import Sem2Subjects from '../Subjects/Sem2Subjects';
 import Sem3Subjects from '../Subjects/Sem3Subjects';
 import Sem4Subjects from '../Subjects/Sem4Subjects';
 import './Upload.css'
-function Upload({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish}) {
+function Upload({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish,teacher}) {
   const params=useParams()
-  console.log(params)
   const navigate = useNavigate();
   const [assignparam,setAssignparam]=useState(false)
   const [file, setFile] = useState("");
   const [subject, setsubject] = useState("");
   const [deadline, setdeadline] = useState("");
-  const [teacher, setTeacher] = useState("");
   const [description, setdescription] = useState("");
   const[success,setsuccess]=useState(false)
    const[Sem1,setSem1]=useState(false)
@@ -71,7 +69,7 @@ function Upload({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish}) {
         body: JSON.stringify({
           file,
           subject,
-          semester: "Sem-1",
+          semester,
           teacher,
           description,
         }),

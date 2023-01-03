@@ -83,6 +83,7 @@ function App() {
   const[Sanjeev,setSanjeev]=useState(false)
   const [Manish,setManish]=useState(false)
   const [assid,setassid]=useState("")
+  const [teacher,setTeacher]=useState("")
    async function populate(e) {
     const req = await fetch(`https://isd-production.up.railway.app/scheduleclass`, {
       headers: {
@@ -90,7 +91,7 @@ function App() {
       },
     })
     const data = await req.json();
-
+    setTeacher(data.name)
     if (data.name == "Unmesh Shukla") {
       setUnmeshShukla(true)
     }
@@ -204,10 +205,10 @@ function App() {
           <Route path="/admindashboard" element={<Home />} />
           <Route path="/profile3" element={<Profile />} />
           <Route path="/operations/:semester" element={<Operations />} />
-          <Route path="/Teacherdashboard/:schparam/:semester" element={<Schedule NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar} />} />
-          <Route path="/Teacherdashboard/attendance/:semester" element={<Attendance  NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar} />} />
-          <Route path="/Teacherdashboard/upload/:postparam/:semester" element={<Upload NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar}/>} />
-          <Route path="/Teacherdashboard/filters/:semester" element={<Filters NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar}/>} />
+          <Route path="/Teacherdashboard/:schparam/:semester" element={<Schedule teacher={teacher} NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar} />} />
+          <Route path="/Teacherdashboard/attendance/:semester" element={<Attendance teacher={teacher}  NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar} />} />
+          <Route path="/Teacherdashboard/upload/:postparam/:semester" element={<Upload teacher={teacher} NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar}/>} />
+          <Route path="/Teacherdashboard/filters/:semester" element={<Filters teacher={teacher} NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar}/>} />
           <Route path="/Teacherdashboard/submissions" element={<SubmittedAssignments assid={assid} />} />
         </Routes>
       </BrowserRouter>
