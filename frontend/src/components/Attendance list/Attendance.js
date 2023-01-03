@@ -9,7 +9,7 @@ import Sem1Subjects from '../Subjects/Sem1Subjects';
 import Sem2Subjects from '../Subjects/Sem2Subjects';
 import Sem3Subjects from '../Subjects/Sem3Subjects';
 import Sem4Subjects from '../Subjects/Sem4Subjects';
-const Attendance = ({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish}) => {
+const Attendance = ({studentsattend, UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish}) => {
   const params=useParams()
   console.log(params)
   const navigate = useNavigate();
@@ -23,19 +23,11 @@ const Attendance = ({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish}) =
   const [success, setsuccess] = useState(false)
   const sem = params.semester ;
   const semparam=sem.slice(0,3) + sem.slice(4,5)
-  const fetchdata = async () => {
-    const response = await fetch("https://isd-production.up.railway.app/attendance", {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        'x-access-token': localStorage.getItem('token'), //
 
-      },
-    });
-    const json = await response.json();
-    let data1 = json.data.filter((data) => data.semester == "Sem-1");
-    setstudents(data1);
+    
+
+  const fetchdata = async () => {
+    setstudents(studentsattend.filter((data) => data.semester == sem));
   };
 
 

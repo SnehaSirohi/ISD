@@ -7,49 +7,10 @@ import { Link } from "react-router-dom";
 import logo from './image.png'
 
 
-const Teacher_Profile = () => {
+const Teacher_Profile = ({name, email, contact, teacher_id}) => {
 
     const navigate = useNavigate();
-    const [name, setName] = useState([])
-    const [email, setEmail] = useState([])
-    const [teacher_id, setTeacher_id] = useState([])
-    const [contactNum, setContactNum] = useState([])
-
-    async function populatedashboard() {
-        const req = await fetch('https://isd-production.up.railway.app/Teacherdashboard/profile', {
-            headers: {
-                'x-access-token': localStorage.getItem('token'),
-
-            },
-        })
-
-        const json = await req.json()
-
-        console.log(json)
-        if (json.status === 'ok') {
-            setName(json.name)
-            setEmail(json.email)
-            setTeacher_id(json.Teacher_id)
-            setContactNum(json.contactNum)
-        }
-        else {
-            // alert(data.error)
-        }
-    }
-
-    useEffect(() => {
-        const token = localStorage.getItem('token')
-        if (token) {
-            const user = jwt.decode(token)
-            if (!user) {
-                localStorage.removeItem('token')
-                navigate("/");
-            } else {
-                populatedashboard()
-            }
-        }
-    }, [name], [email])
-
+    
     return (
         <>
             <div className="height100vh">
@@ -92,7 +53,7 @@ const Teacher_Profile = () => {
                                     <p>Email: </p>
                                     <h6>{email}</h6>
                                     <p>Phone: </p>
-                                    <h6>{contactNum}</h6>
+                                    <h6>{contact}</h6>
                                 </div>
                             </div>
                         </form>
