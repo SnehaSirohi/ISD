@@ -2,8 +2,8 @@ import React from "react";
 import "./homepage.css";
 import { Link } from "react-router-dom";
 import classopedia from './classopedia.png'
-import image1 from './image1.png'
-import image2 from './image2.png'
+import image1 from './image1.svg'
+import image2 from './image2.svg'
 const Homepage = () => {
     return (
         <div className="homepage">
