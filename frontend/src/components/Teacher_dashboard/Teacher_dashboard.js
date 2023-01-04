@@ -8,52 +8,7 @@ import "./Teacher_dashboard.css";
 
 
 
-const Teacher_Dashboard = (props) => {
-    const [totalClasstaken, setTotalClasstaken] = useState([])
-    const [totalClassScheduled, setTotalClassScheduled] = useState([])
-    const [totalTestScheduled, setTotalTestScheduled] = useState([])
-    const [totalAssignments, setTotalAssignments] = useState([])
-    const [totalStudymaterial, setTotalStudymaterial] = useState([])
-    const navigate = useNavigate();
-    const [name, setName] = useState([])
-    const [email, setEmail] = useState([])
-
-    async function populatedashboard() {
-        const req = await fetch('https://isd-production.up.railway.app/Teacherdashboard', {
-            headers: {
-                'x-access-token': localStorage.getItem('token'),
-
-            },
-        })
-
-        const json = await req.json()
-
-        console.log(json)
-        if (json.status === 'ok') {
-            setName(json.name)
-            setEmail(json.email)
-            setTotalClassScheduled(json.Classes_Scheduled)
-            setTotalClasstaken(json.Classes_taken_count)
-            setTotalTestScheduled(json.Test_Scheduled)
-            setTotalAssignments(json.Assignments_posted)
-            setTotalStudymaterial(json.Study_Material_posted)
-        }
-      
-    }
-
-
-    useEffect(() => {
-        const token = localStorage.getItem('token')
-        if (token) {
-            const user = jwt.decode(token)
-            if (!user) {
-                localStorage.removeItem('token')
-                navigate("/");
-            } else {
-                populatedashboard()
-            }
-        }
-    }, [name], [email])
+const Teacher_Dashboard = ({totalClasstaken, totalClassScheduled, totalTestScheduled, totalAssignments, totalStudymaterial}) => {
 
     return (
         <>
@@ -114,7 +69,7 @@ const Teacher_Dashboard = (props) => {
                         </div>
                         <div className="profilecontent"
                             style={{
-                                display: props.show ? "block" : "none"
+                                // display: props.show ? "block" : "none"
                             }}>
                             <br /><br />
 

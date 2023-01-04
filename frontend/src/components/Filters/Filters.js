@@ -43,8 +43,9 @@ const Filters = ({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish}) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        'x-access-token': localStorage.getItem('token'), //
+        'x-access-token': localStorage.getItem('token'), 
       }
+      
     })
     const json = await response.json()
     setstudent(json.data)

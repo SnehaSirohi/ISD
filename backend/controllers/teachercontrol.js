@@ -38,101 +38,6 @@ const loginteacher = (req, res) => {
   });
 };
 
-const GetTeacherdashboard = async (req, res) => {
-  const token = req.headers["x-access-token"];
-
-  try {
-    const decoded = jwt.verify(token, "secret1234");
-    const Teacher_id = decoded.Teacher_id;
-    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
-    const Classes_taken_count = await ClassesTaken.count({
-      name: teacher.name,
-    });
-    const Classes_Scheduled = await ScheduledClass.count({
-      name: teacher.name,
-    });
-    const Test_Scheduled = await ScheduledTest.count({ name: teacher.name });
-    const Assignments_posted = await AssignmentsPosted.count({
-      teacher: teacher.name,
-    });
-    const Study_Material_posted = await StudyMaterial.count({
-      teacher: teacher.name,
-    });
-
-    return res.json({
-      status: "ok",
-      Classes_taken_count,
-      Classes_Scheduled,
-      Test_Scheduled,
-      Assignments_posted,
-      Study_Material_posted,
-      Teacher_id: teacher.Teacher_id,
-      name: teacher.name,
-      email: teacher.email,
-      contactNum: teacher.contactNum,
-    });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "invalid token" });
-  }
-};
-
-const GetTeacherProfile = async (req, res) => {
-  const token = req.headers["x-access-token"];
-
-  try {
-    const decoded = jwt.verify(token, "secret1234");
-    const Teacher_id = decoded.Teacher_id;
-    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
-
-    return res.json({
-      status: "ok",
-      Teacher_id: teacher.Teacher_id,
-      name: teacher.name,
-      email: teacher.email,
-      contactNum: teacher.contactNum,
-    });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "invalid token" });
-  }
-};
-
-const PostTeacherProfile = async (req, res) => {
-  const token = req.headers["x-access-token"];
-
-  try {
-    const decoded = jwt.verify(token, "secret1234");
-    const Teacher_id = decoded.Teacher_id;
-    return res.status(200).json({
-      success: true,
-      data: await Teacher.UpdateOne(
-        { Teacher_id: Teacher_id },
-        { $set: { Teacher_id: Teacher_id } },
-        { $set: { name: req.body.name } },
-        { $set: { email: req.body.email } },
-        { $set: { contactNum: req.body.contactNum } }
-      ),
-    });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "invalid token" });
-  }
-};
-
-const GetTeacherChangePassword = async (req, res) => {
-  const token = req.headers["x-access-token"];
-  try {
-    const decoded = jwt.verify(token, "secret1234");
-    const Teacher_id = decoded.Teacher_id;
-    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
-    return res.json({ status: "ok", Teacher_id: teacher.Teacher_id });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "invalid token" });
-  }
-};
-
 const PatchTeacherChangePassword = async (req, res) => {
   const token = req.headers["x-access-token"];
   const { oldpassword, newpassword, confirmpassword } = req.body;
@@ -209,7 +114,7 @@ if(check) {
 }
 };
 
-const GetScheduleclass = async (req, res) => {
+const Teacherverification = async (req, res) => {
   const token = req.headers["x-access-token"];
 
   try {
@@ -217,51 +122,28 @@ const GetScheduleclass = async (req, res) => {
     const Teacher_id = decoded.Teacher_id;
     const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
 
-    return res.json({
-      status: "ok",
-      Teacher_id: teacher.Teacher_id,
+    const Classes_taken_count = await ClassesTaken.count({
       name: teacher.name,
-      email: teacher.email,
-      contactNum: teacher.contactNum,
     });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "invalid token" });
-  }
-};
-
-const GetScheduletest = async (req, res) => {
-  const token = req.headers["x-access-token"];
-
-  try {
-    const decoded = jwt.verify(token, "secret1234");
-    const Teacher_id = decoded.Teacher_id;
-    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
-
-    return res.json({
-      status: "ok",
-      Teacher_id: teacher.Teacher_id,
+    const Classes_Scheduled = await ScheduledClass.count({
       name: teacher.name,
-      email: teacher.email,
-      contactNum: teacher.contactNum,
     });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "invalid token" });
-  }
-};
-
-const GetAttendance = async (req, res) => {
-  const token = req.headers["x-access-token"];
-  try {
-    const decoded = jwt.verify(token, "secret1234");
-    const Teacher_id = decoded.Teacher_id;
-    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
+    const Test_Scheduled = await ScheduledTest.count({ name: teacher.name });
+    const Assignments_posted = await AssignmentsPosted.count({
+      teacher: teacher.name,
+    });
+    const Study_Material_posted = await StudyMaterial.count({
+      teacher: teacher.name,
+    });
 
     return res.json({
       status: "ok",
-      success: true,
       Teacher_id: teacher.Teacher_id,
+      Classes_taken_count,
+      Classes_Scheduled,
+      Test_Scheduled,
+      Assignments_posted,
+      Study_Material_posted,
       name: teacher.name,
       email: teacher.email,
       contactNum: teacher.contactNum,
@@ -272,6 +154,8 @@ const GetAttendance = async (req, res) => {
     res.json({ status: "error", error: "invalid token" });
   }
 };
+
+
 
 const sem1Attendance = async (req, res) => {
   const token = req.headers["x-access-token"];
@@ -533,10 +417,9 @@ const UploadContent=async(req,res)=>{
 }
 
 
-
 const Sem1AttendanceReport = async (req, res) => {
   const token = req.headers["x-access-token"];
-
+  
   try {
     const decoded = jwt.verify(token, "secret1234");
     console.log(decoded.Teacher_id)
@@ -692,27 +575,6 @@ const ScheduledTestReport = async (req, res) => {
   }
 };
 
-const Getuploadassignment = async (req, res) => {
-  const token = req.headers["x-access-token"];
-
-  try {
-    const decoded = jwt.verify(token, "secret1234");
-    const Teacher_id = decoded.Teacher_id;
-    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
-
-    return res.json({
-      status: "ok",
-      Teacher_id: teacher.Teacher_id,
-      name: teacher.name,
-      email: teacher.email,
-      contactNum: teacher.contactNum,
-    });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "invalid token" });
-  }
-};
-
 const Assignment_Schedule_teacher = async (req, res) => {
   const token = req.headers["x-access-token"];
   try {
@@ -729,26 +591,6 @@ const Assignment_Schedule_teacher = async (req, res) => {
   }
 };
 
-const GetStudyMaterial = async (req, res) => {
-  const token = req.headers["x-access-token"];
-
-  try {
-    const decoded = jwt.verify(token, "secret1234");
-    const Teacher_id = decoded.Teacher_id;
-    const teacher = await Teacher.findOne({ Teacher_id: Teacher_id });
-
-    return res.json({
-      status: "ok",
-      Teacher_id: teacher.Teacher_id,
-      name: teacher.name,
-      email: teacher.email,
-      contactNum: teacher.contactNum,
-    });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "invalid token" });
-  }
-};
 
 const StudyMaterial_Posted = async (req, res) => {
   const token = req.headers["x-access-token"];
@@ -805,15 +647,8 @@ const assignment_s_submited = async(req,res)=>{
 
 module.exports = {
   loginteacher,
-  GetTeacherdashboard,
-  GetTeacherProfile,
-  PostTeacherProfile,
-  GetTeacherChangePassword,
   PatchTeacherChangePassword,
   RegisterTeacher,
-  GetScheduleclass,
-  GetScheduletest,
-  GetAttendance,
   sem1Attendance,
   sem2Attendance,
   sem3Attendance,
@@ -824,11 +659,10 @@ module.exports = {
   Sem4AttendanceReport,
   ScheduledClassReport,
   ScheduledTestReport,
-  Getuploadassignment,
   Assignment_Schedule_teacher,
-  GetStudyMaterial,
   StudyMaterial_Posted,
   GetAssignmentSubmitt,
   assignment_s_submited,
-  UploadContent
+  UploadContent,
+  Teacherverification
 };

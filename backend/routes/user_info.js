@@ -2,15 +2,8 @@ const express = require("express");
 const { Adminregister, Adminlogin, AdClassesTaken} = require("../controllers/admincontrol")
 const {
   loginteacher,
-  GetTeacherdashboard,
-  GetTeacherProfile,
-  PostTeacherProfile,
-  GetTeacherChangePassword,
   PatchTeacherChangePassword,
   RegisterTeacher,
-  GetScheduleclass,
-  GetScheduletest,
-  GetAttendance,
   sem1Attendance,
   sem2Attendance,
   sem3Attendance,
@@ -21,13 +14,12 @@ const {
   Sem4AttendanceReport,
   ScheduledClassReport,
   ScheduledTestReport,
-  Getuploadassignment,
   Assignment_Schedule_teacher,
-  GetStudyMaterial,
   StudyMaterial_Posted,
   GetAssignmentSubmitt,
   assignment_s_submited,
-  UploadContent
+  UploadContent,
+  Teacherverification,
 } = require("../controllers/teachercontrol");
 
 const {
@@ -91,31 +83,17 @@ router.post("/registerall", registerall);
 //------------------Teacher Login-------------------
 router.post("/loginteacher", loginteacher);
 
-//Dashboard - Teacher (get)
-router.get("/Teacherdashboard", GetTeacherdashboard);
-
-//Teacher profile (get)
-router.get("/Teacherdashboard/profile", GetTeacherProfile);
-
-//teacher profile(post)
-router.post("/Teacherdashboard/profile", PostTeacherProfile);
-
-//Teacher
-router.get("/Teacherdashboard/changepassword", GetTeacherChangePassword);
-
-//student-change password
+//teacher-change password
 router.patch("/Teacherdashboard/changepassword", PatchTeacherChangePassword);
 
 //register teacher
 router.post("/registerteacher", RegisterTeacher);
 
-router.get("/scheduleclass", GetScheduleclass);
+router.get("/teacherverify", Teacherverification);
 router.post("/scheduleclass", Postscheduleclass);
-router.get("/scheduletest", GetScheduletest);
 router.post("/scheduletest", PostscheduleTest);
 
 //............
-router.get("/attendance", GetAttendance);
 router.post("/attendance/Sem1", sem1Attendance);
 router.post("/attendance/Sem2", sem2Attendance);
 router.post("/attendance/Sem3", sem3Attendance);
@@ -126,22 +104,26 @@ router.get("/attendancereport/Sem3", Sem3AttendanceReport);
 router.get("/attendancereport/Sem4", Sem4AttendanceReport);
 router.get("/scheduledclassreport", ScheduledClassReport);
 router.get("/scheduledtestreport", ScheduledTestReport);
-router.get("/upload/assignment", Getuploadassignment);
 router.post("/upload/assignment", PostUploadassignment);
-router.get("/upload/studymaterial", GetStudyMaterial);
 router.post("/upload/studymaterial", PostStudyMaterial);
+
+//..student
 router.get("/classschedule", Classes_Scheduled);
 router.get("/testschedule", Test_Scheduled);
 router.get("/assignmentreportstudent", Assignment_Schedule_student);
+router.get("/studymaterial_student", StudyMaterial_Posted_Students);
+
 router.get("/assignmentreportteacher", Assignment_Schedule_teacher);
 router.get("/studymaterial_teacher", StudyMaterial_Posted);
-router.get("/studymaterial_student", StudyMaterial_Posted_Students);
 router.get("/notifications/assignment", GetAssignments);
 router.get("/notifications/classes", classnotification);
 router.get("/notifications/tests", testnotification);
 router.post("/assignmentsubmit",PostAssignmentSubmitt)
 router.get("/assignmentsubmit",GetAssignmentSubmitt)
+
+//admin
 router.get('/classestaken',AdClassesTaken)
+
 router.get('/assignmentsubmited',assignmentsubmited)
 router.get('/submissions/:id',assignment_s_submited)
 module.exports = router;

@@ -80,17 +80,40 @@ function App() {
   const [NitishaAgg, setNitishaAgg] = useState(false)
   const [MKDas, setMKDas] = useState(false)
   const [SunilKumar, setSunilKumar] = useState(false)
-  const[Sanjeev,setSanjeev]=useState(false)
+  const [Sanjeev,setSanjeev]=useState(false)
   const [Manish,setManish]=useState(false)
   const [assid,setassid]=useState("")
   const [teacher,setTeacher]=useState("")
+  const [totalClasstaken, setTotalClasstaken] = useState([])
+  const [totalClassScheduled, setTotalClassScheduled] = useState([])
+  const [totalTestScheduled, setTotalTestScheduled] = useState([])
+  const [totalAssignments, setTotalAssignments] = useState([])
+  const [totalStudymaterial, setTotalStudymaterial] = useState([])
+  const [name, setName] = useState([])
+  const [email, setEmail] = useState([])
+  const [contact, setcontact] = useState([])
+  const [teacher_id, setteacher_id] = useState([])
+  const [studentsattend, setStudentsattend] = useState([])
+
    async function populate(e) {
-    const req = await fetch(`https://isd-production.up.railway.app/scheduleclass`, {
+    const req = await fetch(`http://localhost:4000/teacherverify`, {
       headers: {
         'x-access-token': localStorage.getItem('token'), //
       },
     })
     const data = await req.json();
+    if (data.status === 'ok') {
+      setName(data.name)
+      setEmail(data.email)
+      setteacher_id(data.Teacher_id)
+      setcontact(data.contactNum)
+      setTotalClassScheduled(data.Classes_Scheduled)
+      setTotalClasstaken(data.Classes_taken_count)
+      setTotalTestScheduled(data.Test_Scheduled)
+      setTotalAssignments(data.Assignments_posted)
+      setTotalStudymaterial(data.Study_Material_posted)
+      setStudentsattend(data.data)
+  }
     setTeacher(data.name)
     if (data.name == "Unmesh Shukla") {
       setUnmeshShukla(true)
@@ -154,8 +177,8 @@ function App() {
           <Route path='/classschedule' element={<Classreport_student />} />
           <Route path='/assignmentreportstudent' element={<Assignmentreport_student />} />
           <Route path='/Teacherdashboard/assignmentreportteacher' element={<Assignmentreport_teacher setassid={setassid} />} />
-          <Route path='/Teacherdashboard' element={<Teacher_Dashboard />} />
-          <Route path='/Teacherdashboard/profile' element={<Teacher_Profile />} />
+          <Route path='/Teacherdashboard' element={<Teacher_Dashboard totalClasstaken={totalClasstaken} totalClassScheduled={totalClassScheduled} totalTestScheduled={totalTestScheduled} totalAssignments={totalAssignments} totalStudymaterial={totalStudymaterial}/>} />
+          <Route path='/Teacherdashboard/profile' element={<Teacher_Profile name={name} email={email} contact={contact} teacher_id={teacher_id}/>} />
           <Route path="/Teacherdashboard/changepassword" element={<ChangeTeacherPassword />} />
           {/* <Route path='/Teacherdashboard/sem1/attendance' element={<AttendanceSem1 />} />
           <Route path='/Teacherdashboard/sem2/attendance' element={<AttendanceSem2 />} />
@@ -206,7 +229,7 @@ function App() {
           <Route path="/profile3" element={<Profile />} />
           <Route path="/operations/:semester" element={<Operations />} />
           <Route path="/Teacherdashboard/:schparam/:semester" element={<Schedule teacher={teacher} NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar} />} />
-          <Route path="/Teacherdashboard/attendance/:semester" element={<Attendance teacher={teacher}  NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar} />} />
+          <Route path="/Teacherdashboard/attendance/:semester" element={<Attendance studentsattend={studentsattend} teacher={teacher}  NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar} />} />
           <Route path="/Teacherdashboard/upload/:postparam/:semester" element={<Upload teacher={teacher} NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar}/>} />
           <Route path="/Teacherdashboard/filters/:semester" element={<Filters teacher={teacher} NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar}/>} />
           <Route path="/Teacherdashboard/submissions" element={<SubmittedAssignments assid={assid} />} />
