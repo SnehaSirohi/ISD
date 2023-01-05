@@ -74,6 +74,7 @@ import Attendance from './components/Attendance list/Attendance';
 import Upload from './components/Uploading/Upload';
 import Filters from './components/Filters/Filters';
 import jwt from 'jsonwebtoken'
+import Loader from './components/Loader/Loader';
 function App() {
   // const navigate =useNavigate()
   const [UnmeshShukla, setUnmeshShukla] = useState(false)
@@ -233,6 +234,7 @@ function App() {
           <Route path="/Teacherdashboard/upload/:postparam/:semester" element={<Upload teacher={teacher} NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar}/>} />
           <Route path="/Teacherdashboard/filters/:semester" element={<Filters teacher={teacher} NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar}/>} />
           <Route path="/Teacherdashboard/submissions" element={<SubmittedAssignments assid={assid} />} />
+          <Route path="/loader" element={<Loader />} />
         </Routes>
       </BrowserRouter>
     </div>

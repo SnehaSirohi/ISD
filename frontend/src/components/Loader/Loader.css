@@ -1,0 +1,31 @@
+body
+{  
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes rotation {
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+.loader
+{ 
+    animation-name: rotation;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    height: 100px;
+    width: 100px;
+    /* transform: rotate(180deg); */
+}
+
+.loadercontainer
+{    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
