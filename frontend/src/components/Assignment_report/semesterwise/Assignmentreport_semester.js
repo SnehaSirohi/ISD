@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useReactToPrint } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
-import "../../Scheduled_Class_List/Scheduledcommon.css";
+import "../../schedule_report/Scheduledcommon.css";
 import List from './list';
 import Navbar from "../../Student_dashboard/Navbar";
 
@@ -86,7 +86,7 @@ const Assignmentreport = () => {
     e.preventDefault();
 
     let data = report.data.filter((data) => {
-      if (((data.deadline.slice(8, 10) >= day && data.deadline.slice(5, 7) == monthval) || data.deadline.slice(5, 7) > monthval || data.deadline.slice(0, 5) > year) && (data.subject == subject)) {
+      if (((data.deadline.slice(8, 10) >= day && data.deadline.slice(5, 7) == monthval && data.deadline.slice(0, 4) == year) || (data.deadline.slice(5, 7) > monthval && data.deadline.slice(0, 4) == year)|| data.deadline.slice(0, 4) > year) && (data.subject == subject)) {
         return data
       }
 

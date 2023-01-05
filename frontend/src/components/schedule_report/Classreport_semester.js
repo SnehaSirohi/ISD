@@ -3,20 +3,17 @@ import { useState, useEffect, useRef, useReactToPrint } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
-import "../Scheduledcommon.css"
+import "./Scheduledcommon.css"
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
-import List from '../list';
-import Navbar from "../../Student_dashboard/Navbar";
+import List from './list';
+import Navbar from "../Student_dashboard/Navbar";
 
 var XLSX = require("xlsx");
 
 const Classreport = () => {
     const navigate = useNavigate();
     const [classes,setClasses]=useState([]);
-    const newdate= new Date()
-    const monthval= newdate.getMonth()+1;
-    const day =newdate.getDate()
     const [subject, setSubject] = useState("")
     const [sem1, setSem1] = useState(false)
     const [sem2, setSem2] = useState(false)
@@ -27,7 +24,7 @@ const Classreport = () => {
     const [string, setString] = useState("")
     
     const fetchdata=async()=>{
-        const response=await fetch("https://isd-production.up.railway.app/classschedule", {
+        const response=await fetch("http://localhost:4000/classschedule", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -47,14 +44,8 @@ const Classreport = () => {
     console.log(subject)
     console.log(report)
 
-    let data = report.data.filter((data) => {
-      if (data.date.slice(5, 7) == monthval && data.date.slice(8, 10) >= day) {
-        return data
-      }
-      else if (data.date.slice(5, 7) > monthval) {
-        return data
-      }
-    })
+    let data = report.data
+    
     let data2 = data.filter((data) => {
       if (data.subject == subject) {
         return data

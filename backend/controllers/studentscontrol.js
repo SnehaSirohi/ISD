@@ -104,9 +104,9 @@ const Getdashboard = async (req, res) => {
     });
     const data1 = scheduledclasses.filter((data) => {
       if (
-        (data.date.slice(8, 10) >= day && data.date.slice(5, 7) == monthval) ||
-        data.date.slice(5, 7) > monthval ||
-        data.date.slice(0, 5) > year
+        (data.date.slice(8, 10) >= day && data.date.slice(5, 7) == monthval && data.date.slice(0, 4) == year) ||
+        (data.date.slice(5, 7) > monthval && data.date.slice(0, 4) == year) ||
+        data.date.slice(0, 4) > year
       ) {
         return data;
       }
@@ -117,9 +117,9 @@ const Getdashboard = async (req, res) => {
     });
     const data2 = scheduledtests.filter((data) => {
       if (
-        (data.date.slice(8, 10) >= day && data.date.slice(5, 7) == monthval) ||
-        data.date.slice(5, 7) > monthval ||
-        data.date.slice(0, 5) > year
+        (data.date.slice(8, 10) >= day && data.date.slice(5, 7) == monthval && data.date.slice(0, 4) == year) ||
+        (data.date.slice(5, 7) > monthval && data.date.slice(0, 4) == year) ||
+        data.date.slice(0, 4) > year
       ) {
         return data;
       }
@@ -133,7 +133,7 @@ const Getdashboard = async (req, res) => {
     const Assignment_posted = await AssignmentsPosted.count({
       semester: student.semester,
     });
-
+    const assignment_submitted = await SubmittedAssignment.count({name: student.name})
     return res.json({
       status: "ok",
       Classes_taken_count,
@@ -141,6 +141,7 @@ const Getdashboard = async (req, res) => {
       Classes_Scheduled,
       Test_Scheduled,
       Assignment_posted,
+      assignment_submitted,
       attend,
       enrollNum: student.enrollNum,
       name: student.name,
@@ -149,64 +150,6 @@ const Getdashboard = async (req, res) => {
       rollNum: student.rollNum,
       contactNum: student.contactNum,
     });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "invalid token" });
-  }
-};
-
-const Getprofile = async (req, res) => {
-  const token = req.headers["x-access-token"];
-
-  try {
-    const decoded = jwt.verify(token, "secret123");
-    const enrollNum = decoded.enrollNum;
-    const student = await Students.findOne({ enrollNum: enrollNum });
-
-    return res.json({
-      status: "ok",
-      enrollNum: student.enrollNum,
-      name: student.name,
-      email: student.email,
-      rollNum: student.rollNum,
-      contactNum: student.contactNum,
-    });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "invalid token" });
-  }
-};
-
-const Postprofile = async (req, res) => {
-  const token = req.headers["x-access-token"];
-
-  try {
-    const decoded = jwt.verify(token, "secret123");
-    const enrollNum = decoded.enrollNum;
-    return res.status(200).json({
-      success: true,
-      data: await Students.UpdateOne(
-        { enrollNum: enrollNum },
-        { $set: { enrollNum: enrollNum } },
-        { $set: { name: req.body.name } },
-        { $set: { email: req.body.email } },
-        { $set: { rollNum: req.body.rollNum } },
-        { $set: { contactNum: req.body.contactNum } }
-      ),
-    });
-  } catch (error) {
-    console.log(error);
-    res.json({ status: "error", error: "invalid token" });
-  }
-};
-
-const Getchangepassword = async (req, res) => {
-  const token = req.headers["x-access-token"];
-  try {
-    const decoded = jwt.verify(token, "secret123");
-    const enrollNum = decoded.enrollNum;
-    const student = await Students.findOne({ enrollNum: enrollNum });
-    return res.json({ status: "ok", enrollNum: student.enrollNum });
   } catch (error) {
     console.log(error);
     res.json({ status: "error", error: "invalid token" });
@@ -326,11 +269,24 @@ const Test_Scheduled = async (req, res) => {
   try {
     const decoded = jwt.verify(token, "secret123");
     const enrollNum = decoded.enrollNum;
-    const student = await Students.findOne({ enrollNum: enrollNum });
+    const newdate = new Date()
+    const monthval = newdate.getMonth()+1;
+    const day = newdate.getDate()
+    const year = newdate.getFullYear()
 
+    
+    const student = await Students.findOne({ enrollNum: enrollNum });
+    const tests2 = await ScheduledTest.find({ semester: student.semester })
+
+    const tests = tests2.filter((data)=>{
+      if((data.date.slice(8,10)>=day &&  data.date.slice(5,7)==monthval && data.date.slice(0,4)==year) || (data.date.slice(5,7)>monthval && data.date.slice(0,4)==year) || data.date.slice(0,4)>year  )
+      {
+          return data
+      }
+    })
     return res.status(200).json({
       success: true,
-      data: await ScheduledTest.find({ semester: student.semester }),
+      data: tests,
       sem: student.semester,
     });
   } catch (error) {
@@ -344,10 +300,24 @@ const Classes_Scheduled = async (req, res) => {
   try {
     const decoded = jwt.verify(token, "secret123");
     const enrollNum = decoded.enrollNum;
+    
+    const newdate = new Date()
+    const monthval = newdate.getMonth()+1;
+    const day = newdate.getDate()
+    const year = newdate.getFullYear()
+
     const student = await Students.findOne({ enrollNum: enrollNum });
+    const classes2 = await ScheduledClass.find({ semester: student.semester })
+
+    const classes = classes2.filter((data)=>{
+      if((data.date.slice(8,10)>=day &&  data.date.slice(5,7)==monthval && data.date.slice(0,4)==year) || (data.date.slice(5,7)>monthval && data.date.slice(0,4)==year) || data.date.slice(0,4)>year  )
+      {
+          return data
+      }
+    })
     return res.status(200).json({
       success: true,
-      data: await ScheduledClass.find({ semester: student.semester }),
+      data: classes,
       sem: student.semester,
     });
   } catch (error) {
@@ -459,9 +429,6 @@ const assignmentsubmited = async(req,res)=>{
 module.exports = {
   login,
   Getdashboard,
-  Getprofile,
-  Postprofile,
-  Getchangepassword,
   PatchChangepassword,
   register,
   registerall,

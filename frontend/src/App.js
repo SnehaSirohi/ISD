@@ -9,6 +9,7 @@ import Login from './components/login/login';
 import Login2 from './components/login2/Login2';
 import LoginTeacher from './components/loginteacher/loginteacher';
 import Homepage from './components/homepage/homepage'
+
 // import AttendanceSem1 from './components/Attendance list/Sem_1';
 // import AttendanceSem2 from './components/Attendance list/Sem_2';
 // import AttendanceSem3 from './components/Attendance list/Sem_3';
@@ -36,12 +37,16 @@ import Sem1_Student from './components/Student_dashboard/sem1';
 // import Sem2filters from './components/Filters/Sem2filters';
 // import Sem3filters from './components/Filters/Sem3filters';
 // import Sem4filters from './components/Filters/Sem4filters';
-import Classreport from './components/Scheduled_Class_List/scheduleclassreport';
-import Testreport from './components/Scheduled_test_List/scheduletestreport';
-import Testreport_student from './components/Scheduled_test_List/testreport_student';
-import Classreport_student from './components/Scheduled_Class_List/classreport_student';
-import Classreport_semester from './components/Scheduled_Class_List/semesterwise/Classreport_semester';
-import Testreport_semester from './components/Scheduled_test_List/semesterwise/Testreport_semester';
+import Classreport from './components/schedule_report/teacher/scheduleclassreport';
+import Testreport from './components/schedule_report/teacher/scheduletestreport';
+// import Testreport_student from './components/Scheduled_test_List/testreport_student';
+// import Classreport_student from './components/Scheduled_Class_List/classreport_student';
+import Schedulereport from './components/schedule_report/schedulereport';
+
+
+import Classreport_semester from './components/schedule_report/Classreport_semester';
+import Testreport_semester from './components/schedule_report/Testreport_semester';
+
 import Assignmentreport_semester from './components/Assignment_report/semesterwise/Assignmentreport_semester';
 import Attendancereport_student from './components/Attendance Report/attendancestudent';
 import Assignmentreport_student from './components/Assignment_report/assignmentreport_student';
@@ -158,6 +163,64 @@ function App() {
     };
   }, []);
 
+
+  const [totalclassesheld, setTotalclassesheld] = useState([])
+    const [totalClasstakenStudent, setTotalClasstakenStudent] = useState([])
+    const [totalClassScheduledStudent, setTotalClassScheduledStudent] = useState([])
+    const [totalTestScheduledStudent, setTotalTestScheduledStudent] = useState([])
+    const [assignment_submitted, setAssignment_submitted] = useState([])
+    const [assignments, setAssignments] = useState([])
+    // const navigate = useNavigate();
+    const [stuname, setStuName] = useState([])
+    const [stuemail, setStuEmail] = useState([])
+    const [rollNum, setRollNum] = useState([])
+    const [stucontactNum, setStuContactNum] = useState([])
+    const [enrollNum, setEnrollNum] = useState([])
+
+
+    async function populatedashboard() {
+        const req = await fetch('http://localhost:4000/dashboard', {
+            headers: {
+                'x-access-token': localStorage.getItem('token'),
+
+            },
+        })
+
+        const json = await req.json()
+
+        // console.log(json)
+        if (json.status === 'ok') {
+            setStuName(json.name)
+            setStuEmail(json.email)
+            setEnrollNum(json.enrollNum)
+            setRollNum(json.rollNum)
+            setStuContactNum(json.contactNum)
+            setTotalclassesheld(json.Classes_held)
+            setTotalClassScheduledStudent(json.Classes_Scheduled)
+            setTotalClasstakenStudent(json.Classes_taken_count)
+            setTotalTestScheduledStudent(json.Test_Scheduled)
+            setAssignments(json.Assignment_posted)
+            setAssignment_submitted(json.assignment_submitted)
+        }
+        else {
+            // alert(data.error)
+        }
+        
+    }
+    console.log(assignment_submitted)
+    useEffect(() => {
+      const token = localStorage.getItem('token')
+      if (token) {
+          const user = jwt.decode(token)
+          if (!user) {
+              localStorage.removeItem('token')
+              // navigate("/");
+          } else {
+              populatedashboard()
+          }
+      }
+  }, [name], [email])
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -170,12 +233,14 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/login2' element={<Login2 />} />
           <Route path='/loginteacher' element={<LoginTeacher />} />
-          <Route path='/dashboard' element={<Student_Dashboard />} />
-          <Route path='/dashboard/profile' element={<Student_Profile />} />
+          <Route path='/dashboard' element={<Student_Dashboard assignment_submitted={assignment_submitted} totalclassesheld={totalclassesheld} totalClasstakenStudent={totalClasstakenStudent} totalClassScheduledStudent={totalClassScheduledStudent} totalTestScheduledStudent={totalTestScheduledStudent} assignments={assignments}/>} />
+          <Route path='/dashboard/profile' element={<Student_Profile stucontactNum={stucontactNum} rollNum={rollNum} enrollNum={enrollNum} stuemail={stuemail} stuname={stuname}/>} />
           <Route path="/dashboard/changepassword" element={<ChangeStudentPassword />} />
           <Route path='/Studentdashboard/sem1' element={<Sem1_Student />} />
-          <Route path='/testschedule' element={<Testreport_student />} />
-          <Route path='/classschedule' element={<Classreport_student />} />
+          {/* <Route path='/testschedule' element={<Testreport_student />} /> */}
+          {/* <Route path='/classschedule' element={<Classreport_student />} /> */}
+          <Route path="/:schrparam" element={<Schedulereport />} />
+
           <Route path='/assignmentreportstudent' element={<Assignmentreport_student />} />
           <Route path='/Teacherdashboard/assignmentreportteacher' element={<Assignmentreport_teacher setassid={setassid} />} />
           <Route path='/Teacherdashboard' element={<Teacher_Dashboard totalClasstaken={totalClasstaken} totalClassScheduled={totalClassScheduled} totalTestScheduled={totalTestScheduled} totalAssignments={totalAssignments} totalStudymaterial={totalStudymaterial}/>} />

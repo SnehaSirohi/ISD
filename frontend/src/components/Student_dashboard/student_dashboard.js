@@ -7,62 +7,17 @@ import "./student_dashboard.css";
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 
-const Dashboard = (props) => {
-    const [totalclassesheld, setTotalclassesheld] = useState([])
-    const [totalClasstaken, setTotalClasstaken] = useState([])
-    const [totalClassScheduled, setTotalClassScheduled] = useState([])
-    const [totalTestScheduled, setTotalTestScheduled] = useState([])
-    const [assignments, setAssignments] = useState([])
+const Dashboard = ({assignment_submitted, totalclassesheld, totalClasstakenStudent, totalClassScheduledStudent, totalTestScheduledStudent, assignments}) => {
+    
     let attendancepercentage
-    const navigate = useNavigate();
-    const [name, setName] = useState([])
-    const [email, setEmail] = useState([])
-
-    async function populatedashboard() {
-        const req = await fetch('https://isd-production.up.railway.app/dashboard', {
-            headers: {
-                'x-access-token': localStorage.getItem('token'),
-
-            },
-        })
-
-        const json = await req.json()
-
-        // console.log(json)
-        if (json.status === 'ok') {
-            setName(json.name)
-            setEmail(json.email)
-            setTotalclassesheld(json.Classes_held)
-            setTotalClassScheduled(json.Classes_Scheduled)
-            setTotalClasstaken(json.Classes_taken_count)
-            setTotalTestScheduled(json.Test_Scheduled)
-            setAssignments(json.Assignment_posted)
-
-        }
-        else {
-            // alert(data.error)
-        }
-    }
-
-    attendancepercentage = ((totalClasstaken / totalclassesheld) * 100).toFixed(2)
+    attendancepercentage = ((totalClasstakenStudent / totalclassesheld) * 100).toFixed(2)
     // console.log(attendancepercentage)
-    if (attendancepercentage < 50) {
-        document.getElementById("ap").style.backgroundColor = 'red'
-        document.getElementById("ap").style.color = 'white'
-        document.getElementById("ap").innerHTML = `${attendancepercentage}❕`
-    }
-    useEffect(() => {
-        const token = localStorage.getItem('token')
-        if (token) {
-            const user = jwt.decode(token)
-            if (!user) {
-                localStorage.removeItem('token')
-                navigate("/");
-            } else {
-                populatedashboard()
-            }
-        }
-    }, [name], [email])
+    // if (attendancepercentage < 50) {
+    //     document.getElementById("ap").style.backgroundColor = 'red'
+    //     document.getElementById("ap").style.color = 'white'
+    //     document.getElementById("ap").innerHTML = `${attendancepercentage}❕`
+    // }
+
 
     return (
         <>
@@ -75,11 +30,11 @@ const Dashboard = (props) => {
                             <div class="row mb-3 dashblocks">
                                 <Link to='/classschedule'><div class="col-xl-3 col-sm-6 blockcolour">
                                     <h5 class="text-uppercase pt-3">CLASS SCHEDULED</h5>
-                                    <h1 class="display-4">{totalClassScheduled}</h1>
+                                    <h1 class="display-4">{totalClassScheduledStudent}</h1>
                                 </div></Link>
                                 <Link to='/testschedule'><div class="col-xl-3 col-sm-6 blockcolour">
                                     <h5 class="text-uppercase pt-3">TEST SCHEDULED</h5>
-                                    <h1 class="display-4">{totalTestScheduled}</h1>
+                                    <h1 class="display-4">{totalTestScheduledStudent}</h1>
                                 </div></Link>
                                 <Link to='/assignmentreportstudent'><div class="col-xl-3 col-sm-6 blockcolour">
                                     <h5 class="text-uppercase pt-3">ASSIGNMENTS</h5>
@@ -101,7 +56,7 @@ const Dashboard = (props) => {
                                             <h5>Total classes Taken</h5>
                                         </div>
                                         <div className='classinfoval'>
-                                            <h5>{totalClasstaken}</h5>
+                                            <h5>{totalClasstakenStudent}</h5>
                                         </div>
                                     </div>
                                     <div class="classinfo">
@@ -109,7 +64,7 @@ const Dashboard = (props) => {
                                             <h5>Total Tests</h5>
                                         </div>
                                         <div className='classinfoval'>
-                                            <h5>{totalTestScheduled}</h5>
+                                            <h5>{totalTestScheduledStudent}</h5>
                                         </div>
                                     </div>
                                     <div class="classinfo">
@@ -117,7 +72,7 @@ const Dashboard = (props) => {
                                             <h5>Assignments submitted</h5>
                                         </div>
                                         <div className='classinfoval'>
-                                            <h5>{assignments}</h5>
+                                            <h5>{assignment_submitted}</h5>
                                         </div>
                                     </div>
                                     <div class="classinfo">
@@ -133,7 +88,7 @@ const Dashboard = (props) => {
                         </div>
                         <div className="profilecontent"
                             style={{
-                                display: props.show ? "block" : "none"
+                                // display: props.show ? "block" : "none"
                             }}>
                             <br /><br />
 

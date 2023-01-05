@@ -5,7 +5,7 @@ import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
-import '../Scheduled_Class_List/Scheduledcommon.css';
+import '../schedule_report/Scheduledcommon.css';
 import './assignment_report.css'
 import List3 from './List3';
 import Navbar from "../Student_dashboard/Navbar";

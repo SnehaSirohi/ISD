@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect, useRef, useReactToPrint } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
-import "../Scheduled_Class_List/scheduledclass.css";
+import "../schedule_report/scheduledclass.css";
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { Navigate, useNavigate } from "react-router-dom"
