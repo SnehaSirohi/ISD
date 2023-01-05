@@ -1,4 +1,5 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 import { useState,useEffect,useRef,useReactToPrint } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
@@ -12,6 +13,9 @@ import Navbar from '../Student_dashboard/Navbar';
 var XLSX = require("xlsx");
 
 const Classreport = () => {
+    const params=useParams()
+    console.log(params)
+    const[classschedule,setClasschedule]=useState(false)
     const navigate = useNavigate();
     const [classes,setClasses]=useState([]);
     const [visible, setVisible] = useState(false)
@@ -20,8 +24,9 @@ const Classreport = () => {
     const monthval = newdate.getMonth()+1;
     const day = newdate.getDate()
     const year = newdate.getFullYear()
+
     const fetchdata=async()=>{
-        const response=await fetch("https://isd-production.up.railway.app/classschedule", {
+        const response=await fetch(`http://localhost:4000/${params.schrparam}`, {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -29,34 +34,44 @@ const Classreport = () => {
                 'x-access-token': localStorage.getItem('token'), //
             }})
             const json = await response.json()
-            let data = json.data.filter((data)=>{
-              if((data.date.slice(8,10)>=day &&  data.date.slice(5,7)==monthval) || data.date.slice(5,7)>monthval || data.date.slice(0,5)>year  )
-              {
-                  return data
-              }
-             
-            })
+            let data = json.data
 
                 setClasses(data.reverse())
       }
 
+      
       useEffect(() => {
         if(classes.length !=0){
           setVisible(true)
-          setString("Overall Classes Scheduled")
+            if(classschedule)
+            {
+            setString("Overall Classes Scheduled")
+            }
+            else {
+            setString("Overall Tests Scheduled")
+            }
         }else{
-          setString(" No Classes Scheduled !")
+            if(classschedule)
+            {
+                setString(" No Classes Scheduled !")            }
+            else {
+                setString(" No Tests Scheduled !")   
+            }          
         }
       },[classes])
 
       useEffect(() => {
+        if(params.schrparam=="classschedule")
+        {
+            setClasschedule(true)
+        }
         const token = localStorage.getItem('token')
         if (token) {
           const user = jwt.decode(token)
           console.log(user)
           if (!user) {
             localStorage.removeItem('token')
-            navigate("/Teacherdashboard");
+            navigate("/dashboard");
           } else {
             fetchdata()
     

@@ -79,7 +79,7 @@
 .dashboardbackground {
     width: 100vw;
 
-    position: fixed;
+    position: relative;
 }
 
 

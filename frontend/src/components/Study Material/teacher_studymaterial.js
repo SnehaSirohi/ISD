@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
 import Navbar from "../Teacher_dashboard/Navbar";
 import autoTable from 'jspdf-autotable';
-import '../Scheduled_Class_List/scheduledclass.css'
+import '../schedule_report/scheduledclass.css'
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from './list';

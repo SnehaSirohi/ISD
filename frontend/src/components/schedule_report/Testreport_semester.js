@@ -5,17 +5,14 @@ import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
-import List from '../list.js';
-import "../../Scheduled_Class_List/Scheduledcommon.css";
-import Navbar from "../../Student_dashboard/Navbar";
+import List from './listtest';
+import "./Scheduledcommon.css";
+import Navbar from "../Student_dashboard/Navbar";
 var XLSX = require("xlsx");
 
 const Testreport = () => {
   const navigate = useNavigate();
   const [tests, setTests] = useState([]);
-  const newdate = new Date()
-  const monthval = newdate.getMonth() + 1;
-  const day = newdate.getDate()
   const [subject, setSubject] = useState("")
   const [sem1, setSem1] = useState(false)
   const [sem2, setSem2] = useState(false)
@@ -26,7 +23,7 @@ const Testreport = () => {
   const [string, setString] = useState("")
 
     const fetchdata=async()=>{
-        const response=await fetch("https://isd-production.up.railway.app/testschedule", {
+        const response=await fetch("http://localhost:4000/testschedule", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -43,14 +40,7 @@ const Testreport = () => {
     setString("")
     e.preventDefault();
     console.log(report)
-    let data = report.data.filter((data) => {
-      if (data.date.slice(5, 7) == monthval && data.date.slice(8, 10) >= day) {
-        return data
-      }
-      else if (data.date.slice(5, 7) > monthval) {
-        return data
-      }
-    })
+    let data = report.data
     let data2 = data.filter((data) => {
       if (data.subject == subject) {
         return data

@@ -4,10 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
-import './scheduletest.css';
+import '../scheduletest.css';
 import { useNavigate } from "react-router-dom"
-import List from './list';
-import Navbar from "../Teacher_dashboard/Navbar";
+import List from '../listtest';
+import Navbar from "../../Teacher_dashboard/Navbar";
 
 var XLSX = require("xlsx");
 

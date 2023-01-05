@@ -25,9 +25,6 @@ const {
 const {
   login,
   Getdashboard,
-  Getprofile,
-  Postprofile,
-  Getchangepassword,
   PatchChangepassword,
   register,
   registerall,
@@ -62,15 +59,6 @@ router.post("/login", login);
 
 //Dashboard - student (get)
 router.get("/dashboard", Getdashboard);
-
-//student profile (get)
-router.get("/dashboard/profile", Getprofile);
-
-//student profile(post)
-router.post("/dashboard/profile", Postprofile);
-
-//student
-router.get("/dashboard/changepassword", Getchangepassword);
 
 //student-change password
 router.patch("/dashboard/changepassword", PatchChangepassword);

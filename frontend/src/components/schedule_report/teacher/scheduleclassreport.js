@@ -2,12 +2,12 @@ import React from 'react'
 import { useState,useEffect,useRef,useReactToPrint } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
-import './scheduledclass.css';
+import '../scheduledclass.css';
 import autoTable from 'jspdf-autotable';
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
-import List from './list';
-import Navbar from '../Teacher_dashboard/Navbar'
+import List from '../list';
+import Navbar from '../../Teacher_dashboard/Navbar'
 var XLSX = require("xlsx");
 
 const Classreport = () => {
