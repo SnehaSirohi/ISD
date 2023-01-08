@@ -197,11 +197,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' exact element={<Homepage />} />
-          <Route path = '/admin' element = {<Admin />} />
+          <Route path = '/admin' exact element = {<Admin />} />
           <Route path = '/registerTeacher' element = {<Register_teacher />} />
           <Route path = '/registerStudent' element = {<Register_student />} />
           <Route path = '/registerAllStudent' element = {<Register_Mul_student />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/login' exact element={<Login />} />
           <Route path='/login2' element={<Login2 />} />
           <Route path='/loginteacher' element={<LoginTeacher setrender={setrender} />} />
           <Route path='/dashboard' element={<Student_Dashboard visible={visible} assignment_submitted={assignment_submitted} totalclassesheld={totalclassesheld} totalClasstakenStudent={totalClasstakenStudent} totalClassScheduledStudent={totalClassScheduledStudent} totalTestScheduledStudent={totalTestScheduledStudent} assignments={assignments}/>} />
