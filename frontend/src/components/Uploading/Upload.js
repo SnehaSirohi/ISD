@@ -9,6 +9,9 @@ import Sem2Subjects from '../Subjects/Sem2Subjects';
 import Sem3Subjects from '../Subjects/Sem3Subjects';
 import Sem4Subjects from '../Subjects/Sem4Subjects';
 import './Upload.css'
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
 function Upload({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish,teacher}) {
   const params=useParams()
   const navigate = useNavigate();
@@ -23,12 +26,13 @@ function Upload({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish,teacher
   const[Sem3,setSem3]=useState(false)
   const[Sem4,setSem4]=useState(false)
   const semester = params.semester ;
-
+  const [loader,setloader]=useState(false)
   async function Upload(e) {
   
    if(assignparam)
    {
      if(deadline && subject && file) {
+      setloader(true)
       e.preventDefault()
       const response = await fetch(`https://isd-production.up.railway.app/upload/assignment`, {
         method: "POST",
@@ -58,7 +62,7 @@ function Upload({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish,teacher
    if(!assignparam)
     {
         if(subject && file){
-
+          setloader(true)
       const response = await fetch("https://isd-production.up.railway.app/upload/studymaterial", {
         method: "POST",
         headers: {
@@ -148,6 +152,9 @@ function Upload({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish,teacher
         setSem4(true)
   }
   }, []);
+  useEffect(()=>{
+    setloader(false)
+    },[success])
   return (
     <>
     <div className="uploadassignmentbody">
@@ -219,6 +226,13 @@ function Upload({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish,teacher
 {assignparam ? <h4>Assignment Posted</h4> : <h4>Study Material Posted</h4>}
 </div>
       </div>}
+      {loader&&<Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open
+        // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>}
     </>
   );
 }

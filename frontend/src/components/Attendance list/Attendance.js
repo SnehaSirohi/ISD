@@ -9,6 +9,9 @@ import Sem1Subjects from '../Subjects/Sem1Subjects';
 import Sem2Subjects from '../Subjects/Sem2Subjects';
 import Sem3Subjects from '../Subjects/Sem3Subjects';
 import Sem4Subjects from '../Subjects/Sem4Subjects';
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
 const Attendance = ({studentsattend, UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish}) => {
   const params=useParams()
   console.log(params)
@@ -23,7 +26,7 @@ const Attendance = ({studentsattend, UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sa
   const [success, setsuccess] = useState(false)
   const sem = params.semester ;
   const semparam=sem.slice(0,3) + sem.slice(4,5)
-
+  const [loader,setloader]=useState(false)
     
 
   const fetchdata = async () => {
@@ -32,17 +35,9 @@ const Attendance = ({studentsattend, UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sa
 
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (token) {
-      const user = jwt.decode(token)
-      console.log(user)
-      if (!user) {
-        localStorage.removeItem('token')
-        navigate("/Teacherdashboard");
-      } else {
+ 
         fetchdata()
-      }
-    }
+    
     switch(sem)
   {
     case "Sem-1":
@@ -63,6 +58,7 @@ const Attendance = ({studentsattend, UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sa
   async function Submit(e) {
   
     if(subject) {
+      setloader(true)
       e.preventDefault()
       const response = await fetch(`https://isd-production.up.railway.app/attendance/${semparam}`, {
         method: "POST",
@@ -95,7 +91,9 @@ const Attendance = ({studentsattend, UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sa
     }
 
   }
-
+  useEffect(()=>{
+    setloader(false)
+    },[success])
   return (
     <>
       <div className='height100vh'>
@@ -131,6 +129,13 @@ const Attendance = ({studentsattend, UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sa
             <h4>Attendance Saved</h4>
           </div>
         </div>}
+        {loader&&<Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open
+        // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>}
       </div>
     </>
   );

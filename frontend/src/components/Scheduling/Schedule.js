@@ -11,6 +11,9 @@ import Sem2Subjects from '../Subjects/Sem2Subjects';
 import Sem3Subjects from '../Subjects/Sem3Subjects';
 import Sem4Subjects from '../Subjects/Sem4Subjects';
 import "./classschedule.css"
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
 const Schedule = ({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish,teacher}) => {
   const params=useParams()
  console.log(params)
@@ -26,11 +29,13 @@ const Schedule = ({UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish,teach
   const[Sem2,setSem2]=useState(false)
   const[Sem3,setSem3]=useState(false)
   const[Sem4,setSem4]=useState(false)
+  const [loader,setloader]=useState(false)
   const sem = params.semester ;
   
   //-----------
   async function schedule(e) { 
     if (subject && time && date) {
+      setloader(true)
       e.preventDefault() 
       const req = await fetch(`https://isd-production.up.railway.app/${params.schparam}`, {
         method: "POST",
@@ -145,6 +150,9 @@ if(success)
     navigate("/Teacherdashboard");
   }, 2500);
 }
+useEffect(()=>{
+setloader(false)
+},[warning],[success])
   return (
     <>
      <div className='height100vh'>
@@ -231,6 +239,13 @@ if(success)
     <button className="okay" onClick={()=>setwarning(false)} >Okay</button>
   </div>
  </div></>}
+ {loader&&<Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open
+        // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>}
  </div>
       
     </>
