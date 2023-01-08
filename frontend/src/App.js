@@ -65,7 +65,10 @@ function App() {
   const [teacher_id, setteacher_id] = useState([])
   const [studentsattend, setStudentsattend] = useState([])
   const [success, setsuccess] = useState(false)
+  const [render,setrender]=useState("")
+  console.log("app.js")
    async function populate(e) {
+    console.log("function called")
     const req = await fetch(`https://isd-production.up.railway.app/teacherverify`, {
       headers: {
         'x-access-token': localStorage.getItem('token'), //
@@ -121,7 +124,8 @@ function App() {
       }
     }
 
-  }, [])
+  }, [],[render])
+  console.log()
   useEffect(() => {
     window.process = {
       ...window.process,
@@ -144,6 +148,7 @@ function App() {
 
 
   async function populatedashboard() {
+    console.log("inside function")
       const req = await fetch('https://isd-production.up.railway.app/dashboard', {
           headers: {
               'x-access-token': localStorage.getItem('token'),
@@ -198,7 +203,7 @@ function App() {
           <Route path = '/registerAllStudent' element = {<Register_Mul_student />} />
           <Route path='/login' element={<Login />} />
           <Route path='/login2' element={<Login2 />} />
-          <Route path='/loginteacher' element={<LoginTeacher />} />
+          <Route path='/loginteacher' element={<LoginTeacher setrender={setrender} />} />
           <Route path='/dashboard' element={<Student_Dashboard visible={visible} assignment_submitted={assignment_submitted} totalclassesheld={totalclassesheld} totalClasstakenStudent={totalClasstakenStudent} totalClassScheduledStudent={totalClassScheduledStudent} totalTestScheduledStudent={totalTestScheduledStudent} assignments={assignments}/>} />
           <Route path='/dashboard/profile' element={<Student_Profile visible={visible} stucontactNum={stucontactNum} rollNum={rollNum} enrollNum={enrollNum} stuemail={stuemail} stuname={stuname}/>}/>
           <Route path="/dashboard/changepassword" element={<ChangeStudentPassword />} />

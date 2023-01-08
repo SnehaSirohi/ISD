@@ -15,7 +15,7 @@ const Teacher_Dashboard = ({success, totalClasstaken, totalClassScheduled, total
             <div className='height100percent'>
                 <Navbar />
                 <div>
-                    {!success && <Loader />}
+                    {!success && <Loader/>}
                     <div className="flex dashboardcontent">
                         <div class="col main pt-5  dashboardbackground">
                             <div class="row mb-3 dashblockteacher">

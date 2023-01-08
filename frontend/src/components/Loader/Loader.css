@@ -25,8 +25,15 @@
 
 .loadercontainer
 {       
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: white;
+        width: 100vw;
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 500;
+        
 }

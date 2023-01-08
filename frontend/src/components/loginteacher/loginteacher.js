@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
-const Loginteacher = () => {
+const Loginteacher = ({setrender}) => {
   const [ifPasswordAndUserNameNotsame, setIfPasswordAndUserNameNotsame] =
     useState(false);
 
@@ -39,8 +39,9 @@ const Loginteacher = () => {
     }).then(async (response) => {
       let data = await response.json();
       setVisible(true)
-      console.log(data);
+     
       if (data.teacher) {
+        setrender(data.teacher)
         localStorage.setItem("token", data.teacher);
         navigate("/Teacherdashboard");
         setLoginstatus(data.message);
