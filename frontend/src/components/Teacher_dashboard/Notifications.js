@@ -4,6 +4,10 @@ import List from './List'
 import Navbar from './Navbar'
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
+import './notifications.css'
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
 
 const Notifications = () => {
     const navigate = useNavigate();
@@ -47,7 +51,13 @@ const Notifications = () => {
     <div className='height100vh'>
     <Navbar/>
     <div className="container notification ">
-     {notification && <List notification={notification} teacher={teacher} />} 
+     {notification ? <List notification={notification} teacher={teacher} /> :  <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open
+        // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>} 
      </div>
      </div>
     </>

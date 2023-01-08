@@ -1,10 +1,10 @@
-body
+/* body
 {  
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 @keyframes rotation {
     100%{
@@ -24,7 +24,8 @@ body
 }
 
 .loadercontainer
-{    
+{       
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;

@@ -8,10 +8,6 @@ const Operations = () => {
     const params=useParams()
     const semester = params.semester
 
-
-
-  
-
   return (
    <>
     <div className='page height100vh'>

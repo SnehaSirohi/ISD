@@ -59,7 +59,7 @@ const List = ({ notification, teacher }) => {
             
             <div className="container noti">
 
-<h5>{name} has Submitted the assignment of {subject}</h5>
+<h5 className="fontselect">{name} has Submitted the assignment of {subject}</h5>
 
             </div>
             

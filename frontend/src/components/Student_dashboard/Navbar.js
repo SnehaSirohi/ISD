@@ -5,7 +5,7 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { IconContext } from 'react-icons';
-import logo from './image.png'
+import logo from '../Teacher_dashboard/image.png'
 import jwt from 'jsonwebtoken'
 
 
@@ -70,7 +70,7 @@ function Navbar() {
                         <FaIcons.FaBars onClick={showSidebar} />
                     </Link>
                     <div className="heading">
-                        <i class="fa fa-bell mt-1 fa-2x"></i>
+                        {/* <i class="fa fa-bell mt-1 fa-2x"></i> */}
                         <Link to="/dashboard/profile"><div className="button"><img src={logo} alt="..." class="profilePic"></img></div></Link>
 
                     </div>

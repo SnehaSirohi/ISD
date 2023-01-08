@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "./login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom"
-
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 const Login = () => {
 
   const [ifPasswordAndUserNameNotsame, setIfPasswordAndUserNameNotsame] = useState(false);
@@ -13,7 +14,7 @@ const Login = () => {
     enrollNum: "",
     password: ""
   })
-
+  const [visible, setVisible] = useState(true);
   const [loginstatus, setLoginstatus] = useState("")
 
   const handleChange = (e) => {
@@ -25,6 +26,7 @@ const Login = () => {
   }
 
   const login = async (e) => {
+    setVisible(false);
     e.preventDefault();
     await fetch("https://isd-production.up.railway.app/login", {
       method: "POST",
@@ -35,10 +37,11 @@ const Login = () => {
       body: JSON.stringify(user),
     }).then(async (response) => {
       let data = await response.json();
+      setVisible(true);
       console.log(data);
       if (data.student) {
         localStorage.setItem('token', data.student)
-        navigate("/dashboard");
+          navigate("/dashboard");
         setLoginstatus(data.message);
       } else {
         setIfPasswordAndUserNameNotsame(true);
@@ -86,8 +89,20 @@ const Login = () => {
                 type="submit"
                 className="button login__submit"
                 onClick={login}
+                style={{ display: "flex", justifyContent: "center" }}
               >
-                <span className="button__text">Log In Now</span>
+                {visible ? (
+                  <span className="button__text">Log In Now</span>
+                ) : (
+                  <span
+                    className="button__text"
+                    style={{ paddingRight: "12px" }}
+                  >
+                    <Box sx={{ display: "flex" }}>
+                      <CircularProgress />
+                    </Box>
+                  </span>
+                )}
               </button>
             </form>
           </div>

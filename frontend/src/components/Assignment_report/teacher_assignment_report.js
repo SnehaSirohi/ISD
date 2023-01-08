@@ -9,6 +9,10 @@ import { Navigate, useNavigate } from "react-router-dom"
 import Navbar from "../Teacher_dashboard/Navbar";
 import List from './list';
 import { Link } from "react-router-dom";
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
+
 var XLSX = require("xlsx");
 
 const Assignmentreport = ({setassid}) => {
@@ -16,6 +20,7 @@ const Assignmentreport = ({setassid}) => {
   const [assignments, setAssignments] = useState([]);
   const [visible, setVisible] = useState(false)
   const [string, setString] = useState("")
+  
   const fetchdata = async () => {
     const response = await fetch("https://isd-production.up.railway.app/assignmentreportteacher", {
       method: "GET",
@@ -58,7 +63,7 @@ const Assignmentreport = ({setassid}) => {
   <Navbar />
       {<h1 className='text-center pt-3'>{string}</h1>}
 
-    {visible && <div className='tableblock'>
+    {visible ? <div className='tableblock'>
         <table className='table table-striped' id='mytable'>
           <thead className='heading-2'>
             <tr>
@@ -74,7 +79,12 @@ const Assignmentreport = ({setassid}) => {
             <List assignments={assignments} handleclick={handleclick} />
           </tbody>
         </table>
-      </div>}
+      </div> : <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>}
       </div>
     </>
   )

@@ -5,24 +5,25 @@ import { Link } from "react-router-dom";
 import Navbar from "./Navbar.js";
 import logo from "./image.png"
 import "./Teacher_dashboard.css";
+import Loader from '../Loader/Loader.js';
 
 
-
-const Teacher_Dashboard = ({totalClasstaken, totalClassScheduled, totalTestScheduled, totalAssignments, totalStudymaterial}) => {
+const Teacher_Dashboard = ({success, totalClasstaken, totalClassScheduled, totalTestScheduled, totalAssignments, totalStudymaterial}) => {
 
     return (
         <>
             <div className='height100percent'>
                 <Navbar />
                 <div>
+                    {!success && <Loader />}
                     <div className="flex dashboardcontent">
                         <div class="col main pt-5  dashboardbackground">
                             <div class="row mb-3 dashblockteacher">
-                                <Link to='/scheduledclassreport'><div class="col-xl-3 col-sm-6 blockcolour">
+                                <Link to='/Teacherdashboard/report/scheduledclassreport'><div class="col-xl-3 col-sm-6 blockcolour">
                                     <h5 class="text-uppercase pt-3">CLASS SCHEDULED</h5>
                                     <h1 class="display-4">{totalClassScheduled}</h1>
                                 </div></Link>
-                                <Link to='/scheduledtestreport'><div class="col-xl-3 col-sm-6 blockcolour">
+                                <Link to='/Teacherdashboard/report/scheduledtestreport'><div class="col-xl-3 col-sm-6 blockcolour">
                                     <h5 class="text-uppercase pt-3">TEST SCHEDULED</h5>
                                     <h1 class="display-4">{totalTestScheduled}</h1>
                                 </div></Link>

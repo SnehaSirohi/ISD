@@ -6,8 +6,11 @@ import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
 import logo from './image.png'
 
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
 
-const Teacher_Profile = ({name, email, contact, teacher_id}) => {
+const Teacher_Profile = ({success, name, email, contact, teacher_id}) => {
 
     const navigate = useNavigate();
     
@@ -15,7 +18,7 @@ const Teacher_Profile = ({name, email, contact, teacher_id}) => {
         <>
             <div className="height100vh">
                 <Navbar />
-                <h1 className='Teacherheading'>{name}'s Profile</h1>
+                {success ? <><h1 className='Teacherheading'>{name}'s Profile</h1>
                 <div class="emp-profile">
                     <div className='pblock'>
                         <form method="post">
@@ -65,7 +68,13 @@ const Teacher_Profile = ({name, email, contact, teacher_id}) => {
                         }}>Logout</button>
                         <Link to="/Teacherdashboard/changepassword"><button id='butn' class="btn btn-primary-1" >Reset Password</button></Link>
                     </div>
-                </div>
+                </div></>: <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open
+        // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>}
                 {/* <div className='buttons'>
                             <button onClick={() => {
                                 localStorage.removeItem('token')

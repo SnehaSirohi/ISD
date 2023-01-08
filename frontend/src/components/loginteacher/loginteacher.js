@@ -1,30 +1,33 @@
 import React, { useState } from "react";
 import "./loginteacher.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const Loginteacher = () => {
-
-  const [ifPasswordAndUserNameNotsame, setIfPasswordAndUserNameNotsame] = useState(false);
+  const [ifPasswordAndUserNameNotsame, setIfPasswordAndUserNameNotsame] =
+    useState(false);
 
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
     Teacher_id: "",
-    password: ""
-  })
+    password: "",
+  });
 
-  const [loginstatus, setLoginstatus] = useState("")
-
+  const [loginstatus, setLoginstatus] = useState("");
+  const [visible, setVisible] = useState(true);
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setUser({
       ...user,
-      [name]: value
-    })
-  }
+      [name]: value,
+    });
+  };
 
   const login = async (e) => {
+    setVisible(false);
     e.preventDefault();
     await fetch("https://isd-production.up.railway.app/loginteacher", {
       method: "POST",
@@ -35,9 +38,10 @@ const Loginteacher = () => {
       body: JSON.stringify(user),
     }).then(async (response) => {
       let data = await response.json();
+      setVisible(true)
       console.log(data);
       if (data.teacher) {
-        localStorage.setItem('token', data.teacher)
+        localStorage.setItem("token", data.teacher);
         navigate("/Teacherdashboard");
         setLoginstatus(data.message);
       } else {
@@ -45,8 +49,7 @@ const Loginteacher = () => {
         setLoginstatus(data.message);
       }
     });
-
-  }
+  };
 
   return (
     <>
@@ -78,16 +81,30 @@ const Loginteacher = () => {
                   onChange={handleChange}
                 />
               </div>
-              {ifPasswordAndUserNameNotsame && < div class="alertmessage">
-                <i class='fa fa-exclamation-circle'></i> &nbsp;
-                please check your username and password!
-              </div>}
+              {ifPasswordAndUserNameNotsame && (
+                <div class="alertmessage">
+                  <i class="fa fa-exclamation-circle"></i> &nbsp; please check
+                  your username and password!
+                </div>
+              )}
               <button
                 type="submit"
                 className="button login__submit"
                 onClick={login}
+                style={{ display: "flex", justifyContent: "center" }}
               >
-                <span className="button__text">Log In Now</span>
+                {visible ? (
+                  <span className="button__text">Log In Now</span>
+                ) : (
+                  <span
+                    className="button__text"
+                    style={{ paddingRight: "12px" }}
+                  >
+                    <Box sx={{ display: "flex" }}>
+                      <CircularProgress />
+                    </Box>
+                  </span>
+                )}
               </button>
             </form>
           </div>
@@ -102,6 +119,5 @@ const Loginteacher = () => {
     </>
   );
 };
-
 
 export default Loginteacher;

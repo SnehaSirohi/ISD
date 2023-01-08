@@ -10,6 +10,10 @@ import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from './list';
 import Navbar from '../Student_dashboard/Navbar';
+
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
 var XLSX = require("xlsx");
 
 const Classreport = () => {
@@ -26,7 +30,7 @@ const Classreport = () => {
     const year = newdate.getFullYear()
 
     const fetchdata=async()=>{
-        const response=await fetch(`http://localhost:4000/${params.schrparam}`, {
+        const response=await fetch(`https://isd-production.up.railway.app/${params.schrparam}`, {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -37,28 +41,25 @@ const Classreport = () => {
             let data = json.data
 
                 setClasses(data.reverse())
-      }
-
-      
-      useEffect(() => {
-        if(classes.length !=0){
-          setVisible(true)
-            if(classschedule)
-            {
-            setString("Overall Classes Scheduled")
-            }
-            else {
-            setString("Overall Tests Scheduled")
-            }
-        }else{
-            if(classschedule)
-            {
-                setString(" No Classes Scheduled !")            }
-            else {
-                setString(" No Tests Scheduled !")   
-            }          
-        }
-      },[classes])
+                if(data.length !=0){
+                  setVisible(true)
+                    if(classschedule)
+                    {
+                    setString("Overall Classes Scheduled")
+                    }
+                    else {
+                    setString("Overall Tests Scheduled")
+                    }
+                }else{
+                    if(classschedule)
+                    {
+                        setString(" No Classes Scheduled !")            }
+                    else {
+                        setString(" No Tests Scheduled !")   
+                    }          
+                }
+      }   
+    
 
       useEffect(() => {
         if(params.schrparam=="classschedule")
@@ -97,8 +98,8 @@ const Classreport = () => {
    <div className='height100vh'>
   <Navbar/>
  {<h1 className='text-center'>{string} </h1>}
- 
-  {visible && <div className='tableblock'>
+
+  {visible ? <div className='tableblock'>
     <table className='table table-striped overflowxauto' id='mytable'>
       <thead className='heading-2'>
         <tr>
@@ -112,7 +113,13 @@ const Classreport = () => {
       <List classes={classes} />
       </tbody>
     </table>
-  </div>}
+  </div> : <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open
+        // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>}
   {visible && <div className='text-center'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>

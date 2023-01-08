@@ -8,15 +8,21 @@ import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from '../list';
 import Navbar from '../../Teacher_dashboard/Navbar'
+import { useParams } from 'react-router-dom'
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
 var XLSX = require("xlsx");
 
 const Classreport = () => {
+  const params=useParams()
     const navigate = useNavigate();
     const [classes, setClasses]=useState([]);
+    const[classschedule,setClasschedule]=useState(false)
     const [visible, setVisible] = useState(false)
     const [string, setString] = useState("")
     const fetchdata=async()=>{
-        const response=await fetch("https://isd-production.up.railway.app/scheduledclassreport", {
+        const response=await fetch(`https://isd-production.up.railway.app/${params.teachschparam}`, {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -28,14 +34,28 @@ const Classreport = () => {
                 if(json.data.length != 0)
                 {
                   setVisible(true)
-                  setString("Overall Scheduled Classes ")
-                }else {
-                  setString("No Classes Scheduled !")
-                }
+                  if(classschedule)
+                  {
+                  setString("Overall Scheduled Classes")
+                  }
+                  else {
+                  setString("Overall Scheduled Tests")
+                  }
+              }else{
+                  if(classschedule)
+                  {
+                      setString(" No Classes Scheduled !")            }
+                  else {
+                      setString(" No Tests Scheduled !")   
+                  } 
 
-
+              }
       }
       useEffect(() => {
+        if(params.schrparam=="classschedule")
+        {
+            setClasschedule(true)
+        }
         const token = localStorage.getItem('token')
         if (token) {
           const user = jwt.decode(token)
@@ -68,7 +88,7 @@ const Classreport = () => {
 <Navbar />
  {<h1 className='text-center pt-3'>{string}</h1>}
  
- {visible && <div className='tableblock'>
+ {visible ? <div className='tableblock'>
     <table className='table table-striped' id='mytable'>
       <thead className='heading-2'>
         <tr>
@@ -82,7 +102,13 @@ const Classreport = () => {
       <List classes={classes} />
       </tbody>
     </table>
-  </div>}
+  </div> :  <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open
+        // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>}
   {visible && <div className='text-center'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>
    <button id='butn' class="btn btn-primary-1" onClick={exporttopdfhandler}>Download in pdf</button>

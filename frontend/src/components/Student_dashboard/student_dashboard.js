@@ -6,23 +6,26 @@ import Navbar from "./Navbar.js";
 import "./student_dashboard.css";
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
-
-const Dashboard = ({assignment_submitted, totalclassesheld, totalClasstakenStudent, totalClassScheduledStudent, totalTestScheduledStudent, assignments}) => {
+import Loader from '../Loader/Loader.js';
+const Dashboard = ({visible, assignment_submitted, totalclassesheld, totalClasstakenStudent, totalClassScheduledStudent, totalTestScheduledStudent, assignments}) => {
     
     let attendancepercentage
     attendancepercentage = ((totalClasstakenStudent / totalclassesheld) * 100).toFixed(2)
-    // console.log(attendancepercentage)
-    // if (attendancepercentage < 50) {
-    //     document.getElementById("ap").style.backgroundColor = 'red'
-    //     document.getElementById("ap").style.color = 'white'
-    //     document.getElementById("ap").innerHTML = `${attendancepercentage}❕`
-    // }
-
+    console.log(attendancepercentage)
+    useEffect(()=>{
+        if (attendancepercentage < 50) {
+            document.getElementById("ap").style.backgroundColor = 'red'
+            document.getElementById("ap").style.color = 'white'
+            document.getElementById("ap").innerHTML = `${attendancepercentage} % ❕`
+        }
+    },[attendancepercentage])
+    
 
     return (
         <>
             <div className='height100vh'>
                 <Navbar />
+                {!visible && <Loader />}
                 <div>
                     <div className="flex dashboardcontent">
                         <div class="col main pt-5  dashboardbackground">

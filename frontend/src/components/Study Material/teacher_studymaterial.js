@@ -8,6 +8,10 @@ import '../schedule_report/scheduledclass.css'
 import jwt from 'jsonwebtoken'
 import { useNavigate } from "react-router-dom"
 import List from './list';
+
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
 var XLSX = require("xlsx");
 
 const Studymaterial_report = () => {
@@ -69,7 +73,7 @@ const Studymaterial_report = () => {
       <div className='height100vh'>
         <Navbar />
         {<h1 className='text-center pt-3'>{string} </h1>}
-        {visible && <div className='overflowxauto'>
+        {visible ? <div className='overflowxauto'>
           <table className='table table-striped overflowxauto' id='mytable-5'>
             <thead className='heading-2'>
               <tr>
@@ -84,7 +88,12 @@ const Studymaterial_report = () => {
               <List material={material} />
             </tbody>
           </table>
-        </div>}
+        </div> : <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>}
 
         {/* {visible && <div className='text-center'>
    <button id='butn' class="btn btn-primary" onClick={exporttoexcelhandler}>Download in excel</button>

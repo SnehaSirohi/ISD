@@ -4,18 +4,19 @@ import "./Student_profile.css"
 import Navbar from './Navbar'
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
-import logo from './image.png'
+import logo from '../Teacher_dashboard/image.png'
 
-const Profile = ({stucontactNum, rollNum, enrollNum, stuname, stuemail}) => {
-
-    const navigate = useNavigate();
-
-
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
+import Button from '@mui/material/Button';
+const Profile = ({visible, stucontactNum, rollNum, enrollNum, stuname, stuemail}) => {
+    let navigate = useNavigate()
+    
     return (
         <div className='height100vh'>
             <Navbar />
-            <h1 className='Teacherheading'>{stuname}'s Profile</h1>
-            <div class="emp-profile">
+            
+           {visible ? <><h1 className='Teacherheading'>{stuname}'s Profile</h1><div class="emp-profile">
                 <div className='pblock'>
                     <form method="post">
                         <div className='photo_block'>
@@ -60,7 +61,13 @@ const Profile = ({stucontactNum, rollNum, enrollNum, stuname, stuemail}) => {
                     }}>Logout</button>
                     <Link to="/dashboard/changepassword"><button id='butn' class="btn btn-primary-1" >Reset Password</button></Link>
                 </div>
-            </div>
+            </div></> : <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open
+        // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>}
         </div>
     )
 

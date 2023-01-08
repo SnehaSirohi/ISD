@@ -79,10 +79,7 @@
 
 
     .image1 {
-        position: absolute;
-        width: 67%;
-        left: 2%;
-        top: 3%;
+        display: none;
     }
 
     .image2 {
