@@ -12,7 +12,7 @@ import Sem4Subjects from '../Subjects/Sem4Subjects';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button';
-const Attendance = ({studentsattend, UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sanjeev,Manish}) => {
+const Attendance = ({}) => {
   const params=useParams()
   console.log(params)
   const navigate = useNavigate();
@@ -24,36 +24,90 @@ const Attendance = ({studentsattend, UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sa
   const[Sem3,setSem3]=useState(false)
   const[Sem4,setSem4]=useState(false)
   const [success, setsuccess] = useState(false)
+  const [visible, setVisible] = useState(false)
   const sem = params.semester ;
   const semparam=sem.slice(0,3) + sem.slice(4,5)
   const [loader,setloader]=useState(false)
     
-
-  const fetchdata = async () => {
+  const [UnmeshShukla, setUnmeshShukla] = useState(false)
+  const [NitishaAgg, setNitishaAgg] = useState(false)
+  const [MKDas, setMKDas] = useState(false)
+  const [SunilKumar, setSunilKumar] = useState(false)
+  const [Sanjeev,setSanjeev]=useState(false)
+  const [Manish,setManish]=useState(false)
+  const [studentsattend, setStudentsattend] = useState([])
+  const [teacher,setTeacher]=useState("")
+  
+  console.log("app.js")
+   async function fetchdata(e) {
+    console.log("function called")
+    const req = await fetch(`https://isd-production.up.railway.app/teacherverify`, {
+      headers: {
+        'x-access-token': localStorage.getItem('token'), //
+      },
+    })
+    const data = await req.json();
+    if (data.status === 'ok') {
+      setStudentsattend(data.data)
+      setVisible(true)
+  }
+    setTeacher(data.name)
+    if (data.name == "Unmesh Shukla") {
+      setUnmeshShukla(true)
+    }
+    if (data.name == "Nitisha Aggarwal") {
+      setNitishaAgg(true)
+    }
+    if (data.name == "M.K Das") {
+      setMKDas(true)
+    }
+    if (data.name == "Sunil Kumar") {
+      setSunilKumar(true)
+    }
+    if (data.name == "Sajeev") {
+      setSanjeev(true)
+    }
+    if (data.name == "Manish") {
+      setManish(true)
+    }
+  }
+  
+  useEffect(() => {
     setstudents(studentsattend.filter((data) => data.semester == sem));
-  };
-
+  })
+  
 
   useEffect(() => {
- 
-        fetchdata()
-    
-    switch(sem)
-  {
-    case "Sem-1":
-        setSem1(true)
-        break;
-    case "Sem-2":
-        setSem2(true)
-        break;
-    case "Sem-3":
-        setSem3(true)
-        break
-    case "Sem-4":
-        setSem4(true)
-  }
+    const token = localStorage.getItem('token')
 
-  }, []);
+    if (token) {
+      const user = jwt.decode(token)
+      console.log(user)
+      if (!user) {
+        localStorage.removeItem('token')
+        
+      } else {
+        fetchdata()
+
+      }
+      switch(sem)
+      {
+        case "Sem-1":
+            setSem1(true)
+            break;
+        case "Sem-2":
+            setSem2(true)
+            break;
+        case "Sem-3":
+            setSem3(true)
+            break
+        case "Sem-4":
+            setSem4(true)
+      }
+    }
+
+  }, [])
+
 
   async function Submit(e) {
   
@@ -104,7 +158,7 @@ const Attendance = ({studentsattend, UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sa
            {Sem2 &&  <Sem2Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} subject={subject} setsubject={setsubject} />}
            {Sem3 &&  <Sem3Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Manish={Manish} subject={subject} setsubject={setsubject} />}
            {Sem4 &&  <Sem4Subjects NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} subject={subject} setsubject={setsubject} />}
-          <div className="table-1">
+          {visible ? <div className="table-1">
             <table className="table table-striped">
               <thead className="heading-1">
                 <tr>
@@ -116,10 +170,16 @@ const Attendance = ({studentsattend, UnmeshShukla,NitishaAgg,MKDas,SunilKumar,Sa
                 <List students={students} status={status} setstatus={setstatus} />
               </tbody>
             </table>
-          </div>
-          <div className="button-1">
+          </div> : <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open
+        // onClick={handleClose}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop> }
+          {visible && <div className="button-1">
             <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onClick={Submit}>Save</button>
-          </div>
+          </div>}
         </div>
         {success && <div className="container-fluid blacky">
           <div className="success">

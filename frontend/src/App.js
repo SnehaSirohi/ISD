@@ -234,7 +234,7 @@ function App() {
           <Route path="/profile3" element={<Profile />} />
           <Route path="/operations/:semester" element={<Operations />} />
           <Route path="/Teacherdashboard/:schparam/:semester" element={<Schedule teacher={teacher} NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar} />} />
-          <Route path="/Teacherdashboard/attendance/:semester" element={<Attendance studentsattend={studentsattend} teacher={teacher}  NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar} />} />
+          <Route path="/Teacherdashboard/attendance/:semester" element={<Attendance  />} />
           <Route path="/Teacherdashboard/upload/:postparam/:semester" element={<Upload teacher={teacher} NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar}/>} />
           <Route path="/Teacherdashboard/filters/:semester" element={<Filters teacher={teacher} NitishaAgg={NitishaAgg} UnmeshShukla={UnmeshShukla} MKDas={MKDas} Sanjeev={Sanjeev} Manish={Manish} SunilKumar={SunilKumar}/>} />
           <Route path="/Teacherdashboard/submissions" element={<SubmittedAssignments assid={assid} />} />
