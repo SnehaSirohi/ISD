@@ -67,10 +67,13 @@ function App() {
   const [success, setsuccess] = useState(false)
   const [render,setrender]=useState("")
   console.log("app.js")
-   async function populate(e) {
+   
+  async function populate(e) {
     console.log("function called")
     const req = await fetch(`https://isd-production.up.railway.app/teacherverify`, {
       headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
         'x-access-token': localStorage.getItem('token'), //
       },
     })
