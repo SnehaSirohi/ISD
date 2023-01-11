@@ -78,6 +78,7 @@ function App() {
       },
     })
     const data = await req.json();
+    console.log(data.name)
     if (data.status === 'ok') {
       setsuccess(true)
       setName(data.name)
