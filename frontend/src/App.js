@@ -111,7 +111,7 @@ function App() {
       setManish(true)
     }
   }
-  console.log(name)
+  console.log("..."+name)
   useEffect(() => {
     const token = localStorage.getItem('token')
 
