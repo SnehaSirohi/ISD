@@ -127,7 +127,7 @@ function App() {
       }
     }
 
-  }, [],[render])
+  }, [])
   console.log()
   useEffect(() => {
     window.process = {
